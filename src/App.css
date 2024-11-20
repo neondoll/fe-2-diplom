@@ -1,42 +1,60 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+#root { position: relative }
+
+.header { position: absolute; top: 0; right: 0; left: 0; }
+
+.header__container { padding-right: 258px; padding-left: 258px }
+
+.header__container--logo {
+  padding-top: 15px;
+  padding-bottom: 7px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header__container--nav { padding-top: 26px; padding-bottom: 33px; background-color: #292929 }
+
+.header__logo {
+  font-size: 36px; /* 36px = 6px * 6 */
+  font-weight: 900;
+  line-height: calc(7 / 6); /* 42px = 6px * 7 */
+  color: #e5e5e5;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header__nav {}
+
+.nav { display: flex; column-gap: 83px; }
+
+.nav__item {
+  font-size: 30px; /* 30px = 5px * 6 */
+  font-weight: 300;
+  line-height: calc(7 / 6); /* 35px = 5px * 7 */
+  color: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.main {}
+
+.section-1 {
+  background-image: url("assets/552ec05b23bca029a735fc146cf0ebff.png");
+  background-position: inherit;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.card {
-  padding: 2em;
+.section-1__container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 411px 233px 0;
 }
 
-.read-the-docs {
-  color: #888;
+.section-1__title {
+  padding-left: 115px;
+  font-size: 72px; /* 72px = 12px * 6 */
+  font-weight: 100;
+  line-height: calc(7 / 6); /* 84px = 12px * 7 */
+  color: #ffffff;
 }
+
+.form {background-color: rgba(41, 41, 41, 0.8) }
+
+.section-1__form { padding-top: 79px; padding-left: 28px }
