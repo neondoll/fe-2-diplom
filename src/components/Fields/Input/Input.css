@@ -1,4 +1,6 @@
 .input {
-  @apply flex justify-start items-center w-full h-[50px] px-[18px] text-lg/none font-normal
-  text-[#292929] bg-white rounded-[5px] border border-[#928f94] placeholder:text-[#c4c4c4];
+  @apply flex justify-start items-center w-full h-12.5 px-4.5 text-lg/none font-normal
+  text-dark-charcoal bg-white rounded-5 border border-taupe-gray transition-colors
+  hover:border-chrome-yellow focus-visible:border-chrome-yellow focus-visible:outline-none
+  placeholder:text-silver;
 }

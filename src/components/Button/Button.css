@@ -1,6 +1,6 @@
 .btn {
-  @apply text-2xl/[calc(7/6)] text-center border transition focus-visible:outline-none
-  disabled:cursor-not-allowed;
+  @apply inline-flex justify-center items-center text-2xl/[calc(7/6)] text-center border transition
+  focus-visible:outline-none disabled:cursor-not-allowed disabled:pointer-events-none;
 }
 
 .btn--change {
@@ -27,11 +27,10 @@
 }
 
 .btn--find-tickets {
-  @apply pt-[16px] pr-[68px] pb-[14px] pl-[67px] font-bold uppercase text-[#292929]
-  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
-  active:bg-transparent active:border-[var(--color-orange)]
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+  @apply w-80.75 h-15 p-3.5 font-bold uppercase text-dark-charcoal bg-chrome-yellow rounded-5
+  border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-chrome-yellow active:bg-transparent
+  active:border-chrome-yellow active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
 }
 
 .btn--further {
@@ -43,15 +42,15 @@
 }
 
 .btn--learn-more {
-  @apply py-[15px] pr-[76px] pl-[75px] font-bold text-white bg-transparent rounded-[5px] border-white
-  hover:text-[#2d2b2f] hover:bg-[var(--color-yellow)] hover:border-transparent
-  focus-visible:text-[#2d2b2f] focus-visible:bg-[var(--color-yellow)] focus-visible:border-transparent
-  active:text-[#2d2b2f] active:bg-white active:border-transparent;
+  @apply w-81.25 h-15 p-3.5 font-bold text-white bg-transparent rounded-5 border-white
+  hover:text-raisin-black hover:bg-maximum-yellow-red hover:border-transparent
+  focus-visible:text-raisin-black focus-visible:bg-maximum-yellow-red focus-visible:border-transparent
+  active:text-raisin-black active:bg-white active:border-transparent;
 }
 
 .btn--send {
-  @apply pt-[16px] pr-[13px] pb-[14px] pl-[16px] font-normal uppercase text-neutral-200 bg-transparent
-  rounded-[3px] border-white hover:text-[#2d2b2f] hover:bg-[var(--color-yellow)]
-  hover:border-transparent focus-visible:text-[#2d2b2f] focus-visible:bg-[var(--color-yellow)]
-  focus-visible:border-transparent active:text-[#2d2b2f] active:bg-white active:border-transparent;
+  @apply w-42.25 h-15 p-3.5 font-normal uppercase text-neutral-200 bg-transparent rounded-3
+  border-white hover:text-raisin-black hover:bg-maximum-yellow-red hover:border-transparent
+  focus-visible:text-raisin-black focus-visible:bg-maximum-yellow-red focus-visible:border-transparent
+  active:text-raisin-black active:bg-white active:border-transparent;
 }

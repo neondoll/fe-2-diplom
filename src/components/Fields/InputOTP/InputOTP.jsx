@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { classNameType } from "../../types/base";
-import { cn } from "../../lib/utils";
+import { classNameType } from "../../../types/base.js";
+import { cn } from "../../../lib/utils.js";
 import { OTPInput } from "input-otp";
 import "./InputOTP.css";
 

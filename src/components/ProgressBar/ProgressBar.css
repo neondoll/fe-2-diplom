@@ -1,18 +1,18 @@
-.progress-bar { @apply relative w-full h-2 bg-[#292929] }
+.progress-bar { @apply relative w-full h-2 bg-dark-charcoal }
 
 .progress-bar__progress {
-  @apply absolute block w-[1%] h-full bg-[var(--color-orange)] border-none;
+  @apply absolute block w-1/100 h-full bg-chrome-yellow border-none;
   animation-timing-function: ease-in;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-name: progress;
 }
 
-.progress-bar__progress::-moz-progress-bar { @apply bg-[var(--color-orange)] border-none }
+.progress-bar__progress::-moz-progress-bar { @apply bg-chrome-yellow border-none }
 
-.progress-bar__progress::-webkit-progress-bar { @apply bg-[var(--color-orange)] border-none }
+.progress-bar__progress::-webkit-progress-bar { @apply bg-chrome-yellow border-none }
 
-.progress-bar__progress::-webkit-progress-value { @apply bg-[var(--color-orange)] }
+.progress-bar__progress::-webkit-progress-value { @apply bg-chrome-yellow }
 
 @keyframes progress {
   from { @apply w-0 }

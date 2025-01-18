@@ -1,1 +1,10 @@
 @import "air-datepicker/air-datepicker.css";
+
+.datepicker { @apply relative h-12.5 }
+
+.datepicker__input { @apply h-full }
+
+.datepicker__suffix {
+  @apply absolute inset-y-0 end-0 flex justify-center items-center size-12.5 text-3xl/none
+  text-neutral-200;
+}

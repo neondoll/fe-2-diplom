@@ -13,8 +13,8 @@
     --color-white: #ffffff;
     --color-orange-rgb: 255 168 0;
 
-    @apply h-full min-h-screen font-['Roboto'] text-[#292929];
+    @apply h-full min-h-screen font-['Roboto'] text-dark-charcoal;
   }
 
-  .container { @apply max-w-[1490px] mx-auto }
+  .container { @apply max-w-[1492px] mx-auto }
 }

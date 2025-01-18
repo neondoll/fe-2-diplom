@@ -1,8 +1,9 @@
 import Button from "../Button/Button";
-import DatepickerWithCalendar from "../DatepickerWithCalendar/DatepickerWithCalendar";
+import CalendarIcon from "../../icons/CalendarIcon";
+import Datepicker from "../Fields/Datepicker/Datepicker";
 import LocationIcon from "../../icons/LocationIcon";
 import Paths from "../../paths";
-import Select from "../Select/Select";
+import InputSelect from "../Fields/InputSelect/InputSelect";
 import { changeTicketSearchFormInput, selectTicketSearchForm } from "../../slices/ticketSearchForm";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
@@ -54,8 +55,8 @@ function TicketSearchForm({ className }) {
       <div className="ticket-search-form__content">
         <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--cities">
           <legend className="ticket-search-form__legend">Направление</legend>
-          <Select
-            className="ticket-search-form__input"
+          <InputSelect
+            className="ticket-search-form__input-select"
             fetchOptions={fetchCities}
             onChange={(newValue) => {
               handleChange({ cityFrom: newValue });
@@ -67,8 +68,8 @@ function TicketSearchForm({ className }) {
           <button className="ticket-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
             <span className="icon" />
           </button>
-          <Select
-            className="ticket-search-form__input"
+          <InputSelect
+            className="ticket-search-form__input-select"
             fetchOptions={fetchCities}
             onChange={(newValue) => {
               handleChange({ cityTo: newValue });
@@ -80,19 +81,21 @@ function TicketSearchForm({ className }) {
         </fieldset>
         <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--dates">
           <legend className="ticket-search-form__legend">Дата</legend>
-          <DatepickerWithCalendar
+          <Datepicker
             className="ticket-search-form__datepicker"
             onChange={(newValue) => {
               handleChange({ dateStart: newValue });
             }}
             placeholder="ДД/ММ/ГГ"
+            suffixIcon={<CalendarIcon />}
           />
-          <DatepickerWithCalendar
+          <Datepicker
             className="ticket-search-form__datepicker"
             onChange={(newValue) => {
               handleChange({ dateEnd: newValue });
             }}
             placeholder="ДД/ММ/ГГ"
+            suffixIcon={<CalendarIcon />}
           />
         </fieldset>
       </div>

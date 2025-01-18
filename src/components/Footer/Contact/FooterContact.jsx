@@ -15,8 +15,8 @@ function FooterContact({ className, ...props }) {
     <div className={cn("footer-contact", className)} {...props}>
       <h2 className="footer-contact__title">Свяжитесь с нами</h2>
       <ul className="footer-contact__list">
-        {contacts.map((contact, index) => (
-          <li className={`footer-contact__item footer-contact__item--${contact.type}`} key={index}>
+        {contacts.map(contact => (
+          <li className={`footer-contact__item footer-contact__item--${contact.type}`} key={contact.type}>
             <Link className="footer-contact__link" target="_blank" to={contact.href}>{contact.text}</Link>
           </li>
         ))}

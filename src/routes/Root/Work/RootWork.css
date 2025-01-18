@@ -1,23 +1,22 @@
 .root-work {
-  @apply bg-[var(--color-yellow)] bg-[url('../../../assets/root-work-image.png')] bg-center
-  bg-no-repeat bg-cover;
+  @apply bg-maximum-yellow-red bg-[url('../../../assets/root-work-image.png')] bg-center bg-no-repeat
+  bg-cover;
 }
 
-.root-work__container { @apply px-[35px] pt-[60px] pb-[106px] }
+.root-work__container { @apply px-9 pt-15 pb-27 }
 
-.root-work__header { @apply flex justify-between items-center pr-[19px] }
+.root-work__header { @apply flex justify-between items-center }
 
 .root-work__title { @apply text-4xl/[calc(7/6)] font-medium uppercase text-white }
 
-.root-work__btn {
-  @apply py-[15px] pr-[76px] pl-[75px] text-2xl/[calc(7/6)] font-bold text-center text-white
-  rounded-[5px] border border-white;
+.root-work__btn { @apply mr-5 }
+
+.root-work__list { @apply flex justify-center gap-x-39.5 mt-24 }
+
+.root-work__item { @apply pt-px }
+
+.root-work__icon { @apply size-40.5 mx-auto }
+
+.root-work__text {
+  @apply mt-8 text-2xl/[calc(7/6)] font-normal text-center whitespace-pre-line text-neutral-200;
 }
-
-.root-work__list { @apply flex justify-center gap-[158px] mt-[97px] }
-
-.root-work__item {}
-
-.root-work__icon { @apply size-[162px] mx-auto }
-
-.root-work__text { @apply mt-[34px] text-2xl/[calc(7/6)] font-normal text-center text-neutral-200 }

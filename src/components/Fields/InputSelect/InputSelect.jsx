@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import { classNameType } from "../../types/base";
-import { cn } from "../../lib/utils";
+import { classNameType } from "../../../types/base";
+import { cn } from "../../../lib/utils";
 import { debounce } from "lodash";
 import { Select as AntSelect, Spin } from "antd";
 import { useMemo, useRef, useState } from "react";
-import "./Select.css";
+import "./InputSelect.css";
 
-function Select({ className, debounceTimeout = 800, fetchOptions, ...props }) {
+function InputSelect({ className, debounceTimeout = 800, fetchOptions, ...props }) {
   const fetchCounter = useRef(0);
   const [fetching, setFetching] = useState(false);
   const [options, setOptions] = useState([]);
@@ -47,10 +47,10 @@ function Select({ className, debounceTimeout = 800, fetchOptions, ...props }) {
   );
 }
 
-Select.propTypes = {
+InputSelect.propTypes = {
   className: classNameType,
   debounceTimeout: PropTypes.number,
   fetchOptions: PropTypes.func.isRequired,
 };
 
-export default Select;
+export default InputSelect;

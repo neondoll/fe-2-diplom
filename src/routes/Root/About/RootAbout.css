@@ -1,12 +1,10 @@
 .root-about {}
 
-.root-about__container { @apply px-[43px] pt-36 pb-[124px] }
+.root-about__container { @apply px-11 pt-36 pb-31 }
 
-.root-about__title { @apply mb-[30px] text-4xl/[calc(7/6)] font-medium uppercase }
+.root-about__title { @apply mb-7.5 text-4xl/[calc(7/6)] font-medium uppercase }
 
-.root-about__content { @apply relative pl-7 text-2xl/[calc(7/6)] font-normal }
-
-.root-about__content::before {
-  content: "";
-  @apply absolute top-0.5 -bottom-[9px] left-0 w-[9px] bg-[var(--color-orange)];
+.root-about__content {
+  @apply relative pl-7 text-2xl/[calc(7/6)] font-normal whitespace-pre-line before:absolute
+  before:top-0.5 before:-bottom-2 before:left-0 before:w-2 before:bg-chrome-yellow;
 }

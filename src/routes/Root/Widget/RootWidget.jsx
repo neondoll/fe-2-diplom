@@ -9,8 +9,7 @@ function RootWidget({ className }) {
     <div className={cn("root-widget", className)}>
       <div className="root-widget__container container">
         <h1 className="root-widget__title">
-          Вся жизнь -
-          <br />
+          {"Вся жизнь -\n"}
           <span className="font-bold">путешествие!</span>
         </h1>
         <TicketSearchForm className="root-widget__search" />

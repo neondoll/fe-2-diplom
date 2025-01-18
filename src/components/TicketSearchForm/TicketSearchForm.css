@@ -1,6 +1,6 @@
-.ticket-search-form { @apply pt-[28px] pr-[24px] pb-[52px] pl-[21px] bg-[#292929]/80 }
+.ticket-search-form { @apply pt-[28px] pr-[24px] pb-[52px] pl-[21px] bg-dark-charcoal/80 }
 
-.ticket-search-form__content { @apply flex gap-x-[35px] gap-y-[61px] }
+.ticket-search-form__content { @apply flex gap-x-[35px] gap-y-16 }
 
 .ticket-search-form__fieldset { @apply flex justify-between items-center }
 
@@ -8,30 +8,28 @@
 
 .ticket-search-form__fieldset--dates { @apply gap-x-[35px] }
 
-.ticket-search-form__legend {
-  @apply w-full px-[4px] pb-[15px] text-3xl/[calc(7/6)] font-light text-white;
-}
+.ticket-search-form__legend { @apply w-full mx-1 mb-4.5 text-3xl/none font-light text-white }
 
-.ticket-search-form__input,
+.ticket-search-form__input-select,
 .ticket-search-form__datepicker { @apply flex-1 }
 
-.ticket-search-form__btn-replace {
-  @apply flex justify-center items-center size-[33px] pr-[4px] pl-[5px];
-}
+.ticket-search-form__btn-replace { @apply flex justify-center items-center size-8 px-1 }
 
 .ticket-search-form__btn-replace > .icon {
-  @apply block size-[24px] bg-[url('../../assets/replace-white.png')] bg-center bg-no-repeat bg-contain
+  @apply block size-6 bg-[url('../../assets/replace-white.png')] bg-center bg-no-repeat bg-contain
   opacity-60 transition-transform duration-500;
 }
 
 .ticket-search-form__btn-replace:hover > .icon,
 .ticket-search-form__btn-replace:focus-visible > .icon { @apply -rotate-180 }
 
-.ticket-search-form__datepicker { @apply h-[60px] }
+.ticket-search-form__datepicker { @apply h-15 }
 
-.ticket-search-form__datepicker > .datepicker-with-calendar__input { @apply pt-[18px] pr-[58px] pb-[17px] pl-[19px] }
+.ticket-search-form__datepicker > .datepicker__input {
+  @apply pr-14.5 pl-5 rounded-3 border-transparent placeholder:text-neutral-200;
+}
 
-.ticket-search-form__datepicker > .datepicker-with-calendar__suffix { @apply h-[60px] text-[34px]/none }
+.ticket-search-form__datepicker > .datepicker__suffix { @apply size-15 text-[2.125rem] }
 
 .ticket-search-form__footer { @apply flex justify-end mt-[47px] }
 

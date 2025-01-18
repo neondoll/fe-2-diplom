@@ -1,5 +1,5 @@
-.footer { @apply bg-[#2d2b2f] }
+.footer { @apply pb-px bg-raisin-black }
 
-.footer__container { @apply flex justify-between gap-x-[50px] }
+.footer__container { @apply flex justify-between gap-x-12 }
 
-.footer__line { @apply w-full border-neutral-200 }
+.footer__line { @apply w-full my-px border-neutral-200 }

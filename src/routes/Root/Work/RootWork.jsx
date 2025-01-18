@@ -22,13 +22,9 @@ function RootWork({ className, ...props }) {
                 fill="#ffffff"
               />
             </svg>
-            <p className="root-work__text">
-              Удобный заказ
-              <br />
-              на сайте
-            </p>
+            <p className="root-work__text">{"Удобный заказ\nна сайте"}</p>
           </li>
-          <li className="root-work__item -mr-2 ml-2">
+          <li className="root-work__item">
             <svg className="root-work__icon" fill="none" viewBox="0 0 162 162" xmlns="http://www.w3.org/2000/svg">
               <circle cx="81" cy="81" r="81" fill="#e5e5e5" fillOpacity="0.2" />
               <path
@@ -38,11 +34,7 @@ function RootWork({ className, ...props }) {
                 fill="#ffffff"
               />
             </svg>
-            <p className="root-work__text">
-              Нет необходимости
-              <br />
-              ехать в офис
-            </p>
+            <p className="root-work__text">{"Нет необходимости\nехать в офис"}</p>
           </li>
           <li className="root-work__item">
             <svg className="root-work__icon" fill="none" viewBox="0 0 162 162" xmlns="http://www.w3.org/2000/svg">
@@ -54,11 +46,7 @@ function RootWork({ className, ...props }) {
                 fill="#ffffff"
               />
             </svg>
-            <p className="root-work__text mt-[29px]">
-              Огромный выбор
-              <br />
-              направлений
-            </p>
+            <p className="root-work__text">{"Огромный выбор\nнаправлений"}</p>
           </li>
         </ul>
       </div>

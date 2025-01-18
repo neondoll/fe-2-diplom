@@ -1,19 +1,14 @@
-.root-feedback { @apply flex gap-[35px] w-full }
+.root-feedback { @apply flex gap-x-8.5 w-full pt-px }
 
-.root-feedback__img { @apply self-center rounded-full }
+.root-feedback__img { @apply self-center -mt-px rounded-full }
 
-.root-feedback__content { @apply pt-[27px] text-left }
+.root-feedback__content { @apply pt-6.5 pl-px text-left }
 
-.root-feedback__author { @apply mb-[21px] text-2xl/[calc(7/6)] font-medium text-black }
+.root-feedback__author { @apply mb-5.5 text-2xl/[calc(7/6)] font-medium text-black }
 
 .root-feedback__text {
-  @apply relative block text-lg/[calc(7/6)] italic font-light whitespace-pre-line
-  text-[var(--color-grey)];
+  @apply relative block text-lg/[calc(7/6)] italic font-light whitespace-pre-line text-taupe-gray
+  before:content-[open-quote] before:absolute before:text-4xl/none before:not-italic before:font-medium
+  before:-top-1 before:-left-4 after:content-[close-quote] after:absolute after:text-4xl/none
+  after:not-italic after:font-medium;
 }
-
-.root-feedback__text::before,
-.root-feedback__text::after { @apply absolute text-4xl/none not-italic font-medium }
-
-.root-feedback__text::before { @apply -top-[3px] -left-4 }
-
-.root-feedback__text::after {}

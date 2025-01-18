@@ -1,4 +1,4 @@
-import CalendarIcon from "../../icons/CalendarIcon.jsx";
+import CalendarIcon from "../../icons/CalendarIcon";
 import Datepicker, { DatepickerPropTypes } from "../Fields/Datepicker/Datepicker";
 import { cn } from "../../lib/utils";
 import "./DatepickerWithCalendar.css";

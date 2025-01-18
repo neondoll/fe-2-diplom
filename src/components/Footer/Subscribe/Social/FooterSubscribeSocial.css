@@ -1,11 +1,12 @@
 .footer-subscribe-social__title { @apply text-3xl/[calc(7/6)] font-medium text-white }
 
-.footer-subscribe-social__list { @apply flex gap-x-[48px] mt-[22px] pl-[2px] }
+.footer-subscribe-social__list { @apply flex gap-x-12 mt-5.5 pl-0.5 }
 
 .footer-subscribe-social__item {}
 
 .footer-subscribe-social__link {
-  @apply text-neutral-200 transition-colors hover:text-[var(--color-yellow)] focus-visible:text-[var(--color-yellow)];
+  @apply text-neutral-200 transition-colors hover:text-maximum-yellow-red
+  focus-visible:text-maximum-yellow-red;
 }
 
-.footer-subscribe-social__icon { @apply w-auto h-[30px] text-3xl/none }
+.footer-subscribe-social__icon { @apply w-auto h-7.5 text-3xl/none }

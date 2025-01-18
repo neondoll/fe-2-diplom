@@ -6,7 +6,7 @@ import { cn } from "../../../lib/utils";
 import { useEffect, useRef } from "react";
 import "./Datepicker.css";
 
-function Datepicker({ className, defaultValue, onChange, value, ...props }) {
+function Datepicker({ className, defaultValue, onChange, suffixIcon, value, ...props }) {
   const airDatepicker = useRef();
   const element = useRef();
 
@@ -42,7 +42,10 @@ function Datepicker({ className, defaultValue, onChange, value, ...props }) {
   }, [value]);
 
   return (
-    <Input className={cn("datepicker", className)} readOnly ref={element} type="text" {...props} />
+    <div className={cn("datepicker", className)}>
+      <Input className="datepicker__input" readOnly ref={element} type="text" {...props} />
+      {suffixIcon && <span className="datepicker__suffix">{suffixIcon}</span>}
+    </div>
   );
 }
 
@@ -50,6 +53,7 @@ const DatepickerPropTypes = {
   className: classNameType,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
+  suffixIcon: PropTypes.node,
   value: PropTypes.string,
 };
 

@@ -55,7 +55,7 @@ const buttonItems = {
     { className: "left-[1806px]", state: "default" },
     { className: "left-[2252px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[var(--color-orange)] bg-transparent border-[var(--color-orange)] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
+      className: "left-[2697px] text-chrome-yellow bg-transparent border-chrome-yellow shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
       state: "active",
     },
   ],
@@ -70,13 +70,13 @@ const buttonItems = {
   ],
   learnMore: [
     { className: "left-[195px]", state: "default" },
-    { className: "left-[573px] text-[#2D2B2F] bg-[var(--color-yellow)] border-transparent", state: "hover" },
-    { className: "left-[951px] text-[#2D2B2F] bg-white border-transparent", state: "active" },
+    { className: "left-[573px] text-raisin-black bg-maximum-yellow-red border-transparent", state: "hover" },
+    { className: "left-[951px] text-raisin-black bg-white border-transparent", state: "active" },
   ],
   send: [
     { className: "left-[199px]", state: "default" },
-    { className: "left-[577px] text-[#2D2B2F] bg-[var(--color-yellow)] border-transparent", state: "hover" },
-    { className: "left-[955px] text-[#2D2B2F] bg-white border-transparent", state: "active" },
+    { className: "left-[577px] text-raisin-black bg-maximum-yellow-red border-transparent", state: "hover" },
+    { className: "left-[955px] text-raisin-black bg-white border-transparent", state: "active" },
   ],
 };
 const paginationItems = [
@@ -121,8 +121,8 @@ export default function Explication() {
   }, []);
 
   return (
-    <div className="relative w-[5715px] h-[1808px]">
-      <div className="absolute top-[310px] left-[92px] w-[1271px] h-[662px] bg-[#2D2B2F]" />
+    <div className="relative w-[5715px] h-[1808px] bg-[#f7f5f9]">
+      <div className="absolute top-[310px] left-[92px] w-[1271px] h-[662px] bg-raisin-black" />
       {paginationItems.map((item, index) => (
         <Pagination className={cn("absolute top-[134px]", item.className)} key={index + 1} pageCount={item.pageCount} />
       ))}

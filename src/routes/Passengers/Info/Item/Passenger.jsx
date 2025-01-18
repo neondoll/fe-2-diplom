@@ -2,7 +2,7 @@ import * as Collapsible from "@radix-ui/react-collapsible";
 import Checkbox from "../../../../components/Fields/Checkbox/Checkbox";
 import Datepicker from "../../../../components/Fields/Datepicker/Datepicker";
 import Input from "../../../../components/Fields/Input/Input";
-import InputOTP from "../../../../components/InputOTP/InputOTP";
+import InputOTP from "../../../../components/Fields/InputOTP/InputOTP";
 import PropTypes from "prop-types";
 import RadioGroup from "../../../../components/Fields/RadioGroup/RadioGroup";
 import Select from "../../../../components/Fields/Select/Select";
