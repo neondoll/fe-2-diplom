@@ -5,4 +5,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   base: "/fe-2-diplom/",
   plugins: [react()],
+  optimizeDeps: {
+    exclude: ["@smastrom/react-rating"],
+  },
 });

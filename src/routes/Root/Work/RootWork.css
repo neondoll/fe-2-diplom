@@ -1,0 +1,23 @@
+.root-work {
+  @apply bg-[var(--color-yellow)] bg-[url('../../../assets/root-work-image.png')] bg-center
+  bg-no-repeat bg-cover;
+}
+
+.root-work__container { @apply px-[35px] pt-[60px] pb-[106px] }
+
+.root-work__header { @apply flex justify-between items-center pr-[19px] }
+
+.root-work__title { @apply text-4xl/[calc(7/6)] font-medium uppercase text-white }
+
+.root-work__btn {
+  @apply py-[15px] pr-[76px] pl-[75px] text-2xl/[calc(7/6)] font-bold text-center text-white
+  rounded-[5px] border border-white;
+}
+
+.root-work__list { @apply flex justify-center gap-[158px] mt-[97px] }
+
+.root-work__item {}
+
+.root-work__icon { @apply size-[162px] mx-auto }
+
+.root-work__text { @apply mt-[34px] text-2xl/[calc(7/6)] font-normal text-center text-neutral-200 }

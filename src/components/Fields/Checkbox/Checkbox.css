@@ -1,0 +1,8 @@
+.checkbox {
+  @apply flex justify-center items-center size-7 text-lg/none font-normal bg-white rounded-[5px] border
+  transition-colors data-[state=checked]:text-[var(--color-orange)]
+  data-[state=checked]:border-[var(--color-orange)] data-[state=unchecked]:text-[#928f94]
+  data-[state=unchecked]:border-[#928f94];
+}
+
+.checkbox__indicator {}

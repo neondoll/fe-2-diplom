@@ -1,0 +1,11 @@
+.selection-filter { @apply bg-[#3e3c41] divide-y divide-neutral-200 }
+
+.selection-filter__dates {}
+
+.selection-filter__switches {}
+
+.selection-filter__price {}
+
+.selection-filter__there {}
+
+.selection-filter__back {}

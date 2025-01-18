@@ -1,0 +1,29 @@
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+.root-feedbacks {}
+
+.root-feedbacks__container { @apply px-[37px] pt-[152px] pb-[115px] }
+
+.root-feedbacks__title { @apply text-4xl/[calc(7/6)] font-medium uppercase }
+
+.root-feedbacks__swiper { @apply mt-[72px] }
+
+.root-feedbacks__swiper.swiper {
+  --swiper-pagination-bottom: 0;
+  --swiper-pagination-bullet-horizontal-gap: 5.5px;
+  --swiper-pagination-bullet-inactive-color: theme("colors.neutral.200");
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-size: 19px;
+  --swiper-pagination-color: #c4c4c4;
+}
+
+.root-feedbacks__swiper .swiper-wrapper { @apply mb-40 }
+
+.root-feedbacks__swiper.swiper-horizontal,
+.root-feedbacks__swiper.swiper-horizontal > .swiper-pagination-bullets { @apply pr-3 }
+
+.root-feedbacks__swiper-slide { @apply px-0.5 }
+
+.root-feedbacks__item { @apply h-[207px] }

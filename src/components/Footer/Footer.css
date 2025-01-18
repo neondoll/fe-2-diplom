@@ -1,0 +1,5 @@
+.footer { @apply bg-[#2d2b2f] }
+
+.footer__container { @apply flex justify-between gap-x-[50px] }
+
+.footer__line { @apply w-full border-neutral-200 }

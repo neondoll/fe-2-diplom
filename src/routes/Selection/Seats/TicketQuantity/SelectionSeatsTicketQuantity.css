@@ -1,0 +1,32 @@
+.selection-seats-ticket-quantity { @apply pt-[40px] pb-[49px] }
+
+.selection-seats-ticket-quantity__title {
+  @apply px-[18px] text-3xl/[calc(7/6)] font-bold text-[#292929];
+}
+
+.selection-seats-ticket-quantity__form { @apply flex mt-[21px] }
+
+.selection-seats-ticket-quantity__field {
+  @apply flex-1 min-h-[192px] px-[34px] pt-[19px] pb-[22px] border border-transparent transition
+  hover:border-[rgba(255,168,0,0.79)] has-[input:focus-visible]:bg-[#f7f6f6]
+  has-[input:focus-visible]:shadow-[0_2px_2px_0_rgba(0,0,0,0.25)]
+  has-[input:focus-visible]:hover:border-transparent
+  [&_p]:has-[input:focus-visible]:text-black;
+}
+
+.selection-seats-ticket-quantity__control {
+  @apply relative text-lg/[calc(7/6)] font-normal text-[#292929];
+}
+
+.selection-seats-ticket-quantity__leading {
+  @apply absolute top-0 start-0 pt-[16px] pb-[13px] pl-[15px] pointer-events-none;
+}
+
+.selection-seats-ticket-quantity__input {
+  @apply w-full pt-[15px] pr-[4px] pb-[12px] pl-[17px] bg-white rounded-[5px] border border-[#928f94];
+}
+
+.selection-seats-ticket-quantity__description {
+  @apply mt-[24px] text-base/[calc(18.75/16)] font-normal whitespace-pre-line text-[#928f94]
+  transition-colors;
+}

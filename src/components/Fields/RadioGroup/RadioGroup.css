@@ -1,0 +1,9 @@
+.radio-group {
+  @apply flex justify-stretch items-stretch w-full h-[50px] text-3xl/none font-black text-black
+  bg-white rounded-[5px] border border-[#928f94] divide-x divide-[#928f94];
+}
+
+.radio-group__item {
+  @apply flex justify-center items-center px-[18px] transition-colors first:rounded-l-[5px]
+  last:rounded-r-[5px] data-[state=checked]:bg-[var(--color-orange)];
+}

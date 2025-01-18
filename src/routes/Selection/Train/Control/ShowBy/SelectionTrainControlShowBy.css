@@ -1,0 +1,13 @@
+.selection-train-control-show-by {
+  @apply flex justify-start items-baseline text-lg/[calc(7/6)] font-normal text-[#928f94];
+}
+
+.selection-train-control-show-by__prefix { @apply pr-[1px] }
+
+.selection-train-control-show-by__radio-group { @apply flex }
+
+.selection-train-control-show-by__item { @apply transition-colors data-[checked=true]:text-[#3e3c41] }
+
+.selection-train-control-show-by__input { @apply hidden }
+
+.selection-train-control-show-by__label { @apply pr-[2px] pl-[7px] cursor-pointer }

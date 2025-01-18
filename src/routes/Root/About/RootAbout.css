@@ -1,0 +1,12 @@
+.root-about {}
+
+.root-about__container { @apply px-[43px] pt-36 pb-[124px] }
+
+.root-about__title { @apply mb-[30px] text-4xl/[calc(7/6)] font-medium uppercase }
+
+.root-about__content { @apply relative pl-7 text-2xl/[calc(7/6)] font-normal }
+
+.root-about__content::before {
+  content: "";
+  @apply absolute top-0.5 -bottom-[9px] left-0 w-[9px] bg-[var(--color-orange)];
+}

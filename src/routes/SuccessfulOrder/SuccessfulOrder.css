@@ -1,0 +1,10 @@
+.successful-order-page {
+  @apply bg-[#f7f5f9] bg-[url('../../assets/successful-order-image.png')] bg-top bg-no-repeat
+  bg-contain;
+}
+
+.successful-order-page__container { @apply px-[43px] pt-[509px] pb-[175px] }
+
+.successful-order-page__title { @apply text-7xl/[calc(7/6)] font-bold text-white }
+
+.successful-order-page__card { @apply mt-[33px] }

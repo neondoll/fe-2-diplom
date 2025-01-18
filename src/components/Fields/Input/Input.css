@@ -1,0 +1,4 @@
+.input {
+  @apply flex justify-start items-center w-full h-[50px] px-[18px] text-lg/none font-normal
+  text-[#292929] bg-white rounded-[5px] border border-[#928f94] placeholder:text-[#c4c4c4];
+}

@@ -1,0 +1,8 @@
+.trains { @apply space-y-[50px] }
+
+.trains__item {
+  @apply border border-[#c4c4c4] shadow-[0_2px_2px_0_rgba(0,0,0,0.3)]
+  hover:border-[var(--color-orange)] focus-visible:border-[var(--color-orange)];
+}
+
+.trains__item-btn { @apply mt-[18px] ml-auto pt-[5px] pr-[28px] pb-[4px] pl-[23px] }

@@ -1,0 +1,64 @@
+@import "@smastrom/react-rating/style.css";
+
+.successful-order-card {
+  @apply bg-white border border-[#c4c4c4] shadow-[0_2px_2px_0_rgba(0,0,0,0.25)];
+}
+
+.successful-order-card__header {
+  @apply flex justify-between items-start pt-[59px] pr-[78px] pb-[43px] pl-[81px] text-4xl/[calc(7/6)];
+}
+
+.successful-order-card__title { @apply mb-[3px] font-bold text-[#3e3c41] }
+
+.successful-order-card__price { @apply flex justify-start items-baseline gap-x-[16px] mt-[3px] }
+
+.successful-order-card__price-prefix { @apply mr-[6px] font-normal text-[#928f94] }
+
+.successful-order-card__price-value { @apply font-bold text-[#3e3c41] }
+
+.successful-order-card__price-currency {
+  @apply w-[21px] h-[27px] bg-center bg-no-repeat bg-contain
+  bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2227%22%20viewBox%3D%220%200%2021%2027%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M5.25059%2016.2068C5.25059%2017.114%205.25059%2018.0033%205.25059%2018.9033C7.43483%2018.9033%209.61208%2018.9033%2011.7998%2018.9033C11.7998%2019.8069%2011.7998%2020.6998%2011.7998%2021.607C9.61908%2021.607%207.43833%2021.607%205.25059%2021.607C5.25059%2023.4107%205.25059%2025.1999%205.25059%2027C4.37199%2027%203.50389%2027%202.62179%2027C2.62179%2025.2071%202.62179%2023.4143%202.62179%2021.6142C1.7432%2021.6142%200.878598%2021.6142%200.00350039%2021.6142C0.00350039%2020.7106%200.00350039%2019.8177%200.00350039%2018.9105C0.871597%2018.9105%201.73969%2018.9105%202.61129%2018.9105C2.61129%2018.0069%202.61129%2017.1176%202.61129%2016.214C1.74319%2016.214%200.875098%2016.214%200%2016.214C0%2015.3068%200%2014.4139%200%2013.5103C0.868097%2013.5103%201.73619%2013.5103%202.61479%2013.5103C2.61479%209.00655%202.61479%204.51359%202.61479%200.0134289C2.6673%200.00982873%202.7023%200.0062286%202.74081%200.0062286C6.2412%200.0062286%209.74159%20-0.011772%2013.242%200.0134289C15.2617%200.0278294%2017.0189%200.787457%2018.4961%202.20591C19.7352%203.39395%2020.5333%204.8484%2020.8483%206.56206C21.2859%208.94895%2020.7748%2011.127%2019.3397%2013.0567C18.3561%2014.3815%2017.0714%2015.296%2015.5312%2015.818C14.7787%2016.0736%2014.0051%2016.2068%2013.214%2016.2068C10.6132%2016.2104%208.0159%2016.2068%205.41511%2016.2104C5.3626%2016.2068%205.31009%2016.2068%205.25059%2016.2068ZM5.25409%202.70633C5.25409%206.31726%205.25409%209.91019%205.25409%2013.5067C5.29259%2013.5067%205.3241%2013.5067%205.3556%2013.5067C7.98089%2013.5067%2010.6062%2013.5139%2013.2315%2013.4995C13.6375%2013.4959%2014.0541%2013.4347%2014.4461%2013.3303C17.2219%2012.5743%2018.8706%209.76618%2018.2405%206.89688C17.7015%204.44879%2015.5802%202.70633%2013.137%202.70633C10.5642%202.70633%207.99139%202.70633%205.41861%202.70633C5.3661%202.70633%205.31359%202.70633%205.25409%202.70633Z%22%20fill%3D%22%23928F94%22%2F%3E%0A%3C%2Fsvg%3E')];
+}
+
+.successful-order-card__instruction { @apply px-[40px] pt-[40px] pb-[42px] bg-[#f4f3f6] }
+
+.successful-order-card__instruction-list { @apply flex justify-center items-start gap-x-[120px] }
+
+.successful-order-card__instruction-item { @apply w-[180px] }
+
+.successful-order-card__instruction-icon { @apply size-[155px] mx-auto }
+
+.successful-order-card__instruction-text {
+  @apply mt-[12px] text-lg/[calc(7/6)] font-normal text-center whitespace-pre-line text-[#292929];
+}
+
+.successful-order-card__appeal { @apply px-[204px] pt-[95px] pb-[136px] }
+
+.successful-order-card__appeal-title { @apply text-4xl/[calc(7/6)] font-bold text-[#292929] }
+
+.successful-order-card__appeal-text {
+  @apply mt-[41px] space-y-[5px] text-2xl/[calc(7/6)] font-normal text-[#292929];
+}
+
+.successful-order-card__appeal-gratitude {
+  @apply mt-[89px] text-2xl/[calc(7/6)] font-bold text-[#292929];
+}
+
+.successful-order-card__footer {
+  @apply flex justify-between items-center pt-[51px] pr-[78px] pb-[50px] pl-[81px]
+  bg-[rgb(var(--color-orange-rgb)/0.88)];
+}
+
+.successful-order-card__rating { @apply flex justify-start items-center gap-x-[31px] mb-[4px] }
+
+.successful-order-card__rating-title {
+  @apply mt-[8px] text-2xl/[calc(7/6)] font-normal text-[#292929];
+}
+
+.successful-order-card__rating-stars { @apply gap-x-[19px] max-w-[316px] }
+
+.successful-order-card__footer-btn {
+  @apply pt-[16px] pr-[12px] pb-[14px] pl-[12px] text-2xl/[calc(7/6)] font-bold text-center uppercase
+  text-[#292929] rounded-[5px] border border-[#3e3c41];
+}

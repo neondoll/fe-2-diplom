@@ -1,0 +1,104 @@
+.passenger { @apply relative }
+
+.passenger__trigger {
+  @apply flex justify-start items-end gap-x-4 w-full px-6 py-9 text-3xl/[calc(7/6)] font-normal
+  text-[#292929] transition-colors before:block before:size-8 before:bg-center before:bg-no-repeat
+  before:bg-contain data-[state=closed]:bg-transparent
+  data-[state=closed]:before:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M14.9449%208.46381L14.9449%2014.9449L8.46378%2014.9449C7.86089%2014.9449%207.40871%2015.3971%207.40871%2016C7.40871%2016.6029%207.86089%2017.0551%208.46378%2017.0551L14.9449%2017.0551L14.9449%2023.5362C14.9449%2024.1391%2015.3971%2024.5913%2015.9246%2024.5159L16.0753%2024.5159C16.6782%2024.5159%2017.1304%2024.0637%2017.055%2023.5362L17.055%2017.0551L23.3854%2017.0551C23.9883%2017.0551%2024.4405%2016.6029%2024.4405%2016C24.4405%2015.3971%2023.9883%2014.9449%2023.3854%2014.9449L17.055%2014.9449L17.055%208.46381C17.055%207.86091%2016.6029%207.40874%2016.0753%207.4841L15.9246%207.4841C15.3217%207.4841%2014.8695%207.93628%2014.9449%208.46381Z%22%20fill%3D%22%23FFA800%22%2F%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2215%22%20stroke%3D%22%23FFA800%22%20stroke-width%3D%222%22%2F%3E%0A%3C%2Fsvg%3E')]
+  data-[state=closed]:hover:before:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M14.9449%208.46381L14.9449%2014.9449L8.46378%2014.9449C7.86089%2014.9449%207.40871%2015.3971%207.40871%2016C7.40871%2016.6029%207.86089%2017.0551%208.46378%2017.0551L14.9449%2017.0551L14.9449%2023.5362C14.9449%2024.1391%2015.3971%2024.5913%2015.9246%2024.5159L16.0753%2024.5159C16.6782%2024.5159%2017.1304%2024.0637%2017.055%2023.5362L17.055%2017.0551L23.3854%2017.0551C23.9883%2017.0551%2024.4405%2016.6029%2024.4405%2016C24.4405%2015.3971%2023.9883%2014.9449%2023.3854%2014.9449L17.055%2014.9449L17.055%208.46381C17.055%207.86091%2016.6029%207.40874%2016.0753%207.4841L15.9246%207.4841C15.3217%207.4841%2014.8695%207.93628%2014.9449%208.46381Z%22%20fill%3D%22%23FFA800%22%2F%3E%0A%3C%2Fsvg%3E')]
+  data-[state=open]:bg-[#f9f9f9]
+  data-[state=open]:before:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2215%22%20stroke%3D%22%23928F94%22%20stroke-width%3D%222%22%2F%3E%0A%3Cline%20x1%3D%228%22%20y1%3D%2216%22%20x2%3D%2224%22%20y2%3D%2216%22%20stroke%3D%22%23928F94%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%3C%2Fsvg%3E')];
+}
+
+.passenger__content {}
+
+.passenger__delete-btn { @apply absolute top-12 right-10 p-1 text-xs/none text-[#928f94] }
+
+.passenger__container,
+.passenger__footer { @apply border-t border-[#928f94] border-dashed }
+
+.passenger__container { @apply px-8.5 pt-9.5 pb-7.5 space-y-11.5 }
+
+.passenger__row { @apply flex justify-start items-start }
+
+.passenger__row--1 { @apply gap-x-[25px] }
+
+.passenger__row--2 { @apply gap-x-[35px] }
+
+.passenger__group {}
+
+.passenger__checkbox-group { @apply flex justify-start items-start gap-x-[20px] }
+
+.passenger__label { @apply block font-normal text-[#928f94] }
+
+.passenger__container--document .passenger__label { @apply mb-[12px] text-base/[calc(18.75/16)] }
+
+.passenger__container--personal .passenger__label { @apply mb-[14px] text-lg/[calc(7/6)] }
+
+.passenger__checkbox-group > .passenger__label { @apply mt-[4px] mb-[3px] text-[#292929] }
+
+.passenger__checkbox {}
+
+.passenger__datepicker--birth-date,
+.passenger__input--name,
+.passenger__input--patronymic,
+.passenger__input--surname,
+.passenger__input-otp--birth-certificate-number,
+.passenger__input-otp--passport-number,
+.passenger__input-otp--passport-series,
+.passenger__select-content--age,
+.passenger__select-trigger--age { @apply text-2xl/none }
+
+.passenger__datepicker--birth-date { @apply w-[240px] placeholder:text-lg/none }
+
+.passenger__input--name,
+.passenger__input--patronymic,
+.passenger__input--surname,
+.passenger__select-trigger--age { @apply w-[280px] }
+
+.passenger__input-otp.invalid { @apply text-[rgba(255,61,0,0.8)] border-[rgba(255,61,0,0.76)] }
+
+.passenger__input-otp--birth-certificate-number { @apply min-w-[207px] }
+
+.passenger__input-otp--passport-number,
+.passenger__input-otp--passport-series { @apply min-w-[205px] }
+
+.passenger__radio-group--gender { @apply w-[204px] }
+
+.passenger__select-content--document-type,
+.passenger__select-trigger--document-type { @apply text-lg/none }
+
+.passenger__select-trigger--document-type { @apply w-[205px] }
+
+.passenger__footer {
+  @apply flex justify-start items-center gap-x-4 pt-[36px] pr-[31px] pb-[30px] pl-[24px];
+}
+
+.passenger__footer.is-invalid {
+  @apply bg-[rgba(255,61,0,0.38)] before:block before:size-[32px] before:bg-center before:bg-no-repeat
+  before:bg-contain;
+}
+
+.passenger__footer.is-invalid {
+  @apply before:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M16%2032C24.8369%2032%2032%2024.8365%2032%2016C32%207.16345%2024.8369%200%2016%200C7.16309%200%200%207.16345%200%2016C0%2024.8365%207.16309%2032%2016%2032ZM16%2014.6L20.2998%2010.3C20.5996%209.90002%2021.2002%209.90002%2021.5996%2010.3L21.7002%2010.4C22.0996%2010.7%2022.0996%2011.3%2021.7002%2011.7L17.4004%2016L21.5996%2020.2C22%2020.6%2022%2021.2%2021.5996%2021.6C21.3662%2021.8337%2021.0645%2021.9309%2020.7744%2021.8915C20.5674%2021.8634%2020.3662%2021.7662%2020.2002%2021.6L16%2017.4L11.7002%2021.7C11.4004%2022.1%2010.7998%2022.1%2010.4004%2021.7L10.2998%2021.6C9.90039%2021.3%209.90039%2020.7%2010.2998%2020.3L14.5996%2016L10.2998%2011.7C10.0811%2011.4811%209.98242%2011.2021%2010.0029%2010.929C10.0205%2010.7031%2010.1191%2010.4811%2010.2998%2010.3C10.7002%209.90002%2011.2998%209.90002%2011.7002%2010.3L16%2014.6Z%22%20fill%3D%22white%22%20fill-opacity%3D%220.81%22%2F%3E%0A%3C%2Fsvg%3E')];
+}
+
+.passenger__footer.is-valid {
+  @apply bg-[#b2f6a1] before:block before:size-[32px] before:bg-center before:bg-no-repeat
+  before:bg-contain;
+}
+
+.passenger__footer.is-valid {
+  @apply before:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M16%2032C24.8369%2032%2032%2024.8365%2032%2016C32%207.16345%2024.8369%200%2016%200C7.16309%200%200%207.16345%200%2016C0%2024.8365%207.16309%2032%2016%2032ZM10.2168%2015.8293L10.207%2015.8401C9.93262%2016.1293%209.93262%2016.6112%2010.1973%2016.9111C10.8311%2017.5991%2011.4551%2018.2819%2012.0703%2018.9553C12.6914%2019.6343%2013.3037%2020.3038%2013.9092%2020.9598C13.958%2021.0134%2014.0361%2021.0134%2014.085%2020.9598L22.8018%2011.4272C23.0664%2011.1381%2023.0664%2010.6667%2022.8018%2010.3776L22.665%2010.2169C22.4004%209.92773%2021.959%209.92773%2021.6953%2010.2169L13.9189%2018.7213C13.8799%2018.7642%2013.8311%2018.7642%2013.791%2018.7213C12.9297%2017.7681%2012.0479%2016.7933%2011.1768%2015.8401C10.9121%2015.5509%2010.4814%2015.5509%2010.2168%2015.8293Z%22%20fill%3D%22%23F9FEF7%22%2F%3E%0A%3C%2Fsvg%3E')]
+}
+
+.passenger__invalid-messages {}
+
+.passenger__invalid-message { @apply text-lg/[calc(7/6)] font-normal text-[#292929] }
+
+.passenger__valid-message { @apply text-lg/[calc(7/6)] font-normal text-white }
+
+.passenger__btn {
+  @apply ml-auto px-[22px] py-[11px] text-2xl/[calc(7/6)] font-bold text-center text-[#292929]
+  rounded-[5px] border border-[#292929];
+}

@@ -1,0 +1,21 @@
+.selection-train-control-sort-by { @apply flex justify-start items-baseline text-lg/[calc(7/6)] font-normal }
+
+.selection-train-control-sort-by__prefix { @apply pr-[1px] text-[#928f94] }
+
+.selection-train-control-sort-by__select { @apply relative z-0 }
+
+.selection-train-control-sort-by__trigger,
+.selection-train-control-sort-by__option { @apply pr-[13px] pb-[9px] pl-[7px] text-left text-[#3e3c41] }
+
+.selection-train-control-sort-by__trigger { @apply pt-[5px] }
+
+.selection-train-control-sort-by__options {
+  @apply absolute top-0 left-0 z-[1] invisible flex flex-col divide-y divide-neutral-200
+  shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] has-[.visible]:visible;
+}
+
+.selection-train-control-sort-by__option {
+  @apply pt-[9px] transition-colors first:pt-[5px] last:pt-[6px] last:pb-[15px] hover:text-white
+  hover:bg-[var(--color-yellow)] focus-visible:text-white focus-visible:bg-[var(--color-yellow)]
+  focus-visible:outline-none;
+}

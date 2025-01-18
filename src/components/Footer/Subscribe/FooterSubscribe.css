@@ -1,0 +1,24 @@
+.footer-subscribe { @apply flex-1 px-[116px] py-[52px] }
+
+.footer-subscribe__title { @apply text-3xl/[calc(7/6)] font-medium text-white }
+
+.footer-subscribe__subtitle { @apply mt-[28px] text-2xl/[calc(7/6)] font-normal text-white }
+
+.footer-subscribe__form { @apply relative flex justify-center items-start gap-x-[33px] mt-[16px] }
+
+.footer-subscribe__input {
+  @apply w-full px-[19px] pt-[15px] pb-[13px] text-2xl/[calc(7/6)] font-normal bg-white rounded-[3px] border-2
+  border-transparent transition-colors hover:border-[var(--color-orange)] focus-visible:border-[var(--color-orange)]
+  focus-visible:outline-none has-[.invalid]:border-pink-600 placeholder:text-neutral-200;
+}
+
+.footer-subscribe__error { @apply absolute -bottom-6 left-0 invisible text-lg/none text-pink-600 }
+
+.footer-subscribe__input.invalid + .footer-subscribe__error { @apply visible }
+
+.footer-subscribe__button {
+  @apply py-[15px] pr-[11px] pl-[18px] text-2xl/[calc(7/6)] font-normal text-center uppercase text-neutral-200
+  rounded-[3px] border border-white;
+}
+
+.footer-subscribe__social { @apply mt-[44px] }

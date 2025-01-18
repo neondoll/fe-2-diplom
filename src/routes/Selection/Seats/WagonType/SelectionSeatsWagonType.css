@@ -1,0 +1,17 @@
+.selection-seats-wagon-type { @apply pt-[26px] }
+
+.selection-seats-wagon-type__title { @apply px-[19px] text-3xl/[calc(7/6)] font-bold text-[#292929] }
+
+.selection-seats-wagon-type__list { @apply flex justify-start mt-[8px] }
+
+.selection-seats-wagon-type__item {
+  @apply flex-1 flex flex-col items-center gap-y-[18px] px-[34px] py-[25px]
+  [&_svg]:data-[active=true]:text-[var(--color-orange)]
+  [&_span]:data-[active=true]:text-[var(--color-orange)];
+}
+
+.selection-seats-wagon-type__icon { @apply text-[50px] text-[#c4c4c4] transition-colors }
+
+.selection-seats-wagon-type__text {
+  @apply text-2xl/[calc(7/6)] font-normal text-[#928f94] transition-colors;
+}

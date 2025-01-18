@@ -1,0 +1,20 @@
+.order-confirmation-passenger {
+  @apply flex justify-start gap-x-9 px-8.5 pt-7.5 pb-10 text-lg/none font-normal;
+}
+
+.order-confirmation-passenger__logo { @apply flex flex-col items-center gap-y-4.5 w-21 }
+
+.order-confirmation-passenger__icon { @apply text-[4.25rem] }
+
+.order-confirmation-passenger__age,
+.order-confirmation-passenger__full-name { @apply text-[#292929] }
+
+.order-confirmation-passenger__age { @apply text-center }
+
+.order-confirmation-passenger__info { @apply mt-0.5 space-y-3 }
+
+.order-confirmation-passenger__full-name { @apply mb-4.5 }
+
+.order-confirmation-passenger__gender,
+.order-confirmation-passenger__birth-date,
+.order-confirmation-passenger__document { @apply text-[#928F94] }

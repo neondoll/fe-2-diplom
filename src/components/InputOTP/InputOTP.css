@@ -1,0 +1,16 @@
+.input-otp {
+  @apply h-[50px] px-[18px] py-[10px] text-lg/none font-normal text-[#292929] rounded-[5px] border
+  border-[#928f94];
+}
+
+.input-otp__group { @apply grid justify-start items-start gap-x-[6px] h-full }
+
+.input-otp__slot {
+  @apply relative flex justify-center items-end h-full border-b border-[#c4c4c4] transition-colors
+  data-[active=true]:border-current;
+}
+
+.input-otp__fake-caret {
+  @apply absolute inset-0 flex justify-center items-center pointer-events-none before:w-px
+  before:h-[calc(1em+2px)] before:bg-current before:animate-caret-blink before:duration-1000;
+}

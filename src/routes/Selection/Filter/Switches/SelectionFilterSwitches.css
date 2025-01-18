@@ -1,0 +1,17 @@
+.selection-filter-switches { @apply pt-[29px] pr-[34px] pb-[26px] pl-[61px] }
+
+.selection-filter-switches__list { @apply space-y-[32px] }
+
+.selection-filter-switches__item { @apply flex justify-between items-center }
+
+.selection-filter-switches__label {
+  @apply flex items-center gap-x-[34px] text-lg/[calc(7/6)] font-normal text-white;
+}
+
+.selection-filter-switches__icon {
+  @apply flex justify-end items-center w-[24px] h-[23px] leading-none text-neutral-200;
+}
+
+.selection-filter-switches__text {}
+
+.selection-filter-switches__switch {}

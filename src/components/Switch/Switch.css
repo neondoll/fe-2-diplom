@@ -1,0 +1,33 @@
+.switch {}
+
+.switch.ant-switch { @apply min-w-[72px] h-[20px] font-[inherit] text-sm text-[#292929] bg-white }
+
+.switch.ant-switch:hover:not(.ant-switch-disabled) {
+  @apply bg-white/55;
+}
+
+.switch.ant-switch.ant-switch-checked { @apply bg-[#fcdc9d] }
+
+.switch.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  @apply bg-[#fcdc9d]/55;
+}
+
+.switch.ant-switch .ant-switch-handle {
+  @apply start-0 top-1/2 size-[28px] -translate-y-1/2 before:bg-[#c4c4c4] before:rounded-full
+  before:shadow-none;
+}
+
+.switch.ant-switch.ant-switch-checked .ant-switch-handle {
+  @apply start-[calc(100%-28px)] before:bg-[var(--color-orange)];
+}
+
+.switch.ant-switch .ant-switch-inner { @apply ps-[30px] pe-[10px] }
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-checked,
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-unchecked { @apply min-h-[20px] }
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-checked {
+  @apply ms-[calc(-100%+30px-62px)] me-[calc(100%-30px+62px)];
+}
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-unchecked { @apply -mt-[20px] }

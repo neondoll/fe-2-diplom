@@ -1,0 +1,57 @@
+.btn {
+  @apply text-2xl/[calc(7/6)] text-center border transition focus-visible:outline-none
+  disabled:cursor-not-allowed;
+}
+
+.btn--change {
+  @apply pt-[4px] pr-[60px] pb-[5px] pl-[58px] font-bold text-[#292929] rounded-[5px] border-[#292929]
+  hover:text-[var(--color-orange)] hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:text-[var(--color-orange)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  active:text-[#292929] active:bg-[var(--color-orange)] active:border-transparent
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+}
+
+.btn--choose-places {
+  @apply pt-[5px] pr-[28px] pb-[4px] pl-[23px] font-bold text-white bg-[var(--color-orange)]
+  rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
+  active:bg-transparent active:border-[var(--color-orange)] active:shadow-none disabled:bg-[#918f94];
+}
+
+.btn--confirm {
+  @apply pt-[16px] pr-[74px] pb-[14px] pl-[75px] font-bold uppercase text-white
+  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
+  active:bg-transparent active:border-[var(--color-orange)]
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-[#918f94];
+}
+
+.btn--find-tickets {
+  @apply pt-[16px] pr-[68px] pb-[14px] pl-[67px] font-bold uppercase text-[#292929]
+  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
+  active:bg-transparent active:border-[var(--color-orange)]
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+}
+
+.btn--further {
+  @apply pt-[14px] pr-[69px] pb-[16px] pl-[73px] font-bold uppercase text-white
+  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
+  active:bg-transparent active:border-[var(--color-orange)]
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-[#928f94];
+}
+
+.btn--learn-more {
+  @apply py-[15px] pr-[76px] pl-[75px] font-bold text-white bg-transparent rounded-[5px] border-white
+  hover:text-[#2d2b2f] hover:bg-[var(--color-yellow)] hover:border-transparent
+  focus-visible:text-[#2d2b2f] focus-visible:bg-[var(--color-yellow)] focus-visible:border-transparent
+  active:text-[#2d2b2f] active:bg-white active:border-transparent;
+}
+
+.btn--send {
+  @apply pt-[16px] pr-[13px] pb-[14px] pl-[16px] font-normal uppercase text-neutral-200 bg-transparent
+  rounded-[3px] border-white hover:text-[#2d2b2f] hover:bg-[var(--color-yellow)]
+  hover:border-transparent focus-visible:text-[#2d2b2f] focus-visible:bg-[var(--color-yellow)]
+  focus-visible:border-transparent active:text-[#2d2b2f] active:bg-white active:border-transparent;
+}

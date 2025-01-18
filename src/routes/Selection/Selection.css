@@ -1,0 +1,9 @@
+.selection-page { @apply bg-[#f7f5f9] }
+
+.selection-page__sidebar { @apply w-[360px] mb-[430px] }
+
+.selection-page__filter {}
+
+.selection-page__last-tickets { @apply mt-[94px] }
+
+.selection-page__main { @apply flex-1 -mt-1 }

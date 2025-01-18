@@ -1,0 +1,61 @@
+.order-confirmation-page { @apply bg-[#f7f5f9] }
+
+.order-confirmation-page__trip-details {}
+
+.order-confirmation-page__info { @apply flex flex-col pb-45 }
+
+.order-confirmation-page__train,
+.order-confirmation-page__passengers,
+.order-confirmation-page__payment-method {
+  @apply bg-white border border-[#c4c4c4] divide-y divide-[#928f94]
+  shadow-[0_2px_2px_0_rgba(0,0,0,0.3)];
+}
+
+.order-confirmation-page__passengers,
+.order-confirmation-page__payment-method{ @apply mt-11 }
+
+.order-confirmation-page__title {
+  @apply px-7.5 pt-7.5 pb-8 text-3xl/[calc(7/6)] font-normal text-[#292929];
+}
+
+.order-confirmation-page__content {}
+
+.order-confirmation-page__passengers > .order-confirmation-page__content,
+.order-confirmation-page__payment-method > .order-confirmation-page__content {
+  @apply flex divide-x divide-neutral-200 divide-dashed;
+}
+
+.order-confirmation-page__content-btn { @apply mt-5.5 ml-auto }
+
+.order-confirmation-page__list { @apply flex-1 divide-y divide-neutral-200 divide-dashed }
+
+.order-confirmation-page__item { @apply first:pt-15.5 last:pb-24.5 }
+
+.order-confirmation-page__sidebar { @apply flex flex-col justify-end pr-5.5 pl-6 }
+
+.order-confirmation-page__passengers .order-confirmation-page__sidebar { @apply py-6 }
+
+.order-confirmation-page__payment-method .order-confirmation-page__sidebar { @apply py-5 }
+
+.order-confirmation-page__final-price {
+  @apply flex justify-start items-baseline gap-x-2 mb-7.5 pr-1 text-3xl/[calc(7/6)] text-[#292929];
+}
+
+.order-confirmation-page__final-price-prefix { @apply font-normal }
+
+.order-confirmation-page__final-price-value { @apply ml-auto font-bold }
+
+.order-confirmation-page__final-price-currency {
+  @apply w-5 h-6 bg-center bg-no-repeat bg-contain
+  bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2224%22%20viewBox%3D%220%200%2020%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M5.00056%2014.4061C5.00056%2015.2125%205.00056%2016.0029%205.00056%2016.8029C7.08079%2016.8029%209.15436%2016.8029%2011.2379%2016.8029C11.2379%2017.6062%2011.2379%2018.3998%2011.2379%2019.2062C9.16103%2019.2062%207.08413%2019.2062%205.00056%2019.2062C5.00056%2020.8095%205.00056%2022.3999%205.00056%2024C4.1638%2024%203.33704%2024%202.49695%2024C2.49695%2022.4063%202.49695%2020.8127%202.49695%2019.2126C1.66019%2019.2126%200.83676%2019.2126%200.00333371%2019.2126C0.00333371%2018.4094%200.00333371%2017.6158%200.00333371%2016.8093C0.830093%2016.8093%201.65685%2016.8093%202.48694%2016.8093C2.48694%2016.0061%202.48694%2015.2157%202.48694%2014.4125C1.66019%2014.4125%200.833427%2014.4125%200%2014.4125C0%2013.606%200%2012.8124%200%2012.0092C0.826759%2012.0092%201.65352%2012.0092%202.49028%2012.0092C2.49028%208.00583%202.49028%204.01208%202.49028%200.0119368C2.54028%200.00873665%202.57362%200.00553653%202.61029%200.00553653C5.944%200.00553653%209.2777%20-0.010464%2012.6114%200.0119368C14.535%200.0247372%2016.2085%200.699961%2017.6153%201.96081C18.7954%203.01684%2019.5555%204.30969%2019.8556%205.83295C20.2723%207.95462%2019.7855%209.89069%2018.4187%2011.606C17.482%2012.7836%2016.2585%2013.5964%2014.7917%2014.0604C14.0749%2014.2877%2013.3382%2014.4061%2012.5847%2014.4061C10.1078%2014.4093%207.63419%2014.4061%205.15724%2014.4093C5.10724%2014.4061%205.05723%2014.4061%205.00056%2014.4061ZM5.00389%202.40562C5.00389%205.61534%205.00389%208.80905%205.00389%2012.006C5.04056%2012.006%205.07057%2012.006%205.10057%2012.006C7.60085%2012.006%2010.1011%2012.0124%2012.6014%2011.9996C12.9881%2011.9964%2013.3848%2011.942%2013.7582%2011.8492C16.4018%2011.1771%2017.972%208.68105%2017.3719%206.13056C16.8586%203.95448%2014.8383%202.40562%2012.5114%202.40562C10.0611%202.40562%207.61085%202.40562%205.16058%202.40562C5.11057%202.40562%205.06057%202.40562%205.00389%202.40562Z%22%20fill%3D%22%23928F94%22%2F%3E%0A%3C%2Fsvg%3E')];
+}
+
+.order-confirmation-page__sidebar-btn {}
+
+.order-confirmation-page__main { @apply flex-1 px-8 pt-11 pb-18 }
+
+.order-confirmation-page__payment-method-value {
+  @apply text-2xl/[calc(7/6)] font-normal text-[#292929];
+}
+
+.order-confirmation-page__btn { @apply mt-31 ml-auto }

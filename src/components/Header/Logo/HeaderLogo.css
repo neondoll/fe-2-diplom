@@ -1,0 +1,8 @@
+.header-logo { @apply pt-[15px] pb-[7px] bg-black/60 }
+
+.header-logo__container { @apply px-[43px] }
+
+.header-logo__link {
+  @apply w-fit text-4xl/[calc(7/6)] font-black text-neutral-200 transition-colors duration-500
+  hover:text-[var(--color-orange)] focus-visible:text-[var(--color-orange)];
+}

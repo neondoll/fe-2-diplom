@@ -1,0 +1,15 @@
+.footer-copyright {}
+
+.footer-copyright__container { @apply flex justify-between items-center pt-[22px] pr-[48px] pb-[32px] pl-[38px] }
+
+.footer-copyright__link {
+  @apply text-4xl/[calc(7/6)] font-black text-neutral-200 transition-colors hover:text-[var(--color-orange)]
+  focus-visible:text-[var(--color-orange)];
+}
+
+.footer-copyright__btn {
+  @apply size-[36px] mt-[2px] ml-[32px] text-4xl/none text-neutral-200 transition-colors
+  hover:text-[var(--color-orange)] focus-visible:text-[var(--color-orange)];
+}
+
+.footer-copyright__info { @apply -mt-[6px] text-2xl/[calc(7/6)] font-light text-neutral-200 }

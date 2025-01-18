@@ -1,0 +1,25 @@
+.select {}
+
+.select.ant-select { @apply font-[inherit] }
+
+.select.ant-select-single { @apply h-[60px] text-lg/[calc(7/6)] }
+
+.select.ant-select-single .ant-select-selector {
+  @apply pr-[17px] pl-[19px] text-lg/[calc(7/6)] rounded-[3px];
+}
+
+.select.ant-select-outlined .ant-select-selector { @apply border-2 border-transparent }
+
+.select.ant-select-outlined:not(.ant-select-disabled):not(.ant-pagination-size-changer):hover .ant-select-selector,
+.select.ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(.ant-pagination-size-changer) .ant-select-selector {
+  @apply border-[var(--color-orange)];
+}
+
+.select.ant-select-single.ant-select-show-arrow .ant-select-selection-search,
+.select.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder { @apply pe-[41px] }
+
+.select.ant-select .ant-select-selection-placeholder { @apply text-neutral-200 }
+
+.select.ant-select .ant-select-arrow {
+  @apply inset-y-0 end-0 justify-center size-[60px] mt-0 text-3xl/none text-neutral-200;
+}

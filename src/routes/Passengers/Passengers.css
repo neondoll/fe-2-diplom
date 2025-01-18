@@ -1,0 +1,6 @@
+.passengers-page { @apply bg-[#f4f2f6] }
+
+.passengers-page > .order-layout__container { @apply gap-x-21 }
+
+.passengers-page__trip-details,
+.passengers-page__info { @apply mt-1 mb-35 }

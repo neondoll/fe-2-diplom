@@ -1,0 +1,7 @@
+.selection-train-page { @apply pb-[207px] }
+
+.selection-train-page__control {}
+
+.selection-train-page__trains { @apply mt-[38px] -mr-[1px] ml-[1px] }
+
+.selection-train-page__pagination { @apply justify-end mt-[142px] }

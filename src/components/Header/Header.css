@@ -1,0 +1,5 @@
+.header { @apply absolute inset-x-0 top-0 z-10 }
+
+.header__logo { @apply w-full }
+
+.header__nav { @apply w-full }

@@ -1,0 +1,20 @@
+.additional-options-in-carriages {}
+
+.additional-options-in-carriages__list { @apply flex gap-x-[13px] }
+
+.additional-options-in-carriages__item {}
+
+.additional-options-in-carriages__btn {
+  @apply flex justify-center items-center w-[36px] h-[34px] px-[6px] py-[5px] text-base/none
+  text-[#292929] rounded-[5px] border border-[#292929] transition-colors hover:text-[#292929]
+  hover:bg-[#ffa800] hover:border-[#292929] data-[state=included]:text-[#928f94]
+  data-[state=included]:bg-[#fcdc9d] data-[state=included]:border-transparent
+  data-[state=included]:cursor-default data-[state=selected]:text-[#f4f2f6]
+  data-[state=selected]:bg-[#fdb935] data-[state=selected]:border-transparent
+  data-[state=selected]:hover:text-[#292929] data-[state=selected]:hover:bg-[#ffa800]
+  data-[state=selected]:hover:border-[#292929];
+}
+
+.additional-options-in-carriages__icon {}
+
+.additional-options-in-carriages__tooltip {}

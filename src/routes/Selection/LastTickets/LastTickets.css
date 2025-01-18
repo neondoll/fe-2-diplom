@@ -1,0 +1,43 @@
+.last-tickets {}
+
+.last-tickets__title { @apply text-3xl/[calc(7/6)] font-medium uppercase text-black }
+
+.last-tickets__container { @apply mt-[30px] mr-[1px] -ml-[1px] space-y-[17px] }
+
+.last-tickets__item {}
+
+.last-ticket {
+  @apply pt-[17px] pr-[19px] pb-[6px] pl-[17px] bg-white border border-[#c4c4c4]
+  shadow-[0_2px_2px_0_rgba(62,60,65,0.25)];
+}
+
+.last-ticket__cities,
+.last-ticket__railway-stations { @apply flex justify-between gap-[84px] }
+
+.last-ticket__cities { @apply text-xl/[calc(6/5)] font-normal text-[#292929] }
+
+.last-ticket__city-from,
+.last-ticket__railway-station-from { @apply text-left }
+
+.last-ticket__city-to,
+.last-ticket__railway-station-to { @apply text-right }
+
+.last-ticket__railway-stations {
+  @apply mt-[3px] pr-[1px] text-base/[calc(19/16)] font-normal whitespace-pre-line
+  text-[var(--color-grey)];
+}
+
+.last-ticket__railway-station-from,
+.last-ticket__railway-station-to { @apply flex-1 }
+
+.last-ticket__footer { @apply flex justify-between items-baseline mt-[29px] -mr-[8px] }
+
+.last-ticket__options { @apply w-[92px] h-[20px] text-xl/none text-neutral-200 }
+
+.last-ticket__price { @apply flex justify-end items-baseline gap-x-[6px] text-[var(--color-grey)] }
+
+.last-ticket__price-prefix { @apply text-base/[calc(19/16)] font-normal }
+
+.last-ticket__price-value { @apply text-4xl/[calc(7/6)] font-bold text-[var(--color-orange)] }
+
+.last-ticket__price-currency { @apply w-[20px] h-[25px] text-[25px] }

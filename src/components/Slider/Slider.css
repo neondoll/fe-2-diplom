@@ -1,0 +1,43 @@
+.slider {}
+
+.slider .ant-slider-rail { @apply border border-[#c4c4c4] }
+
+.slider.ant-slider { @apply font-[inherit] }
+
+.slider.ant-slider .ant-slider-rail { @apply bg-transparent rounded-lg }
+
+.slider.ant-slider .ant-slider-track { @apply bg-[var(--color-orange)] rounded-lg }
+
+.slider.ant-slider .ant-slider-dot { @apply size-0 border-0 }
+
+.slider.ant-slider .ant-slider-handle {
+  @apply size-4.5 before:content-none after:start-0 after:size-4.5 after:shadow-none
+  hover:after:outline-[rgb(var(--color-orange-rgb)/0.2)]
+  active:after:outline-[rgb(var(--color-orange-rgb)/0.2)]
+  focus:after:outline-[rgb(var(--color-orange-rgb)/0.2)];
+}
+
+.slider.ant-slider .ant-slider-handle::after { inset-block-start: 0 }
+
+.slider.ant-slider .ant-slider-mark { @apply text-base/tight font-normal }
+
+.slider.ant-slider .ant-slider-mark-text { @apply text-neutral-200 }
+
+.slider.ant-slider .ant-slider-mark-text-active { @apply text-neutral-200 }
+
+.slider.ant-slider-horizontal { @apply h-4.5 }
+
+.slider.ant-slider-horizontal .ant-slider-rail { @apply h-2.5 }
+
+.slider.ant-slider-horizontal .ant-slider-track,
+.slider.ant-slider-horizontal .ant-slider-tracks { @apply h-2.5 }
+
+.slider.ant-slider-horizontal .ant-slider-step { @apply h-2.5 }
+
+.slider.ant-slider-horizontal .ant-slider-dot { inset-block-start: 50% }
+
+.slider.ant-slider-horizontal .ant-slider-handle { inset-block-start: 0 }
+
+.slider.ant-slider-horizontal .ant-slider-mark { @apply top-7 }
+
+.slider.ant-slider-horizontal.ant-slider-with-marks { @apply mb-8 }

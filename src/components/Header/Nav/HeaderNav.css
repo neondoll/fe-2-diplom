@@ -1,0 +1,12 @@
+.header-nav { @apply pt-[26px] pb-[33px] bg-[#292929] }
+
+.header-nav__container { @apply px-[43px] }
+
+.header-nav__list { @apply flex justify-start items-center gap-x-[75px] }
+
+.header-nav__item {}
+
+.header-nav__link {
+  @apply text-3xl/[calc(7/6)] font-light text-white transition-colors duration-500
+  hover:text-[var(--color-orange)] focus-visible:text-[var(--color-orange)];
+}

@@ -1,0 +1,18 @@
+.scroll-area { @apply [--scroll-area-scrollbar-size:0.625rem] overflow-hidden }
+
+.scroll-area__viewport { @apply size-full }
+
+.scroll-area__scrollbar {
+  @apply z-20 flex p-0.5 bg-black/15 transition-colors touch-none select-none hover:bg-black/30
+  data-[orientation=horizontal]:flex-col
+  data-[orientation=horizontal]:h-[var(--scroll-area-scrollbar-size)]
+  data-[orientation=vertical]:w-[var(--scroll-area-scrollbar-size)];
+}
+
+.scroll-area__thumb {
+  @apply relative flex-1 bg-[var(--color-orange,#ffa800)] rounded-[var(--scroll-area-scrollbar-size)]
+  before:absolute before:top-1/2 before:left-1/2 before:size-full before:min-w-11 before:min-h-11
+  before:-translate-x-1/2 before:-translate-y-1/2;
+}
+
+.scroll-area__corner { @apply bg-black/30 }

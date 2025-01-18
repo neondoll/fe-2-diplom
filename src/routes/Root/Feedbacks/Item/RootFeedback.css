@@ -1,0 +1,19 @@
+.root-feedback { @apply flex gap-[35px] w-full }
+
+.root-feedback__img { @apply self-center rounded-full }
+
+.root-feedback__content { @apply pt-[27px] text-left }
+
+.root-feedback__author { @apply mb-[21px] text-2xl/[calc(7/6)] font-medium text-black }
+
+.root-feedback__text {
+  @apply relative block text-lg/[calc(7/6)] italic font-light whitespace-pre-line
+  text-[var(--color-grey)];
+}
+
+.root-feedback__text::before,
+.root-feedback__text::after { @apply absolute text-4xl/none not-italic font-medium }
+
+.root-feedback__text::before { @apply -top-[3px] -left-4 }
+
+.root-feedback__text::after {}
