@@ -1,5 +1,5 @@
-import { classNameType } from "../../types/base";
-import { cn } from "../../lib/utils";
+import { classNameType } from "../../../types/base";
+import { cn } from "../../../lib/utils";
 import { Switch as AntSwitch } from "antd";
 import "./Switch.css";
 

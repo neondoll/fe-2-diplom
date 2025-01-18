@@ -1,4 +1,6 @@
-.selection-filter-back {}
+.selection-filter-back { @apply flex items-center }
+
+.selection-filter-back__collapsible { @apply flex-1 }
 
 .selection-filter-back__departure,
 .selection-filter-back__arrival { @apply flex flex-col gap-y-1 }

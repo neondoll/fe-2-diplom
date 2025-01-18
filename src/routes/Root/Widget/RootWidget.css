@@ -17,8 +17,4 @@
 
 .root-widget__search .ticket-search-form__fieldset--dates { @apply gap-x-10 }
 
-.root-widget__search .ticket-search-form__legend { @apply mx-2 mb-4.5 }
-
-.root-widget__search .ticket-search-form__btn-replace { @apply size-9 pr-2 pl-1 }
-
 .root-widget__search > .ticket-search-form__footer { @apply mt-23 }

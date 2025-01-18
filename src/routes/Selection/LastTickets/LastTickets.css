@@ -2,19 +2,18 @@
 
 .last-tickets__title { @apply text-3xl/[calc(7/6)] font-medium uppercase text-black }
 
-.last-tickets__container { @apply mt-[30px] mr-[1px] -ml-[1px] space-y-[17px] }
+.last-tickets__container { @apply mt-7.5 space-y-4.5 }
 
 .last-tickets__item {}
 
 .last-ticket {
-  @apply pt-[17px] pr-[19px] pb-[6px] pl-[17px] bg-white border border-[#c4c4c4]
-  shadow-[0_2px_2px_0_rgba(62,60,65,0.25)];
+  @apply pt-4 pr-5 pb-1.5 pl-4 bg-white border border-silver shadow-[0_2px_2px_0_rgba(62,60,65,0.25)];
 }
 
 .last-ticket__cities,
-.last-ticket__railway-stations { @apply flex justify-between gap-[84px] }
+.last-ticket__railway-stations { @apply flex justify-between gap-x-21.5 }
 
-.last-ticket__cities { @apply text-xl/[calc(6/5)] font-normal text-[#292929] }
+.last-ticket__cities { @apply text-xl/[calc(6/5)] font-normal text-dark-charcoal }
 
 .last-ticket__city-from,
 .last-ticket__railway-station-from { @apply text-left }
@@ -23,21 +22,23 @@
 .last-ticket__railway-station-to { @apply text-right }
 
 .last-ticket__railway-stations {
-  @apply mt-[3px] pr-[1px] text-base/[calc(19/16)] font-normal whitespace-pre-line
-  text-[var(--color-grey)];
+  @apply mt-1 text-base/[calc(19/16)] font-normal whitespace-pre-line text-taupe-gray;
 }
 
 .last-ticket__railway-station-from,
 .last-ticket__railway-station-to { @apply flex-1 }
 
-.last-ticket__footer { @apply flex justify-between items-baseline mt-[29px] -mr-[8px] }
+.last-ticket__footer { @apply flex justify-between items-baseline mt-7 -mr-2 }
 
-.last-ticket__options { @apply w-[92px] h-[20px] text-xl/none text-neutral-200 }
+.last-ticket__options { @apply w-23 h-5 text-xl/none text-neutral-200 }
 
-.last-ticket__price { @apply flex justify-end items-baseline gap-x-[6px] text-[var(--color-grey)] }
+.last-ticket__price { @apply flex justify-end items-baseline gap-x-1.5 text-taupe-gray }
 
 .last-ticket__price-prefix { @apply text-base/[calc(19/16)] font-normal }
 
-.last-ticket__price-value { @apply text-4xl/[calc(7/6)] font-bold text-[var(--color-orange)] }
+.last-ticket__price-value { @apply text-4xl/[calc(7/6)] font-bold text-chrome-yellow }
 
-.last-ticket__price-currency { @apply w-[20px] h-[25px] text-[25px] }
+.last-ticket__price-currency {
+  @apply w-5 h-6.25 bg-center bg-no-repeat bg-contain
+  bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2225%22%20viewBox%3D%220%200%2020%2025%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M5.00056%2015.0063C5.00056%2015.8463%205.00056%2016.6697%205.00056%2017.5031C7.08079%2017.5031%209.15436%2017.5031%2011.2379%2017.5031C11.2379%2018.3398%2011.2379%2019.1665%2011.2379%2020.0065C9.16103%2020.0065%207.08413%2020.0065%205.00056%2020.0065C5.00056%2021.6765%205.00056%2023.3333%205.00056%2025C4.1638%2025%203.33704%2025%202.49695%2025C2.49695%2023.3399%202.49695%2021.6799%202.49695%2020.0132C1.66019%2020.0132%200.83676%2020.0132%200.00333371%2020.0132C0.00333371%2019.1765%200.00333371%2018.3498%200.00333371%2017.5097C0.830093%2017.5097%201.65685%2017.5097%202.48694%2017.5097C2.48694%2016.673%202.48694%2015.8497%202.48694%2015.013C1.66019%2015.013%200.833427%2015.013%200%2015.013C0%2014.1729%200%2013.3462%200%2012.5096C0.826759%2012.5096%201.65352%2012.5096%202.49028%2012.5096C2.49028%208.3394%202.49028%204.17925%202.49028%200.0124341C2.54028%200.00910067%202.57362%200.00576722%202.61029%200.00576722C5.944%200.00576722%209.2777%20-0.0109%2012.6114%200.0124341C14.535%200.0257679%2016.2085%200.729127%2017.6153%202.04251C18.7954%203.14255%2019.5555%204.48926%2019.8556%206.07599C20.2723%208.28607%2019.7855%2010.3028%2018.4187%2012.0895C17.482%2013.3162%2016.2585%2014.1629%2014.7917%2014.6463C14.0749%2014.883%2013.3382%2015.0063%2012.5847%2015.0063C10.1078%2015.0096%207.63419%2015.0063%205.15724%2015.0096C5.10724%2015.0063%205.05723%2015.0063%205.00056%2015.0063ZM5.00389%202.50586C5.00389%205.84931%205.00389%209.1761%205.00389%2012.5062C5.04056%2012.5062%205.07057%2012.5062%205.10057%2012.5062C7.60085%2012.5062%2010.1011%2012.5129%2012.6014%2012.4995C12.9881%2012.4962%2013.3848%2012.4395%2013.7582%2012.3429C16.4018%2011.6429%2017.972%209.04276%2017.3719%206.386C16.8586%204.11925%2014.8383%202.50586%2012.5114%202.50586C10.0611%202.50586%207.61085%202.50586%205.16058%202.50586C5.11057%202.50586%205.06057%202.50586%205.00389%202.50586Z%22%20fill%3D%22%23928F94%22%2F%3E%0A%3C%2Fsvg%3E')];
+}

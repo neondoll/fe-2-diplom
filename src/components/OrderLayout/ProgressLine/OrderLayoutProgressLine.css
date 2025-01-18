@@ -1,24 +1,18 @@
 .order-layout-progress-line {
-  --order-layout-progress-line-clip-path: polygon(0% 0%, calc(100% - 37px) 0%, 100% 50%, calc(100% - 37px) 100%, 0% 100%);
-  --order-layout-progress-line-right: 0;
-  @apply relative bg-[#3e3c41] z-0 before:absolute before:inset-y-0
-  before:start-0 before:right-[var(--order-layout-progress-line-right)] before:z-[1]
-  before:bg-[var(--color-orange)];
+  @apply [--order-layout-progress-line-clip-path:polygon(0%_0%,calc(100%-37px)_0%,100%_50%,calc(100%-37px)_100%,0%_100%)]
+  [--order-layout-progress-line-right:0] relative bg-shadow-gray z-0 before:absolute before:inset-y-0
+  before:start-0 before:right-[var(--order-layout-progress-line-right)] before:z-1
+  before:bg-chrome-yellow before:[clip-path:var(--order-layout-progress-line-clip-path)];
 }
 
-.order-layout-progress-line::before {
-  clip-path: var(--order-layout-progress-line-clip-path);
-}
+.order-layout-progress-line__container { @apply relative z-1 px-4 }
 
-.order-layout-progress-line__container { @apply relative z-[2] px-[15px] }
-
-.order-layout-progress-line__list { @apply flex gap-x-[35px] }
+.order-layout-progress-line__list { @apply flex h-24.5 gap-x-9 }
 
 .order-layout-progress-line__item {
-  @apply flex items-center gap-x-[21px] py-[21px] text-3xl/[calc(7/6)] font-bold
+  @apply flex-1 flex justify-start items-center gap-x-5 h-full text-3xl/[calc(7/6)] font-bold
   text-white before:content-[attr(data-number)] before:flex before:justify-center before:items-center
-  before:size-[56px] before:text-4xl/[calc(7/6)] before:rounded-full before:border-[3px]
-  before:border-current;
+  before:size-14 before:text-4xl/[calc(7/6)] before:rounded-full before:border-3 before:border-current;
 }
 
-.order-layout-progress-line__icon { @apply w-auto h-[98px] text-[98px]/none text-neutral-200 }
+.order-layout-progress-line__icon { @apply shrink-0 w-auto h-full text-[6.125rem] text-neutral-200 }

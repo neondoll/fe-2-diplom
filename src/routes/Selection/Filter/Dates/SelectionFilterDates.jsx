@@ -1,4 +1,5 @@
-import DatepickerWithCalendar from "../../../../components/DatepickerWithCalendar/DatepickerWithCalendar";
+import CalendarIcon from "../../../../icons/CalendarIcon";
+import Datepicker from "../../../../components/Fields/Datepicker/Datepicker";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import { useState } from "react";
@@ -15,26 +16,28 @@ function SelectionFilterDates({ className }) {
 
   return (
     <div className={cn("selection-filter-dates", className)}>
-      <div className="selection-filter-dates__group space-y-[11px]">
+      <div className="selection-filter-dates__group">
         <label className="selection-filter-dates__label" htmlFor="travelDate">Дата поездки</label>
-        <DatepickerWithCalendar
+        <Datepicker
           className="selection-filter-dates__datepicker"
           defaultValue={values.travelDate}
           id="travelDate"
           onChange={(value) => {
             handleChange({ travelDate: value });
           }}
+          suffixIcon={<CalendarIcon />}
         />
       </div>
-      <div className="selection-filter-dates__group space-y-[12px]">
+      <div className="selection-filter-dates__group">
         <label className="selection-filter-dates__label" htmlFor="returnDate">Дата возвращения</label>
-        <DatepickerWithCalendar
+        <Datepicker
           className="selection-filter-dates__datepicker"
           defaultValue={values.returnDate}
           id="returnDate"
           onChange={(value) => {
             handleChange({ returnDate: value });
           }}
+          suffixIcon={<CalendarIcon />}
         />
       </div>
     </div>

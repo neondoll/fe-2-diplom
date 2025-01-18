@@ -1,0 +1,29 @@
+.switch {}
+
+.switch.ant-switch { @apply min-w-18 h-5 font-[inherit] text-sm text-dark-charcoal bg-white }
+
+.switch.ant-switch:hover:not(.ant-switch-disabled) { @apply bg-white/55 }
+
+.switch.ant-switch.ant-switch-checked { @apply bg-navajo-white }
+
+.switch.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) { @apply bg-navajo-white/55 }
+
+.switch.ant-switch .ant-switch-handle {
+  @apply start-0 top-1/2 size-7 -translate-y-1/2 before:bg-silver before:rounded-full
+  before:shadow-none;
+}
+
+.switch.ant-switch.ant-switch-checked .ant-switch-handle {
+  @apply start-[calc(100%-1.75rem)] before:bg-chrome-yellow;
+}
+
+.switch.ant-switch .ant-switch-inner { @apply ps-7.5 pe-2.5 }
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-checked,
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-unchecked { @apply min-h-5 }
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-checked {
+  @apply ms-[calc(-100%+1.875rem-3.875rem)] me-[calc(100%-1.875rem+3.875rem)];
+}
+
+.switch.ant-switch .ant-switch-inner .ant-switch-inner-unchecked { @apply -mt-5 }

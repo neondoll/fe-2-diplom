@@ -1,4 +1,4 @@
-import Slider from "../../../../components/Slider/Slider";
+import Slider from "../../../../components/Fields/Slider/Slider";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import "./SelectionFilterPrice.css";

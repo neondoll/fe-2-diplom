@@ -5,9 +5,9 @@ import { childrenType, classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
 import "./OrderLayout.css";
 
-function OrderLayout({ children, mainClassName }) {
+function OrderLayout({ children, className, mainClassName }) {
   return (
-    <Layout mainClassName={cn("order-layout", mainClassName)}>
+    <Layout className={cn("order-layout", className)} mainClassName={cn("order-layout__main", mainClassName)}>
       <OrderLayoutWidget className="order-layout__widget" />
       <OrderLayoutProgressLine className="order-layout__progress-line" />
       <div className="order-layout__container container">
@@ -17,6 +17,6 @@ function OrderLayout({ children, mainClassName }) {
   );
 }
 
-OrderLayout.propTypes = { children: childrenType, mainClassName: classNameType };
+OrderLayout.propTypes = { children: childrenType, className: classNameType, mainClassName: classNameType };
 
 export default OrderLayout;

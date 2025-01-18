@@ -1,20 +1,19 @@
 .slider {}
 
-.slider .ant-slider-rail { @apply border border-[#c4c4c4] }
+.slider .ant-slider-rail { @apply border border-silver }
 
 .slider.ant-slider { @apply font-[inherit] }
 
 .slider.ant-slider .ant-slider-rail { @apply bg-transparent rounded-lg }
 
-.slider.ant-slider .ant-slider-track { @apply bg-[var(--color-orange)] rounded-lg }
+.slider.ant-slider .ant-slider-track { @apply bg-chrome-yellow rounded-lg }
 
 .slider.ant-slider .ant-slider-dot { @apply size-0 border-0 }
 
 .slider.ant-slider .ant-slider-handle {
   @apply size-4.5 before:content-none after:start-0 after:size-4.5 after:shadow-none
-  hover:after:outline-[rgb(var(--color-orange-rgb)/0.2)]
-  active:after:outline-[rgb(var(--color-orange-rgb)/0.2)]
-  focus:after:outline-[rgb(var(--color-orange-rgb)/0.2)];
+  hover:after:outline-chrome-yellow/20 active:after:outline-chrome-yellow/20
+  focus:after:outline-chrome-yellow/20;
 }
 
 .slider.ant-slider .ant-slider-handle::after { inset-block-start: 0 }

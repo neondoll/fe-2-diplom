@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { classNameType } from "../../types/base";
-import { cn } from "../../lib/utils";
+import { classNameType } from "../../../types/base";
+import { cn } from "../../../lib/utils";
 import { Slider as AntSlider } from "antd";
 import "./Slider.css";
 

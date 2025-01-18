@@ -1,4 +1,6 @@
-.selection-filter-there {}
+.selection-filter-there { @apply flex items-center }
+
+.selection-filter-there__collapsible { @apply flex-1 }
 
 .selection-filter-there__departure,
 .selection-filter-there__arrival { @apply flex flex-col gap-y-1 }

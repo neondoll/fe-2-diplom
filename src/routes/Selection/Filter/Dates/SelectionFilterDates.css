@@ -1,11 +1,13 @@
-.selection-filter-dates { @apply pt-[43px] pr-[36px] pb-[32px] pl-[28px] space-y-[26px] }
+.selection-filter-dates { @apply pt-10.5 pr-9 pb-8 pl-7 space-y-6.5 }
 
-.selection-filter-dates__group {}
+.selection-filter-dates__group { @apply space-y-3 }
 
 .selection-filter-dates__label { @apply text-3xl/[calc(7/6)] font-normal text-white }
 
-.selection-filter-dates__datepicker { @apply h-[43px] pl-[1px] }
+.selection-filter-dates__datepicker { @apply h-10.75 pl-px }
 
-.selection-filter-dates__datepicker > .datepicker__input { @apply pt-[10px] pr-[58px] pb-[8px] pl-[6px] }
+.selection-filter-dates__datepicker > .datepicker__input {
+  @apply pr-14.5 pl-2 rounded-3 border-transparent placeholder:text-neutral-200;
+}
 
-.selection-filter-dates__datepicker > .datepicker__suffix { @apply h-[43px] text-[23px]/none }
+.selection-filter-dates__datepicker > .datepicker__suffix { @apply w-15 h-10.75 text-[1.4375rem] }

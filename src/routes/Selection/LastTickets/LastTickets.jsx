@@ -1,5 +1,4 @@
 import IconTrainOptions from "../IconTrainOptions";
-import RubleIcon from "../../../icons/RubleIcon.jsx";
 import { classNameType } from "../../../types/base";
 import { cn, formatPrice } from "../../../lib/utils";
 import "./LastTickets.css";
@@ -48,7 +47,7 @@ function LastTickets({ className }) {
               <p className="last-ticket__price">
                 <span className="last-ticket__price-prefix">от</span>
                 <span className="last-ticket__price-value">{formatPrice(ticket.min_price)}</span>
-                <RubleIcon className="last-ticket__price-currency" />
+                <span className="last-ticket__price-currency" />
               </p>
             </div>
           </div>

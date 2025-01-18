@@ -6,7 +6,7 @@ import "./Selection.css";
 
 export default function Selection() {
   return (
-    <OrderLayout mainClassName="selection-page">
+    <OrderLayout className="selection-page" mainClassName="selection-page__layout-main">
       <div className="selection-page__sidebar">
         <SelectionFilter className="selection-page__filter" />
         <LastTickets className="selection-page__last-tickets" />

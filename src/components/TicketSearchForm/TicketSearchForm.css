@@ -1,19 +1,19 @@
-.ticket-search-form { @apply pt-[28px] pr-[24px] pb-[52px] pl-[21px] bg-dark-charcoal/80 }
+.ticket-search-form { @apply pt-7.5 pr-6 pb-13 pl-5 bg-dark-charcoal/80 }
 
-.ticket-search-form__content { @apply flex gap-x-[35px] gap-y-16 }
+.ticket-search-form__content { @apply flex gap-x-9 gap-y-16 }
 
 .ticket-search-form__fieldset { @apply flex justify-between items-center }
 
 .ticket-search-form__fieldset--cities {}
 
-.ticket-search-form__fieldset--dates { @apply gap-x-[35px] }
+.ticket-search-form__fieldset--dates { @apply gap-x-9 }
 
-.ticket-search-form__legend { @apply w-full mx-1 mb-4.5 text-3xl/none font-light text-white }
+.ticket-search-form__legend { @apply w-full mx-2 mb-4.5 text-3xl/none font-light text-white }
 
 .ticket-search-form__input-select,
 .ticket-search-form__datepicker { @apply flex-1 }
 
-.ticket-search-form__btn-replace { @apply flex justify-center items-center size-8 px-1 }
+.ticket-search-form__btn-replace { @apply flex justify-center items-center size-9 px-1.5 }
 
 .ticket-search-form__btn-replace > .icon {
   @apply block size-6 bg-[url('../../assets/replace-white.png')] bg-center bg-no-repeat bg-contain
@@ -31,6 +31,6 @@
 
 .ticket-search-form__datepicker > .datepicker__suffix { @apply size-15 text-[2.125rem] }
 
-.ticket-search-form__footer { @apply flex justify-end mt-[47px] }
+.ticket-search-form__footer { @apply flex justify-end mt-12 }
 
 .ticket-search-form__btn {}

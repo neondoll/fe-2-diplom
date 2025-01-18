@@ -7,10 +7,10 @@ import { useLocation } from "react-router-dom";
 import "./OrderLayoutProgressLine.css";
 
 const items = [
-  { className: "!gap-x-[28px] !pt-[23px] !pr-[125px] !pb-[19px]", text: "Билеты", value: "tickets" },
-  { className: "!gap-x-[21px] !py-[21px] !pr-[7px]", text: "Пассажиры", value: "passengers" },
-  { className: "!gap-x-[23px] !pt-[22px] !pr-[73px] !pb-[20px]", text: "Оплата", value: "payment" },
-  { className: "!gap-x-[24px] !py-[21px] !pr-[94px]", text: "Проверка", value: "verification" },
+  { text: "Билеты", value: "tickets" },
+  { text: "Пассажиры", value: "passengers" },
+  { text: "Оплата", value: "payment" },
+  { text: "Проверка", value: "verification" },
 ];
 
 function OrderLayoutProgressLine({ className }) {
@@ -19,24 +19,14 @@ function OrderLayoutProgressLine({ className }) {
 
   const setElementStyle = (value, isEnd) => {
     if (isEnd) {
-      const right = "0";
-      console.log(right);
-
       element.current.style.setProperty("--order-layout-progress-line-clip-path", "none");
-      element.current.style.setProperty("--order-layout-progress-line-right", right);
+      element.current.style.setProperty("--order-layout-progress-line-right", "0");
     }
     else {
       const itemElement = element.current.querySelector(`.order-layout-progress-line__item[data-value="${value}"]`);
-      console.log(itemElement);
-
       const iconElement = itemElement.nextSibling;
-      console.log(iconElement);
-
       const iconElementRect = iconElement.getBoundingClientRect();
-      console.log(iconElementRect);
-
       const right = `${100 - (100 * (iconElementRect.right / element.current.clientWidth))}%`;
-      console.log(right);
 
       element.current.style.setProperty("--order-layout-progress-line-clip-path", "");
       element.current.style.setProperty("--order-layout-progress-line-right", right);
@@ -44,11 +34,7 @@ function OrderLayoutProgressLine({ className }) {
   };
 
   useEffect(() => {
-    console.log(location);
-
     if (element.current) {
-      console.log(element.current.clientWidth);
-
       switch (true) {
         case location.pathname.includes(Paths.SELECTION, 0):
           setElementStyle(items[0].value, false);
@@ -70,35 +56,19 @@ function OrderLayoutProgressLine({ className }) {
     <div className={cn("order-layout-progress-line", className)} ref={element}>
       <div className="order-layout-progress-line__container container">
         <ol className="order-layout-progress-line__list">
-          <li
-            className={cn("order-layout-progress-line__item", items[0].className)}
-            data-number="1"
-            data-value={items[0].value}
-          >
+          <li className="order-layout-progress-line__item" data-number="1" data-value={items[0].value}>
             {items[0].text}
           </li>
           <li className="order-layout-progress-line__icon"><ChevronIcon /></li>
-          <li
-            className={cn("order-layout-progress-line__item", items[1].className)}
-            data-number="2"
-            data-value={items[1].value}
-          >
+          <li className="order-layout-progress-line__item" data-number="2" data-value={items[1].value}>
             {items[1].text}
           </li>
           <li className="order-layout-progress-line__icon"><ChevronIcon /></li>
-          <li
-            className={cn("order-layout-progress-line__item", items[2].className)}
-            data-number="3"
-            data-value={items[2].value}
-          >
+          <li className="order-layout-progress-line__item" data-number="3" data-value={items[2].value}>
             {items[2].text}
           </li>
           <li className="order-layout-progress-line__icon"><ChevronIcon /></li>
-          <li
-            className={cn("order-layout-progress-line__item", items[3].className)}
-            data-number="4"
-            data-value={items[3].value}
-          >
+          <li className="order-layout-progress-line__item" data-number="4" data-value={items[3].value}>
             {items[3].text}
           </li>
         </ol>

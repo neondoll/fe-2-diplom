@@ -1,32 +1,26 @@
-import CoupeIcon from "../../../../icons/CoupeIcon.jsx";
-import ExpressIcon from "../../../../icons/ExpressIcon.jsx";
-import LuxIcon from "../../../../icons/LuxIcon.jsx";
-import ReservedSeatIcon from "../../../../icons/ReservedSeatIcon.jsx";
-import SedentaryIcon from "../../../../icons/SedentaryIcon.jsx";
-import Switch from "../../../../components/Switch/Switch";
-import WiFiIcon from "../../../../icons/WiFiIcon.jsx";
+import Switch from "../../../../components/Fields/Switch/Switch";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import { useState } from "react";
 import "./SelectionFilterSwitches.css";
 
-const switches = {
-  coupe: { icon: CoupeIcon, text: "Купе" },
-  reservedSeat: { icon: ReservedSeatIcon, text: "Плацкарт" },
-  sedentary: { icon: SedentaryIcon, text: "Сидячий" },
-  lux: { icon: LuxIcon, text: "Люкс" },
-  wiFi: { icon: WiFiIcon, text: "Wi-Fi" },
-  express: { icon: ExpressIcon, text: "Экспресс" },
-};
+const switches = [
+  { text: "Купе", value: "second" },
+  { text: "Плацкарт", value: "third" },
+  { text: "Сидячий", value: "fourth" },
+  { text: "Люкс", value: "first" },
+  { text: "Wi-Fi", value: "wifi" },
+  { text: "Экспресс", value: "express" },
+];
 
 function SelectionFilterSwitches({ className }) {
   const [values, setValues] = useState({
-    coupe: true,
-    reservedSeat: false,
-    sedentary: false,
-    lux: false,
-    wiFi: true,
     express: false,
+    first: false,
+    fourth: false,
+    second: true,
+    third: false,
+    wifi: true,
   });
 
   const handleChange = (value) => {
@@ -38,28 +32,24 @@ function SelectionFilterSwitches({ className }) {
   return (
     <div className={cn("selection-filter-switches", className)}>
       <ul className="selection-filter-switches__list">
-        {Object.entries(switches).map(([name, item]) => {
-          const Icon = item.icon;
-
-          return (
-            <li className="selection-filter-switches__item" key={name}>
-              <label className="selection-filter-switches__label" htmlFor={name}>
-                <span className="selection-filter-switches__icon">
-                  <Icon />
-                </span>
-                <span className="selection-filter-switches__text">{item.text}</span>
-              </label>
-              <Switch
-                className="selection-filter-switches__switch"
-                id={name}
-                onChange={(value) => {
-                  handleChange({ [name]: value });
-                }}
-                value={values[name]}
-              />
-            </li>
-          );
-        })}
+        {switches.map(item => (
+          <li className="selection-filter-switches__item" key={item.value}>
+            <label
+              className={`selection-filter-switches__label selection-filter-switches__label--${item.value}`}
+              htmlFor={item.value}
+            >
+              {item.text}
+            </label>
+            <Switch
+              className="selection-filter-switches__switch"
+              id={item.value}
+              onChange={(value) => {
+                handleChange({ [item.value]: value });
+              }}
+              value={values[item.value]}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );
