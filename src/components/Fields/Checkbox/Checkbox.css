@@ -1,8 +1,7 @@
 .checkbox {
-  @apply flex justify-center items-center size-7 text-lg/none font-normal bg-white rounded-[5px] border
-  transition-colors data-[state=checked]:text-[var(--color-orange)]
-  data-[state=checked]:border-[var(--color-orange)] data-[state=unchecked]:text-[#928f94]
-  data-[state=unchecked]:border-[#928f94];
+  @apply flex justify-center items-center size-7 text-lg/none font-normal bg-white rounded-5 border
+  transition-colors data-[state=checked]:text-chrome-yellow data-[state=checked]:border-chrome-yellow
+  data-[state=unchecked]:text-taupe-gray-3.62 data-[state=unchecked]:border-taupe-gray-3.62;
 }
 
 .checkbox__indicator {}

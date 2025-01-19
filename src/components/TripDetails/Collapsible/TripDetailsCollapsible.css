@@ -1,48 +1,15 @@
-.trip-details-collapsible {
-  @apply pt-[14px] pb-[14px];
-  /**
-   * departure  - pt-[16px] pb-[16px]
-   * arrival    - pt-[15px] pb-[15px]
-   * passengers - pt-[14px] pb-[14px]
-   */
-}
+.trip-details-collapsible { @apply py-3.5 }
 
-.trip-details-collapsible__header {
-  @apply flex justify-start items-start gap-x-[12px] pr-[27px] pl-[26px];
-  /**
-   * departure  - gap-x-[12px] pl-[28px]
-   * arrival    - gap-x-[14px] pl-[26px]
-   * passengers - gap-x-[17px] pl-[29px]
-   */
-}
+.trip-details-collapsible__header { @apply flex justify-start items-center gap-x-3 px-6.5 }
 
-.trip-details-collapsible__icon {
-  @apply mt-[5px] mb-[3px] text-[26px] text-[var(--color-orange)];
-  /**
-   * departure  - mt-[6px] mb-[3px]
-   * arrival    - mt-[6px] mb-[3px]
-   * passengers - mt-[5px] mb-[4px]
-   */
-}
+.trip-details-collapsible__icon { @apply mt-0.5 text-[1.625rem] text-chrome-yellow }
 
 .trip-details-collapsible__title { @apply text-3xl/[calc(7/6)] font-bold text-white }
 
 .trip-details-collapsible__trigger {
-  @apply size-5 mt-[8px] mb-[5px] ml-auto text-xl/none transition-colors
-  data-[state=closed]:text-white data-[state=closed]:hover:text-[#fcdc9d]
-  data-[state=open]:text-[#c4c4c4] data-[state=open]:hover:text-[#fcdc9d];
-  /**
-   * departure  - mt-[10px] mb-[5px]
-   * arrival    - mt-[8px]  mb-[7px]
-   * passengers - mt-[5px]  mb-[10px]
-   */
+  @apply size-5 mt-px ml-auto text-xl/none transition-colors data-[state=closed]:text-white
+  data-[state=closed]:hover:text-navajo-white-3.53 data-[state=open]:text-silver
+  data-[state=open]:hover:text-navajo-white-3.53;
 }
 
-.trip-details-collapsible__content {
-  @apply pt-[32px] pr-[27px] pb-[28px] pl-[28px];
-  /**
-   * departure  - pt-[50px] pb-[46px]
-   * arrival    - pt-[32px] pb-[28px]
-   * passengers - pt-[33px] pb-[33px]
-   */
-}
+.trip-details-collapsible__content { @apply px-7 pt-8 pb-7 }

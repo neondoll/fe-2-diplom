@@ -1,12 +1,12 @@
 .input-otp {
-  @apply h-[50px] px-[18px] py-[10px] text-lg/none font-normal text-[#292929] rounded-[5px] border
-  border-[#928f94];
+  @apply h-12.5 px-4.5 py-2.5 text-lg/none font-normal text-dark-charcoal-3.19 rounded-5 border
+  border-taupe-gray-3.62;
 }
 
-.input-otp__group { @apply grid justify-start items-start gap-x-[6px] h-full }
+.input-otp__group { @apply grid justify-start items-start gap-x-1.5 h-full }
 
 .input-otp__slot {
-  @apply relative flex justify-center items-end h-full border-b border-[#c4c4c4] transition-colors
+  @apply relative flex justify-center items-end h-full border-b border-silver transition-colors
   data-[active=true]:border-current;
 }
 

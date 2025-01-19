@@ -1,20 +1,16 @@
-.trip-details-arrival { @apply pt-[15px] pb-[15px] }
+.trip-details-arrival { @apply py-4 }
 
-.trip-details-arrival > .trip-details-collapsible__header { @apply gap-x-[14px] pl-[26px] }
+.trip-details-arrival > .trip-details-collapsible__header { @apply gap-x-3.5 pl-6.5 }
 
-.trip-details-arrival .trip-details-collapsible__icon { @apply mt-[6px] mb-[3px] }
+.trip-details-arrival__date { @apply mt-2 -ml-1 text-lg/[calc(7/6)] font-normal text-white }
 
-.trip-details-arrival__date {
-  @apply mt-[11px] mb-[3px] -ml-[4px] text-lg/[calc(7/6)] font-normal text-white;
-}
+.trip-details-arrival .trip-details-collapsible__trigger { @apply mt-px }
 
-.trip-details-arrival .trip-details-collapsible__trigger { @apply mt-[8px] mb-[7px] }
-
-.trip-details-arrival > .trip-details-collapsible__content { @apply pt-[32px] pb-[28px] }
+.trip-details-arrival > .trip-details-collapsible__content { @apply pt-8 pb-7 }
 
 .trip-details-arrival__train-number { @apply flex justify-between items-start }
 
-.trip-details-arrival__train-name { @apply flex justify-between items-start mt-[18px] }
+.trip-details-arrival__train-name { @apply flex justify-between items-start mt-4.5 }
 
 .trip-details-arrival__label { @apply text-lg/[calc(7/6)] font-normal text-left text-neutral-200 }
 
@@ -25,17 +21,17 @@
 .trip-details-arrival__train-name > .trip-details-arrival__value { @apply text-base/[calc(18.75/16)] }
 
 .trip-details-arrival__duration {
-  @apply flex flex-col justify-center items-center gap-y-[5px] mt-[44px] after:block after:w-[30px]
-  after:h-[20px] after:ml-[7px] after:bg-center after:bg-no-repeat after:bg-contain
+  @apply flex flex-col justify-center items-center gap-y-1 mt-11 after:block after:w-7.5 after:h-5
+  after:ml-2 after:bg-center after:bg-no-repeat after:bg-contain
   after:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2230%22%20height%3D%2220%22%20viewBox%3D%220%200%2030%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M10.6373%2020C10.6373%2017.8073%2010.6373%2015.3821%2010.6373%2012.8239C17.1379%2012.8239%2023.5342%2012.8239%2030%2012.8239C30%2011.0299%2030%209.36877%2030%207.57475C23.6732%207.57475%2017.2769%207.57475%2010.6721%207.57475C10.6721%204.91694%2010.6721%202.42525%2010.6721%200C7.05678%203.3887%203.47625%206.77741%201.90735e-06%2010.0664C3.44148%2013.2558%207.05678%2016.6445%2010.6373%2020Z%22%20fill%3D%22%23FFA800%22%2F%3E%0A%3C%2Fsvg%3E')];
 }
 
 .trip-details-arrival__duration-value {
-  @apply ml-[9px] text-lg/[calc(7/6)] font-normal text-center text-neutral-200;
+  @apply ml-2.5 text-lg/[calc(7/6)] font-normal text-center text-neutral-200;
 }
 
 .trip-details-arrival__times {
-  @apply flex justify-between items-start -mt-[22px] text-2xl/[calc(7/6)] font-bold text-white;
+  @apply flex justify-between items-start -mt-5.5 text-2xl/[calc(7/6)] font-bold text-white;
 }
 
 .trip-details-arrival__time-from { @apply text-left }
@@ -43,7 +39,7 @@
 .trip-details-arrival__time-to { @apply text-right }
 
 .trip-details-arrival__dates {
-  @apply flex justify-between items-start mt-[3px] text-lg/[calc(7/6)] font-normal text-[#928f94];
+  @apply flex justify-between items-start mt-0.5 text-lg/[calc(7/6)] font-normal text-taupe-gray-3.62;
 }
 
 .trip-details-arrival__date-from { @apply text-left }
@@ -51,7 +47,7 @@
 .trip-details-arrival__date-to { @apply text-right }
 
 .trip-details-arrival__cities {
-  @apply flex justify-between items-start mt-[26px] text-lg/[calc(7/6)] font-normal text-white;
+  @apply flex justify-between items-start mt-6.5 text-lg/[calc(7/6)] font-normal text-white;
 }
 
 .trip-details-arrival__city-from { @apply text-left }
@@ -59,9 +55,9 @@
 .trip-details-arrival__city-to { @apply text-right }
 
 .trip-details-arrival__railway-stations {
-  @apply flex justify-between items-start text-base/[calc(18.75/16)] font-normal text-[#928f94];
+  @apply flex justify-between items-start text-base/[calc(18.75/16)] font-normal text-taupe-gray-3.62;
 }
 
-.trip-details-arrival__railway-station-from { @apply w-[118px] text-left }
+.trip-details-arrival__railway-station-from { @apply w-29.5 text-left }
 
-.trip-details-arrival__railway-station-to { @apply w-[142px] text-right }
+.trip-details-arrival__railway-station-to { @apply w-35.5 text-right }
