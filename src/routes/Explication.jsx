@@ -9,27 +9,35 @@ import { cn } from "../lib/utils";
 import { useEffect, useRef } from "react";
 
 const additionalOptionsInCarriagesItems = [
-  { btnClassName: "text-[#f4f2f6] bg-[#fdb935] border-transparent", className: "top-[1166px]", state: "selected" },
+  {
+    btnClassName: "text-ghost-white-1.94 bg-xanthous border-transparent",
+    className: "top-[1166px]",
+    state: "selected",
+  },
   { btnClassName: "", className: "top-[1253px]", state: "default" },
   {
-    btnClassName: "text-taupe-gray-3.62 bg-[#fcdc9d] border-transparent cursor-default",
+    btnClassName: "text-taupe-gray-3.62 bg-navajo-white-3.53 border-transparent cursor-default",
     className: "top-[1340px]",
     state: "included",
   },
-  { btnClassName: "text-[#292929] bg-[#ffa800] border-[#292929]", className: "top-[1428px]", state: "hover" },
+  {
+    btnClassName: "text-dark-charcoal-3.19 bg-chrome-yellow border-dark-charcoal-3.19",
+    className: "top-[1428px]",
+    state: "hover",
+  },
 ];
 const additionalOptionsInCarriagesTooltipItems = [
-  { className: "top-[1564px] left-[1039px] w-[130px]", text: "кондиционер" },
-  { className: "top-[1564px] left-[1179px] w-[84px]", text: "WI-FI" },
-  { className: "top-[1615px] left-[1039px] w-[84px]", text: "белье" },
-  { className: "top-[1615px] left-[1133px] w-[84px]", text: "питание" },
+  { className: "top-[1564px] left-[1039px] w-32.5", text: "кондиционер" },
+  { className: "top-[1564px] left-[1179px] w-21", text: "WI-FI" },
+  { className: "top-[1615px] left-[1039px] w-21", text: "белье" },
+  { className: "top-[1615px] left-[1133px] w-21", text: "питание" },
 ];
 const buttonItems = {
   change: [
     { className: "left-[1806px]", state: "default" },
     { className: "left-[2252px] text-chrome-yellow shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[#292929] bg-chrome-yellow border-transparent shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
+      className: "left-[2697px] text-dark-charcoal-3.19 bg-chrome-yellow border-transparent shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
       state: "active",
     },
   ],
@@ -85,8 +93,8 @@ const paginationItems = [
 ];
 const selectionFilterCollapsibleTriggerItems = [
   { className: "left-[199px] text-white", icon: PlusSquareIcon, state: "default" },
-  { className: "left-[577px] text-[#fcdc9d]", icon: PlusSquareIcon, state: "hover" },
-  { className: "left-[955px] text-[#c4c4c4]", icon: MinusSquareIcon, state: "active" },
+  { className: "left-[577px] text-navajo-white-3.53", icon: PlusSquareIcon, state: "hover" },
+  { className: "left-[955px] text-silver", icon: MinusSquareIcon, state: "active" },
 ];
 const selectionTrainControlSortByItems = [
   { className: "top-[313px]", optionsClassName: undefined, state: "default" },
@@ -121,7 +129,7 @@ export default function Explication() {
   }, []);
 
   return (
-    <div className="relative w-[5715px] h-[1808px] bg-[#f7f5f9]">
+    <div className="relative w-[5715px] h-[1808px] bg-ghost-white-1.64">
       <div className="absolute top-[310px] left-[92px] w-[1271px] h-[662px] bg-raisin-black" />
       {paginationItems.map((item, index) => (
         <Pagination className={cn("absolute top-[134px]", item.className)} key={index + 1} pageCount={item.pageCount} />
@@ -150,7 +158,7 @@ export default function Explication() {
         const Icon = item.icon;
 
         return (
-          <Icon className={cn("absolute top-[675px] size-[20px] rounded-[5px]", item.className)} key={item.state} />
+          <Icon className={cn("absolute top-[675px] size-5 rounded-5", item.className)} key={item.state} />
         );
       })}
       {buttonItems.choosePlaces.map(item => (
@@ -186,7 +194,7 @@ export default function Explication() {
       ))}
       {additionalOptionsInCarriagesTooltipItems.map(item => (
         <div
-          className={cn("absolute px-[11px] pt-[9px] pb-[7px] text-base/[calc(18/16)] font-normal text-center text-[#292929] bg-[#f5f4f6] rounded-[5px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", item.className)}
+          className={cn("absolute px-[11px] pt-[9px] pb-[7px] text-base/[calc(18/16)] font-normal text-center text-dark-charcoal-3.19 bg-white-smoke-1.3 rounded-5 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", item.className)}
           key={item.text}
         >
           {item.text}
