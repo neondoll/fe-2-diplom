@@ -1,14 +1,12 @@
 .selection-seats-exchange {
-  @apply flex items-start gap-x-2.5 pr-[23px] pl-[18px] data-[variant=arrival]:justify-end
-  data-[variant=arrival]:pt-[39px] data-[variant=arrival]:pb-[28px]
-  data-[variant=departure]:justify-start data-[variant=departure]:pt-[35px]
-  data-[variant=departure]:pb-[32px];
+  @apply flex items-start gap-x-2.5 pt-8.5 pr-5.5 pb-8 pl-4.5 data-[variant=arrival]:justify-end
+  data-[variant=departure]:justify-start;
 }
 
-.selection-seats-exchange__icon { @apply w-[76px] h-[60px] }
+.selection-seats-exchange__icon { @apply w-19 h-15 }
 
 .selection-seats-exchange__btn {
-  @apply flex justify-center items-center w-[325px] h-[60px] px-[31px] py-[14px] text-2xl/[calc(7/6)]
-  font-bold text-center text-[#292929] rounded-[5px] border border-[#292929] transition-all
+  @apply flex justify-center items-center w-81.25 h-15 px-7.5 py-3.5 text-2xl/[calc(7/6)] font-bold
+  text-center text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19 transition-all
   hover:border-2 focus-visible:border-2;
 }

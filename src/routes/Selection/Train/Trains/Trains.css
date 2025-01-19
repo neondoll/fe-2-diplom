@@ -1,8 +1,8 @@
-.trains { @apply space-y-[50px] }
+.trains { @apply space-y-13 }
 
 .trains__item {
-  @apply border border-[#c4c4c4] shadow-[0_2px_2px_0_rgba(0,0,0,0.3)]
-  hover:border-[var(--color-orange)] focus-visible:border-[var(--color-orange)];
+  @apply border border-silver shadow-[0_2px_2px_0_rgba(0,0,0,0.3)] transition-colors
+  hover:border-chrome-yellow focus-visible:border-chrome-yellow;
 }
 
-.trains__item-btn { @apply mt-[18px] ml-auto pt-[5px] pr-[28px] pb-[4px] pl-[23px] }
+.trains__item-btn { @apply mt-4.5 ml-auto }

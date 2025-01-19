@@ -1,11 +1,11 @@
-.selection-seats { @apply flex flex-col pt-[8px] pb-[123px] }
+.selection-seats { @apply flex flex-col pt-1 pb-30.5 }
 
 .selection-seats__title {
-  @apply mb-[56px] -ml-[1px] text-3xl/[calc(7/6)] font-medium uppercase text-[#292929];
+  @apply mb-14 -ml-px text-3xl/[calc(7/6)] font-medium uppercase text-dark-charcoal-3.19;
 }
 
 .selection-seats__container {
-  @apply mb-[29px] bg-white border border-[#c4c4c4] shadow-[0_2px_2px_0_rgba(0,0,0,0.25)];
+  @apply mb-7 bg-white border border-silver shadow-[0_2px_2px_0_rgba(0,0,0,0.25)];
 }
 
 .selection-seats__exchange {}
@@ -14,8 +14,8 @@
 
 .selection-seats__ticket-quantity {}
 
-.selection-seats__wagon-type { @apply border-t border-dashed border-[#c4c4c4] }
+.selection-seats__wagon-type { @apply border-t border-dashed border-silver }
 
-.selection-seats__wagon-details { @apply min-h-[104px] }
+.selection-seats__wagon-details { @apply min-h-26 }
 
-.selection-seats__btn { @apply self-end mt-[73px] }
+.selection-seats__btn { @apply self-end mt-18.5 }

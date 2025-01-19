@@ -1,36 +1,33 @@
 .train-info { @apply flex bg-white }
 
-.train-info__left { @apply flex w-[196px] bg-[#e4e0e9] }
+.train-info__left { @apply flex w-49 bg-magnolia-white }
 
 .train-info__left-container {
-  @apply flex-col gap-y-[17px] w-full py-[32px] pr-[11px] pl-[25px] before:self-center
-  before:size-[86px] before:mr-[40px]
+  @apply flex-col gap-y-4 w-full py-8 pr-3 pl-6 before:self-center before:size-21.5 before:mr-10
   before:bg-[url("data:image/svg+xml,%3Csvg%20width%3D%2286%22%20height%3D%2286%22%20viewBox%3D%220%200%2086%2086%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M55.7879%2063.7038C56.7164%2065.6856%2059.433%2066.369%2059.5361%2069C48.4635%2069%2037.5284%2069%2026.4557%2069C26.6277%2066.4031%2029.2755%2065.6856%2030.2727%2063.7379C29.3786%2063.5329%2028.5534%2063.3962%2027.7625%2063.157C23.8423%2061.9611%2021.057%2058.3392%2021.057%2054.2047C20.9882%2045.389%2020.9882%2036.6416%2021.0226%2027.8601C21.0226%2023.794%2022.9139%2020.7187%2026.7308%2019.3861C29.8257%2018.3269%2033.1268%2017.6777%2036.3936%2017.3701C42.7896%2016.7893%2049.22%2016.7893%2055.5472%2018.1219C57.1634%2018.4636%2058.7452%2019.0444%2060.1895%2019.762C63.2843%2021.2996%2064.9005%2023.9306%2064.9349%2027.3134C65.0037%2036.3683%2065.0381%2045.4232%2064.9349%2054.478C64.9005%2058.6467%2061.8057%2062.2003%2057.748%2063.2254C57.129%2063.4304%2056.4757%2063.5329%2055.7879%2063.7038ZM40.1762%2028.1676C35.5683%2028.1676%2031.0636%2028.1676%2026.6277%2028.1676C26.6277%2032.7463%2026.6277%2037.1884%2026.6277%2041.6304C31.2012%2041.6304%2035.6371%2041.6304%2040.1762%2041.6304C40.1762%2037.12%2040.1762%2032.7122%2040.1762%2028.1676ZM59.433%2028.1676C54.8251%2028.1676%2050.3204%2028.1676%2045.8844%2028.1676C45.8844%2032.7463%2045.8844%2037.1884%2045.8844%2041.6304C50.4579%2041.6304%2054.8939%2041.6304%2059.433%2041.6304C59.433%2037.12%2059.433%2032.7122%2059.433%2028.1676ZM34.743%2054.068C34.7774%2051.8128%2032.8861%2049.9335%2030.6166%2049.9335C28.4158%2049.9335%2026.5589%2051.7103%2026.4901%2053.8972C26.4214%2056.1523%2028.2439%2058.0658%2030.5134%2058.1342C32.8174%2058.1683%2034.7086%2056.3232%2034.743%2054.068ZM59.5017%2053.9997C59.5017%2051.7445%2057.5761%2049.8993%2055.3065%2049.9335C53.1057%2049.9677%2051.2832%2051.7787%2051.2488%2053.9655C51.2144%2056.2207%2053.0713%2058.1%2055.3409%2058.1342C57.6448%2058.1342%2059.5017%2056.2548%2059.5017%2053.9997Z%22%20fill%3D%22white%22%2F%3E%0A%3Ccircle%20cx%3D%2243%22%20cy%3D%2243%22%20r%3D%2242%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%2F%3E%0A%3C%2Fsvg%3E")];
 }
 
-.train-info__left-container .train-short-info__name { @apply mr-[41px] text-center }
+.train-info__left-container .train-short-info__name { @apply mr-10 text-center }
 
-.train-info__left-container .train-short-info__cities { @apply mt-[15px] }
+.train-info__left-container .train-short-info__cities { @apply mt-4 }
 
 .train-info__center { @apply flex-1 }
 
-.train-info__center-container { @apply pt-[53px] pr-[36px] pb-[78px] pl-[39px] }
+.train-info__center-container { @apply pt-13 pr-9 pb-19.5 pl-10 }
 
 .train-info__departure {}
 
 .train-info__departure .train-direction__duration,
-.train-info__arrival .train-direction__duration { @apply mr-[41px] after:ml-[4px] }
+.train-info__arrival .train-direction__duration { @apply mr-10 after:ml-1 }
 
-.train-info__arrival { @apply mt-[46px] }
+.train-info__arrival { @apply mt-11.5 }
 
 .train-info__right { @apply border-l border-neutral-200 }
 
-.train-info__right-container { @apply flex flex-col h-full pt-[36px] pr-[21px] pb-[22px] pl-[26px] }
+.train-info__right-container { @apply flex flex-col h-full pt-9 pr-5 pb-5.5 pl-6.5 }
 
-.train-info__seats { @apply mb-auto space-y-[24px] }
+.train-info__seats { @apply mb-auto space-y-6 }
 
 .train-info__seat {}
 
-.train-info__options {
-  @apply w-[92px] h-[20px] mt-[28px] mr-[6px] mb-auto ml-auto text-xl/none text-[#c4c4c4];
-}
+.train-info__options { @apply w-23 h-5 mt-7 mr-1.5 mb-auto ml-auto text-xl/none text-silver }

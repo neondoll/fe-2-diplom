@@ -1,11 +1,11 @@
-.selection-page { @apply bg-[#f7f5f9] }
+.selection-page { @apply bg-ghost-white-1.64 }
 
 .selection-page__layout-main {}
 
-.selection-page__sidebar { @apply w-full mb-[430px] ml-px }
+.selection-page__sidebar { @apply w-full -mt-px mb-107.5 ml-px }
 
 .selection-page__filter {}
 
 .selection-page__last-tickets { @apply mt-23.5 }
 
-.selection-page__main { @apply flex-1 -mt-1 }
+.selection-page__main {}

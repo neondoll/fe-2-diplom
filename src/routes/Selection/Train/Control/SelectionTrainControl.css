@@ -1,6 +1,6 @@
-.selection-train-control { @apply flex items-baseline gap-x-[50px] }
+.selection-train-control { @apply flex items-baseline gap-x-12.5 }
 
-.selection-train-control__found { @apply text-lg/[calc(7/6)] font-normal text-[#928f94] }
+.selection-train-control__found { @apply text-lg/none font-normal text-taupe-gray-3.62 }
 
 .selection-train-control__sort-by { @apply ml-auto }
 

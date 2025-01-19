@@ -1,4 +1,4 @@
-.header-logo { @apply pt-4.5 pb-2.5 bg-dark-charcoal/60 }
+.header-logo { @apply pt-4.5 pb-2.5 bg-dark-charcoal-3.19/60 }
 
 .header-logo__container { @apply px-11 }
 

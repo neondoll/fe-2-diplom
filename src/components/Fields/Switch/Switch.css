@@ -1,12 +1,14 @@
 .switch {}
 
-.switch.ant-switch { @apply min-w-18 h-5 font-[inherit] text-sm text-dark-charcoal bg-white }
+.switch.ant-switch { @apply min-w-18 h-5 font-[inherit] text-sm text-dark-charcoal-3.19 bg-white }
 
 .switch.ant-switch:hover:not(.ant-switch-disabled) { @apply bg-white/55 }
 
-.switch.ant-switch.ant-switch-checked { @apply bg-navajo-white }
+.switch.ant-switch.ant-switch-checked { @apply bg-navajo-white-3.53 }
 
-.switch.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) { @apply bg-navajo-white/55 }
+.switch.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  @apply bg-navajo-white-3.53/55;
+}
 
 .switch.ant-switch .ant-switch-handle {
   @apply start-0 top-1/2 size-7 -translate-y-1/2 before:bg-silver before:rounded-full

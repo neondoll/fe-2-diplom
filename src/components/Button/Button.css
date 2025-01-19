@@ -5,40 +5,39 @@
 
 .btn--change {
   @apply pt-[4px] pr-[60px] pb-[5px] pl-[58px] font-bold text-[#292929] rounded-[5px] border-[#292929]
-  hover:text-[var(--color-orange)] hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:text-[var(--color-orange)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  active:text-[#292929] active:bg-[var(--color-orange)] active:border-transparent
+  hover:text-chrome-yellow hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:text-chrome-yellow focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  active:text-[#292929] active:bg-chrome-yellow active:border-transparent
   active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
 }
 
 .btn--choose-places {
-  @apply pt-[5px] pr-[28px] pb-[4px] pl-[23px] font-bold text-white bg-[var(--color-orange)]
-  rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
-  active:bg-transparent active:border-[var(--color-orange)] active:shadow-none disabled:bg-[#918f94];
+  @apply w-57 h-9.75 p-1 font-bold text-white bg-chrome-yellow rounded-5 border-transparent
+  hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  active:text-chrome-yellow active:bg-transparent active:border-chrome-yellow active:shadow-none
+  disabled:bg-taupe-gray-3.79;
 }
 
 .btn--confirm {
   @apply pt-[16px] pr-[74px] pb-[14px] pl-[75px] font-bold uppercase text-white
-  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
-  active:bg-transparent active:border-[var(--color-orange)]
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-[#918f94];
+  bg-chrome-yellow rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-chrome-yellow
+  active:bg-transparent active:border-chrome-yellow
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-taupe-gray-3.79;
 }
 
 .btn--find-tickets {
-  @apply w-80.75 h-15 p-3.5 font-bold uppercase text-dark-charcoal bg-chrome-yellow rounded-5
+  @apply w-80.75 h-15 p-3.5 font-bold uppercase text-dark-charcoal-3.19 bg-chrome-yellow rounded-5
   border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
   focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-chrome-yellow active:bg-transparent
   active:border-chrome-yellow active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
 }
 
 .btn--further {
-  @apply pt-[14px] pr-[69px] pb-[16px] pl-[73px] font-bold uppercase text-white
-  bg-[var(--color-orange)] rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-[var(--color-orange)]
-  active:bg-transparent active:border-[var(--color-orange)]
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-[#928f94];
+  @apply w-55.5 h-15 p-3.5 font-bold uppercase text-white bg-chrome-yellow rounded-5 border-transparent
+  hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  active:text-chrome-yellow active:bg-transparent active:border-chrome-yellow
+  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-taupe-gray-3.62;
 }
 
 .btn--learn-more {

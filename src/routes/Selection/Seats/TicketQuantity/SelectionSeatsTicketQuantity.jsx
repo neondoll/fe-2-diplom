@@ -1,3 +1,4 @@
+import Input from "../../../../components/Fields/Input/Input";
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
@@ -51,7 +52,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
                 {field.label + " —"}
                 &nbsp;
               </div>
-              <input
+              <Input
                 className={cn("selection-seats-ticket-quantity__input", field.inputClassName)}
                 name={field.value}
                 type="number"

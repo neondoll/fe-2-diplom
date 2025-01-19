@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import IconTrainOptions from "../../routes/Selection/IconTrainOptions";
 import TrainDirection from "../TrainDirection/TrainDirection";
-import TrainSeat from "./Seat/TrainSeat";
+import TrainSeatPopover from "./SeatPopover/TrainSeatPopover.jsx";
 import TrainShortInfo from "../TrainShortInfo/TrainShortInfo";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
@@ -15,7 +15,7 @@ function TrainInfo({ btn, className, item }) {
           cityFrom={item.departure.city_from}
           cityStart={item.departure.city_start}
           cityTo={item.departure.city_to}
-          className={cn("train-info__left-container", "arrival" in item && "py-[57px]")}
+          className={cn("train-info__left-container", "arrival" in item && "py-14.5")}
           name={item.departure.train_name}
         />
       </div>
@@ -51,43 +51,47 @@ function TrainInfo({ btn, className, item }) {
         <div className="train-info__right-container">
           <div className="train-info__seats">
             {"fourth" in item.departure && (
-              <TrainSeat
+              <TrainSeatPopover
                 bottomPrice={item.departure.fourth.bottom_price}
+                bottomQuantity={item.departure.fourth.bottom_quantity}
                 className="train-info__seat"
                 key="fourth"
-                quantity={item.departure.fourth.quantity}
                 title="Сидячий"
                 topPrice={item.departure.fourth.top_price}
+                topQuantity={item.departure.fourth.top_quantity}
               />
             )}
             {"third" in item.departure && (
-              <TrainSeat
+              <TrainSeatPopover
                 bottomPrice={item.departure.third.bottom_price}
+                bottomQuantity={item.departure.third.bottom_quantity}
                 className="train-info__seat"
                 key="third"
-                quantity={item.departure.third.quantity}
                 title="Плацкарт"
                 topPrice={item.departure.third.top_price}
+                topQuantity={item.departure.third.top_quantity}
               />
             )}
             {"second" in item.departure && (
-              <TrainSeat
+              <TrainSeatPopover
                 bottomPrice={item.departure.second.bottom_price}
+                bottomQuantity={item.departure.second.bottom_quantity}
                 className="train-info__seat"
                 key="second"
-                quantity={item.departure.second.quantity}
                 title="Купе"
                 topPrice={item.departure.second.top_price}
+                topQuantity={item.departure.second.top_quantity}
               />
             )}
             {"first" in item.departure && (
-              <TrainSeat
+              <TrainSeatPopover
                 bottomPrice={item.departure.first.bottom_price}
+                bottomQuantity={item.departure.first.bottom_quantity}
                 className="train-info__seat"
                 key="first"
-                quantity={item.departure.first.quantity}
                 title="Люкс"
                 topPrice={item.departure.first.top_price}
+                topQuantity={item.departure.first.top_quantity}
               />
             )}
           </div>

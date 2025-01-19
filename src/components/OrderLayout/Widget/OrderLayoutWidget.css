@@ -1,6 +1,6 @@
 .order-layout-widget {
-  @apply bg-taupe-gray bg-[url('../../../assets/order-layout-widget-image.png')] bg-center bg-no-repeat
-  bg-cover;
+  @apply bg-taupe-gray-3.62 bg-[url('../../../assets/order-layout-widget-image.png')] bg-center
+  bg-no-repeat bg-cover;
 }
 
 .order-layout-widget__container { @apply pt-67.5 px-px }

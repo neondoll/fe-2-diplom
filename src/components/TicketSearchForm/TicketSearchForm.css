@@ -1,4 +1,4 @@
-.ticket-search-form { @apply pt-7.5 pr-6 pb-13 pl-5 bg-dark-charcoal/80 }
+.ticket-search-form { @apply pt-7.5 pr-6 pb-13 pl-5 bg-dark-charcoal-3.19/80 }
 
 .ticket-search-form__content { @apply flex gap-x-9 gap-y-16 }
 

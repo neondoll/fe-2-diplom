@@ -12,7 +12,7 @@ const additionalOptionsInCarriagesItems = [
   { btnClassName: "text-[#f4f2f6] bg-[#fdb935] border-transparent", className: "top-[1166px]", state: "selected" },
   { btnClassName: "", className: "top-[1253px]", state: "default" },
   {
-    btnClassName: "text-[#928f94] bg-[#fcdc9d] border-transparent cursor-default",
+    btnClassName: "text-taupe-gray-3.62 bg-[#fcdc9d] border-transparent cursor-default",
     className: "top-[1340px]",
     state: "included",
   },
@@ -27,27 +27,27 @@ const additionalOptionsInCarriagesTooltipItems = [
 const buttonItems = {
   change: [
     { className: "left-[1806px]", state: "default" },
-    { className: "left-[2252px] text-[var(--color-orange)] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
+    { className: "left-[2252px] text-chrome-yellow shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[#292929] bg-[var(--color-orange)] border-transparent shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
+      className: "left-[2697px] text-[#292929] bg-chrome-yellow border-transparent shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
       state: "active",
     },
   ],
   choosePlaces: [
-    { className: "left-[1448px] bg-[#918f94] cursor-not-allowed", state: "disabled" },
+    { className: "left-[1448px] bg-taupe-gray-3.79 cursor-not-allowed", state: "disabled" },
     { className: "left-[1806px]", state: "default" },
     { className: "left-[2252px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[var(--color-orange)] bg-transparent border-[var(--color-orange)]",
+      className: "left-[2697px] text-chrome-yellow bg-transparent border-chrome-yellow",
       state: "active",
     },
   ],
   confirm: [
-    { className: "left-[1448px] bg-[#918f94]", state: "disabled" },
+    { className: "left-[1448px] bg-taupe-gray-3.79", state: "disabled" },
     { className: "left-[1806px]", state: "default" },
     { className: "left-[2252px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[var(--color-orange)] bg-transparent border-[var(--color-orange)] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
+      className: "left-[2697px] text-chrome-yellow bg-transparent border-chrome-yellow shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
       state: "active",
     },
   ],
@@ -60,11 +60,11 @@ const buttonItems = {
     },
   ],
   further: [
-    { className: "top-[494px] left-[1448px] bg-[#928F94] cursor-not-allowed", state: "disabled" },
+    { className: "top-[494px] left-[1448px] bg-taupe-gray-3.62 cursor-not-allowed", state: "disabled" },
     { className: "left-[1806px]", state: "default" },
     { className: "left-[2252px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]", state: "hover" },
     {
-      className: "left-[2697px] text-[var(--color-orange)] bg-transparent border-[var(--color-orange)] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
+      className: "left-[2697px] text-chrome-yellow bg-transparent border-chrome-yellow shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]",
       state: "active",
     },
   ],

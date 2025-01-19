@@ -1,26 +1,21 @@
-.pagination { @apply flex items-start space-x-[35px] }
+.pagination { @apply flex items-start space-x-9 }
 
 .pagination__previous,
 .pagination__item,
 .pagination__break,
 .pagination__next {
-  @apply relative text-[#928f94] rounded-[5px] border-2 border-[#c4c4c4] transition-colors
-  hover:text-[var(--color-orange)] hover:border-[var(--color-orange)];
+  @apply relative z-0 flex justify-center items-center w-21 h-18.75 p-4.5 text-taupe-gray-3.62
+  rounded-5 border-2 border-silver transition-colors pointer-events-none
+  has-[:hover]:text-chrome-yellow has-[:hover]:border-chrome-yellow
+  has-[:focus-visible]:text-chrome-yellow has-[:focus-visible]:border-chrome-yellow;
 }
 
-.pagination__previous,
-.pagination__next { @apply px-[31px] pt-[22px] pb-[20px] }
-
-.pagination__previous { @apply pr-[32px] pl-[30px] }
-
-.pagination__link { @apply before:absolute before:inset-0 }
-
-.pagination__item {
-  @apply flex justify-center items-center w-[85px] px-[22px] py-[18px] text-3xl/[calc(7/6)] font-bold;
+.pagination__link {
+  @apply pointer-events-auto focus-visible:outline-none before:absolute before:inset-0 before:-z-1;
 }
 
-.pagination__item.selected { @apply text-white bg-[var(--color-orange)] border-transparent }
+.pagination__item { @apply text-3xl/[calc(7/6)] font-bold }
 
-.pagination__break { @apply pt-[46px] pr-[19px] pb-[16px] pl-[20px] }
+.pagination__item.selected { @apply text-white bg-chrome-yellow border-transparent }
 
-.pagination__next { @apply pr-[30px] pl-[32px] }
+.pagination__break { @apply items-end pb-4 }

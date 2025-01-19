@@ -1,12 +1,12 @@
 .select__trigger {
-  @apply flex justify-between items-center w-full h-[50px] px-[18px] text-lg/none font-normal
-  text-[#292929] bg-white rounded-[5px] border border-[#928f94];
+  @apply flex justify-between items-center w-full h-12.5 px-4.5 text-lg/none font-normal
+  text-dark-charcoal-3.19 bg-white rounded-5 border border-taupe-gray-3.62;
 }
 
-.select__icon { @apply text-[5px] text-[#928f94] }
+.select__icon { @apply text-[5px] text-taupe-gray-3.62 }
 
 .select__content {
-  @apply text-lg/none font-normal text-[#292929] bg-[#f4f3f6] rounded-[5px]
+  @apply text-lg/none font-normal text-dark-charcoal-3.19 bg-anti-flash-white rounded-5
   shadow-[0_2px_2px_0_rgba(0,0,0,0.2)];
 }
 
@@ -15,6 +15,7 @@
 .select__group {}
 
 .select__item {
-  @apply flex justify-start items-center h-[50px] px-[18px] border border-transparent
-  border-t-[#c4c4c4] first:border-t-transparent;
+  @apply flex justify-start items-center h-12.5 px-4.5 border border-transparent border-t-silver
+  transition-colors first:border-t-transparent hover:text-white hover:bg-maximum-yellow-red
+  focus-visible:text-white focus-visible:bg-maximum-yellow-red focus-visible:outline-none;
 }

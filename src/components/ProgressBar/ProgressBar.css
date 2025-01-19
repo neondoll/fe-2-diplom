@@ -1,4 +1,4 @@
-.progress-bar { @apply relative w-full h-2 bg-dark-charcoal }
+.progress-bar { @apply relative w-full h-2 bg-dark-charcoal-3.19 }
 
 .progress-bar__progress {
   @apply absolute block w-1/100 h-full bg-chrome-yellow border-none;

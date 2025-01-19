@@ -13,7 +13,7 @@
 .last-ticket__cities,
 .last-ticket__railway-stations { @apply flex justify-between gap-x-21.5 }
 
-.last-ticket__cities { @apply text-xl/[calc(6/5)] font-normal text-dark-charcoal }
+.last-ticket__cities { @apply text-xl/[calc(6/5)] font-normal text-dark-charcoal-3.19 }
 
 .last-ticket__city-from,
 .last-ticket__railway-station-from { @apply text-left }
@@ -22,7 +22,7 @@
 .last-ticket__railway-station-to { @apply text-right }
 
 .last-ticket__railway-stations {
-  @apply mt-1 text-base/[calc(19/16)] font-normal whitespace-pre-line text-taupe-gray;
+  @apply mt-1 text-base/[calc(19/16)] font-normal whitespace-pre-line text-taupe-gray-3.62;
 }
 
 .last-ticket__railway-station-from,
@@ -32,7 +32,7 @@
 
 .last-ticket__options { @apply w-23 h-5 text-xl/none text-neutral-200 }
 
-.last-ticket__price { @apply flex justify-end items-baseline gap-x-1.5 text-taupe-gray }
+.last-ticket__price { @apply flex justify-end items-baseline gap-x-1.5 text-taupe-gray-3.62 }
 
 .last-ticket__price-prefix { @apply text-base/[calc(19/16)] font-normal }
 

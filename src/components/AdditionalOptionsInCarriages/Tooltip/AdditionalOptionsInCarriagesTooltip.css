@@ -6,5 +6,5 @@
 }
 
 .additional-options-in-carriages-tooltip.react-tooltip {
-  @apply px-[11px] py-[7px] text-base/[calc(18/16)] rounded-[5px];
+  @apply px-2.5 py-1.5 text-base/[calc(18/16)] rounded-5;
 }

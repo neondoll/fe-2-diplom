@@ -1,25 +1,27 @@
 .train-direction { @apply flex justify-between items-start }
 
-.train-direction__from { @apply w-[155px] }
+.train-direction__from { @apply w-38.5 }
+
+.train-direction__to { @apply w-41 }
 
 .train-direction__from-time,
 .train-direction__to-time { @apply block text-2xl/[calc(7/6)] font-bold text-black }
 
 .train-direction__from-city,
-.train-direction__to-city { @apply mt-[1px] text-lg/[calc(7/6)] font-normal text-black }
+.train-direction__to-city { @apply mt-px text-lg/[calc(7/6)] font-normal text-black }
 
 .train-direction__from-railway-station,
-.train-direction__to-railway-station { @apply text-base/[calc(18.75/16)] font-normal text-[#928f94] }
+.train-direction__to-railway-station {
+  @apply text-base/[calc(18.75/16)] font-normal text-taupe-gray-3.62;
+}
 
 .train-direction__duration {
-  @apply self-center mt-[3px] after:block after:w-[30px] after:h-[20px] after:bg-center
-  after:bg-no-repeat after:bg-contain
+  @apply self-center mt-0.5 after:block after:w-7.5 after:h-5 after:bg-center after:bg-no-repeat
+  after:bg-contain
   data-[variant=arrival]:after:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2230%22%20height%3D%2220%22%20viewBox%3D%220%200%2030%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M10.6373%2020C10.6373%2017.8073%2010.6373%2015.3821%2010.6373%2012.8239C17.1379%2012.8239%2023.5342%2012.8239%2030%2012.8239C30%2011.0299%2030%209.36877%2030%207.57475C23.6732%207.57475%2017.2769%207.57475%2010.6721%207.57475C10.6721%204.91694%2010.6721%202.42525%2010.6721%200C7.05678%203.3887%203.47625%206.77741%201.90735e-06%2010.0664C3.44148%2013.2558%207.05678%2016.6445%2010.6373%2020Z%22%20fill%3D%22%23FFA800%22%20fill-opacity%3D%220.79%22%2F%3E%0A%3C%2Fsvg%3E%0A')]
   data-[variant=departure]:after:bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2230%22%20height%3D%2220%22%20viewBox%3D%220%200%2030%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M19.3627%2020C19.3627%2017.8073%2019.3627%2015.3821%2019.3627%2012.8239C12.8621%2012.8239%206.46582%2012.8239%200%2012.8239C0%2011.0299%200%209.36877%200%207.57475C6.32677%207.57475%2012.7231%207.57475%2019.3279%207.57475C19.3279%204.91694%2019.3279%202.42525%2019.3279%200C22.9432%203.3887%2026.5238%206.77741%2030%2010.0664C26.5585%2013.2558%2022.9432%2016.6445%2019.3627%2020Z%22%20fill%3D%22%23FFA800%22%20fill-opacity%3D%220.79%22%2F%3E%0A%3C%2Fsvg%3E')];
 }
 
 .train-direction__duration-value {
-  @apply block mb-[8px] -ml-[1px] text-lg/[calc(7/6)] font-normal text-[#c4c4c4];
+  @apply block mb-2 -ml-px text-lg/[calc(7/6)] font-normal text-silver;
 }
-
-.train-direction__to { @apply w-[164px] }
