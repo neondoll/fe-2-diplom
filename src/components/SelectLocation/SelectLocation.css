@@ -1,0 +1,27 @@
+.select-location {}
+
+.select-location.ant-select { @apply font-[inherit] }
+
+.select-location.ant-select-single { @apply h-15 text-lg/[calc(7/6)] }
+
+.select-location.ant-select-single .ant-select-selector {
+  @apply pr-4.5 pl-5 text-lg/[calc(7/6)] rounded-3;
+}
+
+.select-location.ant-select-outlined .ant-select-selector { @apply border border-transparent }
+
+.select-location.ant-select-outlined:not(.ant-select-disabled):not(.ant-pagination-size-changer):hover .ant-select-selector,
+.select-location.ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(.ant-pagination-size-changer) .ant-select-selector {
+  @apply border-chrome-yellow;
+}
+
+.select-location.ant-select-single.ant-select-show-arrow .ant-select-selection-search,
+.select-location.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  @apply pe-10;
+}
+
+.select-location.ant-select .ant-select-selection-placeholder { @apply text-neutral-200 }
+
+.select-location.ant-select .ant-select-arrow {
+  @apply inset-y-0 end-0 justify-center size-15 mt-0 text-3xl/none text-neutral-200;
+}

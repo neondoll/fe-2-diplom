@@ -1,9 +1,9 @@
+import Api from "../../api";
 import Button from "../Button/Button";
 import CalendarIcon from "../../icons/CalendarIcon";
 import Datepicker from "../Fields/Datepicker/Datepicker";
-import LocationIcon from "../../icons/LocationIcon";
 import Paths from "../../paths";
-import InputSelect from "../Fields/InputSelect/InputSelect";
+import SelectLocation from "../SelectLocation/SelectLocation.jsx";
 import { changeTicketSearchFormInput, selectTicketSearchForm } from "../../slices/ticketSearchForm";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
@@ -14,7 +14,7 @@ import "./TicketSearchForm.css";
 function fetchCities(name) {
   console.log("fetching city", name);
 
-  return fetch(`${import.meta.env.VITE_BACKEND_URL}/routes/cities?name=${name}`)
+  return fetch(Api.cities(name))
     .then(response => response.json())
     .then((data) => {
       console.log(data);
@@ -55,27 +55,23 @@ function TicketSearchForm({ className }) {
       <div className="ticket-search-form__content">
         <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--cities">
           <legend className="ticket-search-form__legend">Направление</legend>
-          <InputSelect
-            className="ticket-search-form__input-select"
-            fetchOptions={fetchCities}
+          <SelectLocation
+            className="ticket-search-form__select-location"
             onChange={(newValue) => {
               handleChange({ cityFrom: newValue });
             }}
             placeholder="Откуда"
-            suffixIcon={<LocationIcon />}
             value={form.cityFrom}
           />
           <button className="ticket-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
             <span className="icon" />
           </button>
-          <InputSelect
-            className="ticket-search-form__input-select"
-            fetchOptions={fetchCities}
+          <SelectLocation
+            className="ticket-search-form__select-location"
             onChange={(newValue) => {
               handleChange({ cityTo: newValue });
             }}
             placeholder="Куда"
-            suffixIcon={<LocationIcon />}
             value={form.cityTo}
           />
         </fieldset>

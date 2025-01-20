@@ -176,6 +176,9 @@ export default function Explication() {
           подтвердить
         </Button>
       ))}
+      <div className="absolute top-[949px] left-[3836.31px] w-[666px] bg-[#FBFBFB] border border-[#C4C4C4] shadow-[0_2px_2px_0_rgba(0,0,0,0.25)]">
+        <div className="pt-[38px] pb-[37px] bg-[#FFF500]/36"></div>
+      </div>
       <div className="absolute top-[1127px] left-[91px]" id="calendar-1" />
       <div className="absolute top-[1127px] left-[528px]" id="calendar-2" />
       {additionalOptionsInCarriagesItems.map(item => (

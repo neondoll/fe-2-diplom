@@ -5,16 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-black: #000000;
-    --color-grey: #928f94;
-    --color-orange: #ffa800;
-    --color-yellow: #ffca62;
-    --color-white: #ffffff;
-    --color-orange-rgb: 255 168 0;
-
-    @apply h-full min-h-screen font-['Roboto'] text-dark-charcoal-3.19;
-  }
+  :root { @apply h-full min-h-screen font-['Roboto'] text-dark-charcoal-3.19 }
 
   .container { @apply max-w-[1492px] mx-auto }
 }

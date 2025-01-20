@@ -10,7 +10,7 @@
 
 .ticket-search-form__legend { @apply w-full mx-2 mb-4.5 text-3xl/none font-light text-white }
 
-.ticket-search-form__input-select,
+.ticket-search-form__select-location,
 .ticket-search-form__datepicker { @apply flex-1 }
 
 .ticket-search-form__btn-replace { @apply flex justify-center items-center size-9 px-1.5 }
