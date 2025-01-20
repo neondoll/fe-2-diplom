@@ -2,15 +2,17 @@
 
 .payment-info__form,
 .payment-info__method,
-.payment-info__personal-data { @apply divide-y divide-[#928F94] divide-dashed }
+.payment-info__personal-data { @apply divide-y divide-taupe-gray-3.62 divide-dashed }
 
-.payment-info__form { @apply bg-white border border-[#c4c4c4] shadow-[0_2px_2px_0_rgba(0,0,0,0.25)] }
+.payment-info__form { @apply bg-white border border-silver shadow-[0_2px_2px_0_rgba(0,0,0,0.25)] }
 
 .payment-info__personal-data {}
 
 .payment-info__method {}
 
-.payment-info__title { @apply p-9 text-3xl/[calc(7/6)] font-normal text-[#292929] bg-[#f9f9f9] }
+.payment-info__title {
+  @apply p-9 text-3xl/[calc(7/6)] font-normal text-dark-charcoal-3.19 bg-white-smoke-0.81;
+}
 
 .payment-info__content { @apply px-8 pt-11.5 pb-20 space-y-10 }
 
@@ -22,33 +24,33 @@
 
 .payment-info__label { @apply block font-normal }
 
-.payment-info__group > .payment-info__label { @apply mb-3 text-base/[calc(18.75/16)] text-[#292929] }
+.payment-info__group > .payment-info__label {
+  @apply mb-3 text-base/[calc(18.75/16)] text-dark-charcoal-3.19;
+}
 
 .payment-info__checkbox-group > .payment-info__label { @apply text-2xl/none }
 
-.payment-info__checkbox[data-state="checked"] + .payment-info__label {
-  @apply text-[var(--color-orange)];
-}
+.payment-info__checkbox[data-state="checked"] + .payment-info__label { @apply text-chrome-yellow }
 
-.payment-info__checkbox[data-state="unchecked"] + .payment-info__label { @apply text-[#928f94] }
+.payment-info__checkbox[data-state="unchecked"] + .payment-info__label { @apply text-taupe-gray-3.62 }
 
 .payment-info__checkbox--payment-method {}
 
 .payment-info__input { @apply text-2xl/none }
 
 .payment-info__input--contact-phone,
-.payment-info__input--email { @apply w-[360px] }
+.payment-info__input--email { @apply w-90 }
 
 .payment-info__input--name,
 .payment-info__input--patronymic,
-.payment-info__input--surname { @apply w-[280px] }
+.payment-info__input--surname { @apply w-70 }
 
 .payment-info__online-methods {
-  @apply grid grid-cols-[repeat(auto-fill,178px)] gap-x-[44px] text-2xl/[calc(7/6)] font-bold
-  text-[#292929];
+  @apply grid grid-cols-[repeat(auto-fill,11.125rem)] gap-x-11 text-2xl/[calc(7/6)] font-bold
+  text-dark-charcoal-3.19;
 }
 
 .payment-info__btn {
   @apply self-end flex justify-center items-center mr-px px-15.5 py-4 text-2xl/[calc(7/6)] font-bold
-  text-center uppercase text-white bg-[var(--color-orange)] rounded-[5px];
+  text-center uppercase text-white bg-chrome-yellow rounded-5;
 }

@@ -1,21 +1,22 @@
-.order-confirmation-page { @apply bg-[#f7f5f9] }
+.order-confirmation-page { @apply bg-ghost-white-1.64 }
 
-.order-confirmation-page__trip-details {}
+.order-confirmation-page__trip-details,
+.order-confirmation-page__info { @apply -mt-px }
 
 .order-confirmation-page__info { @apply flex flex-col pb-45 }
 
 .order-confirmation-page__train,
 .order-confirmation-page__passengers,
 .order-confirmation-page__payment-method {
-  @apply bg-white border border-[#c4c4c4] divide-y divide-[#928f94]
+  @apply bg-white border border-silver divide-y divide-taupe-gray-3.62
   shadow-[0_2px_2px_0_rgba(0,0,0,0.3)];
 }
 
 .order-confirmation-page__passengers,
-.order-confirmation-page__payment-method{ @apply mt-11 }
+.order-confirmation-page__payment-method { @apply mt-11 }
 
 .order-confirmation-page__title {
-  @apply px-7.5 pt-7.5 pb-8 text-3xl/[calc(7/6)] font-normal text-[#292929];
+  @apply px-7.5 pt-7.5 pb-8 text-3xl/[calc(7/6)] font-normal text-dark-charcoal-3.19;
 }
 
 .order-confirmation-page__content {}
@@ -38,7 +39,8 @@
 .order-confirmation-page__payment-method .order-confirmation-page__sidebar { @apply py-5 }
 
 .order-confirmation-page__final-price {
-  @apply flex justify-start items-baseline gap-x-2 mb-7.5 pr-1 text-3xl/[calc(7/6)] text-[#292929];
+  @apply flex justify-start items-baseline gap-x-2 mb-7.5 pr-1 text-3xl/[calc(7/6)]
+  text-dark-charcoal-3.19;
 }
 
 .order-confirmation-page__final-price-prefix { @apply font-normal }
@@ -55,7 +57,7 @@
 .order-confirmation-page__main { @apply flex-1 px-8 pt-11 pb-18 }
 
 .order-confirmation-page__payment-method-value {
-  @apply text-2xl/[calc(7/6)] font-normal text-[#292929];
+  @apply text-2xl/[calc(7/6)] font-normal text-dark-charcoal-3.19;
 }
 
 .order-confirmation-page__btn { @apply mt-31 ml-auto }

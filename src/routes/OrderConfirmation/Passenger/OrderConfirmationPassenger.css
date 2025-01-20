@@ -7,7 +7,7 @@
 .order-confirmation-passenger__icon { @apply text-[4.25rem] }
 
 .order-confirmation-passenger__age,
-.order-confirmation-passenger__full-name { @apply text-[#292929] }
+.order-confirmation-passenger__full-name { @apply text-dark-charcoal-3.19 }
 
 .order-confirmation-passenger__age { @apply text-center }
 
@@ -17,4 +17,4 @@
 
 .order-confirmation-passenger__gender,
 .order-confirmation-passenger__birth-date,
-.order-confirmation-passenger__document { @apply text-[#928F94] }
+.order-confirmation-passenger__document { @apply text-taupe-gray-3.62 }

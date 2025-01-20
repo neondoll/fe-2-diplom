@@ -1,6 +1,6 @@
-.payment-page { @apply bg-[#f7f5f9] }
+.payment-page { @apply bg-ghost-white-1.64 }
 
 .payment-page > .order-layout__container { @apply gap-x-21 }
 
 .payment-page__trip-details,
-.payment-page__payment-info { @apply mt-1 mb-35.5 }
+.payment-page__payment-info { @apply -mt-px mb-35.5 }
