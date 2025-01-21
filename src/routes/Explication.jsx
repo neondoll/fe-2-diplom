@@ -1,6 +1,7 @@
 import AdditionalOptionsInCarriages from "../components/AdditionalOptionsInCarriages/AdditionalOptionsInCarriages";
 import AirDatepicker from "air-datepicker";
 import Button from "../components/Button/Button";
+import Dialog from "../components/Dialog/Dialog";
 import MinusSquareIcon from "../icons/MinusSquareIcon.jsx";
 import Pagination from "../components/Pagination/Pagination";
 import PlusSquareIcon from "../icons/PlusSquareIcon.jsx";
@@ -176,9 +177,40 @@ export default function Explication() {
           подтвердить
         </Button>
       ))}
-      <div className="absolute top-[949px] left-[3836.31px] w-[666px] bg-[#FBFBFB] border border-[#C4C4C4] shadow-[0_2px_2px_0_rgba(0,0,0,0.25)]">
-        <div className="pt-[38px] pb-[37px] bg-[#FFF500]/36"></div>
-      </div>
+      <Dialog
+        contentClassName="absolute top-[278px] left-[3837.69px] translate-x-0 translate-y-0"
+        description={(
+          <>
+            Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
+            существенных финансовых и административных
+          </>
+        )}
+        modal={false}
+        open={true}
+        title={(
+          <>
+            Таким образом консультация с широким активом
+            <br />
+            в значительной степени обуславливает создание модели развития.
+          </>
+        )}
+        type="error"
+      />
+      <Dialog
+        contentClassName="absolute top-[949px] left-[3836.31px] translate-x-0 translate-y-0"
+        description={(
+          <>
+            Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.
+            <br />
+            <br />
+            Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
+            существенных финансовых и административных
+          </>
+        )}
+        modal={false}
+        open={true}
+        type="info"
+      />
       <div className="absolute top-[1127px] left-[91px]" id="calendar-1" />
       <div className="absolute top-[1127px] left-[528px]" id="calendar-2" />
       {additionalOptionsInCarriagesItems.map(item => (

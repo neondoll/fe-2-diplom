@@ -1,0 +1,30 @@
+.dialog__overlay { @apply fixed inset-0 bg-black/70 animate-dialog-overlay-show }
+
+.dialog__content {
+  @apply fixed top-1/2 left-1/2 w-[90vw] max-w-166.5 max-h-[85vh] bg-white border border-silver
+  divide-y divide-taupe-gray-3.62 divide-dashed shadow-[0_2px_2px_0_rgba(0,0,0,0.25)]
+  animate-dialog-content-show -translate-x-1/2 -translate-y-1/2 focus:outline-none;
+}
+
+.dialog__content--error {}
+
+.dialog__content--info { @apply bg-white-0.8 }
+
+.dialog__header { @apply px-9.5 pt-9.5 pb-9 text-[2rem] }
+
+.dialog__content--error > .dialog__header { @apply text-white/73 bg-coquelicot/38 }
+
+.dialog__content--info > .dialog__header { @apply text-magnolia-white bg-cadmium-yellow/36 }
+
+.dialog__body { @apply px-11.5 pt-9 pb-10.5 text-black }
+
+.dialog__title { @apply mb-7.5 text-2xl/[calc(7/6)] font-medium empty:hidden }
+
+.dialog__description { @apply text-lg/[calc(7/6)] font-normal }
+
+.dialog__footer { @apply flex justify-center items-center px-8 pt-8 pb-5 }
+
+.dialog__close {
+  @apply inline-flex justify-center items-center w-58.5 h-13 p-2.5 text-2xl/[calc(7/6)]
+  font-bold text-center text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19;
+}

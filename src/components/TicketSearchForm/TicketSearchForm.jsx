@@ -1,7 +1,7 @@
-import Api from "../../api";
 import Button from "../Button/Button";
 import CalendarIcon from "../../icons/CalendarIcon";
 import Datepicker from "../Fields/Datepicker/Datepicker";
+import Dialog from "../Dialog/Dialog";
 import Paths from "../../paths";
 import SelectLocation from "../SelectLocation/SelectLocation.jsx";
 import { changeTicketSearchFormInput, selectTicketSearchForm } from "../../slices/ticketSearchForm";
@@ -9,28 +9,14 @@ import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./TicketSearchForm.css";
-
-function fetchCities(name) {
-  console.log("fetching city", name);
-
-  return fetch(Api.cities(name))
-    .then(response => response.json())
-    .then((data) => {
-      console.log(data);
-
-      if (Array.isArray(data)) {
-        return data.map(d => ({ value: d.name, label: d.name.toUpperCase() }));
-      }
-
-      return [];
-    });
-}
 
 function TicketSearchForm({ className }) {
   const dispatch = useDispatch();
   const form = useSelector(selectTicketSearchForm);
   const navigate = useNavigate();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleClickCityReplace = (event) => {
     event.preventDefault();
@@ -47,7 +33,12 @@ function TicketSearchForm({ className }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    navigate(Paths.SELECTION_TRAIN);
+    if (form.cityFrom && form.cityTo) {
+      navigate(Paths.SELECTION_TRAIN);
+    }
+    else {
+      setDialogOpen(true);
+    }
   };
 
   return (
@@ -98,6 +89,13 @@ function TicketSearchForm({ className }) {
       <div className="ticket-search-form__footer">
         <Button className="ticket-search-form__btn" type="submit" variant="find-tickets">Найти билеты</Button>
       </div>
+      <Dialog
+        description={`Поля "Откуда" и "Куда" обязательны для заполнения`}
+        onOpenChange={setDialogOpen}
+        open={dialogOpen}
+        title="Информационное сообщение"
+        type="info"
+      />
     </form>
   );
 }

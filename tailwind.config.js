@@ -3,7 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      animation: { "caret-blink": "caret-blink 1.25s ease-out infinite" },
+      animation: {
+        "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "dialog-content-show": "dialog-content-show 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "dialog-overlay-show": "dialog-overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1)",
+      },
       borderRadius: {
         3: "0.1875rem", /* 3px */
         5: "0.3125rem", /* 5px */
@@ -11,6 +15,7 @@ export default {
       borderWidth: { 3: "3px", 5: "5px" },
       colors: {
         "anti-flash-white": "rgb(244 243 246)", // ΔE - 1.64 (#F4F3F6)
+        "cadmium-yellow": "rgb(255 245 0)", // ΔE - 0.27 (#FFF500)
         "chrome-yellow": "rgb(255 168 0)", // ΔE - 0.36 (#FFA800)
         "coquelicot": "rgb(255 61 0)", // ΔE - 0.75 (#FF3D00)
         "dark-charcoal": {
@@ -38,6 +43,10 @@ export default {
           3.79: "rgb(145 143 148)", // ΔE - 3.79 (#918F94)
         },
         "very-light-green": "rgb(178 246 161)", // ΔE - 3.17 (#B2F6A1)
+        "white": {
+          DEFAULT: "rgb(255 255 255)", // ΔE - 0.00 (#FFFFFF)
+          0.8: "rgb(251 251 251)", // ΔE - 0.80 (#FBFBFB)
+        },
         "white-smoke": {
           0.56: "rgb(247 246 246)", // ΔE - 0.56 (#F7F6F6)
           0.62: "rgb(242 242 242)", // ΔE - 0.62 (#F2F2F2)
@@ -82,7 +91,14 @@ export default {
         17: "4.25rem", /* 68px */
         19: "4.75rem", /* 76px */
       },
-      keyframes: { "caret-blink": { "0%,70%,100%": { opacity: "1" }, "20%,50%": { opacity: "0" } } },
+      keyframes: {
+        "caret-blink": { "0%,70%,100%": { opacity: "1" }, "20%,50%": { opacity: "0" } },
+        "dialog-content-show": {
+          from: { opacity: "0", transform: "translate(-50%, -48%) scale(0.96)" },
+          to: { opacity: "1", transform: "translate(-50%, -50%) scale(1)" },
+        },
+        "dialog-overlay-show": { from: { opacity: "0" }, to: { opacity: "1" } },
+      },
       margin: {
         4.5: "1.125rem", /* 18px */
         5.5: "1.375rem", /* 22px */
@@ -108,6 +124,7 @@ export default {
       },
       maxWidth: {
         79: "19.75rem", /* 316px */
+        166.5: "41.625rem", /* 666px */
       },
       minHeight: {
         19.5: "4.875rem", /* 78px */
@@ -117,7 +134,7 @@ export default {
         18: "4.5rem", /* 72px */
         51.5: "12.875rem", /* 206px */
       },
-      opacity: { 36: "0.36", 38: "0.38", 44: "0.44", 76: "0.76", 79: "0.79", 88: "0.88" },
+      opacity: { 36: "0.36", 38: "0.38", 44: "0.44", 73: "0.73", 76: "0.76", 79: "0.79", 88: "0.88" },
       padding: {
         4.5: "1.125rem", /* 18px */
         5.5: "1.375rem", /* 22px */
@@ -193,6 +210,7 @@ export default {
         "51.5": "12.875rem", /* 206px */
         "55.5": "13.875rem", /* 222px */
         "57": "14.25rem", /* 228px */
+        "58.5": "14.625rem", /* 234px */
         "59.5": "14.875rem", /* 238px */
         "62.5": "15.625rem", /* 250px */
         "69": "17.25rem", /* 276px */
