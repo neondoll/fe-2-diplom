@@ -21,7 +21,7 @@ function TicketSearchForm({ className }) {
   const handleClickCityReplace = (event) => {
     event.preventDefault();
 
-    handleChange({ cityFrom: form.cityTo, cityTo: form.cityFrom });
+    handleChange({ from_city: form.to_city, to_city: form.from_city });
   };
   const handleChange = (data) => {
     console.log(data);
@@ -33,7 +33,7 @@ function TicketSearchForm({ className }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (form.cityFrom && form.cityTo) {
+    if (form.from_city && form.to_city) {
       navigate(Paths.SELECTION_TRAIN);
     }
     else {
@@ -49,10 +49,10 @@ function TicketSearchForm({ className }) {
           <SelectLocation
             className="ticket-search-form__select-location"
             onChange={(newValue) => {
-              handleChange({ cityFrom: newValue });
+              handleChange({ from_city: newValue });
             }}
             placeholder="Откуда"
-            value={form.cityFrom}
+            value={form.from_city}
           />
           <button className="ticket-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
             <span className="icon" />
@@ -60,10 +60,10 @@ function TicketSearchForm({ className }) {
           <SelectLocation
             className="ticket-search-form__select-location"
             onChange={(newValue) => {
-              handleChange({ cityTo: newValue });
+              handleChange({ to_city: newValue });
             }}
             placeholder="Куда"
-            value={form.cityTo}
+            value={form.to_city}
           />
         </fieldset>
         <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--dates">

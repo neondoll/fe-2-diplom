@@ -1,0 +1,38 @@
+.loading { @apply flex justify-center items-center z-20 h-193.5 bg-shadow-gray }
+
+.loading__container { @apply w-full max-w-150 pt-4 pb-23.5 }
+
+.loading__text {
+  @apply mb-30 pr-8.5 text-2xl/[calc(7/6)] font-bold text-center uppercase text-taupe-gray-3.62;
+}
+
+.loading__train {
+  @apply w-72 h-4 mx-auto pr-px text-base/none text-maximum-yellow-red;
+  animation: loading-train 2s linear infinite;
+}
+
+.loading__line {
+  @apply w-75 h-0.5 mx-auto mt-2 bg-maximum-yellow-red;
+  animation: loading-line 2s linear infinite;
+}
+
+@keyframes loading-train {
+  0% {
+    @apply ml-0 opacity-0;
+    transform: scale(0.5);
+  }
+  47%, 53% {
+    @apply ml-39 opacity-100;
+    transform: scale(1);
+  }
+  100% {
+    @apply ml-78 opacity-0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes loading-line {
+  0% { @apply w-2.5 mr-0 opacity-0 }
+  47%, 53% { @apply w-75 mr-37.5 opacity-100 }
+  100% { @apply w-2.5 mr-150 opacity-0 }
+}

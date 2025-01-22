@@ -1,3 +1,6 @@
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export default {
-  cities: name => `${import.meta.env.VITE_BACKEND_URL}/routes/cities?name=${name}`,
+  CITIES: `${backendUrl}/routes/cities`,
+  ROUTES: `${backendUrl}/routes`,
 };

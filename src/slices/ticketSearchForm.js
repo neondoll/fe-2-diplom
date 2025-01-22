@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { cityFrom: undefined, cityTo: undefined, dateStart: undefined, dateEnd: undefined };
+const initialState = { from_city: undefined, to_city: undefined, dateStart: undefined, dateEnd: undefined };
 
 const ticketSearchFormSlice = createSlice({
   name: "ticketSearchForm",

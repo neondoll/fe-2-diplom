@@ -2,6 +2,8 @@ import Pagination from "../../../components/Pagination/Pagination";
 import SelectionTrainControl from "./Control/SelectionTrainControl";
 import Trains from "./Trains/Trains";
 import { cn } from "../../../lib/utils";
+// import { selectRoutes } from "../../../slices/routes";
+// import { useSelector } from "react-redux";
 import { useOutletContext } from "react-router-dom";
 import "./SelectionTrain.css";
 
@@ -102,6 +104,7 @@ const trains = [
 
 export default function SelectionTrain() {
   const { className } = useOutletContext();
+  // const { error, items, loading } = useSelector(selectRoutes);
 
   return (
     <div className={cn("selection-train-page", className)}>

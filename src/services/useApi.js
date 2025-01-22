@@ -1,8 +1,9 @@
+import { getResponseError } from "../lib/utils";
 import { useEffect, useState } from "react";
 
-const useApi = (url, initialData = undefined) => {
+const useApi = (url, initialData = null) => {
   const [data, setData] = useState(initialData);
-  const [error, setError] = useState(undefined);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const useApi = (url, initialData = undefined) => {
       })
       .catch((error) => {
         if (inProgress) {
-          setError(error.message);
+          setError(getResponseError(error));
           setLoading(false);
         }
       });

@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import "./SelectLocation.css";
 import PropTypes from "prop-types";
 
-function SelectLocation({ className, value, ...props }) {
+function SelectLocation({ className, onChange, value, ...props }) {
   const [name, setName] = useState("");
-  const { data } = useApi(Api.cities(name), []);
+  const { data } = useApi(`${Api.CITIES}?name=${name}`, []);
 
   useEffect(() => {
     if (value) {
-      setName(value);
+      setName(value.name);
     }
   }, [value]);
 
@@ -25,20 +25,29 @@ function SelectLocation({ className, value, ...props }) {
 
     return [];
   };
+  const handleChange = (value) => {
+    onChange(data.find(item => item.name === value));
+  };
 
   return (
     <Select
       className={cn("select-location", className)}
+      onChange={handleChange}
       onSearch={setName}
       options={options(data)}
       showSearch
       suffixIcon={<LocationIcon />}
-      value={value}
+      value={value?.name}
       {...props}
     />
   );
 }
 
-SelectLocation.propTypes = { className: classNameType, value: PropTypes.any };
+SelectLocation.propTypes = {
+  className: classNameType,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.node,
+  value: PropTypes.shape({ _id: PropTypes.string, name: PropTypes.string }),
+};
 
 export default SelectLocation;
