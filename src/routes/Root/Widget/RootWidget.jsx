@@ -1,5 +1,5 @@
 import ProgressBar from "../../../components/ProgressBar/ProgressBar";
-import TicketSearchForm from "../../../components/TicketSearchForm/TicketSearchForm";
+import RoutesSearchForm from "../../../components/RoutesSearchForm/RoutesSearchForm.jsx";
 import { classNameType } from "../../../types/base";
 import { cn } from "../../../lib/utils";
 import "./RootWidget.css";
@@ -12,7 +12,7 @@ function RootWidget({ className }) {
           {"Вся жизнь -\n"}
           <span className="font-bold">путешествие!</span>
         </h1>
-        <TicketSearchForm className="root-widget__search" />
+        <RoutesSearchForm className="root-widget__search" />
       </div>
       <ProgressBar className="root-widget__progress-bar" />
     </div>

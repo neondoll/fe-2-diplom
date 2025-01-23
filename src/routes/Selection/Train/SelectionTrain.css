@@ -4,4 +4,4 @@
 
 .selection-train-page__trains { @apply mt-9.5 }
 
-.selection-train-page__pagination { @apply justify-end mt-37 }
+.selection-train-page__pagination { @apply justify-end mt-37 -ml-21 }

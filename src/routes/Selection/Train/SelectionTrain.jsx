@@ -2,8 +2,10 @@ import Pagination from "../../../components/Pagination/Pagination";
 import SelectionTrainControl from "./Control/SelectionTrainControl";
 import Trains from "./Trains/Trains";
 import { cn } from "../../../lib/utils";
-// import { selectRoutes } from "../../../slices/routes";
-// import { useSelector } from "react-redux";
+import { fetchRoutes, selectRoutes } from "../../../slices/routes";
+import { selectRoutesSearchForm } from "../../../slices/routesSearchForm";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import "./SelectionTrain.css";
 
@@ -103,14 +105,33 @@ const trains = [
 ];
 
 export default function SelectionTrain() {
-  const { className } = useOutletContext();
-  // const { error, items, loading } = useSelector(selectRoutes);
+  const dispatch = useDispatch();
+  const routesSearchForm = useSelector(selectRoutesSearchForm);
+  const { className, setLoading } = useOutletContext();
+  const { data, loading } = useSelector(selectRoutes);
+
+  useEffect(() => {
+    dispatch(fetchRoutes({
+      from_city_id: routesSearchForm.from_city?._id,
+      to_city_id: routesSearchForm.to_city?._id,
+    }));
+  }, [dispatch, routesSearchForm.from_city?._id, routesSearchForm.to_city?._id]);
+  useEffect(() => {
+    console.log("setLoading in SelectionTrain", loading);
+    setLoading(loading);
+  }, [loading, setLoading]);
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <div className={cn("selection-train-page", className)}>
       <SelectionTrainControl className="selection-train-page__control" />
       <Trains className="selection-train-page__trains" items={trains} />
-      <Pagination className="selection-train-page__pagination" pageCount={3} />
+      {data?.total_count && (
+        <Pagination className="selection-train-page__pagination" pageCount={Math.ceil(data.total_count / 5)} />
+      )}
     </div>
   );
 }

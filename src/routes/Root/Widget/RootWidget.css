@@ -11,10 +11,10 @@
 
 .root-widget__search { @apply mt-px mr-px -ml-0.5 }
 
-.root-widget__search.ticket-search-form { @apply pt-20.5 pr-6 pb-13 pl-5 }
+.root-widget__search.routes-search-form { @apply pt-20.5 pr-6 pb-13 pl-5 }
 
-.root-widget__search > .ticket-search-form__content { @apply flex-col gap-y-16 }
+.root-widget__search > .routes-search-form__content { @apply flex-col gap-y-16 }
 
-.root-widget__search .ticket-search-form__fieldset--dates { @apply gap-x-10 }
+.root-widget__search .routes-search-form__fieldset--dates { @apply gap-x-10 }
 
-.root-widget__search > .ticket-search-form__footer { @apply mt-23 }
+.root-widget__search > .routes-search-form__footer { @apply mt-23 }

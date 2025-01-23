@@ -3,18 +3,18 @@ import CalendarIcon from "../../icons/CalendarIcon";
 import Datepicker from "../Fields/Datepicker/Datepicker";
 import Dialog from "../Dialog/Dialog";
 import Paths from "../../paths";
-import SelectLocation from "../SelectLocation/SelectLocation.jsx";
-import { changeTicketSearchFormInput, selectTicketSearchForm } from "../../slices/ticketSearchForm";
+import SelectLocation from "../SelectLocation/SelectLocation";
+import { changeRoutesSearchFormInput, selectRoutesSearchForm } from "../../slices/routesSearchForm";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./TicketSearchForm.css";
+import "./RoutesSearchForm.css";
 
-function TicketSearchForm({ className }) {
+function RoutesSearchForm({ className }) {
   const dispatch = useDispatch();
-  const form = useSelector(selectTicketSearchForm);
+  const form = useSelector(selectRoutesSearchForm);
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -27,7 +27,7 @@ function TicketSearchForm({ className }) {
     console.log(data);
 
     Object.entries(data).forEach(([name, value]) => {
-      dispatch(changeTicketSearchFormInput({ name, value }));
+      dispatch(changeRoutesSearchFormInput({ name, value }));
     });
   };
   const handleSubmit = (event) => {
@@ -42,23 +42,23 @@ function TicketSearchForm({ className }) {
   };
 
   return (
-    <form className={cn("ticket-search-form", className)} onSubmit={handleSubmit}>
-      <div className="ticket-search-form__content">
-        <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--cities">
-          <legend className="ticket-search-form__legend">Направление</legend>
+    <form className={cn("routes-search-form", className)} onSubmit={handleSubmit}>
+      <div className="routes-search-form__content">
+        <fieldset className="routes-search-form__fieldset routes-search-form__fieldset--cities">
+          <legend className="routes-search-form__legend">Направление</legend>
           <SelectLocation
-            className="ticket-search-form__select-location"
+            className="routes-search-form__select-location"
             onChange={(newValue) => {
               handleChange({ from_city: newValue });
             }}
             placeholder="Откуда"
             value={form.from_city}
           />
-          <button className="ticket-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
+          <button className="routes-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
             <span className="icon" />
           </button>
           <SelectLocation
-            className="ticket-search-form__select-location"
+            className="routes-search-form__select-location"
             onChange={(newValue) => {
               handleChange({ to_city: newValue });
             }}
@@ -66,10 +66,10 @@ function TicketSearchForm({ className }) {
             value={form.to_city}
           />
         </fieldset>
-        <fieldset className="ticket-search-form__fieldset ticket-search-form__fieldset--dates">
-          <legend className="ticket-search-form__legend">Дата</legend>
+        <fieldset className="routes-search-form__fieldset routes-search-form__fieldset--dates">
+          <legend className="routes-search-form__legend">Дата</legend>
           <Datepicker
-            className="ticket-search-form__datepicker"
+            className="routes-search-form__datepicker"
             onChange={(newValue) => {
               handleChange({ dateStart: newValue });
             }}
@@ -77,7 +77,7 @@ function TicketSearchForm({ className }) {
             suffixIcon={<CalendarIcon />}
           />
           <Datepicker
-            className="ticket-search-form__datepicker"
+            className="routes-search-form__datepicker"
             onChange={(newValue) => {
               handleChange({ dateEnd: newValue });
             }}
@@ -86,8 +86,8 @@ function TicketSearchForm({ className }) {
           />
         </fieldset>
       </div>
-      <div className="ticket-search-form__footer">
-        <Button className="ticket-search-form__btn" type="submit" variant="find-tickets">Найти билеты</Button>
+      <div className="routes-search-form__footer">
+        <Button className="routes-search-form__btn" type="submit" variant="find-tickets">Найти билеты</Button>
       </div>
       <Dialog
         description={`Поля "Откуда" и "Куда" обязательны для заполнения`}
@@ -100,6 +100,6 @@ function TicketSearchForm({ className }) {
   );
 }
 
-TicketSearchForm.propTypes = { className: classNameType };
+RoutesSearchForm.propTypes = { className: classNameType };
 
-export default TicketSearchForm;
+export default RoutesSearchForm;
