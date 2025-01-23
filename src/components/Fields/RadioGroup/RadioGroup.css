@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .radio-group {
   @apply flex justify-stretch items-stretch w-full h-12.5 text-3xl/none font-black text-black bg-white
   rounded-5 border border-taupe-gray-3.62 divide-x divide-taupe-gray-3.62;

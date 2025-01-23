@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .train-short-info { @apply flex before:block before:bg-center before:bg-no-repeat before:bg-contain }
 
 .train-short-info__content { @apply text-left }

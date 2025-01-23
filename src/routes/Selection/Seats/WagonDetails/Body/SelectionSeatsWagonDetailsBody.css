@@ -1,3 +1,5 @@
+@reference "../../../../../index.css";
+
 .selection-seats-wagon-details-body { @apply flex }
 
 .selection-seats-wagon-details-body__number {

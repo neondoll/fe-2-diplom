@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .select__trigger {
   @apply flex justify-between items-center w-full h-12.5 px-4.5 text-lg/none font-normal
   text-dark-charcoal-3.19 bg-white rounded-5 border border-taupe-gray-3.62;
@@ -17,5 +19,5 @@
 .select__item {
   @apply flex justify-start items-center h-12.5 px-4.5 border border-transparent border-t-silver
   transition-colors first:border-t-transparent hover:text-white hover:bg-maximum-yellow-red
-  focus-visible:text-white focus-visible:bg-maximum-yellow-red focus-visible:outline-none;
+  focus-visible:text-white focus-visible:bg-maximum-yellow-red focus-visible:outline-hidden;
 }

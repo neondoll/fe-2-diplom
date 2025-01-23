@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .selection-train-page { @apply -mt-2.5 pb-48.5 }
 
 .selection-train-page__control {}

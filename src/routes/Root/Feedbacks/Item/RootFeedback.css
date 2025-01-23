@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .root-feedback { @apply flex gap-x-8.5 w-full pt-px }
 
 .root-feedback__img { @apply self-center -mt-px rounded-full }

@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .passenger { @apply relative }
 
 .passenger__trigger {

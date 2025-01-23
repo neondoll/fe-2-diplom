@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .selection-filter { @apply bg-shadow-gray divide-y divide-neutral-200 }
 
 .selection-filter__dates {}

@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .footer-copyright { @apply pt-5 pb-8 }
 
 .footer-copyright__container { @apply flex justify-between items-center pr-12 pl-9.5 }

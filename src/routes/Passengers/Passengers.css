@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .passengers-page { @apply bg-ghost-white-1.94 }
 
 .passengers-page > .order-layout__container { @apply gap-x-21 }

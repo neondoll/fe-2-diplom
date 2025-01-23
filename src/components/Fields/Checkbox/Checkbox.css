@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .checkbox {
   @apply flex justify-center items-center size-7 text-lg/none font-normal bg-white rounded-5 border
   transition-colors data-[state=checked]:text-chrome-yellow data-[state=checked]:border-chrome-yellow

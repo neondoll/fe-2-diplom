@@ -1,7 +1,9 @@
+@reference "../../index.css";
+
 .progress-bar { @apply relative w-full h-2 bg-dark-charcoal-3.19 }
 
 .progress-bar__progress {
-  @apply absolute block w-1/100 h-full bg-chrome-yellow border-none;
+  @apply absolute block w-[1%] h-full bg-chrome-yellow border-none;
   animation-timing-function: ease-in;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -15,6 +17,6 @@
 .progress-bar__progress::-webkit-progress-value { @apply bg-chrome-yellow }
 
 @keyframes progress {
-  from { @apply w-0 }
-  to { @apply w-full }
+  from { width: 0; }
+  to { width: 100%; }
 }

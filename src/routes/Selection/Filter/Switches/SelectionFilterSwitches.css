@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-filter-switches { @apply pt-6.5 pr-8.5 pb-5 pl-16 }
 
 .selection-filter-switches__list { @apply space-y-7.5 }

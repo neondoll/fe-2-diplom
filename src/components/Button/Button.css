@@ -1,6 +1,8 @@
+@reference "../../index.css";
+
 .btn {
   @apply inline-flex justify-center items-center text-2xl/[calc(7/6)] text-center border transition
-  focus-visible:outline-none disabled:cursor-not-allowed disabled:pointer-events-none;
+  focus-visible:outline-hidden disabled:cursor-not-allowed disabled:pointer-events-none;
 }
 
 .btn--change {

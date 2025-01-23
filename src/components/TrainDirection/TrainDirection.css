@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .train-direction { @apply flex justify-between items-start }
 
 .train-direction__from { @apply w-38.5 }

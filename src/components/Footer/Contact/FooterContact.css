@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .footer-contact { @apply flex-initial px-31.5 pt-12.5 pb-12 }
 
 .footer-contact__title { @apply text-3xl/[calc(7/6)] font-medium text-white }

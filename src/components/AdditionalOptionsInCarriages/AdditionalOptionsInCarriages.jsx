@@ -31,7 +31,7 @@ const items = [
       </svg>
     ),
     text: "кондиционер",
-    tooltipClassName: "!min-w-[130px]",
+    tooltipClassName: "min-w-[130px]!",
     value: "airConditioner",
   },
   {
@@ -56,7 +56,7 @@ const items = [
       </svg>
     ),
     text: "WI-FI",
-    tooltipClassName: "!min-w-[84px]",
+    tooltipClassName: "min-w-[84px]!",
     value: "wifi",
   },
   {
@@ -69,7 +69,7 @@ const items = [
       </svg>
     ),
     text: "белье",
-    tooltipClassName: "!min-w-[84px]",
+    tooltipClassName: "min-w-[84px]!",
     value: "linen",
   },
   {
@@ -93,7 +93,7 @@ const items = [
       </svg>
     ),
     text: "питание",
-    tooltipClassName: "!min-w-[84px]",
+    tooltipClassName: "min-w-[84px]!",
     value: "nutrition",
   },
 ];

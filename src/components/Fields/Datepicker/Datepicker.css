@@ -1,5 +1,7 @@
 @import "air-datepicker/air-datepicker.css";
 
+@reference "../../../index.css";
+
 .datepicker { @apply relative h-12.5 }
 
 .datepicker__input { @apply h-full }

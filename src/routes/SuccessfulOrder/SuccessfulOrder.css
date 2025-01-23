@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .successful-order-page {
   @apply bg-ghost-white-1.64 bg-[url('../../assets/successful-order-image.png')] bg-top bg-no-repeat
   bg-contain;

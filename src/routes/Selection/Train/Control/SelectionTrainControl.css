@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-train-control { @apply flex items-baseline gap-x-12.5 }
 
 .selection-train-control__found { @apply text-lg/none font-normal text-taupe-gray-3.62 }

@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .order-layout-widget {
   @apply bg-taupe-gray-3.62 bg-[url('../../../assets/order-layout-widget-image.png')] bg-center
   bg-no-repeat bg-cover;

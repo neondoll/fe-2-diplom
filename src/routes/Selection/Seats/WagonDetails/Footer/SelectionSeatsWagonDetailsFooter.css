@@ -1,3 +1,5 @@
+@reference "../../../../../index.css";
+
 .selection-seats-wagon-details-footer { @apply flex justify-end items-center min-h-19.5 px-9.5 py-6 }
 
 .selection-seats-wagon-details-footer__final-price {

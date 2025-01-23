@@ -1,3 +1,5 @@
+@reference "../../../../../index.css";
+
 .selection-train-control-show-by {
   @apply flex justify-start items-baseline text-lg/none font-normal text-taupe-gray-3.62;
 }

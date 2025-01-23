@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .pagination { @apply flex items-start space-x-9 }
 
 .pagination__previous,
@@ -11,7 +13,7 @@
 }
 
 .pagination__link {
-  @apply pointer-events-auto focus-visible:outline-none before:absolute before:inset-0 before:-z-1;
+  @apply pointer-events-auto focus-visible:outline-hidden before:absolute before:inset-0 before:-z-1;
 }
 
 .pagination__item { @apply text-3xl/[calc(7/6)] font-bold }

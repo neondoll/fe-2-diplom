@@ -1,3 +1,5 @@
+@reference "../../../../../index.css";
+
 .selection-train-control-sort-by {
   @apply flex justify-start items-baseline text-lg/none font-normal
 }

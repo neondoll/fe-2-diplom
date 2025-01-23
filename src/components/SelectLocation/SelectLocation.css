@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .select-location {}
 
 .select-location.ant-select { @apply font-[inherit] }

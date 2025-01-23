@@ -1,5 +1,7 @@
 @import "react-tooltip/dist/react-tooltip.css";
 
+@reference "../../../index.css";
+
 .additional-options-in-carriages-tooltip {
   @apply [--rt-color-dark:#292929] [--rt-color-white:#f5f4f6] font-normal text-center
   shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];

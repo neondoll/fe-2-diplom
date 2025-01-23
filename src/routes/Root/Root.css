@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .root-page { @apply bg-white }
 
 .root-page .header-logo { @apply bg-black/60 }

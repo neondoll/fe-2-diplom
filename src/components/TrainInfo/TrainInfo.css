@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .train-info { @apply flex bg-white }
 
 .train-info__left { @apply flex w-49 bg-magnolia-white }

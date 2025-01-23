@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .trains { @apply space-y-13 }
 
 .trains__item {

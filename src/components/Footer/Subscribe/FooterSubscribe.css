@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .footer-subscribe { @apply flex-1 mx-px px-29 py-13 }
 
 .footer-subscribe__title { @apply text-3xl/[calc(7/6)] font-medium text-white }

@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .header-nav { @apply pt-7.5 pb-8.5 bg-dark-charcoal-3.19 }
 
 .header-nav__container { @apply px-11 }

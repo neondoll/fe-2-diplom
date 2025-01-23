@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-seats-train {
   @apply flex justify-stretch items-stretch h-31 py-4 bg-white-smoke-0.56 divide-x divide-white;
 }

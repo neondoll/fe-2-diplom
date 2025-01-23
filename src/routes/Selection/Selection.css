@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .selection-page { @apply bg-ghost-white-1.64 }
 
 .selection-page__layout-main {}

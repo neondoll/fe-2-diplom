@@ -1,5 +1,7 @@
 @import "@smastrom/react-rating/style.css";
 
+@reference "../../../index.css";
+
 .successful-order-card { @apply bg-white border border-silver shadow-[0_2px_2px_0_rgba(0,0,0,0.25)] }
 
 .successful-order-card__header {

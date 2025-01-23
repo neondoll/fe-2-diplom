@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-seats-exchange {
   @apply flex items-start gap-x-2.5 pt-8.5 pr-5.5 pb-8 pl-4.5 data-[variant=arrival]:justify-end
   data-[variant=departure]:justify-start;

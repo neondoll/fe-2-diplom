@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .payment-info { @apply flex flex-col gap-y-29 }
 
 .payment-info__form,

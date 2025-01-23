@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-filter-dates { @apply pt-10.5 pr-9 pb-8 pl-7 space-y-6.5 }
 
 .selection-filter-dates__group { @apply space-y-3 }

@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .last-tickets {}
 
 .last-tickets__title { @apply text-3xl/[calc(7/6)] font-medium uppercase text-black }

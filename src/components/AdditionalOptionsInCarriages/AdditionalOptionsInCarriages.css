@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .additional-options-in-carriages {}
 
 .additional-options-in-carriages__list { @apply flex gap-x-3.5 }

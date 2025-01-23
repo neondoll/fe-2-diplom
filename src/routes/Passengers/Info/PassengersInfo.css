@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .passengers-info { @apply flex flex-col }
 
 .passengers-info__list { @apply flex flex-col gap-y-7.5 }

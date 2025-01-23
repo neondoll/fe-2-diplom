@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .selection-seats { @apply flex flex-col pt-1 pb-30.5 }
 
 .selection-seats__title {

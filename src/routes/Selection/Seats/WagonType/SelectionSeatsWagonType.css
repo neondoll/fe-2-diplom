@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-seats-wagon-type { @apply pt-6.5 }
 
 .selection-seats-wagon-type__title {

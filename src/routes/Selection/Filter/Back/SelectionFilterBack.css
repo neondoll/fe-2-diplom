@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-filter-back { @apply flex items-center }
 
 .selection-filter-back__collapsible { @apply flex-1 }
