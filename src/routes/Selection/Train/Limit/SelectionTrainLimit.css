@@ -1,0 +1,17 @@
+@reference "../../../../index.css";
+
+.selection-train-limit {
+  @apply flex justify-start items-baseline text-lg/none font-normal text-taupe-gray-3.62;
+}
+
+.selection-train-limit__prefix {}
+
+.selection-train-limit__radio-group { @apply flex }
+
+.selection-train-limit__item { @apply transition-colors data-[checked=true]:text-shadow-gray }
+
+.selection-train-limit__input { @apply hidden }
+
+.selection-train-limit__label {
+  @apply flex justify-center items-center h-10 pr-0.5 pl-2 cursor-pointer;
+}

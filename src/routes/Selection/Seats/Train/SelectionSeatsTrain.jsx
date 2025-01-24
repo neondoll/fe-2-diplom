@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import TrainDirection from "../../../../components/TrainDirection/TrainDirection";
-import TrainShortInfo from "../../../../components/TrainShortInfo/TrainShortInfo";
+import RouteBaseInfo from "../../../../components/RouteBaseInfo/RouteBaseInfo";
+import RouteDirection from "../../../../components/RouteDirection/RouteDirection";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import { formatDuration } from "date-fns";
@@ -10,14 +10,14 @@ import "./SelectionSeatsTrain.css";
 function SelectionSeatsTrain({ className, variant }) {
   return (
     <div className={cn("selection-seats-train", className)}>
-      <TrainShortInfo
+      <RouteBaseInfo
         cityFrom="Москва"
         cityStart="Адлер"
         cityTo="Санкт-Петербург"
         className="selection-seats-train__info"
         name="116С&nbsp;"
       />
-      <TrainDirection
+      <RouteDirection
         className="selection-seats-train__direction"
         fromCity="Москва"
         fromRailwayStation="Курский вокзал"

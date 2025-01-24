@@ -1,13 +1,13 @@
 import orderReducer from "../slices/order";
 import routesReducer from "../slices/routes";
-import routesSearchFormReducer from "../slices/routesSearchForm";
+import routesSearchReducer from "../slices/routesSearch";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
   reducer: {
     order: orderReducer,
     routes: routesReducer,
-    routesSearchForm: routesSearchFormReducer,
+    routesSearch: routesSearchReducer,
   },
 });
 

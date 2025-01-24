@@ -5,7 +5,7 @@ import Dialog from "../components/Dialog/Dialog";
 import MinusSquareIcon from "../icons/MinusSquareIcon.jsx";
 import Pagination from "../components/Pagination/Pagination";
 import PlusSquareIcon from "../icons/PlusSquareIcon.jsx";
-import SelectionTrainControlSortBy from "./Selection/Train/Control/SortBy/SelectionTrainControlSortBy";
+import SelectionTrainSort from "./Selection/Train/Sort/SelectionTrainSort.jsx";
 import { cn } from "../lib/utils";
 import { useEffect, useRef } from "react";
 
@@ -221,7 +221,7 @@ export default function Explication() {
         />
       ))}
       {selectionTrainControlSortByItems.map(item => (
-        <SelectionTrainControlSortBy
+        <SelectionTrainSort
           className={cn("absolute left-[3194px]", item.className)}
           key={item.state}
           optionsClassName={item.optionsClassName}

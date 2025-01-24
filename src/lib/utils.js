@@ -1,6 +1,10 @@
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
+export function capitalizeFirstLetter(value) {
+  return String(value).charAt(0).toUpperCase() + String(value).slice(1);
+}
+
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }

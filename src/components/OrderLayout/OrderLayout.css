@@ -9,5 +9,5 @@
 .order-layout__progress-line {}
 
 .order-layout__container {
-  @apply grid grid-cols-[360px_1fr] items-start gap-x-21.5 pt-24 pr-10.5 pl-11;
+  @apply grid grid-cols-[360px_1fr] items-start gap-x-21.5 pt-24 pr-10.5 pl-11 empty:hidden;
 }

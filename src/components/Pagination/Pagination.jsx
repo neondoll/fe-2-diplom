@@ -6,14 +6,7 @@ import ReactPaginate from "react-paginate";
 import { cn } from "../../lib/utils";
 import "./Pagination.css";
 
-function Pagination({ className, pageCount }) {
-  const handleClick = (clickEvent) => {
-    console.log(clickEvent);
-  };
-  const handlePageChange = (selectedItem) => {
-    console.log(selectedItem);
-  };
-
+function Pagination({ className, ...props }) {
   return (
     <ReactPaginate
       breakClassName="pagination__break"
@@ -25,21 +18,22 @@ function Pagination({ className, pageCount }) {
       nextLabel={<NextIcon />}
       nextLinkClassName="pagination__link"
       pageClassName="pagination__item"
-      pageCount={pageCount}
       pageLinkClassName="pagination__link"
       pageRangeDisplayed={3}
       previousClassName="pagination__previous"
       previousLabel={<PreviousIcon />}
       previousLinkClassName="pagination__link"
       renderOnZeroPageCount={null}
-      onClick={handleClick}
-      onPageChange={handlePageChange}
+      {...props}
     />
   );
 }
 
 Pagination.propTypes = {
   className: PropTypes.string,
+  forcePage: PropTypes.number,
+  onClick: PropTypes.func,
+  onPageChange: PropTypes.func,
   pageCount: PropTypes.number.isRequired,
 };
 

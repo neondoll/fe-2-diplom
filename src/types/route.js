@@ -1,0 +1,49 @@
+import PropTypes from "prop-types";
+
+export const routeDirectionAvailableSeatsInfoClassType = PropTypes.number;
+export const routeDirectionDurationType = PropTypes.number;
+
+const routeDirectionHaveClass = PropTypes.bool;
+
+export const routeDirectionPointCityNameType = PropTypes.string;
+export const routeDirectionPointDatetimeType = PropTypes.number;
+export const routeDirectionPointRailwayStationNameType = PropTypes.string;
+
+const routeDirectionPointType = PropTypes.shape({
+  city: PropTypes.shape({ name: routeDirectionPointCityNameType }),
+  datetime: routeDirectionPointDatetimeType,
+  railway_station_name: routeDirectionPointRailwayStationNameType,
+});
+const routeDirectionPriceType = PropTypes.number;
+
+export const routeDirectionPriceInfoClassType = PropTypes.shape({
+  bottom_price: routeDirectionPriceType,
+  top_price: routeDirectionPriceType,
+});
+export const routeDirectionTrainNameType = PropTypes.string;
+
+const routeDirectionType = PropTypes.shape({
+  available_seats_info: PropTypes.shape({
+    first: routeDirectionAvailableSeatsInfoClassType,
+    fourth: routeDirectionAvailableSeatsInfoClassType,
+    second: routeDirectionAvailableSeatsInfoClassType,
+    third: routeDirectionAvailableSeatsInfoClassType,
+  }),
+  duration: routeDirectionDurationType,
+  from: routeDirectionPointType,
+  have_first_class: routeDirectionHaveClass,
+  have_fourth_class: routeDirectionHaveClass,
+  have_second_class: routeDirectionHaveClass,
+  have_third_class: routeDirectionHaveClass,
+  price_info: PropTypes.shape({
+    first: routeDirectionPriceInfoClassType,
+    fourth: routeDirectionPriceInfoClassType,
+    second: routeDirectionPriceInfoClassType,
+    third: routeDirectionPriceInfoClassType,
+  }),
+  to: routeDirectionPointType,
+  train: PropTypes.shape({ name: routeDirectionTrainNameType }),
+});
+
+export const routeDirectionVariantType = PropTypes.oneOf(["arrival", "departure"]);
+export const routeType = PropTypes.shape({ arrival: routeDirectionType, departure: routeDirectionType });

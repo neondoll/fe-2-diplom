@@ -39,7 +39,7 @@ function Datepicker({ className, defaultValue, onChange, suffixIcon, value, ...p
     if (airDatepicker.current && value) {
       airDatepicker.current.selectDate(new Date(value));
     }
-  }, [value]);
+  }, [airDatepicker.current, value]);
 
   return (
     <div className={cn("datepicker", className)}>

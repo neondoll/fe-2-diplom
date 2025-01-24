@@ -1,9 +1,10 @@
 import Button from "../../../../components/Button/Button";
 import Paths from "../../../../paths";
 import PropTypes from "prop-types";
-import TrainInfo from "../../../../components/TrainInfo/TrainInfo";
+import RouteInfo from "../../../../components/RouteInfo/RouteInfo";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
+import { routeType } from "../../../../types/route";
 import { useNavigate } from "react-router-dom";
 import "./Trains.css";
 
@@ -19,7 +20,7 @@ function Trains({ className, items }) {
   return (
     <div className={cn("trains", className)}>
       {items.map((item, index) => (
-        <TrainInfo
+        <RouteInfo
           btn={(
             <Button className="trains__item-btn" type="button" variant="choose-places" onClick={handleClick}>
               Выбрать места
@@ -34,6 +35,6 @@ function Trains({ className, items }) {
   );
 }
 
-Trains.propTypes = { className: classNameType, items: PropTypes.array };
+Trains.propTypes = { className: classNameType, items: PropTypes.arrayOf(routeType) };
 
 export default Trains;

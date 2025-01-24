@@ -1,121 +1,38 @@
 import Pagination from "../../../components/Pagination/Pagination";
-import SelectionTrainControl from "./Control/SelectionTrainControl";
+import SelectionTrainLimit from "./Limit/SelectionTrainLimit";
+import SelectionTrainSort from "./Sort/SelectionTrainSort";
 import Trains from "./Trains/Trains";
 import { cn } from "../../../lib/utils";
 import { fetchRoutes, selectRoutes } from "../../../slices/routes";
-import { selectRoutesSearchForm } from "../../../slices/routesSearchForm";
+import { selectRoutesSearch } from "../../../slices/routesSearch";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "./SelectionTrain.css";
 
-const trains = [
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер      \n",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    departure: {
-      city_from: "Москва",
-      city_start: "Москва",
-      city_to: "Санкт-Петербург\n«Мегаполис»",
-      duration: "8 : 39",
-      first: { bottom_price: 4950, bottom_quantity: 16, top_price: 4950, top_quantity: 15 },
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:20" },
-      second: { bottom_price: 3950, bottom_quantity: 45, top_price: 3950, top_quantity: 45 },
-      to: { city: "Санкт-Петербург", railway_station: "Московский вокзал", time: "08:59" },
-      train_name: "020У",
-    },
-  },
-  {
-    arrival: {
-      duration: "8 : 32",
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:41" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:13" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Нижний Новгород",
-      city_to: "Санкт-Петербург\n«Волга»",
-      duration: "8 : 32",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:41" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:13" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-];
-
 export default function SelectionTrain() {
   const dispatch = useDispatch();
-  const routesSearchForm = useSelector(selectRoutesSearchForm);
+  const routesSearch = useSelector(selectRoutesSearch);
   const { className, setLoading } = useOutletContext();
   const { data, loading } = useSelector(selectRoutes);
+  const [limit, setLimit] = useState(5);
+  const [page, setPage] = useState(0);
+  const [sort, setSort] = useState("date");
 
   useEffect(() => {
     dispatch(fetchRoutes({
-      from_city_id: routesSearchForm.from_city?._id,
-      to_city_id: routesSearchForm.to_city?._id,
+      date_end: routesSearch.date_end,
+      date_start: routesSearch.date_start,
+      from_city_id: routesSearch.from_city?._id,
+      limit,
+      offset: limit * page,
+      sort,
+      to_city_id: routesSearch.to_city?._id,
     }));
-  }, [dispatch, routesSearchForm.from_city?._id, routesSearchForm.to_city?._id]);
+  }, [
+    dispatch, limit, page, routesSearch.date_end, routesSearch.date_start, routesSearch.from_city?._id,
+    routesSearch.to_city?._id, sort,
+  ]);
   useEffect(() => {
     console.log("setLoading in SelectionTrain", loading);
     setLoading(loading);
@@ -125,12 +42,35 @@ export default function SelectionTrain() {
     return null;
   }
 
+  const handleClick = (clickEvent) => {
+    console.log("onClick", clickEvent);
+  };
+  const handlePageChange = (selectedItem) => {
+    console.log("onPageChange", selectedItem);
+    setPage(selectedItem.selected);
+  };
+
   return (
     <div className={cn("selection-train-page", className)}>
-      <SelectionTrainControl className="selection-train-page__control" />
-      <Trains className="selection-train-page__trains" items={trains} />
-      {data?.total_count && (
-        <Pagination className="selection-train-page__pagination" pageCount={Math.ceil(data.total_count / 5)} />
+      <div className="selection-train-page__control">
+        <p className="selection-train-page__found">
+          {"найдено "}
+          {data?.total_count || 0}
+        </p>
+        <SelectionTrainSort className="selection-train-page__sort" onChange={setSort} value={sort} />
+        <SelectionTrainLimit className="selection-train-page__limit" onChange={setLimit} value={limit} />
+      </div>
+      {data?.items && (
+        <Trains className="selection-train-page__trains" items={data.items} />
+      )}
+      {data?.total_count > 0 && (
+        <Pagination
+          className="selection-train-page__pagination"
+          forcePage={page}
+          onClick={handleClick}
+          onPageChange={handlePageChange}
+          pageCount={Math.ceil(data.total_count / limit)}
+        />
       )}
     </div>
   );

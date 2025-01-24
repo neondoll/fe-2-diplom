@@ -2,7 +2,7 @@ import Button from "../../components/Button/Button";
 import OrderConfirmationPassenger from "./Passenger/OrderConfirmationPassenger";
 import OrderLayout from "../../components/OrderLayout/OrderLayout";
 import Paths from "../../paths";
-import TrainInfo from "../../components/TrainInfo/TrainInfo";
+import RouteInfo from "../../components/RouteInfo/RouteInfo.jsx";
 import TripDetails from "../../components/TripDetails/TripDetails";
 import { formatPrice } from "../../lib/utils";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +82,7 @@ export default function OrderConfirmation() {
       <div className="order-confirmation-page__info">
         <div className="order-confirmation-page__train">
           <h2 className="order-confirmation-page__title">Поезд</h2>
-          <TrainInfo
+          <RouteInfo
             btn={<Button className="order-confirmation-page__content-btn" variant="change">Изменить</Button>}
             className="order-confirmation-page__content"
             item={train}
