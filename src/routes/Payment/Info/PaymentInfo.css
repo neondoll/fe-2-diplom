@@ -30,7 +30,7 @@
   @apply mb-3 text-base/[calc(18.75/16)] text-dark-charcoal-3.19;
 }
 
-.payment-info__checkbox-group > .payment-info__label { @apply text-2xl/none }
+.payment-info__checkbox-group > .payment-info__label { @apply text-2xl leading-none }
 
 .payment-info__checkbox[data-state="checked"] + .payment-info__label { @apply text-chrome-yellow }
 
@@ -38,7 +38,7 @@
 
 .payment-info__checkbox--payment-method {}
 
-.payment-info__input { @apply text-2xl/none }
+.payment-info__input { @apply text-2xl leading-none }
 
 .payment-info__input--contact-phone,
 .payment-info__input--email { @apply w-90 }

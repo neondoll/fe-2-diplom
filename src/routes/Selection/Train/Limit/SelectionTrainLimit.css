@@ -1,7 +1,7 @@
 @reference "../../../../index.css";
 
 .selection-train-limit {
-  @apply flex justify-start items-baseline text-lg/none font-normal text-taupe-gray-3.62;
+  @apply flex justify-start items-baseline text-lg font-normal leading-none text-taupe-gray-3.62;
 }
 
 .selection-train-limit__prefix {}

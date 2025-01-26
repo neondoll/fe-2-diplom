@@ -14,7 +14,9 @@
 
 .passenger__content {}
 
-.passenger__delete-btn { @apply absolute top-12 right-10 p-1 text-xs/none text-taupe-gray-3.62 }
+.passenger__delete-btn {
+  @apply absolute top-12 right-10 p-1 text-xs leading-none text-taupe-gray-3.62;
+}
 
 .passenger__container,
 .passenger__footer { @apply border-t border-taupe-gray-3.62 border-dashed }
@@ -49,9 +51,9 @@
 .passenger__input-otp--passport-number,
 .passenger__input-otp--passport-series,
 .passenger__select-content--age,
-.passenger__select-trigger--age { @apply text-2xl/none }
+.passenger__select-trigger--age { @apply text-2xl leading-none }
 
-.passenger__datepicker--birth-date { @apply w-60 placeholder:text-lg/none }
+.passenger__datepicker--birth-date { @apply w-60 placeholder:text-lg placeholder:leading-none }
 
 .passenger__input--name,
 .passenger__input--patronymic,
@@ -68,7 +70,7 @@
 .passenger__radio-group--gender { @apply w-51 }
 
 .passenger__select-content--document-type,
-.passenger__select-trigger--document-type { @apply text-lg/none }
+.passenger__select-trigger--document-type { @apply text-lg leading-none }
 
 .passenger__select-trigger--document-type { @apply w-51.5 }
 

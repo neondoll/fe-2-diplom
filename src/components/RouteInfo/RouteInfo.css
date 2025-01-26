@@ -32,4 +32,4 @@
 
 .route-info__seat {}
 
-.route-info__options { @apply w-23 h-5 mt-7 mr-1.5 mb-auto ml-auto text-xl/none text-silver }
+.route-info__options { @apply w-23 h-5 mt-7 mr-1.5 mb-auto ml-auto text-xl leading-none text-silver }

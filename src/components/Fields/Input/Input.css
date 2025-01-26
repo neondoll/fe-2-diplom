@@ -1,7 +1,7 @@
 @reference "../../../index.css";
 
 .input {
-  @apply flex justify-start items-center w-full h-12.5 px-4.5 text-lg/none font-normal
+  @apply flex justify-start items-center w-full h-12.5 px-4.5 text-lg font-normal leading-none
   text-dark-charcoal-3.19 bg-white rounded-5 border border-taupe-gray-3.62 transition-colors
   hover:border-chrome-yellow focus-visible:border-chrome-yellow focus-visible:outline-hidden
   placeholder:text-silver;

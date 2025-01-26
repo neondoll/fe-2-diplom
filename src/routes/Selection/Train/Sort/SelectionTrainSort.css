@@ -1,6 +1,6 @@
 @reference "../../../../index.css";
 
-.selection-train-sort { @apply flex justify-start items-baseline text-lg/none font-normal }
+.selection-train-sort { @apply flex justify-start items-baseline text-lg font-normal leading-none }
 
 .selection-train-sort__prefix { @apply text-taupe-gray-3.62 }
 

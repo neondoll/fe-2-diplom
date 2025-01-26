@@ -9,7 +9,7 @@
 }
 
 .loading__train {
-  @apply w-72 h-4 mx-auto pr-px text-base/none text-maximum-yellow-red;
+  @apply w-72 h-4 mx-auto pr-px text-base leading-none text-maximum-yellow-red;
   animation: loading-train 2s linear infinite;
 }
 

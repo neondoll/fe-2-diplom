@@ -1,14 +1,14 @@
 @reference "../../../index.css";
 
 .select__trigger {
-  @apply flex justify-between items-center w-full h-12.5 px-4.5 text-lg/none font-normal
+  @apply flex justify-between items-center w-full h-12.5 px-4.5 text-lg font-normal leading-none
   text-dark-charcoal-3.19 bg-white rounded-5 border border-taupe-gray-3.62;
 }
 
 .select__icon { @apply text-[5px] text-taupe-gray-3.62 }
 
 .select__content {
-  @apply text-lg/none font-normal text-dark-charcoal-3.19 bg-anti-flash-white rounded-5
+  @apply text-lg font-normal leading-none text-dark-charcoal-3.19 bg-anti-flash-white rounded-5
   shadow-[0_2px_2px_0_rgba(0,0,0,0.2)];
 }
 

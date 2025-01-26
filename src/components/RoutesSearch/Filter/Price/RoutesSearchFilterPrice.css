@@ -1,0 +1,33 @@
+@reference "../../../../index.css";
+
+.routes-search-filter-price { @apply flex flex-col pt-9 pr-8.5 pb-6 pl-8 }
+
+.routes-search-filter-price__label { @apply text-3xl/[calc(7/6)] font-normal text-white }
+
+.routes-search-filter-price__under-slider {
+  @apply flex justify-between items-center mt-2 text-lg font-normal leading-none text-white
+  before:content-[attr(data-min)] after:content-[attr(data-max)];
+}
+
+.routes-search-filter-price__slider {}
+
+.routes-search-filter-price__slider.ant-slider { @apply mx-2.5 mt-0.5 }
+
+.routes-search-filter-price__slider.ant-slider .ant-slider-handle { @apply size-6 after:size-6 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal { @apply h-7 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-rail { @apply h-5 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-track,
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-tracks { @apply h-5 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-step { @apply h-5 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-handle {
+  inset-block-start: calc(var(--spacing) * 0.5);
+}
+
+.routes-search-filter-price__slider.ant-slider-horizontal .ant-slider-mark { @apply top-7.5 }
+
+.routes-search-filter-price__slider.ant-slider-horizontal.ant-slider-with-marks { @apply mb-8.5 }

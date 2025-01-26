@@ -1,22 +1,71 @@
 import Button from "../../../components/Button/Button";
 import Paths from "../../../paths";
+import SelectionSeatsCoachClassType from "./CoachClassType/SelectionSeatsCoachClassType";
+import SelectionSeatsCoachDetails from "./CoachDetails/SelectionSeatsCoachDetails";
 import SelectionSeatsExchange from "./Exchange/SelectionSeatsExchange";
+import SelectionSeatsRoute from "./Route/SelectionSeatsRoute";
 import SelectionSeatsTicketQuantity from "./TicketQuantity/SelectionSeatsTicketQuantity";
-import SelectionSeatsTrain from "./Train/SelectionSeatsTrain";
-import SelectionSeatsWagonDetails from "./WagonDetails/SelectionSeatsWagonDetails";
-import SelectionSeatsWagonType from "./WagonType/SelectionSeatsWagonType";
+import useGetSeats from "../../../services/useGetSeats";
 import { changeOrder, selectOrder } from "../../../slices/order";
 import { cn } from "../../../lib/utils";
-import { train } from "../../../constants/train";
+import { selectChosenRoute } from "../../../slices/chosenRoute";
+import { selectRoutesSearch } from "../../../slices/routesSearch";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./SelectionSeats.css";
 
 export default function SelectionSeats() {
+  const chosenRoute = useSelector(selectChosenRoute);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const order = useSelector(selectOrder);
-  const { className } = useOutletContext();
+  const routesSearch = useSelector(selectRoutesSearch);
+  const { className, setLoading } = useOutletContext();
+  const [loadingPage, setLoadingPage] = useState(true);
+
+  const arrivalApi = useGetSeats(chosenRoute.arrival_id, {
+    have_air_conditioning: routesSearch.have_air_conditioning,
+    have_first_class: routesSearch.have_first_class,
+    have_fourth_class: routesSearch.have_fourth_class,
+    have_second_class: routesSearch.have_second_class,
+    have_third_class: routesSearch.have_third_class,
+    have_wifi: routesSearch.have_wifi,
+  });
+  const departureApi = useGetSeats(chosenRoute.departure_id, {
+    have_air_conditioning: routesSearch.have_air_conditioning,
+    have_first_class: routesSearch.have_first_class,
+    have_fourth_class: routesSearch.have_fourth_class,
+    have_second_class: routesSearch.have_second_class,
+    have_third_class: routesSearch.have_third_class,
+    have_wifi: routesSearch.have_wifi,
+  });
+
+  useEffect(() => {
+    if (arrivalApi.error) {
+      console.error(arrivalApi.error);
+    }
+  }, [arrivalApi.error]);
+  useEffect(() => {
+    if (departureApi.error) {
+      console.error(departureApi.error);
+    }
+  }, [departureApi.error]);
+  useEffect(() => {
+    console.log("loading in SelectionSeats", arrivalApi.loading || departureApi.loading);
+
+    if (!arrivalApi.loading && !departureApi.loading) {
+      setLoadingPage(false);
+    }
+  }, [arrivalApi.loading, departureApi.loading]);
+  useEffect(() => {
+    console.log("setLoading in SelectionSeats", loadingPage);
+    setLoading(loadingPage);
+  }, [loadingPage, setLoading]);
+
+  if (loadingPage) {
+    return null;
+  }
 
   const handleChange = (data) => {
     console.log(data);
@@ -34,66 +83,76 @@ export default function SelectionSeats() {
   return (
     <div className={cn("selection-seats", className)}>
       <h1 className="selection-seats__title">Выбор мест</h1>
-      <div className="selection-seats__container">
-        <SelectionSeatsExchange className="selection-seats__exchange" variant="departure" />
-        <SelectionSeatsTrain className="selection-seats__train" variant="departure" />
-        <SelectionSeatsTicketQuantity
-          className="selection-seats__ticket-quantity"
-          onChange={(newValues) => {
-            handleChange({ departure_ticket_quantity: newValues });
-          }}
-          values={order.departure_ticket_quantity}
-        />
-        <SelectionSeatsWagonType
-          className="selection-seats__wagon-type"
-          onChange={(newValue) => {
-            handleChange({ departure_seats: [], departure_wagon_number: undefined, departure_wagon_type: newValue });
-          }}
-          value={order.departure_wagon_type}
-        />
-        <SelectionSeatsWagonDetails
-          className="selection-seats__wagon-details"
-          onChange={(newValues) => {
-            handleChange({
-              departure_seats: "seats" in newValues ? newValues.seats : order.departure_seats,
-              departure_wagon_number: "wagon_number" in newValues ? newValues.wagon_number : order.departure_wagon_number,
-            });
-          }}
-          train={train}
-          type={order.departure_wagon_type}
-          values={{ seats: order.departure_seats, wagon_number: order.departure_wagon_number }}
-        />
-      </div>
-      <div className="selection-seats__container">
-        <SelectionSeatsExchange className="selection-seats__exchange" variant="arrival" />
-        <SelectionSeatsTrain className="selection-seats__train" variant="arrival" />
-        <SelectionSeatsTicketQuantity
-          className="selection-seats__ticket-quantity"
-          onChange={(newValues) => {
-            handleChange({ arrival_ticket_quantity: newValues });
-          }}
-          values={order.arrival_ticket_quantity}
-        />
-        <SelectionSeatsWagonType
-          className="selection-seats__wagon-type"
-          onChange={(newValue) => {
-            handleChange({ arrival_seats: [], arrival_wagon_number: undefined, arrival_wagon_type: newValue });
-          }}
-          value={order.arrival_wagon_type}
-        />
-        <SelectionSeatsWagonDetails
-          className="selection-seats__wagon-details"
-          onChange={(newValues) => {
-            handleChange({
-              arrival_seats: "seats" in newValues ? newValues.seats : order.arrival_seats,
-              arrival_wagon_number: "wagon_number" in newValues ? newValues.wagon_number : order.arrival_wagon_number,
-            });
-          }}
-          train={train}
-          type={order.arrival_wagon_type}
-          values={{ seats: order.arrival_seats, wagon_number: order.arrival_wagon_number }}
-        />
-      </div>
+      {departureApi.data.length > 0 && (
+        <div className="selection-seats__container" data-loading={departureApi.loading}>
+          <SelectionSeatsExchange className="selection-seats__exchange" variant="departure" />
+          <SelectionSeatsRoute className="selection-seats__route" variant="departure" />
+          <SelectionSeatsTicketQuantity
+            className="selection-seats__ticket-quantity"
+            onChange={(newValues) => {
+              handleChange({ departure_ticket_quantity: newValues });
+            }}
+            values={order.departure_ticket_quantity}
+          />
+          <SelectionSeatsCoachClassType
+            className="selection-seats__coach-class-type"
+            itemDisabled={value => !departureApi.data.map(item => item.coach.class_type).includes(value)}
+            onChange={(newValue) => {
+              handleChange({
+                departure_seats: [],
+                departure_wagon_number: undefined,
+                departure_coach_class_type: newValue,
+              });
+            }}
+            value={order.departure_coach_class_type}
+          />
+          <SelectionSeatsCoachDetails
+            className="selection-seats__coach-details"
+            classType={order.departure_coach_class_type}
+            coaches={departureApi.data}
+            onChange={(newValues) => {
+              handleChange({
+                departure_coach_id: "coach_id" in newValues ? newValues.coach_id : order.departure_coach_id,
+                departure_seats: "seats" in newValues ? newValues.seats : order.departure_seats,
+              });
+            }}
+            values={{ coach_id: order.departure_coach_id, seats: order.departure_seats }}
+          />
+        </div>
+      )}
+      {arrivalApi.data.length > 0 && (
+        <div className="selection-seats__container" data-loading={arrivalApi.loading}>
+          <SelectionSeatsExchange className="selection-seats__exchange" variant="arrival" />
+          <SelectionSeatsRoute className="selection-seats__route" variant="arrival" />
+          <SelectionSeatsTicketQuantity
+            className="selection-seats__ticket-quantity"
+            onChange={(newValues) => {
+              handleChange({ arrival_ticket_quantity: newValues });
+            }}
+            values={order.arrival_ticket_quantity}
+          />
+          <SelectionSeatsCoachClassType
+            className="selection-seats__wagon-type"
+            itemDisabled={value => !arrivalApi.data.map(item => item.coach.class_type).includes(value)}
+            onChange={(newValue) => {
+              handleChange({ arrival_seats: [], arrival_wagon_number: undefined, arrival_coach_class_type: newValue });
+            }}
+            value={order.arrival_coach_class_type}
+          />
+          <SelectionSeatsCoachDetails
+            className="selection-seats__wagon-details"
+            classType={order.arrival_coach_class_type}
+            coaches={arrivalApi.data}
+            onChange={(newValues) => {
+              handleChange({
+                arrival_coach_id: "coach_id" in newValues ? newValues.coach_id : order.arrival_coach_id,
+                arrival_seats: "seats" in newValues ? newValues.seats : order.arrival_seats,
+              });
+            }}
+            values={{ coach_id: order.arrival_coach_id, seats: order.arrival_seats }}
+          />
+        </div>
+      )}
       <Button className="selection-seats__btn" variant="further" onClick={handleClick}>ДАЛЕЕ</Button>
     </div>
   );

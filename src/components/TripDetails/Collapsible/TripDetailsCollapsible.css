@@ -9,7 +9,7 @@
 .trip-details-collapsible__title { @apply text-3xl/[calc(7/6)] font-bold text-white }
 
 .trip-details-collapsible__trigger {
-  @apply size-5 mt-px ml-auto text-xl/none transition-colors data-[state=closed]:text-white
+  @apply size-5 mt-px ml-auto text-xl leading-none transition-colors data-[state=closed]:text-white
   data-[state=closed]:hover:text-navajo-white-3.53 data-[state=open]:text-silver
   data-[state=open]:hover:text-navajo-white-3.53;
 }

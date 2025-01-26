@@ -18,11 +18,13 @@ const routeDirectionPriceType = PropTypes.number;
 
 export const routeDirectionPriceInfoClassType = PropTypes.shape({
   bottom_price: routeDirectionPriceType,
+  side_price: routeDirectionPriceType,
   top_price: routeDirectionPriceType,
 });
 export const routeDirectionTrainNameType = PropTypes.string;
 
 const routeDirectionType = PropTypes.shape({
+  _id: PropTypes.string,
   available_seats_info: PropTypes.shape({
     first: routeDirectionAvailableSeatsInfoClassType,
     fourth: routeDirectionAvailableSeatsInfoClassType,

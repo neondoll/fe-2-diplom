@@ -1,8 +1,8 @@
-import IconTrainOptions from "../../routes/Selection/IconTrainOptions";
 import PropTypes from "prop-types";
+import RouteOptions from "../RouteOptions";
 import RouteBaseInfo from "../RouteBaseInfo/RouteBaseInfo";
 import RouteDirection from "../RouteDirection/RouteDirection";
-import RouteSeatPopover from "./SeatPopover/RouteSeatPopover.jsx";
+import RouteSeatPopover from "./SeatPopover/RouteSeatPopover";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
 import { routeType } from "../../types/route";
@@ -73,7 +73,11 @@ function RouteInfo({ btn, className, item }) {
               return null;
             })}
           </div>
-          <IconTrainOptions className="route-info__options" />
+          <RouteOptions
+            className="route-info__options"
+            haveWifi={item.departure.have_wifi}
+            isExpress={item.departure.is_express}
+          />
           {btn}
         </div>
       </div>

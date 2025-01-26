@@ -7,22 +7,32 @@ import "./SelectionSeatsTicketQuantity.css";
 
 const fields = [
   {
+    description: v => `Можно добавить еще\n${5 - v} пассажиров`,
+    inputClassName: "ps-[120.453px]!",
     label: "Взрослых",
+    max: 5,
+    min: 0,
     value: "adults",
-    description: "Можно добавить еще \n3 пассажиров ",
-    inputClassName: "pl-[120.422px]",
   },
   {
+    description: v => `Можно добавить еще ${4 - v} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле\nв среднем на 50-65%`,
+    inputClassName: "ps-[106.406px]!",
     label: "Детских",
+    max: 4,
+    min: 0,
     value: "children",
-    description: "Можно добавить еще 3 детей до 10 лет.Свое место в вагоне, как у взрослых, но дешевле \nв среднем на 50-65%",
-    inputClassName: "pl-[106.359px]",
   },
-  { label: "Детских «без места»", value: "children_without_seat", inputClassName: "pl-[211.391px]" },
+  {
+    inputClassName: "ps-[211.484px]!",
+    label: "Детских «без места»",
+    max: 5,
+    min: 0,
+    value: "babies",
+  },
 ];
 
 function SelectionSeatsTicketQuantity({ className, onChange, values }) {
-  const [form, setForm] = useState({ adults: 0, children: 0, children_without_seat: 0 });
+  const [form, setForm] = useState({ adults: 0, children: 0, babies: 0 });
 
   useEffect(() => {
     if (values) {
@@ -35,10 +45,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
     const values = { ...form, [name]: value };
 
     setForm(values);
-
-    if (onChange) {
-      onChange(values);
-    }
+    onChange(values);
   };
 
   return (
@@ -54,14 +61,16 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
               </div>
               <Input
                 className={cn("selection-seats-ticket-quantity__input", field.inputClassName)}
+                max={field.max}
+                min={field.min}
                 name={field.value}
                 type="number"
                 value={form[field.value]}
                 onChange={handleChange}
               />
             </div>
-            {form[field.value] > 0 && (
-              <p className="selection-seats-ticket-quantity__description">{field.description}</p>
+            {form[field.value] < field.max && field.description && (
+              <p className="selection-seats-ticket-quantity__description">{field.description(form[field.value])}</p>
             )}
           </div>
         ))}
@@ -76,7 +85,7 @@ SelectionSeatsTicketQuantity.propTypes = {
   values: PropTypes.shape({
     adults: PropTypes.number,
     children: PropTypes.number,
-    children_without_seat: PropTypes.number,
+    babies: PropTypes.number,
   }),
 };
 

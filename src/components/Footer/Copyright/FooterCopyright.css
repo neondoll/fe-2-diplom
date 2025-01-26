@@ -10,7 +10,7 @@
 }
 
 .footer-copyright__btn {
-  @apply size-9 mt-1 ml-8 text-4xl/none text-neutral-200 transition-colors duration-500
+  @apply size-9 mt-1 ml-8 text-4xl leading-none text-neutral-200 transition-colors duration-500
   hover:text-chrome-yellow focus-visible:text-chrome-yellow;
 }
 

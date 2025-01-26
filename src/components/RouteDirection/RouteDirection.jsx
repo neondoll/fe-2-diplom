@@ -1,6 +1,6 @@
 import { capitalizeFirstLetter, cn } from "../../lib/utils";
 import { classNameType } from "../../types/base";
-import { format } from "date-fns";
+import { format, intervalToDuration } from "date-fns";
 import {
   routeDirectionDurationType, routeDirectionPointCityNameType, routeDirectionPointDatetimeType,
   routeDirectionPointRailwayStationNameType, routeDirectionVariantType,
@@ -12,6 +12,9 @@ function RouteDirection({
   className, duration, fromCityName, fromDatetime, fromRailwayStationName, toCityName, toDatetime, toRailwayStationName,
   variant,
 }) {
+  const itd = duration ? intervalToDuration({ start: new Date(0), end: new Date(duration) }) : null;
+  const itdDate = itd ? new Date(itd.years || 0, itd.months || 0, itd.days || 0, itd.hours || 0, itd.minutes || 0, itd.seconds || 0) : null;
+
   return (
     <div className={cn("route-direction", className)}>
       <div className="route-direction__from">
@@ -25,12 +28,12 @@ function RouteDirection({
         <p className="route-direction__from-railway-station">{fromRailwayStationName}</p>
       </div>
       <div className="route-direction__duration" data-variant={variant}>
-        {duration && (
+        {itdDate && (
           <time
             className="route-direction__duration-value"
-            dateTime={format(duration, "yyyy-MM-dd HH:mm:ss", { locale: ru })}
+            dateTime={format(itdDate, "HH:mm:ss", { locale: ru })}
           >
-            {format(duration, "H : mm", { locale: ru })}
+            {format(itdDate, "H : mm", { locale: ru })}
           </time>
         )}
       </div>

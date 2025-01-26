@@ -11,4 +11,4 @@
   focus-visible:text-maximum-yellow-red;
 }
 
-.footer-subscribe-social__icon { @apply w-auto h-7.5 text-3xl/none }
+.footer-subscribe-social__icon { @apply w-auto h-7.5 text-3xl leading-none }

@@ -4,7 +4,7 @@
 
 .selection-page__layout-main {}
 
-.selection-page__sidebar { @apply w-full -mt-px mb-107.5 ml-px }
+.selection-page__sidebar { @apply w-full -mt-px mb-103.5 ml-px }
 
 .selection-page__filter {}
 

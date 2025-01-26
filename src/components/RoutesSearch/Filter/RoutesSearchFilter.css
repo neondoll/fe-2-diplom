@@ -8,5 +8,5 @@
 
 .routes-search-filter__price {}
 
-.routes-search-filter__there,
-.routes-search-filter__back { @apply min-h-24 }
+.routes-search-filter__start,
+.routes-search-filter__end { @apply min-h-24 }

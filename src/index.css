@@ -11,33 +11,33 @@
   /*
    * `--color-*` - Color utilities like `bg-red-500`, `text-sky-300`, and many more
    */
-  --color-anti-flash-white: rgb(244 243 246);
-  --color-cadmium-yellow: rgb(255 245 0);
-  --color-chrome-yellow: rgb(255 168 0);
-  --color-coquelicot: rgb(255 61 0);
-  --color-dark-charcoal: rgb(51 51 51);
-  --color-dark-charcoal-3_19: rgb(41 41 41);
-  --color-ghost-white-1_64: rgb(247 245 249);
-  --color-ghost-white-1_94: rgb(244 242 246);
-  --color-magnolia-white: rgb(228 224 233);
-  --color-maximum-yellow-red: rgb(255 202 98);
-  --color-navajo-white-3_53: rgb(252 220 157);
-  --color-navajo-white-5_41: rgb(255 217 143);
-  --color-neon-silver: rgb(204 204 204);
-  --color-platinum: rgb(230 230 230);
-  --color-raisin-black: rgb(45 43 47);
-  --color-shadow-gray: rgb(62 60 65);
-  --color-silver: rgb(196 196 196);
-  --color-spanish-gray: rgb(153 153 153);
-  --color-taupe-gray-3_62: rgb(146 143 148);
-  --color-taupe-gray-3_79: rgb(145 143 148);
-  --color-very-light-green: rgb(178 246 161);
-  --color-white-0_8: rgb(251 251 251);
-  --color-white-smoke-0_56: rgb(247 246 246);
-  --color-white-smoke-0_62: rgb(242 242 242);
-  --color-white-smoke-0_81: rgb(249 249 249);
-  --color-white-smoke-1_3: rgb(245 244 246);
-  --color-xanthous: rgb(253 185 53);
+  --color-anti-flash-white: #f4f3f6; /* Anti-flash white | ΔE - 1.64 */
+  --color-cadmium-yellow: #fff500; /* Cadmium Yellow | ΔE - 0.27 */
+  --color-chrome-yellow: #ffa800;
+  --color-coquelicot: #ff3d00;
+  --color-dark-charcoal: #333333; /* ΔE - 0.00 */
+  --color-dark-charcoal-3_19: #292929; /* ΔE - 3.19 */
+  --color-ghost-white-1_64: #f7f5f9; /* ΔE - 1.64 */
+  --color-ghost-white-1_94: #f4f2f6; /* ΔE - 1.94 */
+  --color-magnolia-white: #e4e0e9;
+  --color-maximum-yellow-red: #ffca62;
+  --color-navajo-white-3_53: #fcdc9d; /* ΔE - 3.53 */
+  --color-navajo-white-5_41: #ffd98f; /* ΔE - 5.41 */
+  --color-neon-silver: #cccccc;
+  --color-platinum: #e6e6e6;
+  --color-raisin-black: #2d2b2f;
+  --color-shadow-gray: #3e3c41;
+  --color-silver: #c4c4c4;
+  --color-spanish-gray: #999999;
+  --color-taupe-gray-3_62: #928f94; /* ΔE - 3.62 */
+  --color-taupe-gray-3_79: #918f94; /* ΔE - 3.79 */
+  --color-very-light-green: #b2f6a1;
+  --color-white-0_8: #fbfbfb; /* White | ΔE - 0.80 */
+  --color-white-smoke-0_56: #f7f6f6; /* ΔE - 0.56 */
+  --color-white-smoke-0_62: #f2f2f2; /* ΔE - 0.62 */
+  --color-white-smoke-0_81: #f9f9f9; /* ΔE - 0.81 */
+  --color-white-smoke-1_3: #f5f4f6; /* ΔE - 1.30 */
+  --color-xanthous: #fdb935;
   /*
    * `--radius-*` - Border radius utilities like `rounded-sm`
    */

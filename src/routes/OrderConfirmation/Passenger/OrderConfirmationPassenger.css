@@ -1,7 +1,7 @@
 @reference "../../../index.css";
 
 .order-confirmation-passenger {
-  @apply flex justify-start gap-x-9 px-8.5 pt-7.5 pb-10 text-lg/none font-normal;
+  @apply flex justify-start gap-x-9 px-8.5 pt-7.5 pb-10 text-lg font-normal leading-none;
 }
 
 .order-confirmation-passenger__logo { @apply flex flex-col items-center gap-y-4.5 w-21 }

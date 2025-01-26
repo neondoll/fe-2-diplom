@@ -1,0 +1,80 @@
+@reference "../../../../../index.css";
+
+.selection-seats-coach-details-scheme { @apply relative pt-22.5 pr-3.5 pl-5 }
+
+.selection-seats-coach-details-scheme__number {
+  @apply absolute top-17 left-19 min-w-9 px-2 py-1 text-base font-bold leading-none text-center
+  text-white bg-dark-charcoal -translate-x-1/2;
+}
+
+.selection-seats-coach-details-scheme__container {
+  @apply flex h-31 before:block before:w-32.5 before:h-full before:bg-right before:bg-no-repeat
+  before:bg-contain before:bg-[url('../../../../../assets/wagon-scheme-before.png')] after:block
+  after:w-18 after:h-full after:bg-left after:bg-no-repeat after:bg-contain
+  after:bg-[url('../../../../../assets/wagon-scheme-after.png')];
+}
+
+.selection-seats-coach-details-scheme__seats { @apply w-180.5 py-0.5 }
+
+.scheme-seats { @apply flex flex-col justify-between }
+
+.scheme-seats__side { @apply flex border-spanish-gray before:bg-spanish-gray after:bg-spanish-gray }
+
+.scheme-seats__side--right { @apply border-t-5 }
+
+.scheme-seats__side--left { @apply border-b-5 }
+
+.scheme-seats--first > .scheme-seats__side,
+.scheme-seats--second > .scheme-seats__side,
+.scheme-seats--third > .scheme-seats__side { @apply before:w-[3px] after:w-[3px] }
+
+.scheme-seats--fourth > .scheme-seats__side {
+  @apply relative pr-3 pl-1.5 before:absolute before:left-0 after:absolute after:right-0 after:w-[5px];
+}
+
+.scheme-seats--first > .scheme-seats__side--right,
+.scheme-seats--second > .scheme-seats__side--right,
+.scheme-seats--third > .scheme-seats__side--right { @apply h-16.5 }
+
+.scheme-seats--fourth > .scheme-seats__side--right {
+  @apply items-start before:top-0 before:w-[5px] before:h-15.5 after:top-0 after:h-15.5;
+}
+
+.scheme-seats--first > .scheme-seats__side--left,
+.scheme-seats--second > .scheme-seats__side--left,
+.scheme-seats--third > .scheme-seats__side--left { @apply h-7.5 }
+
+.scheme-seats--fourth > .scheme-seats__side--left {
+  @apply items-end before:bottom-0 before:w-0 before:h-4.5 after:bottom-0 after:h-4.5;
+}
+
+.scheme-seats__placement { @apply flex-1 flex border-x-2 border-spanish-gray }
+
+.scheme-seats__side--right > .scheme-seats__placement { @apply justify-between }
+
+.scheme-seats__col { @apply grid }
+
+.scheme-seats--first .scheme-seats__col,
+.scheme-seats--second .scheme-seats__col { @apply border-b-5 border-spanish-gray }
+
+.scheme-seats--fourth .scheme-seats__col { @apply flex-1 gap-y-0.5 py-1 pr-2 pl-3 }
+
+.scheme-seats__item {
+  @apply flex justify-center text-sm font-bold leading-none text-black bg-white-smoke-0.62 border-2
+  border-transparent select-none disabled:text-white-smoke-0.62 disabled:bg-neon-silver
+  disabled:cursor-not-allowed data-[selected=true]:border-chrome-yellow;
+}
+
+.scheme-seats--first .scheme-seats__item { @apply items-end }
+
+.scheme-seats--second .scheme-seats__item,
+.scheme-seats--third .scheme-seats__item,
+.scheme-seats--fourth .scheme-seats__item { @apply items-center }
+
+.scheme-seats--first .scheme-seats__col > .scheme-seats__item,
+.scheme-seats--second .scheme-seats__col > .scheme-seats__item,
+.scheme-seats--third .scheme-seats__col > .scheme-seats__item { @apply w-6.5 }
+
+.scheme-seats--third .scheme-seats__placement > .scheme-seats__item { @apply flex-1 }
+
+.scheme-seats__empty { @apply flex-1 mt-1.5 border-t border-platinum }

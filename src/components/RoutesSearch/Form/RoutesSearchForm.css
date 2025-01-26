@@ -10,7 +10,7 @@
 
 .routes-search-form__fieldset--dates { @apply gap-x-9 }
 
-.routes-search-form__legend { @apply w-full mx-2 mb-4.5 text-3xl/none font-light text-white }
+.routes-search-form__legend { @apply w-full mx-2 mb-4.5 text-3xl font-light leading-none text-white }
 
 .routes-search-form__select-location,
 .routes-search-form__datepicker { @apply flex-1 }
@@ -18,7 +18,7 @@
 .routes-search-form__btn-replace { @apply flex justify-center items-center size-9 px-1.5 }
 
 .routes-search-form__btn-replace > .icon {
-  @apply block size-6 bg-[url('../../assets/replace-white.png')] bg-center bg-no-repeat bg-contain
+  @apply block size-6 bg-[url('../../../assets/replace-white.png')] bg-center bg-no-repeat bg-contain
   opacity-60 transition-transform duration-500;
 }
 

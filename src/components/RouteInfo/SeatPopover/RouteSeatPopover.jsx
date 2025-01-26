@@ -45,6 +45,17 @@ function RouteSeatPopover({ availableSeatsInfo, className, priceInfo, title }) {
                   </p>
                 </div>
               )}
+              {"side_price" in priceInfo && (
+                <div className="route-seat-popover__content-item">
+                  <p className="route-seat-popover__content-title">боковые</p>
+                  {/* <p className="route-seat-popover__content-available-seats">{availableSeatsInfo.side_seats}</p> */}
+                  <p className="route-seat-popover__content-price">
+                    <span className="route-seat-popover__content-price-prefix">от</span>
+                    <span className="route-seat-popover__content-price-value">{formatPrice(priceInfo.side_price)}</span>
+                    <span className="route-seat-popover__content-price-currency" />
+                  </p>
+                </div>
+              )}
             </div>
             <Popover.Arrow className="route-seat-popover__arrow" />
           </Popover.Content>
