@@ -99,9 +99,10 @@ export default function SelectionSeats() {
             itemDisabled={value => !departureApi.data.map(item => item.coach.class_type).includes(value)}
             onChange={(newValue) => {
               handleChange({
-                departure_seats: [],
-                departure_wagon_number: undefined,
                 departure_coach_class_type: newValue,
+                departure_coach_id: undefined,
+                departure_options: { linens: false, wifi: false },
+                departure_seats: [],
               });
             }}
             value={order.departure_coach_class_type}
@@ -113,10 +114,15 @@ export default function SelectionSeats() {
             onChange={(newValues) => {
               handleChange({
                 departure_coach_id: "coach_id" in newValues ? newValues.coach_id : order.departure_coach_id,
+                departure_options: "options" in newValues ? newValues.options : order.departure_options,
                 departure_seats: "seats" in newValues ? newValues.seats : order.departure_seats,
               });
             }}
-            values={{ coach_id: order.departure_coach_id, seats: order.departure_seats }}
+            values={{
+              coach_id: order.departure_coach_id,
+              options: order.departure_options,
+              seats: order.departure_seats,
+            }}
           />
         </div>
       )}
@@ -135,7 +141,12 @@ export default function SelectionSeats() {
             className="selection-seats__wagon-type"
             itemDisabled={value => !arrivalApi.data.map(item => item.coach.class_type).includes(value)}
             onChange={(newValue) => {
-              handleChange({ arrival_seats: [], arrival_wagon_number: undefined, arrival_coach_class_type: newValue });
+              handleChange({
+                arrival_coach_class_type: newValue,
+                arrival_coach_id: undefined,
+                arrival_options: { linens: false, wifi: false },
+                arrival_seats: [],
+              });
             }}
             value={order.arrival_coach_class_type}
           />
@@ -146,10 +157,11 @@ export default function SelectionSeats() {
             onChange={(newValues) => {
               handleChange({
                 arrival_coach_id: "coach_id" in newValues ? newValues.coach_id : order.arrival_coach_id,
+                arrival_options: "options" in newValues ? newValues.options : order.arrival_options,
                 arrival_seats: "seats" in newValues ? newValues.seats : order.arrival_seats,
               });
             }}
-            values={{ coach_id: order.arrival_coach_id, seats: order.arrival_seats }}
+            values={{ coach_id: order.arrival_coach_id, options: order.arrival_options, seats: order.arrival_seats }}
           />
         </div>
       )}

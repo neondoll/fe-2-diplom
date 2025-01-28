@@ -69,22 +69,19 @@ const types = [
 ];
 
 function SelectionSeatsCoachClassType({ className, itemDisabled, onChange, value }) {
-  const [selectedType, setSelectedType] = useState(undefined);
+  const [activeType, setActiveType] = useState();
 
   useEffect(() => {
     if (value) {
-      setSelectedType(value);
+      setActiveType(value);
     }
   }, [value]);
 
   const handleClick = (event) => {
     const { value } = event.target.closest(".selection-seats-coach-class-type__item").dataset;
 
-    setSelectedType(value);
-
-    if (onChange) {
-      onChange(value);
-    }
+    setActiveType(value);
+    onChange(value);
   };
 
   return (
@@ -97,7 +94,7 @@ function SelectionSeatsCoachClassType({ className, itemDisabled, onChange, value
           return (
             <button
               className="selection-seats-coach-class-type__item"
-              data-active={type.value === selectedType}
+              data-active={type.value === activeType}
               data-value={type.value}
               disabled={itemDisabled ? itemDisabled(type.value) : false}
               key={type.value}

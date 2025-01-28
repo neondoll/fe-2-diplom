@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn } from "../../../../../lib/utils";
-import { coachSeatsType, coachType } from "../../../../../types/seat";
+import { coachType } from "../../../../../types/seat";
 import { seatType } from "../../../../../constants/train";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsScheme.css";
@@ -25,14 +25,10 @@ SchemeSeatsItem.propTypes = {
   item: seatType.isRequired,
 };
 
-function FirstSchemeSeats({ className, onChange, seats, values }) {
+function FirstSchemeSeats({ className, isDisabled, onChange, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
-    isDisabled: (item) => {
-      const seat = seats.find(seat => seat.indax === item);
-
-      return seat ? !seat.available : true;
-    },
+    isDisabled,
     isSelected: item => selectedSeats.includes(item),
     onClick: (event) => {
       const item = Number(event.target.textContent);
@@ -82,19 +78,15 @@ function FirstSchemeSeats({ className, onChange, seats, values }) {
 
 FirstSchemeSeats.propTypes = {
   className: classNameType,
+  isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  seats: coachSeatsType,
   values: PropTypes.arrayOf(seatType),
 };
 
-function SecondSchemeSeats({ className, onChange, seats, values }) {
+function SecondSchemeSeats({ className, isDisabled, onChange, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
-    isDisabled: (item) => {
-      const seat = seats.find(seat => seat.indax === item);
-
-      return seat ? !seat.available : true;
-    },
+    isDisabled,
     isSelected: item => selectedSeats.includes(item),
     onClick: (event) => {
       const item = Number(event.target.textContent);
@@ -146,19 +138,15 @@ function SecondSchemeSeats({ className, onChange, seats, values }) {
 
 SecondSchemeSeats.propTypes = {
   className: classNameType,
+  isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  seats: coachSeatsType,
   values: PropTypes.arrayOf(seatType),
 };
 
-function ThirdSchemeSeats({ className, onChange, seats, values }) {
+function ThirdSchemeSeats({ className, isDisabled, onChange, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
-    isDisabled: (item) => {
-      const seat = seats.find(seat => seat.indax === item);
-
-      return seat ? !seat.available : true;
-    },
+    isDisabled,
     isSelected: item => selectedSeats.includes(item),
     onClick: (event) => {
       const item = Number(event.target.textContent);
@@ -211,19 +199,15 @@ function ThirdSchemeSeats({ className, onChange, seats, values }) {
 
 ThirdSchemeSeats.propTypes = {
   className: classNameType,
+  isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  seats: coachSeatsType,
   values: PropTypes.arrayOf(seatType),
 };
 
-function FourthSchemeSeats({ className, onChange, seats, values }) {
+function FourthSchemeSeats({ className, isDisabled, onChange, values }) {
   const placements = Array.from({ length: 16 }, (_, i) => i);
   const schemeSeatsItemProps = {
-    isDisabled: (item) => {
-      const seat = seats.find(seat => seat.indax === item);
-
-      return seat ? !seat.available : true;
-    },
+    isDisabled,
     isSelected: item => selectedSeats.includes(item),
     onClick: (event) => {
       const item = Number(event.target.textContent);
@@ -275,20 +259,24 @@ function FourthSchemeSeats({ className, onChange, seats, values }) {
 
 FourthSchemeSeats.propTypes = {
   className: classNameType,
+  isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  seats: coachSeatsType,
   values: PropTypes.arrayOf(seatType),
 };
 
 function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }) {
   const schemeSeatsProps = {
     className: "selection-seats-coach-details-scheme__seats",
+    isDisabled: (item) => {
+      const seat = coach ? coach.seats.find(seat => seat.index === item) : null;
+
+      return seat ? !seat.available : true;
+    },
     onChange: (values) => {
       if (onChange) {
         onChange(values);
       }
     },
-    seats: coach ? coach.seats : [],
     values,
   };
 
@@ -296,12 +284,12 @@ function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }
     <div className={cn("selection-seats-coach-details-scheme", className)}>
       {coach && (
         <>
-          <p className="selection-seats-coach-details-scheme__number">{coach.number}</p>
+          <p className="selection-seats-coach-details-scheme__number">{coach.coach.name}</p>
           <div className="selection-seats-coach-details-scheme__container">
-            {coach.class_type === "first" && (<FirstSchemeSeats {...schemeSeatsProps} />)}
-            {coach.class_type === "second" && (<SecondSchemeSeats {...schemeSeatsProps} />)}
-            {coach.class_type === "third" && (<ThirdSchemeSeats {...schemeSeatsProps} />)}
-            {coach.class_type === "fourth" && (<FourthSchemeSeats {...schemeSeatsProps} />)}
+            {coach.coach.class_type === "first" && (<FirstSchemeSeats {...schemeSeatsProps} />)}
+            {coach.coach.class_type === "second" && (<SecondSchemeSeats {...schemeSeatsProps} />)}
+            {coach.coach.class_type === "third" && (<ThirdSchemeSeats {...schemeSeatsProps} />)}
+            {coach.coach.class_type === "fourth" && (<FourthSchemeSeats {...schemeSeatsProps} />)}
           </div>
         </>
       )}

@@ -2,19 +2,21 @@
 
 .additional-options-in-carriages {}
 
-.additional-options-in-carriages__list { @apply flex gap-x-3.5 }
+.additional-options-in-carriages__list { @apply flex justify-center items-center gap-x-3.5 }
 
 .additional-options-in-carriages__item {}
 
 .additional-options-in-carriages__btn {
   @apply flex justify-center items-center w-9 h-8.5 px-1.5 py-1 text-base leading-none
-  text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19 transition-colors
+  text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19 transition-colors cursor-pointer
   hover:text-dark-charcoal-3.19 hover:bg-chrome-yellow hover:border-dark-charcoal-3.19
-  data-[state=included]:text-taupe-gray-3.62 data-[state=included]:bg-navajo-white-3.53
-  data-[state=included]:border-transparent data-[state=included]:cursor-default
-  data-[state=selected]:text-ghost-white-1.94 data-[state=selected]:bg-xanthous
-  data-[state=selected]:border-transparent data-[state=selected]:hover:text-dark-charcoal-3.19
-  data-[state=selected]:hover:bg-chrome-yellow data-[state=selected]:hover:border-dark-charcoal-3.19;
+  data-[active=true]:text-ghost-white-1.94 data-[active=true]:bg-xanthous
+  data-[active=true]:border-transparent data-[active=true]:hover:text-dark-charcoal-3.19
+  data-[active=true]:hover:bg-chrome-yellow data-[active=true]:hover:border-dark-charcoal-3.19
+  data-[state=exclude]:text-taupe-gray-3.62 data-[state=exclude]:bg-white-smoke-0.41
+  data-[state=exclude]:border-spanish-gray data-[state=exclude]:cursor-not-allowed
+  data-[state=include]:text-taupe-gray-3.62 data-[state=include]:bg-navajo-white-3.53
+  data-[state=include]:border-transparent data-[state=include]:cursor-not-allowed;
 }
 
 .additional-options-in-carriages__icon {}

@@ -13,7 +13,7 @@ import "./SelectionSeatsCoachDetails.css";
 function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, values }) {
   const [coach, setCoach] = useState();
   const [coachItems, setCoachItems] = useState([]);
-  const [form, setForm] = useState({ coach_id: null, seats: [] });
+  const [form, setForm] = useState({ coach_id: null, options: { linens: false, wifi: false }, seats: [] });
 
   useEffect(() => {
     if (coaches) {
@@ -41,13 +41,10 @@ function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, v
     console.log(data);
 
     setForm(prev => ({ ...prev, ...data }));
-
-    if (onChange) {
-      onChange(data);
-    }
+    onChange(data);
   };
   const handleChangeCoachId = (value) => {
-    handleChange({ coach_id: value, seats: [] });
+    handleChange({ coach_id: value, options: { linens: false, wifi: false }, seats: [] });
     setCoach(
       coaches.filter(item => item.coach.class_type === classType)
         .find(item => item.coach._id === value),
@@ -64,7 +61,14 @@ function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, v
             onChange={handleChangeCoachId}
             value={form.coach_id}
           />
-          <SelectionSeatsCoachDetailsBody className="selection-seats-coach-details__body" coach={coach} />
+          <SelectionSeatsCoachDetailsBody
+            className="selection-seats-coach-details__body"
+            coach={coach}
+            onChange={(newValue) => {
+              handleChange({ options: newValue });
+            }}
+            values={form.options}
+          />
           <SelectionSeatsCoachDetailsScheme
             className="selection-seats-coach-details__scheme"
             coach={coach}
@@ -89,7 +93,11 @@ SelectionSeatsCoachDetails.propTypes = {
   classType: coachClassTypeType,
   coaches: PropTypes.arrayOf(coachType).isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.shape({ coach_id: coachIdType, seats: PropTypes.arrayOf(seatType) }),
+  values: PropTypes.shape({
+    coach_id: coachIdType,
+    options: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
+    seats: PropTypes.arrayOf(seatType),
+  }),
 };
 
 export default SelectionSeatsCoachDetails;

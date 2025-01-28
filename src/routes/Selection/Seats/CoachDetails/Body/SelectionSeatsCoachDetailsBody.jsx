@@ -1,40 +1,12 @@
 import AdditionalOptionsInCarriages
   from "../../../../../components/AdditionalOptionsInCarriages/AdditionalOptionsInCarriages";
+import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn, formatPrice } from "../../../../../lib/utils";
 import { coachType } from "../../../../../types/seat";
-import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsBody.css";
 
-function SelectionSeatsCoachDetailsBody({ className, coach }) {
-  const initialNumberFontSize = 72;
-  const [numberFontSize, setNumberFontSize] = useState(initialNumberFontSize);
-
-  console.log(coach);
-
-  const updateNumberFontSize = () => {
-    const element = document.querySelector(".selection-seats-coach-details-body__number");
-
-    const fontSize = Math.floor((numberFontSize * 200) / element.offsetWidth);
-
-    console.log("updateNumberFontSize", fontSize, initialNumberFontSize);
-
-    if (fontSize < initialNumberFontSize) {
-      element.style.fontSize = `${fontSize}px`;
-      setNumberFontSize(fontSize);
-    }
-  };
-
-  useEffect(() => {
-    if (document.querySelector(".selection-seats-coach-details-body__number")) {
-      updateNumberFontSize();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coach]);
-
-  window.onload = updateNumberFontSize;
-  window.onresize = updateNumberFontSize;
-
+function SelectionSeatsCoachDetailsBody({ className, coach, onChange, values }) {
   return (
     <div className={cn("selection-seats-coach-details-body", className)}>
       {coach && (
@@ -45,6 +17,12 @@ function SelectionSeatsCoachDetailsBody({ className, coach }) {
               Места&nbsp;&nbsp;
               <span>{coach.coach.available_seats}</span>
             </p>
+            {coach.coach.price > 0 && (
+              <p className="selection-seats-coach-details-body-places__item">
+                &nbsp;&nbsp;
+                <span>{/* coach.coach.avaliable_seats */}</span>
+              </p>
+            )}
             {coach.coach.top_price > 0 && (
               <p className="selection-seats-coach-details-body-places__item">
                 Верхние&nbsp;&nbsp;
@@ -57,7 +35,7 @@ function SelectionSeatsCoachDetailsBody({ className, coach }) {
                 <span>{/* coach.coach.bottom_avaliable_seats */}</span>
               </p>
             )}
-            {coach.coach.bottom_price > 0 && (
+            {coach.coach.side_price > 0 && (
               <p className="selection-seats-coach-details-body-places__item">
                 Боковые&nbsp;&nbsp;
                 <span>{/* coach.coach.side_avaliable_seats */}</span>
@@ -86,7 +64,13 @@ function SelectionSeatsCoachDetailsBody({ className, coach }) {
             </div>
             <AdditionalOptionsInCarriages
               className="selection-seats-coach-details-body-services__items"
-              values={{ airConditioner: undefined, wifi: undefined, linen: "selected", nutrition: "selected" }}
+              haveAirConditioning={coach.coach.have_air_conditioning}
+              haveWifi={coach.coach.have_wifi}
+              isLinensIncluded={coach.coach.is_linens_included}
+              linensPrice={coach.coach.linens_price}
+              onChange={onChange}
+              values={values}
+              wifiPrice={coach.coach.wifi_price}
             />
           </div>
         </>
@@ -95,6 +79,11 @@ function SelectionSeatsCoachDetailsBody({ className, coach }) {
   );
 }
 
-SelectionSeatsCoachDetailsBody.propTypes = { className: classNameType, coach: coachType };
+SelectionSeatsCoachDetailsBody.propTypes = {
+  className: classNameType,
+  coach: coachType,
+  onChange: PropTypes.func,
+  values: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
+};
 
 export default SelectionSeatsCoachDetailsBody;

@@ -42,7 +42,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const values = { ...form, [name]: value };
+    const values = { ...form, [name]: Number(value) };
 
     setForm(values);
     onChange(values);
@@ -64,9 +64,9 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
                 max={field.max}
                 min={field.min}
                 name={field.value}
-                type="number"
-                value={form[field.value]}
                 onChange={handleChange}
+                type="number"
+                value={String(form[field.value])}
               />
             </div>
             {form[field.value] < field.max && field.description && (

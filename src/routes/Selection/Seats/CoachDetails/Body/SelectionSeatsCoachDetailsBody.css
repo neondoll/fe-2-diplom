@@ -3,9 +3,9 @@
 .selection-seats-coach-details-body { @apply flex }
 
 .selection-seats-coach-details-body__number {
-  @apply flex flex-col justify-center items-center mr-auto px-9 pt-9 pb-8 text-7xl font-bold
-  bg-navajo-white-5.41 after:content-['вагон'] after:-mt-2 after:mr-2.5 after:text-2xl/[calc(7/6)]
-  after:font-normal;
+  @apply flex flex-col justify-center items-center max-w-61 mr-auto px-9 pt-9 pb-8 text-3xl font-bold
+  leading-none bg-navajo-white-5.41 after:content-['вагон'] after:-mt-2 after:mr-2.5
+  after:text-2xl/[calc(7/6)] after:font-normal;
 }
 
 .selection-seats-coach-details-body__places {}

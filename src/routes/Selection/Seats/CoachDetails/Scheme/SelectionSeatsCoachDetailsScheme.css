@@ -61,7 +61,7 @@
 
 .scheme-seats__item {
   @apply flex justify-center text-sm font-bold leading-none text-black bg-white-smoke-0.62 border-2
-  border-transparent select-none disabled:text-white-smoke-0.62 disabled:bg-neon-silver
+  border-transparent cursor-pointer select-none disabled:text-white-smoke-0.62 disabled:bg-neon-silver
   disabled:cursor-not-allowed data-[selected=true]:border-chrome-yellow;
 }
 

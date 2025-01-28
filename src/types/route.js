@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export const routeDirectionAvailableSeatsInfoClassType = PropTypes.number;
 export const routeDirectionDurationType = PropTypes.number;
 
-const routeDirectionHaveClass = PropTypes.bool;
+const routeDirectionHaveClassType = PropTypes.bool;
 
 export const routeDirectionPointCityNameType = PropTypes.string;
 export const routeDirectionPointDatetimeType = PropTypes.number;
@@ -33,10 +33,10 @@ const routeDirectionType = PropTypes.shape({
   }),
   duration: routeDirectionDurationType,
   from: routeDirectionPointType,
-  have_first_class: routeDirectionHaveClass,
-  have_fourth_class: routeDirectionHaveClass,
-  have_second_class: routeDirectionHaveClass,
-  have_third_class: routeDirectionHaveClass,
+  have_first_class: routeDirectionHaveClassType,
+  have_fourth_class: routeDirectionHaveClassType,
+  have_second_class: routeDirectionHaveClassType,
+  have_third_class: routeDirectionHaveClassType,
   price_info: PropTypes.shape({
     first: routeDirectionPriceInfoClassType,
     fourth: routeDirectionPriceInfoClassType,
