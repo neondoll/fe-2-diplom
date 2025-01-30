@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn } from "../../../../../lib/utils";
-import { coachIdType, coachNameType } from "../../../../../types/seat";
+import { coachIdType, coachNameType } from "../../../../../types/coach";
+import { orderCoachIdType } from "../../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsHeader.css";
 
@@ -46,7 +47,7 @@ SelectionSeatsCoachDetailsHeader.propTypes = {
   className: classNameType,
   coaches: PropTypes.arrayOf(PropTypes.shape({ _id: coachIdType, name: coachNameType })),
   onChange: PropTypes.func,
-  value: coachIdType,
+  value: orderCoachIdType,
 };
 
 export default SelectionSeatsCoachDetailsHeader;

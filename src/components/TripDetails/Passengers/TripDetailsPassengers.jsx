@@ -1,9 +1,57 @@
 import TripDetailsCollapsible from "../Collapsible/TripDetailsCollapsible";
 import { classNameType } from "../../../types/base";
 import { cn, formatPrice } from "../../../lib/utils";
+import { selectOrder } from "../../../slices/order";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./TripDetailsPassengers.css";
 
 function TripDetailsPassengers({ className }) {
+  const order = useSelector(selectOrder);
+  const [priceAdults, setPriceAdults] = useState(0);
+  const [priceChildren, setPriceChildren] = useState(0);
+  const [ticketQuantityAdults, setTicketQuantityAdults] = useState(0);
+  const [ticketQuantityChildren, setTicketQuantityChildren] = useState(0);
+
+  useEffect(() => {
+    let price = 0;
+
+    for (let index = 0; index < order.departure_ticket_quantity.adults; index++) {
+      price += order.departure_seats[index].price;
+    }
+
+    for (let index = 0; index < order.arrival_ticket_quantity.adults; index++) {
+      price += order.arrival_seats[index].price;
+    }
+
+    setPriceAdults(price);
+  }, [
+    order.arrival_seats, order.arrival_ticket_quantity.adults,
+    order.departure_seats, order.departure_ticket_quantity.adults,
+  ]);
+  useEffect(() => {
+    let price = 0;
+
+    for (let index = 0; index < order.departure_ticket_quantity.children; index++) {
+      price += order.departure_seats[order.departure_ticket_quantity.adults + index].price;
+    }
+
+    for (let index = 0; index < order.arrival_ticket_quantity.children; index++) {
+      price += order.arrival_seats[order.arrival_ticket_quantity.adults + index].price;
+    }
+
+    setPriceChildren(price);
+  }, [
+    order.arrival_seats, order.arrival_ticket_quantity.adults, order.arrival_ticket_quantity.children,
+    order.departure_seats, order.departure_ticket_quantity.adults, order.departure_ticket_quantity.children,
+  ]);
+  useEffect(() => {
+    setTicketQuantityAdults(order.departure_ticket_quantity.adults + order.arrival_ticket_quantity.adults);
+  }, [order.arrival_ticket_quantity.adults, order.departure_ticket_quantity.adults]);
+  useEffect(() => {
+    setTicketQuantityChildren(order.departure_ticket_quantity.children + order.arrival_ticket_quantity.children);
+  }, [order.arrival_ticket_quantity.children, order.departure_ticket_quantity.children]);
+
   return (
     <TripDetailsCollapsible
       className={cn("trip-details-passengers", className)}
@@ -21,14 +69,24 @@ function TripDetailsPassengers({ className }) {
       )}
       title="Пассажиры"
     >
-      <div className="trip-details-passengers__adults">
-        <p className="trip-details-passengers__label">2 Взрослых</p>
-        <p className="trip-details-passengers__value">{formatPrice(5840)}</p>
-      </div>
-      <div className="trip-details-passengers__children">
-        <p className="trip-details-passengers__label">1 Ребенок</p>
-        <p className="trip-details-passengers__value">{formatPrice(1920)}</p>
-      </div>
+      {ticketQuantityAdults > 0 && (
+        <div className="trip-details-passengers__adults">
+          <p className="trip-details-passengers__label">
+            {"Взрослые: "}
+            {ticketQuantityAdults}
+          </p>
+          <p className="trip-details-passengers__value">{formatPrice(priceAdults)}</p>
+        </div>
+      )}
+      {ticketQuantityChildren > 0 && (
+        <div className="trip-details-passengers__children">
+          <p className="trip-details-passengers__label">
+            {"Дети: "}
+            {ticketQuantityChildren}
+          </p>
+          <p className="trip-details-passengers__value">{formatPrice(priceChildren)}</p>
+        </div>
+      )}
     </TripDetailsCollapsible>
   );
 }

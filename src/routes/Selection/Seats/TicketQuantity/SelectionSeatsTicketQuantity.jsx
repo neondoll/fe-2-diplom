@@ -2,6 +2,7 @@ import Input from "../../../../components/Fields/Input/Input";
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
+import { orderTicketQuantityType } from "../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsTicketQuantity.css";
 
@@ -32,7 +33,7 @@ const fields = [
 ];
 
 function SelectionSeatsTicketQuantity({ className, onChange, values }) {
-  const [form, setForm] = useState({ adults: 0, children: 0, babies: 0 });
+  const [form, setForm] = useState({ adults: 0, babies: 0, children: 0 });
 
   useEffect(() => {
     if (values) {
@@ -82,11 +83,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
 SelectionSeatsTicketQuantity.propTypes = {
   className: classNameType,
   onChange: PropTypes.func,
-  values: PropTypes.shape({
-    adults: PropTypes.number,
-    children: PropTypes.number,
-    babies: PropTypes.number,
-  }),
+  values: orderTicketQuantityType,
 };
 
 export default SelectionSeatsTicketQuantity;

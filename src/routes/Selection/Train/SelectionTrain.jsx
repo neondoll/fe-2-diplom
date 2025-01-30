@@ -1,3 +1,4 @@
+import Dialog from "../../../components/Dialog/Dialog";
 import Pagination from "../../../components/Pagination/Pagination";
 import SelectionTrainLimit from "./Limit/SelectionTrainLimit";
 import SelectionTrainSort from "./Sort/SelectionTrainSort";
@@ -15,6 +16,7 @@ export default function SelectionTrain() {
   const { className, setLoading } = useOutletContext();
   const [limit, setLimit] = useState(5);
   const [loadingPage, setLoadingPage] = useState(true);
+  const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [sort, setSort] = useState("date");
 
@@ -50,6 +52,7 @@ export default function SelectionTrain() {
   useEffect(() => {
     if (error) {
       console.error(error);
+      setOpen(true);
     }
   }, [error]);
   useEffect(() => {
@@ -96,6 +99,7 @@ export default function SelectionTrain() {
           pageCount={Math.ceil(data.total_count / limit)}
         />
       )}
+      <Dialog description={error} onOpenChange={setOpen} open={open} title="Сообщение об ошибке" type="error" />
     </div>
   );
 }

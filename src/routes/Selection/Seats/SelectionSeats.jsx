@@ -1,4 +1,5 @@
 import Button from "../../../components/Button/Button";
+import Dialog from "../../../components/Dialog/Dialog";
 import Paths from "../../../paths";
 import SelectionSeatsCoachClassType from "./CoachClassType/SelectionSeatsCoachClassType";
 import SelectionSeatsCoachDetails from "./CoachDetails/SelectionSeatsCoachDetails";
@@ -22,6 +23,8 @@ export default function SelectionSeats() {
   const order = useSelector(selectOrder);
   const routesSearch = useSelector(selectRoutesSearch);
   const { className, setLoading } = useOutletContext();
+  const [arrivalOpen, setArrivalOpen] = useState(false);
+  const [departureOpen, setDepartureOpen] = useState(false);
   const [loadingPage, setLoadingPage] = useState(true);
 
   const arrivalApi = useGetSeats(chosenRoute.arrival_id, {
@@ -44,13 +47,12 @@ export default function SelectionSeats() {
   useEffect(() => {
     if (arrivalApi.error) {
       console.error(arrivalApi.error);
+
+      if (chosenRoute.arrival_id) {
+        setArrivalOpen(true);
+      }
     }
-  }, [arrivalApi.error]);
-  useEffect(() => {
-    if (departureApi.error) {
-      console.error(departureApi.error);
-    }
-  }, [departureApi.error]);
+  }, [arrivalApi.error, chosenRoute.arrival_id]);
   useEffect(() => {
     console.log("loading in SelectionSeats", arrivalApi.loading || departureApi.loading);
 
@@ -58,6 +60,15 @@ export default function SelectionSeats() {
       setLoadingPage(false);
     }
   }, [arrivalApi.loading, departureApi.loading]);
+  useEffect(() => {
+    if (departureApi.error) {
+      console.error(departureApi.error);
+
+      if (chosenRoute.departure_id) {
+        setDepartureOpen(true);
+      }
+    }
+  }, [chosenRoute.departure_id, departureApi.error]);
   useEffect(() => {
     console.log("setLoading in SelectionSeats", loadingPage);
     setLoading(loadingPage);
@@ -67,6 +78,18 @@ export default function SelectionSeats() {
     return null;
   }
 
+  const btnEnabled = () => {
+    return order.departure_ticket_quantity.adults > 0
+      && order.departure_ticket_quantity.babies <= order.departure_ticket_quantity.adults
+      && order.departure_seats.length === (order.departure_ticket_quantity.adults + order.departure_ticket_quantity.children)
+      && (
+        arrivalApi.data.length === 0 || (
+          order.arrival_ticket_quantity.adults > 0
+          && order.arrival_ticket_quantity.babies <= order.arrival_ticket_quantity.adults
+          && order.arrival_seats.length === (order.arrival_ticket_quantity.adults + order.arrival_ticket_quantity.children)
+        )
+      );
+  };
   const handleChange = (data) => {
     console.log(data);
 
@@ -101,7 +124,7 @@ export default function SelectionSeats() {
               handleChange({
                 departure_coach_class_type: newValue,
                 departure_coach_id: undefined,
-                departure_options: { linens: false, wifi: false },
+                departure_options: { linens: 0, wifi: 0 },
                 departure_seats: [],
               });
             }}
@@ -144,7 +167,7 @@ export default function SelectionSeats() {
               handleChange({
                 arrival_coach_class_type: newValue,
                 arrival_coach_id: undefined,
-                arrival_options: { linens: false, wifi: false },
+                arrival_options: { linens: 0, wifi: 0 },
                 arrival_seats: [],
               });
             }}
@@ -165,7 +188,23 @@ export default function SelectionSeats() {
           />
         </div>
       )}
-      <Button className="selection-seats__btn" variant="further" onClick={handleClick}>ДАЛЕЕ</Button>
+      <Button className="selection-seats__btn" disabled={!btnEnabled()} onClick={handleClick} variant="further">
+        ДАЛЕЕ
+      </Button>
+      <Dialog
+        description={departureApi.error}
+        onOpenChange={setDepartureOpen}
+        open={departureOpen}
+        title="Сообщение об ошибке"
+        type="error"
+      />
+      <Dialog
+        description={arrivalApi.error}
+        onOpenChange={setArrivalOpen}
+        open={arrivalOpen}
+        title="Сообщение об ошибке"
+        type="error"
+      />
     </div>
   );
 }

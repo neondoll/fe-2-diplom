@@ -5,15 +5,15 @@ import SelectionSeatsCoachDetailsScheme from "./Scheme/SelectionSeatsCoachDetail
 import SelectionSeatsCoachDetailsFooter from "./Footer/SelectionSeatsCoachDetailsFooter.jsx";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
-import { coachClassTypeType, coachIdType, coachType } from "../../../../types/seat";
-import { seatType } from "../../../../constants/train";
+import { coachClassTypeType, coachType } from "../../../../types/coach";
+import { orderCoachIdType, orderOptionsType, orderSeatsType } from "../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetails.css";
 
 function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, values }) {
   const [coach, setCoach] = useState();
   const [coachItems, setCoachItems] = useState([]);
-  const [form, setForm] = useState({ coach_id: null, options: { linens: false, wifi: false }, seats: [] });
+  const [form, setForm] = useState({ coach_id: null, options: { linens: 0, wifi: 0 }, seats: [] });
 
   useEffect(() => {
     if (coaches) {
@@ -44,7 +44,7 @@ function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, v
     onChange(data);
   };
   const handleChangeCoachId = (value) => {
-    handleChange({ coach_id: value, options: { linens: false, wifi: false }, seats: [] });
+    handleChange({ coach_id: value, options: { linens: 0, wifi: 0 }, seats: [] });
     setCoach(
       coaches.filter(item => item.coach.class_type === classType)
         .find(item => item.coach._id === value),
@@ -79,7 +79,7 @@ function SelectionSeatsCoachDetails({ className, classType, coaches, onChange, v
           />
           <SelectionSeatsCoachDetailsFooter
             className="selection-seats-coach-details__footer"
-            coach={coach}
+            options={form.options}
             seats={form.seats}
           />
         </>
@@ -93,11 +93,7 @@ SelectionSeatsCoachDetails.propTypes = {
   classType: coachClassTypeType,
   coaches: PropTypes.arrayOf(coachType).isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.shape({
-    coach_id: coachIdType,
-    options: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
-    seats: PropTypes.arrayOf(seatType),
-  }),
+  values: PropTypes.shape({ coach_id: orderCoachIdType, options: orderOptionsType, seats: orderSeatsType }),
 };
 
 export default SelectionSeatsCoachDetails;

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn } from "../../../../../lib/utils";
-import { coachType } from "../../../../../types/seat";
-import { seatType } from "../../../../../constants/train";
+import { coachPriceType, coachType } from "../../../../../types/coach";
+import { orderSeatIndexType, orderSeatsType } from "../../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsScheme.css";
 
@@ -22,25 +22,28 @@ function SchemeSeatsItem({ isDisabled, isSelected, item, ...props }) {
 SchemeSeatsItem.propTypes = {
   isDisabled: PropTypes.func.isRequired,
   isSelected: PropTypes.func.isRequired,
-  item: seatType.isRequired,
+  item: orderSeatIndexType.isRequired,
 };
 
-function FirstSchemeSeats({ className, isDisabled, onChange, values }) {
+function FirstSchemeSeats({ className, isDisabled, onChange, price, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
     isDisabled,
-    isSelected: item => selectedSeats.includes(item),
+    isSelected: index => selectedSeats.map(seat => seat.index).includes(index),
     onClick: (event) => {
-      const item = Number(event.target.textContent);
-      const seats = event.target.dataset.selected === "true"
-        ? selectedSeats.filter(selectedSeat => selectedSeat !== item)
-        : [...selectedSeats, item];
+      const index = Number(event.target.textContent);
+
+      let seats;
+
+      if (event.target.dataset.selected === "true") {
+        seats = selectedSeats.filter(seat => seat.index !== index);
+      }
+      else {
+        seats = [...selectedSeats, { index, price }];
+      }
 
       setSelectedSeats(seats);
-
-      if (onChange) {
-        onChange(seats);
-      }
+      onChange(seats);
     },
   };
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -80,25 +83,29 @@ FirstSchemeSeats.propTypes = {
   className: classNameType,
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.arrayOf(seatType),
+  price: coachPriceType,
+  values: orderSeatsType,
 };
 
-function SecondSchemeSeats({ className, isDisabled, onChange, values }) {
+function SecondSchemeSeats({ bottomPrice, className, isDisabled, onChange, topPrice, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
     isDisabled,
-    isSelected: item => selectedSeats.includes(item),
+    isSelected: index => selectedSeats.map(seat => seat.index).includes(index),
     onClick: (event) => {
-      const item = Number(event.target.textContent);
-      const seats = event.target.dataset.selected === "true"
-        ? selectedSeats.filter(selectedSeat => selectedSeat !== item)
-        : [...selectedSeats, item];
+      const index = Number(event.target.textContent);
+
+      let seats;
+
+      if (event.target.dataset.selected === "true") {
+        seats = selectedSeats.filter(seat => seat.index !== index);
+      }
+      else {
+        seats = [...selectedSeats, { index, price: index % 2 === 0 ? topPrice : bottomPrice }];
+      }
 
       setSelectedSeats(seats);
-
-      if (onChange) {
-        onChange(seats);
-      }
+      onChange(seats);
     },
   };
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -137,28 +144,36 @@ function SecondSchemeSeats({ className, isDisabled, onChange, values }) {
 }
 
 SecondSchemeSeats.propTypes = {
+  bottomPrice: coachPriceType,
   className: classNameType,
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.arrayOf(seatType),
+  topPrice: coachPriceType,
+  values: orderSeatsType,
 };
 
-function ThirdSchemeSeats({ className, isDisabled, onChange, values }) {
+function ThirdSchemeSeats({ bottomPrice, className, isDisabled, onChange, sidePrice, topPrice, values }) {
   const placements = Array.from({ length: 8 }, (_, i) => i);
   const schemeSeatsItemProps = {
     isDisabled,
-    isSelected: item => selectedSeats.includes(item),
+    isSelected: index => selectedSeats.map(seat => seat.index).includes(index),
     onClick: (event) => {
-      const item = Number(event.target.textContent);
-      const seats = event.target.dataset.selected === "true"
-        ? selectedSeats.filter(selectedSeat => selectedSeat !== item)
-        : [...selectedSeats, item];
+      const index = Number(event.target.textContent);
+
+      let seats;
+
+      if (event.target.dataset.selected === "true") {
+        seats = selectedSeats.filter(seat => seat.index !== index);
+      }
+      else {
+        seats = [...selectedSeats, {
+          index,
+          price: index > 32 ? sidePrice : (index % 2 === 0 ? topPrice : bottomPrice),
+        }];
+      }
 
       setSelectedSeats(seats);
-
-      if (onChange) {
-        onChange(seats);
-      }
+      onChange(seats);
     },
   };
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -198,28 +213,34 @@ function ThirdSchemeSeats({ className, isDisabled, onChange, values }) {
 }
 
 ThirdSchemeSeats.propTypes = {
+  bottomPrice: coachPriceType,
   className: classNameType,
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.arrayOf(seatType),
+  sidePrice: coachPriceType,
+  topPrice: coachPriceType,
+  values: orderSeatsType,
 };
 
-function FourthSchemeSeats({ className, isDisabled, onChange, values }) {
+function FourthSchemeSeats({ bottomPrice, className, isDisabled, onChange, topPrice, values }) {
   const placements = Array.from({ length: 16 }, (_, i) => i);
   const schemeSeatsItemProps = {
     isDisabled,
-    isSelected: item => selectedSeats.includes(item),
+    isSelected: index => selectedSeats.map(seat => seat.index).includes(index),
     onClick: (event) => {
-      const item = Number(event.target.textContent);
-      const seats = event.target.dataset.selected === "true"
-        ? selectedSeats.filter(selectedSeat => selectedSeat !== item)
-        : [...selectedSeats, item];
+      const index = Number(event.target.textContent);
+
+      let seats;
+
+      if (event.target.dataset.selected === "true") {
+        seats = selectedSeats.filter(seat => seat.index !== index);
+      }
+      else {
+        seats = [...selectedSeats, { index, price: index % 2 === 0 ? topPrice : bottomPrice }];
+      }
 
       setSelectedSeats(seats);
-
-      if (onChange) {
-        onChange(seats);
-      }
+      onChange(seats);
     },
   };
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -258,10 +279,12 @@ function FourthSchemeSeats({ className, isDisabled, onChange, values }) {
 }
 
 FourthSchemeSeats.propTypes = {
+  bottomPrice: coachPriceType,
   className: classNameType,
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.arrayOf(seatType),
+  topPrice: coachPriceType,
+  values: orderSeatsType,
 };
 
 function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }) {
@@ -272,11 +295,7 @@ function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }
 
       return seat ? !seat.available : true;
     },
-    onChange: (values) => {
-      if (onChange) {
-        onChange(values);
-      }
-    },
+    onChange,
     values,
   };
 
@@ -286,10 +305,34 @@ function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }
         <>
           <p className="selection-seats-coach-details-scheme__number">{coach.coach.name}</p>
           <div className="selection-seats-coach-details-scheme__container">
-            {coach.coach.class_type === "first" && (<FirstSchemeSeats {...schemeSeatsProps} />)}
-            {coach.coach.class_type === "second" && (<SecondSchemeSeats {...schemeSeatsProps} />)}
-            {coach.coach.class_type === "third" && (<ThirdSchemeSeats {...schemeSeatsProps} />)}
-            {coach.coach.class_type === "fourth" && (<FourthSchemeSeats {...schemeSeatsProps} />)}
+            {coach.coach.class_type === "first" && (
+              <FirstSchemeSeats
+                {...schemeSeatsProps}
+                price={coach.coach.price}
+              />
+            )}
+            {coach.coach.class_type === "second" && (
+              <SecondSchemeSeats
+                {...schemeSeatsProps}
+                bottomPrice={coach.coach.bottom_price}
+                topPrice={coach.coach.top_price}
+              />
+            )}
+            {coach.coach.class_type === "third" && (
+              <ThirdSchemeSeats
+                {...schemeSeatsProps}
+                bottomPrice={coach.coach.bottom_price}
+                sidePrice={coach.coach.side_price}
+                topPrice={coach.coach.top_price}
+              />
+            )}
+            {coach.coach.class_type === "fourth" && (
+              <FourthSchemeSeats
+                {...schemeSeatsProps}
+                bottomPrice={coach.coach.bottom_price}
+                topPrice={coach.coach.top_price}
+              />
+            )}
           </div>
         </>
       )}
@@ -301,7 +344,7 @@ SelectionSeatsCoachDetailsScheme.propTypes = {
   className: classNameType,
   coach: coachType,
   onChange: PropTypes.func,
-  values: PropTypes.arrayOf(seatType),
+  values: orderSeatsType,
 };
 
 export default SelectionSeatsCoachDetailsScheme;

@@ -1,8 +1,9 @@
 import AdditionalOptionsInCarriagesTooltip from "./Tooltip/AdditionalOptionsInCarriagesTooltip";
 import PropTypes from "prop-types";
 import { classNameType } from "../../types/base";
-import { coachHaveType, coachPriceType } from "../../types/seat";
+import { coachHaveType, coachPriceType } from "../../types/coach";
 import { cn, formatPrice } from "../../lib/utils";
+import { orderOptionsType } from "../../types/order";
 import { useEffect, useState } from "react";
 import "./AdditionalOptionsInCarriages.css";
 
@@ -104,7 +105,7 @@ const items = [
 ];
 
 function AdditionalOptionsInCarriages({ btnClassName, className, onChange, values, ...props }) {
-  const [_values, setValues] = useState({ linens: false, wifi: false });
+  const [_values, setValues] = useState({ linens: 0, wifi: 0 });
 
   useEffect(() => {
     if (values) {
@@ -115,11 +116,12 @@ function AdditionalOptionsInCarriages({ btnClassName, className, onChange, value
   const handleClick = (event) => {
     const btn = event.target.closest(".additional-options-in-carriages__btn");
     const active = btn.dataset.active;
+    const cost = btn.dataset.cost;
     const state = btn.dataset.state;
     const value = btn.dataset.value;
 
     if (state === undefined) {
-      const values = { ..._values, [value]: active === "false" };
+      const values = { ..._values, [value]: active === "false" ? Number(cost) : 0 };
 
       setValues(values);
       onChange(values);
@@ -136,7 +138,7 @@ function AdditionalOptionsInCarriages({ btnClassName, className, onChange, value
             <li className="additional-options-in-carriages__item" key={item.value}>
               <button
                 className={cn("additional-options-in-carriages__btn", btnClassName)}
-                data-active={_values[item.value]}
+                data-active={item.value in _values ? _values[item.value] === item.cost(props) : undefined}
                 data-cost={item.cost ? item.cost(props) : undefined}
                 data-state={item.state ? item.state(props) : undefined}
                 data-tooltip-id={`additional-options-in-carriages-tooltip-${item.value}`}
@@ -166,7 +168,7 @@ AdditionalOptionsInCarriages.propTypes = {
   isLinensIncluded: coachHaveType.isRequired,
   linensPrice: coachPriceType.isRequired,
   onChange: PropTypes.func,
-  values: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
+  values: orderOptionsType,
   wifiPrice: coachPriceType.isRequired,
 };
 

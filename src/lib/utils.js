@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale/ru";
 import { twMerge } from "tailwind-merge";
 
 export function capitalizeFirstLetter(value) {
@@ -7,6 +9,10 @@ export function capitalizeFirstLetter(value) {
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
+}
+
+export function formatDate(date, formatStr) {
+  return format(date, formatStr, { locale: ru });
 }
 
 export function formatPrice(price) {
