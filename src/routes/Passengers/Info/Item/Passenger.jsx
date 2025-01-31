@@ -9,50 +9,128 @@ import Select from "../../../../components/Fields/Select/Select";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import {
-  passengerAges, passengerAgeType, passengerBirthCertificateNumberType, passengerBirthDateType, passengerDocumentTypes,
-  passengerDocumentTypeType, passengerGenders, passengerGenderType, passengerHasLimitedMobilityType, passengerNameType,
-  passengerPassportNumberType, passengerPassportSeriesType, passengerPatronymicType, passengerSurnameType,
+  passengerAges, passengerDocumentTypes, passengerGenders, passengerType,
 } from "../../../../constants/passenger";
 import { useEffect, useState } from "react";
 import "./Passenger.css";
 
-function Passenger({ className, number, open = false, values }) {
+const validators = {
+  age: values => Boolean(values.age),
+  birth_certificate_number: (values) => {
+    return values.document_type === "birth_certificate"
+      ? (Boolean(values.birth_certificate_number) && values.birth_certificate_number.length === 12)
+      : undefined;
+  },
+  birth_date: values => Boolean(values.birth_date) && (new Date(values.birth_date)).getTime() <= Date.now(),
+  document_type: values => Boolean(values.document_type),
+  gender: values => Boolean(values.gender),
+  has_limited_mobility: () => true,
+  name: values => Boolean(values.name),
+  passport_number: (values) => {
+    return values.document_type === "passport"
+      ? (Boolean(values.passport_number) && values.passport_number.length === 6)
+      : undefined;
+  },
+  passport_series: (values) => {
+    return values.document_type === "passport"
+      ? (Boolean(values.passport_series) && values.passport_series.length === 4)
+      : undefined;
+  },
+  patronymic: values => Boolean(values.patronymic) || undefined,
+  surname: values => Boolean(values.surname),
+};
+
+function Passenger({ className, number, onDelete, onSubmit, values }) {
   const [form, setForm] = useState({
-    age: undefined,
-    surname: undefined,
-    name: undefined,
-    patronymic: undefined,
-    gender: undefined,
+    age: null,
+    surname: "",
+    name: "",
+    patronymic: "",
+    gender: null,
+    birth_date: null,
     has_limited_mobility: false,
-    document_type: undefined,
-    passport_series: undefined,
-    passport_number: undefined,
-    birth_certificate_number: undefined,
+    document_type: null,
+    passport_series: null,
+    passport_number: null,
+    birth_certificate_number: null,
   });
-  const [isValid] = useState(values.birth_certificate_number === undefined ? undefined : true);
-  const [validator] = useState({
-    birth_certificate_number: values.birth_certificate_number === undefined ? undefined : true,
-  });
-  const [_open, setOpen] = useState(false);
+  const [isValid, setIsValid] = useState(undefined);
+  const [validator, setValidator] = useState({});
 
   useEffect(() => {
-    setForm(values);
+    if (values) {
+      setForm(values);
+    }
   }, [values]);
-  useEffect(() => {
-    setOpen(open);
-  }, [open]);
 
-  const handleChangeInput = (event) => {
+  const handleDeleteClick = (event) => {
+    event.preventDefault();
+
+    setForm({
+      age: null,
+      surname: "",
+      name: "",
+      patronymic: "",
+      gender: null,
+      birth_date: null,
+      has_limited_mobility: false,
+      document_type: null,
+      passport_series: null,
+      passport_number: null,
+      birth_certificate_number: null,
+    });
+    setIsValid(undefined);
+    setValidator({});
+    onDelete();
+  };
+  const handleSubmitClick = (event) => {
+    event.preventDefault();
+
+    const validator = {};
+
+    Object.keys(form).forEach((key) => {
+      validator[key] = validators[key](form);
+    });
+
+    const isValid = Object.values(validator).every(value => value !== false);
+
+    setValidator(validator);
+    setIsValid(isValid);
+
+    if (isValid) {
+      onSubmit(form);
+    }
+  };
+  const handleFullNameChange = (event) => {
     const { name, value } = event.target;
 
-    setForm(prev => ({ ...prev, [name]: value }));
+    updateForm(name, value.replace(/[^a-zA-ZА-я]/gi, ""));
+  };
+  const updateForm = (name, value) => {
+    console.log("updateForm", name, value);
+
+    const _form = { ...form, [name]: value };
+    const _validator = { ...validator, [name]: validators[name](_form) };
+
+    if (name === "document_type") {
+      _validator.birth_certificate_number = validators.birth_certificate_number(_form);
+      _validator.passport_number = validators.passport_number(_form);
+      _validator.passport_series = validators.passport_series(_form);
+    }
+
+    setForm(_form);
+    setValidator(_validator);
+
+    if (isValid !== undefined) {
+      setIsValid(Object.values(_validator).every(value => value !== false));
+    }
   };
 
   return (
-    <Collapsible.Root className={cn("passenger", className)} open={_open} onOpenChange={setOpen}>
+    <Collapsible.Root className={cn("passenger", className)}>
       <Collapsible.Trigger className="passenger__trigger">{`Пассажир ${number}`}</Collapsible.Trigger>
       <Collapsible.Content className="passenger__content">
-        <button className="passenger__delete-btn">
+        <button className="passenger__delete-btn" onClick={handleDeleteClick} type="button">
           <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10.3 0.3L6 4.6L1.7 0.3C1.3 -0.1 0.7 -0.1 0.3 0.3C-0.1 0.7 -0.1 1.3 0.3 1.7L4.6 6L0.3 10.3C-0.1 10.7 -0.1 11.3 0.3 11.6L0.4 11.7C0.8 12.1 1.4 12.1 1.7 11.7L6 7.4L10.2 11.6C10.6 12 11.2 12 11.6 11.6C12 11.2 12 10.6 11.6 10.2L7.4 6L11.7 1.7C12.1 1.3 12.1 0.7 11.7 0.4L11.6 0.3C11.2 -0.1 10.6 -0.1 10.3 0.3Z"
@@ -66,10 +144,11 @@ function Passenger({ className, number, open = false, values }) {
               contentClassName="passenger__select-content passenger__select-content--age"
               items={Object.entries(passengerAges).map(([value, text]) => ({ text, value }))}
               name="age"
-              onValueChange={(newValue) => {
-                setForm(prev => ({ ...prev, age: newValue }));
-              }}
-              triggerClassName="passenger__select-trigger passenger__select-trigger--age"
+              onValueChange={newValue => updateForm("age", newValue)}
+              triggerClassName={cn(
+                "passenger__select-trigger passenger__select-trigger--age",
+                validator.age === false && "invalid",
+              )}
               value={form.age}
             />
           </div>
@@ -77,36 +156,42 @@ function Passenger({ className, number, open = false, values }) {
             <div className="passenger__group">
               <label className="passenger__label" htmlFor="surname">Фамилия</label>
               <Input
-                className="passenger__input passenger__input--surname"
+                className={cn(
+                  "passenger__input passenger__input--surname",
+                  validator.surname === false && "invalid",
+                )}
                 id="surname"
                 name="surname"
-                onChange={handleChangeInput}
+                onChange={handleFullNameChange}
                 type="text"
-                required
                 value={form.surname}
               />
             </div>
             <div className="passenger__group">
               <label className="passenger__label" htmlFor="name">Имя</label>
               <Input
-                className="passenger__input passenger__input--name"
+                className={cn(
+                  "passenger__input passenger__input--name",
+                  validator.name === false && "invalid",
+                )}
                 id="name"
                 name="name"
-                onChange={handleChangeInput}
+                onChange={handleFullNameChange}
                 type="text"
-                required
                 value={form.name}
               />
             </div>
             <div className="passenger__group">
               <label className="passenger__label" htmlFor="patronymic">Отчество</label>
               <Input
-                className="passenger__input passenger__input--patronymic"
+                className={cn(
+                  "passenger__input passenger__input--patronymic",
+                  validator.patronymic === false && "invalid",
+                )}
                 id="patronymic"
                 name="patronymic"
-                onChange={handleChangeInput}
+                onChange={handleFullNameChange}
                 type="text"
-                required
                 value={form.patronymic}
               />
             </div>
@@ -115,24 +200,26 @@ function Passenger({ className, number, open = false, values }) {
             <fieldset className="passenger__group">
               <legend className="passenger__label">Пол</legend>
               <RadioGroup
-                className="passenger__radio-group passenger__radio-group--gender"
+                className={cn(
+                  "passenger__radio-group passenger__radio-group--gender",
+                  validator.gender === false && "invalid",
+                )}
                 items={Object.entries(passengerGenders).map(([value, item]) => ({ text: item.abbr, value }))}
                 name="gender"
-                onValueChange={(newValue) => {
-                  setForm(prev => ({ ...prev, gender: newValue }));
-                }}
+                onValueChange={newValue => updateForm("gender", newValue)}
                 value={form.gender}
               />
             </fieldset>
             <div className="passenger__group">
               <label className="passenger__label" htmlFor="birth_date">Дата рождения</label>
               <Datepicker
-                className="passenger__datepicker passenger__datepicker--birth-date"
+                className={cn(
+                  "passenger__datepicker passenger__datepicker--birth-date",
+                  validator.birth_date === false && "invalid",
+                )}
                 id="birth_date"
                 name="birth_date"
-                onChange={(newValue) => {
-                  setForm(prev => ({ ...prev, birth_date: newValue }));
-                }}
+                onChange={newValue => updateForm("birth_date", newValue)}
                 placeholder="ДД/ММ/ГГ"
                 value={form.birth_date}
               />
@@ -142,12 +229,13 @@ function Passenger({ className, number, open = false, values }) {
             <div className="passenger__checkbox-group">
               <Checkbox
                 checked={form.has_limited_mobility}
-                className="passenger__checkbox passenger__checkbox--has-limited-mobility"
+                className={cn(
+                  "passenger__checkbox passenger__checkbox--has-limited-mobility",
+                  validator.has_limited_mobility === false && "invalid",
+                )}
                 id="has_limited_mobility"
                 name="has_limited_mobility"
-                onCheckedChange={(newValue) => {
-                  setForm(prev => ({ ...prev, has_limited_mobility: newValue }));
-                }}
+                onCheckedChange={newValue => updateForm("has_limited_mobility", newValue)}
               />
               <label className="passenger__label" htmlFor="has_limited_mobility">ограниченная подвижность</label>
             </div>
@@ -162,13 +250,12 @@ function Passenger({ className, number, open = false, values }) {
                 id="document_type"
                 items={Object.entries(passengerDocumentTypes).map(([value, text]) => ({ text, value }))}
                 name="document_type"
-                onValueChange={(newValue) => {
-                  setForm(prev => ({ ...prev, document_type: newValue }));
-                }}
+                onValueChange={newValue => updateForm("document_type", newValue)}
                 triggerClassName={cn(
                   "passenger__select-trigger passenger__select-trigger--document-type",
-                  form.document_type === "birth_certificate" && "w-[444px]",
-                  form.document_type === "passport" && "w-[205px]",
+                  form.document_type === "birth_certificate" && "!w-111",
+                  form.document_type === "passport" && "!w-51.25",
+                  validator.document_type === false && "invalid",
                 )}
                 value={form.document_type}
               />
@@ -176,25 +263,27 @@ function Passenger({ className, number, open = false, values }) {
             {form.document_type === "passport" && (
               <>
                 <div className="passenger__group">
-                  <label className="passenger__label mb-[13px]" htmlFor="passport_series">Серия</label>
+                  <label className="passenger__label" htmlFor="passport_series">Серия</label>
                   <InputOTP
-                    className="passenger__input-otp passenger__input-otp--passport-series"
+                    className={cn(
+                      "passenger__input-otp passenger__input-otp--passport-series",
+                      validator.passport_series === false && "invalid",
+                    )}
                     maxLength={4}
-                    onChange={(newValue) => {
-                      setForm(prev => ({ ...prev, passport_series: newValue }));
-                    }}
+                    onChange={newValue => updateForm("passport_series", newValue)}
                     slotWidth="14px"
                     value={form.passport_series}
                   />
                 </div>
                 <div className="passenger__group">
-                  <label className="passenger__label mb-[13px]" htmlFor="passport_number">Номер</label>
+                  <label className="passenger__label" htmlFor="passport_number">Номер</label>
                   <InputOTP
-                    className="passenger__input-otp passenger__input-otp--passport-number"
+                    className={cn(
+                      "passenger__input-otp passenger__input-otp--passport-number",
+                      validator.passport_number === false && "invalid",
+                    )}
                     maxLength={6}
-                    onChange={(newValue) => {
-                      setForm(prev => ({ ...prev, passport_number: newValue }));
-                    }}
+                    onChange={newValue => updateForm("passport_number", newValue)}
                     slotWidth="14px"
                     value={form.passport_number}
                   />
@@ -204,18 +293,14 @@ function Passenger({ className, number, open = false, values }) {
             {form.document_type === "birth_certificate" && (
               <>
                 <div className="passenger__group">
-                  <label className="passenger__label mb-[15px] ml-[1px]" htmlFor="birth_certificate_number">
-                    Номер
-                  </label>
+                  <label className="passenger__label" htmlFor="birth_certificate_number">Номер</label>
                   <InputOTP
                     className={cn(
                       "passenger__input-otp passenger__input-otp--birth-certificate-number",
                       validator.birth_certificate_number === false && "invalid",
                     )}
                     maxLength={12}
-                    onChange={(newValue) => {
-                      setForm(prev => ({ ...prev, birth_certificate_number: newValue }));
-                    }}
+                    onChange={newValue => updateForm("birth_certificate_number", newValue)}
                     slotWidth="18px"
                     value={form.birth_certificate_number}
                   />
@@ -236,18 +321,34 @@ function Passenger({ className, number, open = false, values }) {
           )}
           {isValid === false && (
             <div className="passenger__invalid-messages">
+              {validator.age === false && (
+                <p className="passenger__invalid-message">Возраст указан некорректно</p>
+              )}
+              {(validator.surname === false || validator.name === false || validator.patronymic === false) && (
+                <p className="passenger__invalid-message">ФИО указано некорректно</p>
+              )}
+              {validator.gender === false && (
+                <p className="passenger__invalid-message">Пол указан некорректно</p>
+              )}
+              {validator.birth_date === false && (
+                <p className="passenger__invalid-message">Дата рождения указана некорректно</p>
+              )}
+              {validator.document_type === false && (
+                <p className="passenger__invalid-message">Тип документа указан некорректно</p>
+              )}
+              {validator.passport_series === false && (
+                <p className="passenger__invalid-message">Серия паспорта РФ указана некорректно</p>
+              )}
+              {validator.passport_number === false && (
+                <p className="passenger__invalid-message">Номер паспорта РФ указан некорректно</p>
+              )}
               {validator.birth_certificate_number === false && (
-                <p className="passenger__invalid-message">
-                  Номер свидетельства о рождении указан некорректно
-                  <br />
-                  {"Пример: "}
-                  <span className="font-bold">VIII-ЫП-123456</span>
-                </p>
+                <p className="passenger__invalid-message">Номер свидетельства о рождении указан некорректно</p>
               )}
             </div>
           )}
           {isValid !== false && (
-            <button className="passenger__btn">Следующий пассажир</button>
+            <button className="passenger__btn" onClick={handleSubmitClick} type="button">Следующий пассажир</button>
           )}
         </div>
       </Collapsible.Content>
@@ -258,20 +359,9 @@ function Passenger({ className, number, open = false, values }) {
 Passenger.propTypes = {
   className: classNameType,
   number: PropTypes.number.isRequired,
-  open: PropTypes.bool,
-  values: PropTypes.shape({
-    age: passengerAgeType,
-    surname: passengerSurnameType,
-    name: passengerNameType,
-    patronymic: passengerPatronymicType,
-    gender: passengerGenderType,
-    birth_date: passengerBirthDateType,
-    has_limited_mobility: passengerHasLimitedMobilityType,
-    document_type: passengerDocumentTypeType,
-    passport_series: passengerPassportSeriesType,
-    passport_number: passengerPassportNumberType,
-    birth_certificate_number: passengerBirthCertificateNumberType,
-  }),
+  onDelete: PropTypes.func,
+  onSubmit: PropTypes.func,
+  values: passengerType,
 };
 
 export default Passenger;

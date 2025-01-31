@@ -37,7 +37,9 @@
 
 .passenger__container--document .passenger__label { @apply mb-3 text-base/[calc(18.75/16)] }
 
-.passenger__container--personal .passenger__label { @apply mb-3.5 text-lg/[calc(7/6)] }
+.passenger__container--personal .passenger__label { @apply text-lg/[calc(7/6)] }
+
+.passenger__container--personal .passenger__group > .passenger__label { @apply mb-3.5; }
 
 .passenger__checkbox-group > .passenger__label { @apply mt-px text-dark-charcoal-3.19 }
 
@@ -60,8 +62,6 @@
 .passenger__input--surname,
 .passenger__select-trigger--age { @apply w-70 }
 
-.passenger__input-otp.invalid { @apply text-coquelicot/80 border-coquelicot/76 }
-
 .passenger__input-otp--birth-certificate-number { @apply min-w-52 }
 
 .passenger__input-otp--passport-number,
@@ -72,7 +72,14 @@
 .passenger__select-content--document-type,
 .passenger__select-trigger--document-type { @apply text-lg leading-none }
 
-.passenger__select-trigger--document-type { @apply w-51.5 }
+.passenger__select-trigger--document-type { @apply w-51.25 }
+
+.passenger__checkbox.invalid,
+.passenger__datepicker.invalid > .datepicker__input,
+.passenger__input.invalid,
+.passenger__input-otp.invalid,
+.passenger__radio-group.invalid,
+.passenger__select-trigger.invalid { @apply text-coquelicot/80 border-coquelicot/76 }
 
 .passenger__footer { @apply flex justify-start items-center gap-x-4 pt-9 pr-8 pb-7.5 pl-6 }
 
@@ -96,5 +103,5 @@
 
 .passenger__btn {
   @apply flex justify-center items-center h-13 ml-auto px-5.5 py-2.5 text-2xl/[calc(7/6)] font-bold
-  text-center text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19;
+  text-center text-dark-charcoal-3.19 rounded-5 border border-dark-charcoal-3.19 cursor-pointer;
 }

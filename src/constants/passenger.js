@@ -15,3 +15,16 @@ export const passengerPassportNumberType = PropTypes.string;
 export const passengerPassportSeriesType = PropTypes.string;
 export const passengerPatronymicType = PropTypes.string;
 export const passengerSurnameType = PropTypes.string;
+export const passengerType = PropTypes.shape({
+  age: passengerAgeType,
+  surname: passengerSurnameType,
+  name: passengerNameType,
+  patronymic: passengerPatronymicType,
+  gender: passengerGenderType,
+  birth_date: passengerBirthDateType,
+  has_limited_mobility: passengerHasLimitedMobilityType,
+  document_type: passengerDocumentTypeType,
+  passport_series: passengerPassportSeriesType,
+  passport_number: passengerPassportNumberType,
+  birth_certificate_number: passengerBirthCertificateNumberType,
+});

@@ -39,8 +39,7 @@ function Datepicker({ className, defaultValue, onChange, suffixIcon, value, ...p
     if (airDatepicker.current && value) {
       airDatepicker.current.selectDate(new Date(value));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [airDatepicker.current, value]);
+  }, [value]);
 
   return (
     <div className={cn("datepicker", className)}>

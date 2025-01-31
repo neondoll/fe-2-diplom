@@ -4,13 +4,15 @@ const initialState = {
   arrival_coach_class_type: null,
   arrival_coach_id: null,
   arrival_options: { linens: 0, wifi: 0 },
+  arrival_passengers: [],
   arrival_seats: [],
-  arrival_ticket_quantity: { adults: 0, children: 0, babies: 0 },
+  arrival_ticket_quantity: { adults: 0, babies: 0, children: 0 },
   departure_coach_class_type: null,
   departure_coach_id: null,
   departure_options: { linens: 0, wifi: 0 },
+  departure_passengers: [],
   departure_seats: [],
-  departure_ticket_quantity: { adults: 0, children: 0, babies: 0 },
+  departure_ticket_quantity: { adults: 0, babies: 0, children: 0 },
 };
 
 const orderSlice = createSlice({
@@ -18,6 +20,8 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     changeOrder: (state, action) => {
+      console.log(action.payload);
+
       const { name, value } = action.payload;
 
       state[name] = value;
