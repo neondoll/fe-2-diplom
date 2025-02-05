@@ -13,6 +13,7 @@ const initialState = {
   departure_passengers: [],
   departure_seats: [],
   departure_ticket_quantity: { adults: 0, babies: 0, children: 0 },
+  user: null,
 };
 
 const orderSlice = createSlice({

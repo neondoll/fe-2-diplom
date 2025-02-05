@@ -108,6 +108,7 @@ function PassengersInfo({ className }) {
               number={number}
               onDelete={() => handleDelete("departure", index)}
               onSubmit={passenger => handleSubmit("departure", index, passenger)}
+              values={passenger}
             />
           );
         })}
@@ -121,6 +122,7 @@ function PassengersInfo({ className }) {
               number={number}
               onDelete={() => handleDelete("arrival", index)}
               onSubmit={passenger => handleSubmit("arrival", index, passenger)}
+              values={passenger}
             />
           );
         })}

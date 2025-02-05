@@ -39,7 +39,7 @@ function RouteInfo({ btn, className, item }) {
             toRailwayStationName={item.departure.to.railway_station_name}
             variant="departure"
           />
-          {"arrival" in item && (
+          {Boolean("arrival" in item && item.arrival) && (
             <RouteDirection
               className="route-info__arrival"
               duration={item.arrival.duration}

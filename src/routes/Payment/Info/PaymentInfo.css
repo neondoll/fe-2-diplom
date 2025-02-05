@@ -40,12 +40,12 @@
 
 .payment-info__input { @apply text-2xl leading-none }
 
-.payment-info__input--contact-phone,
-.payment-info__input--email { @apply w-90 }
+.payment-info__input--email,
+.payment-info__input--phone { @apply w-90 }
 
-.payment-info__input--name,
-.payment-info__input--patronymic,
-.payment-info__input--surname { @apply w-70 }
+.payment-info__input--first-name,
+.payment-info__input--last-name,
+.payment-info__input--patronymic { @apply w-70 }
 
 .payment-info__online-methods {
   @apply grid grid-cols-[repeat(auto-fill,11.125rem)] gap-x-11 text-2xl/[calc(7/6)] font-bold
@@ -54,5 +54,5 @@
 
 .payment-info__btn {
   @apply self-end flex justify-center items-center mr-px px-15.5 py-4 text-2xl/[calc(7/6)] font-bold
-  text-center uppercase text-white bg-chrome-yellow rounded-5;
+  text-center uppercase text-white bg-chrome-yellow rounded-5 cursor-pointer;
 }
