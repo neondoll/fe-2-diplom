@@ -21,32 +21,32 @@ export default function SelectionTrain() {
   const [sort, setSort] = useState("date");
 
   const { data, error, loading } = useGetRoutes({
-    date_end: routesSearch.date_end,
-    date_end_arrival: routesSearch.date_end_arrival,
-    date_start: routesSearch.date_start,
-    date_start_arrival: routesSearch.date_start_arrival,
-    end_arrival_hour_from: routesSearch.end_arrival_hour_from,
-    end_arrival_hour_to: routesSearch.end_arrival_hour_to,
-    end_departure_hour_from: routesSearch.end_departure_hour_from,
-    end_departure_hour_to: routesSearch.end_departure_hour_to,
-    from_city_id: routesSearch.from_city?._id,
-    have_air_conditioning: routesSearch.have_air_conditioning,
-    have_express: routesSearch.have_express,
-    have_first_class: routesSearch.have_first_class,
-    have_fourth_class: routesSearch.have_fourth_class,
-    have_second_class: routesSearch.have_second_class,
-    have_third_class: routesSearch.have_third_class,
-    have_wifi: routesSearch.have_wifi,
-    limit,
-    offset: limit * page,
-    price_from: routesSearch.price_from,
-    price_to: routesSearch.price_to,
-    sort,
-    start_arrival_hour_from: routesSearch.start_arrival_hour_from,
-    start_arrival_hour_to: routesSearch.start_arrival_hour_to,
-    start_departure_hour_from: routesSearch.start_departure_hour_from,
-    start_departure_hour_to: routesSearch.start_departure_hour_to,
-    to_city_id: routesSearch.to_city?._id,
+    from_city_id: routesSearch.from_city._id, // Идентификатор города, откуда планируется путешествие (обязательный)
+    to_city_id: routesSearch.to_city._id, // Идентификатор города, куда планируется путешествие (обязательный)
+    date_start: routesSearch.date_start, // Дата отбытия туда (в формате YYYY-MM-DD; например 2030-03-01)
+    date_end: routesSearch.date_end, // Дата отбытия обратно (в формате YYYY-MM-DD; например 2030-03-01)
+    date_start_arrival: routesSearch.date_start_arrival, // Дата прибытия туда (в формате YYYY-MM-DD; например 2030-03-01)
+    date_end_arrival: routesSearch.date_end_arrival, // Дата прибытия обратно (в формате YYYY-MM-DD; например 2030-03-01)
+    have_first_class: routesSearch.have_first_class, // Люкс (true/false)
+    have_second_class: routesSearch.have_second_class, // Купе (true/false)
+    have_third_class: routesSearch.have_third_class, // Плацкарт (true/false)
+    have_fourth_class: routesSearch.have_fourth_class, // Сидячее место (true/false)
+    have_wifi: routesSearch.have_wifi, // Имеется WiFi (true/false)
+    have_air_conditioning: routesSearch.have_air_conditioning, // Имеется кондиционер (true/false)
+    have_express: routesSearch.have_express, // Экспресс (true/false)
+    price_from: routesSearch.price_from, // Цена от
+    price_to: routesSearch.price_to, // Цена до
+    start_departure_hour_from: routesSearch.start_departure_hour_from, // Час отбытия от (число)
+    start_departure_hour_to: routesSearch.start_departure_hour_to, // Час отбытия до (число)
+    start_arrival_hour_from: routesSearch.start_arrival_hour_from, // Час прибытия от (число)
+    start_arrival_hour_to: routesSearch.start_arrival_hour_to, // Час прибытия до (число)
+    end_departure_hour_from: routesSearch.end_departure_hour_from, // Час отбытия назад от (число)
+    end_departure_hour_to: routesSearch.end_departure_hour_to, // Час отбытия назад до (число)
+    end_arrival_hour_from: routesSearch.end_arrival_hour_from, // Час прибытия назад от (работает при установленном параметре date_end)
+    end_arrival_hour_to: routesSearch.end_arrival_hour_to, // Час прибытия назад до (работает при установленном параметре date_end)
+    limit, // Количество результатов на странице
+    offset: limit * page, // Количество результатов, которое необходимо пропустить в выдаче
+    sort, // Сортировка результатов (date, price, duration)
   });
 
   useEffect(() => {
@@ -56,14 +56,11 @@ export default function SelectionTrain() {
     }
   }, [error]);
   useEffect(() => {
-    console.log("loading in SelectionTrain", loading);
-
     if (!loading) {
       setLoadingPage(false);
     }
   }, [loading]);
   useEffect(() => {
-    console.log("setLoading in SelectionTrain", loadingPage);
     setLoading(loadingPage);
   }, [loadingPage, setLoading]);
 
@@ -71,30 +68,20 @@ export default function SelectionTrain() {
     return null;
   }
 
-  const handleClick = (clickEvent) => {
-    console.log("onClick", clickEvent);
-  };
-  const handlePageChange = (selectedItem) => {
-    console.log("onPageChange", selectedItem);
-    setPage(selectedItem.selected);
-  };
+  const handlePageChange = selectedItem => setPage(selectedItem.selected);
 
   return (
     <div className={cn("selection-train-page", className)}>
       <div className="selection-train-page__control">
-        <p className="selection-train-page__found">
-          {"найдено "}
-          {data?.total_count || 0}
-        </p>
+        <p className="selection-train-page__found">{`найдено ${data.total_count || 0}`}</p>
         <SelectionTrainSort className="selection-train-page__sort" onChange={setSort} value={sort} />
         <SelectionTrainLimit className="selection-train-page__limit" onChange={setLimit} value={limit} />
       </div>
       <Trains className="selection-train-page__trains" items={data?.items ? data.items : []} loading={loading} />
-      {data?.total_count > 0 && (
+      {data.total_count > 0 && (
         <Pagination
           className="selection-train-page__pagination"
           forcePage={page}
-          onClick={handleClick}
           onPageChange={handlePageChange}
           pageCount={Math.ceil(data.total_count / limit)}
         />

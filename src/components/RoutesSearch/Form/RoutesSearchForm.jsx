@@ -18,14 +18,7 @@ function RoutesSearchForm({ className }) {
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleClickCityReplace = (event) => {
-    event.preventDefault();
-
-    handleChange({ from_city: form.to_city, to_city: form.from_city });
-  };
   const handleChange = (data) => {
-    console.log(data);
-
     Object.entries(data).forEach(([name, value]) => {
       dispatch(changeRoutesSearchInput({ name, value }));
     });
@@ -48,20 +41,23 @@ function RoutesSearchForm({ className }) {
           <legend className="routes-search-form__legend">Направление</legend>
           <SelectLocation
             className="routes-search-form__select-location"
-            onChange={(newValue) => {
-              handleChange({ from_city: newValue });
-            }}
+            onChange={newValue => handleChange({ from_city: newValue })}
             placeholder="Откуда"
             value={form.from_city}
           />
-          <button className="routes-search-form__btn-replace" type="button" onClick={handleClickCityReplace}>
+          <button
+            className="routes-search-form__btn-replace"
+            onClick={(event) => {
+              event.preventDefault();
+              handleChange({ from_city: form.to_city, to_city: form.from_city });
+            }}
+            type="button"
+          >
             <span className="icon" />
           </button>
           <SelectLocation
             className="routes-search-form__select-location"
-            onChange={(newValue) => {
-              handleChange({ to_city: newValue });
-            }}
+            onChange={newValue => handleChange({ to_city: newValue })}
             placeholder="Куда"
             value={form.to_city}
           />
@@ -70,18 +66,14 @@ function RoutesSearchForm({ className }) {
           <legend className="routes-search-form__legend">Дата</legend>
           <Datepicker
             className="routes-search-form__datepicker"
-            onChange={(newValue) => {
-              handleChange({ date_start: newValue });
-            }}
+            onChange={newValue => handleChange({ date_start: newValue })}
             placeholder="ДД/ММ/ГГ"
             suffixIcon={<CalendarIcon />}
             value={form.date_start}
           />
           <Datepicker
             className="routes-search-form__datepicker"
-            onChange={(newValue) => {
-              handleChange({ date_end: newValue });
-            }}
+            onChange={newValue => handleChange({ date_end: newValue })}
             placeholder="ДД/ММ/ГГ"
             suffixIcon={<CalendarIcon />}
             value={form.date_end}

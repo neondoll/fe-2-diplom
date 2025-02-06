@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
-import { orderCoachClassTypeType } from "../../../../types/order";
+import { coachClassTypeType } from "../../../../types/coach";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachClassType.css";
 
@@ -114,7 +114,7 @@ SelectionSeatsCoachClassType.propTypes = {
   className: classNameType,
   itemDisabled: PropTypes.func,
   onChange: PropTypes.func,
-  value: orderCoachClassTypeType,
+  value: coachClassTypeType,
 };
 
 export default SelectionSeatsCoachClassType;

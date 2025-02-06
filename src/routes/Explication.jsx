@@ -5,7 +5,7 @@ import Dialog from "../components/Dialog/Dialog";
 import MinusSquareIcon from "../icons/MinusSquareIcon.jsx";
 import Pagination from "../components/Pagination/Pagination";
 import PlusSquareIcon from "../icons/PlusSquareIcon.jsx";
-import SelectionTrainSort from "./Selection/Train/Sort/SelectionTrainSort.jsx";
+import SelectionTrainSort from "./Selection/Train/Sort/SelectionTrainSort";
 import { cn } from "../lib/utils";
 import { useEffect, useRef } from "react";
 
@@ -88,6 +88,39 @@ const buttonItems = {
     { className: "left-[955px] text-raisin-black bg-white border-transparent", state: "active" },
   ],
 };
+const dialogItems = [
+  {
+    contentClassName: "!top-[278px] !left-[3837.69px]",
+    description: (
+      <>
+        Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
+        существенных финансовых и административных
+      </>
+    ),
+    title: (
+      <>
+        Таким образом консультация с широким активом
+        <br />
+        в значительной степени обуславливает создание модели развития.
+      </>
+    ),
+    type: "error",
+  },
+  {
+    contentClassName: "!top-[949px] !left-[3836.31px]",
+    description: (
+      <>
+        Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.
+        <br />
+        <br />
+        Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
+        существенных финансовых и административных
+      </>
+    ),
+    title: undefined,
+    type: "info",
+  },
+];
 const paginationItems = [
   { className: "left-[225px]", pageCount: 3 },
   { className: "left-[883px]", pageCount: 10 },
@@ -177,47 +210,29 @@ export default function Explication() {
           подтвердить
         </Button>
       ))}
-      <Dialog
-        contentClassName="absolute top-[278px] left-[3837.69px] translate-x-0 translate-y-0"
-        description={(
-          <>
-            Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
-            существенных финансовых и административных
-          </>
-        )}
-        modal={false}
-        open={true}
-        title={(
-          <>
-            Таким образом консультация с широким активом
-            <br />
-            в значительной степени обуславливает создание модели развития.
-          </>
-        )}
-        type="error"
-      />
-      <Dialog
-        contentClassName="absolute top-[949px] left-[3836.31px] translate-x-0 translate-y-0"
-        description={(
-          <>
-            Таким образом консультация с широким активом в значительной степени обуславливает создание модели развития.
-            <br />
-            <br />
-            Повседневная практика показывает, что сложившаяся структура организации играет важную роль в формировании
-            существенных финансовых и административных
-          </>
-        )}
-        modal={false}
-        open={true}
-        type="info"
-      />
+      {dialogItems.map(item => (
+        <Dialog
+          contentClassName={cn("!absolute !translate-x-0 !translate-y-0", item.contentClassName)}
+          description={item.description}
+          key={item.type}
+          modal={false}
+          open={true}
+          title={item.title}
+          type={item.type}
+        />
+      ))}
       <div className="absolute top-[1127px] left-[91px]" id="calendar-1" />
       <div className="absolute top-[1127px] left-[528px]" id="calendar-2" />
       {additionalOptionsInCarriagesItems.map(item => (
         <AdditionalOptionsInCarriages
           btnClassName={item.btnClassName}
           className={cn("absolute left-[1039px]", item.className)}
+          haveAirConditioning={false}
+          haveWifi={false}
+          isLinensIncluded={false}
+          linensPrice={0}
           key={item.state}
+          wifiPrice={0}
         />
       ))}
       {selectionTrainControlSortByItems.map(item => (

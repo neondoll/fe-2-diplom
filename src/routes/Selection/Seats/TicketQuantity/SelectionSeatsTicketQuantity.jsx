@@ -1,8 +1,8 @@
 import Input from "../../../../components/Fields/Input/Input";
 import PropTypes from "prop-types";
+import { chosenSeatsTicketQuantityType } from "../../../../types/chosenSeats";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
-import { orderTicketQuantityType } from "../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsTicketQuantity.css";
 
@@ -83,7 +83,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
 SelectionSeatsTicketQuantity.propTypes = {
   className: classNameType,
   onChange: PropTypes.func,
-  values: orderTicketQuantityType,
+  values: chosenSeatsTicketQuantityType,
 };
 
 export default SelectionSeatsTicketQuantity;

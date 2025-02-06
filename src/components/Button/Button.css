@@ -6,7 +6,7 @@
 }
 
 .btn--change {
-  @apply pt-[4px] pr-[60px] pb-[5px] pl-[58px] font-bold text-[#292929] rounded-[5px] border-[#292929]
+  @apply pt-[4px] pr-[60px] pb-[5px] pl-[58px] font-bold text-[#292929] rounded-5 border-[#292929]
   hover:text-chrome-yellow hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
   focus-visible:text-chrome-yellow focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
   active:text-[#292929] active:bg-chrome-yellow active:border-transparent

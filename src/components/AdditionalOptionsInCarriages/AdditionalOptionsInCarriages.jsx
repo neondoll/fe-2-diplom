@@ -1,8 +1,8 @@
 import AdditionalOptionsInCarriagesTooltip from "./Tooltip/AdditionalOptionsInCarriagesTooltip";
 import PropTypes from "prop-types";
 import { classNameType } from "../../types/base";
-import { coachHaveType, coachPriceType } from "../../types/coach";
 import { cn, formatPrice } from "../../lib/utils";
+import { coachHaveType, coachPriceType } from "../../types/coach";
 import { orderOptionsType } from "../../types/order";
 import { useEffect, useState } from "react";
 import "./AdditionalOptionsInCarriages.css";
@@ -60,7 +60,7 @@ const items = [
       </svg>
     ),
     state: props => props.haveWifi ? undefined : "exclude",
-    text: props => props.haveWifi ? `WI-FI, стоимость ${formatPrice(props.wifiPrice)} ₽` : "WI-FI отсутствует",
+    text: props => props.haveWifi ? `WI-FI, стоимость ${formatPrice(Number(props.wifiPrice))} ₽` : "WI-FI отсутствует",
     value: "wifi",
   },
   {
@@ -74,10 +74,10 @@ const items = [
       </svg>
     ),
     state: props => props.isLinensIncluded ? "include" : undefined,
-    text: props => props.isLinensIncluded ? "белье включено в стоимость" : `белье, стоимость ${formatPrice(props.linensPrice)} ₽`,
+    text: props => props.isLinensIncluded ? "белье включено в стоимость" : `белье, стоимость ${formatPrice(Number(props.linensPrice))} ₽`,
     value: "linens",
   },
-  /* {
+  {
     cost: () => undefined,
     icon: props => (
       <svg
@@ -98,10 +98,10 @@ const items = [
         />
       </svg>
     ),
-    state: () => undefined,
-    text: () => "питание",
+    state: () => "exclude",
+    text: () => "питание отсутствует",
     value: "nutrition",
-  }, */
+  },
 ];
 
 function AdditionalOptionsInCarriages({ btnClassName, className, onChange, values, ...props }) {
@@ -139,8 +139,8 @@ function AdditionalOptionsInCarriages({ btnClassName, className, onChange, value
               <button
                 className={cn("additional-options-in-carriages__btn", btnClassName)}
                 data-active={item.value in _values ? _values[item.value] === item.cost(props) : undefined}
-                data-cost={item.cost ? item.cost(props) : undefined}
-                data-state={item.state ? item.state(props) : undefined}
+                data-cost={item.cost(props)}
+                data-state={item.state(props)}
                 data-tooltip-id={`additional-options-in-carriages-tooltip-${item.value}`}
                 data-value={item.value}
                 onClick={handleClick}
@@ -149,7 +149,7 @@ function AdditionalOptionsInCarriages({ btnClassName, className, onChange, value
               </button>
               <AdditionalOptionsInCarriagesTooltip
                 className="additional-options-in-carriages__tooltip"
-                content={item.text ? item.text(props) : undefined}
+                content={item.text(props)}
                 id={`additional-options-in-carriages-tooltip-${item.value}`}
               />
             </li>

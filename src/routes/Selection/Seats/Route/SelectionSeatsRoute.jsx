@@ -12,24 +12,24 @@ import "./SelectionSeatsRoute.css";
 function SelectionSeatsRoute({ className, variant }) {
   const chosenRoute = useSelector(selectChosenRoute);
 
-  const itd = intervalToDuration({ start: new Date(0), end: new Date(chosenRoute[`${variant}_duration`]) });
+  const itd = intervalToDuration({ start: new Date(0), end: new Date(chosenRoute[variant].duration) });
 
   return (
     <div className={cn("selection-seats-route", className)}>
       <RouteBaseInfo
         className="selection-seats-route__info"
-        fromCityName={chosenRoute[`${variant}_from_city_name`]}
-        toCityName={chosenRoute[`${variant}_to_city_name`]}
-        trainName={chosenRoute[`${variant}_train_name`]}
+        fromCityName={chosenRoute[variant].from.city.name}
+        toCityName={chosenRoute[variant].to.city.name}
+        trainName={chosenRoute[variant].train.name}
       />
       <RouteDirection
         className="selection-seats-route__direction"
-        fromCityName={chosenRoute[`${variant}_from_city_name`]}
-        fromDatetime={chosenRoute[`${variant}_from_datetime`]}
-        fromRailwayStationName={chosenRoute[`${variant}_from_railway_station_name`]}
-        toCityName={chosenRoute[`${variant}_to_city_name`]}
-        toDatetime={chosenRoute[`${variant}_to_datetime`]}
-        toRailwayStationName={chosenRoute[`${variant}_to_railway_station_name`]}
+        fromCityName={chosenRoute[variant].from.city.name}
+        fromDatetime={chosenRoute[variant].from.datetime}
+        fromRailwayStationName={chosenRoute[variant].from.railway_station_name}
+        toCityName={chosenRoute[variant].to.city.name}
+        toDatetime={chosenRoute[variant].to.datetime}
+        toRailwayStationName={chosenRoute[variant].to.railway_station_name}
         variant={variant}
       />
       <div className="selection-seats-route__duration">

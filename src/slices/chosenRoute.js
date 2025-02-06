@@ -1,41 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  arrival_available_seats_info: null,
-  arrival_duration: null,
-  arrival_from_city_name: null,
-  arrival_from_datetime: null,
-  arrival_from_railway_station_name: null,
-  arrival_have_first_class: null,
-  arrival_have_fourth_class: null,
-  arrival_have_second_class: null,
-  arrival_have_third_class: null,
-  arrival_have_wifi: null,
-  arrival_id: null,
-  arrival_is_express: null,
-  arrival_price_info: null,
-  arrival_to_city_name: null,
-  arrival_to_datetime: null,
-  arrival_to_railway_station_name: null,
-  arrival_train_name: null,
-  departure_available_seats_info: null,
-  departure_duration: null,
-  departure_from_city_name: null,
-  departure_from_datetime: null,
-  departure_from_railway_station_name: null,
-  departure_have_first_class: null,
-  departure_have_fourth_class: null,
-  departure_have_second_class: null,
-  departure_have_third_class: null,
-  departure_have_wifi: null,
-  departure_id: null,
-  departure_is_express: null,
-  departure_price_info: null,
-  departure_to_city_name: null,
-  departure_to_datetime: null,
-  departure_to_railway_station_name: null,
-  departure_train_name: null,
-};
+const initialState = { arrival: undefined, departure: undefined };
 
 const chosenRouteSlice = createSlice({
   name: "chosenRoute",
@@ -47,6 +12,8 @@ const chosenRouteSlice = createSlice({
       });
     },
     initChosenRoute: (state, action) => {
+      console.log(action.payload);
+
       Object.entries(action.payload).forEach(([name, value]) => {
         state[name] = value;
       });

@@ -1,19 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  arrival_coach_class_type: null,
+  arrival: { route_direction_id: undefined, seats: [] },
   arrival_coach_id: null,
   arrival_options: { linens: 0, wifi: 0 },
   arrival_passengers: [],
   arrival_seats: [],
-  arrival_ticket_quantity: { adults: 0, babies: 0, children: 0 },
-  departure_coach_class_type: null,
+  departure: { route_direction_id: undefined, seats: [] },
   departure_coach_id: null,
   departure_options: { linens: 0, wifi: 0 },
   departure_passengers: [],
   departure_seats: [],
-  departure_ticket_quantity: { adults: 0, babies: 0, children: 0 },
-  user: null,
+  user: { email: "", first_name: "", last_name: "", patronymic: "", payment_method: null, phone: "" },
 };
 
 const orderSlice = createSlice({
