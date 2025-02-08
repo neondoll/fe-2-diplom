@@ -1,6 +1,5 @@
 import Input from "../../../../components/Fields/Input/Input";
 import PropTypes from "prop-types";
-import { chosenSeatsTicketQuantityType } from "../../../../types/chosenSeats";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import { useEffect, useState } from "react";
@@ -62,8 +61,8 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
               </div>
               <Input
                 className={cn("selection-seats-ticket-quantity__input", field.inputClassName)}
-                max={field.max}
-                min={field.min}
+                max={String(field.max)}
+                min={String(field.min)}
                 name={field.value}
                 onChange={handleChange}
                 type="number"
@@ -83,7 +82,7 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
 SelectionSeatsTicketQuantity.propTypes = {
   className: classNameType,
   onChange: PropTypes.func,
-  values: chosenSeatsTicketQuantityType,
+  values: PropTypes.shape({ adults: PropTypes.number, babies: PropTypes.number, children: PropTypes.number }),
 };
 
 export default SelectionSeatsTicketQuantity;

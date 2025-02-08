@@ -32,6 +32,9 @@ function RadioGroup({ className, items, ...props }) {
 RadioGroup.propTypes = {
   className: classNameType,
   items: PropTypes.arrayOf(PropTypes.shape({ text: PropTypes.string, value: PropTypes.string })).isRequired,
+  name: PropTypes.string,
+  onValueChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default RadioGroup;

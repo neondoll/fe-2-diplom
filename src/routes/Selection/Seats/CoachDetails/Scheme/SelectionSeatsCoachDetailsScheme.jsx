@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn } from "../../../../../lib/utils";
 import { coachPriceType, coachType } from "../../../../../types/coach";
-import { orderSeatIndexType, orderSeatsType } from "../../../../../types/order";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsScheme.css";
 
@@ -22,7 +21,7 @@ function SchemeSeatsItem({ isDisabled, isSelected, item, ...props }) {
 SchemeSeatsItem.propTypes = {
   isDisabled: PropTypes.func.isRequired,
   isSelected: PropTypes.func.isRequired,
-  item: orderSeatIndexType.isRequired,
+  item: PropTypes.number.isRequired,
 };
 
 function FirstSchemeSeats({ className, isDisabled, onChange, price, values }) {
@@ -84,7 +83,7 @@ FirstSchemeSeats.propTypes = {
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
   price: coachPriceType,
-  values: orderSeatsType,
+  values: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 function SecondSchemeSeats({ bottomPrice, className, isDisabled, onChange, topPrice, values }) {
@@ -149,7 +148,7 @@ SecondSchemeSeats.propTypes = {
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
   topPrice: coachPriceType,
-  values: orderSeatsType,
+  values: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 function ThirdSchemeSeats({ bottomPrice, className, isDisabled, onChange, sidePrice, topPrice, values }) {
@@ -219,7 +218,7 @@ ThirdSchemeSeats.propTypes = {
   onChange: PropTypes.func,
   sidePrice: coachPriceType,
   topPrice: coachPriceType,
-  values: orderSeatsType,
+  values: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 function FourthSchemeSeats({ bottomPrice, className, isDisabled, onChange, topPrice, values }) {
@@ -284,7 +283,7 @@ FourthSchemeSeats.propTypes = {
   isDisabled: PropTypes.func.isRequired,
   onChange: PropTypes.func,
   topPrice: coachPriceType,
-  values: orderSeatsType,
+  values: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 function SelectionSeatsCoachDetailsScheme({ className, coach, onChange, values }) {
@@ -344,7 +343,7 @@ SelectionSeatsCoachDetailsScheme.propTypes = {
   className: classNameType,
   coach: coachType,
   onChange: PropTypes.func,
-  values: orderSeatsType,
+  values: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 export default SelectionSeatsCoachDetailsScheme;

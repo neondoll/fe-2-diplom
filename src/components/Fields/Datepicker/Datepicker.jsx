@@ -24,20 +24,30 @@ function Datepicker({ className, defaultValue, onChange, suffixIcon, value, ...p
       dateFormat: date => date.toLocaleString("ru-RU", { day: "numeric", month: "numeric", year: "numeric" }),
       navTitles: { days: "MMMM" },
       onSelect: ({ date }) => {
-        const value = date.toLocaleString("ru-RU", {
-          day: "numeric",
-          month: "numeric",
-          year: "numeric",
-        }).split(".").reverse().join("-");
+        if (date) {
+          const value = date.toLocaleString("ru-RU", {
+            day: "numeric",
+            month: "numeric",
+            year: "numeric",
+          }).split(".").reverse().join("-");
 
-        onChange(value);
+          onChange(value);
+        }
+        else {
+          onChange(undefined);
+        }
       },
       selectedDates: defaultValue ? [defaultValue] : [],
     });
   }, [defaultValue, onChange]);
   useEffect(() => {
-    if (airDatepicker.current && value) {
-      airDatepicker.current.selectDate(new Date(value));
+    if (airDatepicker.current) {
+      if (value) {
+        airDatepicker.current.selectDate(new Date(value));
+      }
+      else {
+        airDatepicker.current.clear();
+      }
     }
   }, [value]);
 
@@ -49,15 +59,15 @@ function Datepicker({ className, defaultValue, onChange, suffixIcon, value, ...p
   );
 }
 
-const DatepickerPropTypes = {
+Datepicker.propTypes = {
   className: classNameType,
   defaultValue: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
   onChange: PropTypes.func,
+  placeholder: PropTypes.string,
   suffixIcon: PropTypes.node,
   value: PropTypes.string,
 };
 
-Datepicker.propTypes = DatepickerPropTypes;
-
 export default Datepicker;
-export { DatepickerPropTypes };

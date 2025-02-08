@@ -2,16 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { arrival: undefined, departure: undefined };
 
-const chosenRouteSlice = createSlice({
-  name: "chosenRoute",
+const chosenCoachSlice = createSlice({
+  name: "chosenCoach",
   initialState,
   reducers: {
-    clearChosenRoute: (state) => {
+    clearChosenCoach: (state) => {
       Object.entries(initialState).forEach(([name, value]) => {
         state[name] = value;
       });
     },
-    initChosenRoute: (state, action) => {
+    initChosenCoach: (state, action) => {
       Object.entries(action.payload).forEach(([name, value]) => {
         state[name] = value;
       });
@@ -19,6 +19,6 @@ const chosenRouteSlice = createSlice({
   },
 });
 
-export const selectChosenRoute = state => state.chosenRoute;
-export const { clearChosenRoute, initChosenRoute } = chosenRouteSlice.actions;
-export default chosenRouteSlice.reducer;
+export const selectChosenCoach = state => state.chosenCoach;
+export const { clearChosenCoach, initChosenCoach } = chosenCoachSlice.actions;
+export default chosenCoachSlice.reducer;

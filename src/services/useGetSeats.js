@@ -11,5 +11,5 @@ export default function useGetSeats(id, params) {
     }
   });
 
-  return useApi(`${Api.SEATS(id)}?${queryString.stringify(paramsObject)}`, []);
+  return useApi(`${Api.ROUTES_SEATS(id)}?${queryString.stringify(paramsObject)}`, []);
 }

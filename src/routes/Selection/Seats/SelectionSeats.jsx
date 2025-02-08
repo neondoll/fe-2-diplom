@@ -7,9 +7,9 @@ import SelectionSeatsExchange from "./Exchange/SelectionSeatsExchange";
 import SelectionSeatsRoute from "./Route/SelectionSeatsRoute";
 import SelectionSeatsTicketQuantity from "./TicketQuantity/SelectionSeatsTicketQuantity";
 import useGetSeats from "../../../services/useGetSeats";
-import { changeChosenSeats, selectChosenSeats } from "../../../slices/chosenSeats";
 import { changeOrder, selectOrder } from "../../../slices/order";
 import { cn } from "../../../lib/utils";
+import { initChosenCoach, selectChosenCoach } from "../../../slices/chosenCoach";
 import { selectRoutesSearch } from "../../../slices/routesSearch";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useOutletContext } from "react-router-dom";
@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import "./SelectionSeats.css";
 
 export default function SelectionSeats() {
-  const chosenSeats = useSelector(selectChosenSeats);
+  const chosenCoach = useSelector(selectChosenCoach);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const order = useSelector(selectOrder);
@@ -25,12 +25,18 @@ export default function SelectionSeats() {
   const { className, setLoading } = useOutletContext();
   const [arrivalOpen, setArrivalOpen] = useState(false);
   const [departureOpen, setDepartureOpen] = useState(false);
-  // const [form, setForm] = useState({
-  //  arrival_coach_class_type: undefined,
-  //  arrival_ticket_quantity: { adults: 0, babies: 0, children: 0 },
-  //  departure_coach_class_type: undefined,
-  //  departure_ticket_quantity: { adults: 0, babies: 0, children: 0 },
-  // });
+  const [form, setForm] = useState({
+    arrival_coach_class_type: undefined,
+    arrival_coach_id: undefined,
+    arrival_options: { linens: false, wifi: false },
+    arrival_seats: [],
+    arrival_ticket_quantity: { adults: 0, babies: 0, children: 0 },
+    departure_coach_class_type: undefined,
+    departure_coach_id: undefined,
+    departure_options: { linens: false, wifi: false },
+    departure_seats: [],
+    departure_ticket_quantity: { adults: 0, babies: 0, children: 0 },
+  });
   const [loadingPage, setLoadingPage] = useState(true);
 
   const arrivalApi = useGetSeats(order.arrival.route_direction_id, {
@@ -52,6 +58,10 @@ export default function SelectionSeats() {
     have_express: routesSearch.have_express, // Экспресс (true/false)
   });
 
+  const isAdult = item => !item.is_child;
+  const isBaby = item => item.include_children_seat;
+  const isChild = item => item.is_child;
+
   useEffect(() => {
     if (arrivalApi.error) {
       console.error(arrivalApi.error);
@@ -66,6 +76,30 @@ export default function SelectionSeats() {
       setLoadingPage(false);
     }
   }, [arrivalApi.loading, departureApi.loading]);
+  useEffect(() => {
+    setForm({
+      arrival_coach_class_type: chosenCoach.arrival ? chosenCoach.arrival.class_type : undefined,
+      arrival_coach_id: chosenCoach.arrival ? chosenCoach.arrival._id : undefined,
+      arrival_seats: order.arrival.seats
+        ? order.arrival.seats.map(item => ({ index: item.seat_number, price: item.seat_price }))
+        : [],
+      arrival_ticket_quantity: {
+        adults: order.arrival.seats ? order.arrival.seats.filter(isAdult).length : 0,
+        babies: order.arrival.seats ? order.arrival.seats.filter(isBaby).length : 0,
+        children: order.arrival.seats ? order.arrival.seats.filter(isChild).length : 0,
+      },
+      departure_coach_class_type: chosenCoach.departure ? chosenCoach.departure.class_type : undefined,
+      departure_coach_id: chosenCoach.departure ? chosenCoach.departure._id : undefined,
+      departure_seats: order.departure.seats
+        ? order.departure.seats.map(item => ({ index: item.seat_number, price: item.seat_price }))
+        : [],
+      departure_ticket_quantity: {
+        adults: order.departure.seats ? order.departure.seats.filter(isAdult).length : 0,
+        babies: order.departure.seats ? order.departure.seats.filter(isBaby).length : 0,
+        children: order.departure.seats ? order.departure.seats.filter(isChild).length : 0,
+      },
+    });
+  }, [chosenCoach.arrival, chosenCoach.departure, order.arrival.seats, order.departure.seats]);
   useEffect(() => {
     if (departureApi.error) {
       console.error(departureApi.error);
@@ -84,29 +118,52 @@ export default function SelectionSeats() {
   }
 
   const btnEnabled = () => {
-    return chosenSeats.departure_ticket_quantity.adults > 0
-      && chosenSeats.departure_ticket_quantity.babies <= chosenSeats.departure_ticket_quantity.adults
-      && order.departure_seats.length === (chosenSeats.departure_ticket_quantity.adults + chosenSeats.departure_ticket_quantity.children)
+    return form.departure_ticket_quantity.adults > 0
+      && form.departure_ticket_quantity.babies <= form.departure_ticket_quantity.adults
+      && form.departure_seats.length === (form.departure_ticket_quantity.adults + form.departure_ticket_quantity.children)
       && (
         arrivalApi.data.length === 0 || (
-          chosenSeats.arrival_ticket_quantity.adults > 0
-          && chosenSeats.arrival_ticket_quantity.babies <= chosenSeats.arrival_ticket_quantity.adults
-          && order.arrival_seats.length === (chosenSeats.arrival_ticket_quantity.adults + chosenSeats.arrival_ticket_quantity.children)
+          form.arrival_ticket_quantity.adults > 0
+          && form.arrival_ticket_quantity.babies <= form.arrival_ticket_quantity.adults
+          && form.arrival_seats.length === (form.arrival_ticket_quantity.adults + form.arrival_ticket_quantity.children)
         )
       );
   };
-  const handleChange = (data) => {
-    Object.entries(data).forEach(([name, value]) => {
-      dispatch(changeOrder({ name, value }));
-    });
-  };
-  const handleChangeChosenSeats = (data) => {
-    Object.entries(data).forEach(([name, value]) => {
-      dispatch(changeChosenSeats({ name, value }));
-    });
-  };
   const handleClick = (event) => {
     event.preventDefault();
+
+    dispatch(initChosenCoach({
+      arrival: arrivalApi.data.find(item => item.coach._id === form.arrival_coach_id && item.coach.class_type === form.arrival_coach_class_type)?.coach,
+      departure: departureApi.data.find(item => item.coach._id === form.departure_coach_id && item.coach.class_type === form.departure_coach_class_type)?.coach,
+    }));
+    dispatch(changeOrder({
+      name: "arrival",
+      value: {
+        ...order.arrival,
+        seats: form.arrival_seats.map((seat, index) => ({
+          coach_id: form.arrival_coach_id,
+          include_children_seat: index <= form.arrival_ticket_quantity.babies - 1,
+          is_child: index > form.arrival_ticket_quantity.adults - 1,
+          person_info: undefined,
+          seat_number: seat.index,
+          seat_price: seat.price,
+        })),
+      },
+    }));
+    dispatch(changeOrder({
+      name: "departure",
+      value: {
+        ...order.departure,
+        seats: form.departure_seats.map((seat, index) => ({
+          coach_id: form.departure_coach_id,
+          include_children_seat: index <= form.departure_ticket_quantity.babies - 1,
+          is_child: index > form.departure_ticket_quantity.adults - 1,
+          person_info: undefined,
+          seat_number: seat.index,
+          seat_price: seat.price,
+        })),
+      },
+    }));
 
     navigate(Paths.PASSENGERS);
   };
@@ -120,39 +177,35 @@ export default function SelectionSeats() {
           <SelectionSeatsRoute className="selection-seats__route" variant="departure" />
           <SelectionSeatsTicketQuantity
             className="selection-seats__ticket-quantity"
-            onChange={(newValues) => {
-              handleChangeChosenSeats({ departure_ticket_quantity: newValues });
-            }}
-            values={chosenSeats.departure_ticket_quantity}
+            onChange={newValues => setForm(prev => ({ ...prev, departure_ticket_quantity: newValues }))}
+            values={form.departure_ticket_quantity}
           />
           <SelectionSeatsCoachClassType
             className="selection-seats__coach-class-type"
             itemDisabled={value => !departureApi.data.map(item => item.coach.class_type).includes(value)}
-            onChange={(newValue) => {
-              handleChangeChosenSeats({ departure_coach_class_type: newValue });
-              handleChange({
-                departure_coach_id: undefined,
-                departure_options: { linens: 0, wifi: 0 },
-                departure_seats: [],
-              });
-            }}
-            value={chosenSeats.departure_coach_class_type}
+            onChange={newValue => setForm(prev => ({
+              ...prev,
+              departure_coach_class_type: newValue,
+              departure_coach_id: undefined,
+              departure_options: { linens: false, wifi: false },
+              departure_seats: [],
+            }))}
+            value={form.departure_coach_class_type}
           />
           <SelectionSeatsCoachDetails
             className="selection-seats__coach-details"
-            classType={chosenSeats.departure_coach_class_type}
+            classType={form.departure_coach_class_type}
             coaches={departureApi.data}
-            onChange={(newValues) => {
-              handleChange({
-                departure_coach_id: "coach_id" in newValues ? newValues.coach_id : order.departure_coach_id,
-                departure_options: "options" in newValues ? newValues.options : order.departure_options,
-                departure_seats: "seats" in newValues ? newValues.seats : order.departure_seats,
-              });
-            }}
+            onChange={newValues => setForm(prev => ({
+              ...prev,
+              departure_coach_id: "coach_id" in newValues ? newValues.coach_id : form.departure_coach_id,
+              departure_options: "options" in newValues ? newValues.options : form.departure_options,
+              departure_seats: "seats" in newValues ? newValues.seats : form.departure_seats,
+            }))}
             values={{
-              coach_id: order.departure_coach_id,
-              options: order.departure_options,
-              seats: order.departure_seats,
+              coach_id: form.departure_coach_id,
+              options: form.departure_options,
+              seats: form.departure_seats,
             }}
           />
         </div>
@@ -163,36 +216,32 @@ export default function SelectionSeats() {
           <SelectionSeatsRoute className="selection-seats__route" variant="arrival" />
           <SelectionSeatsTicketQuantity
             className="selection-seats__ticket-quantity"
-            onChange={(newValues) => {
-              handleChangeChosenSeats({ arrival_ticket_quantity: newValues });
-            }}
-            values={chosenSeats.arrival_ticket_quantity}
+            onChange={newValues => setForm(prev => ({ ...prev, arrival_ticket_quantity: newValues }))}
+            values={form.arrival_ticket_quantity}
           />
           <SelectionSeatsCoachClassType
             className="selection-seats__wagon-type"
             itemDisabled={value => !arrivalApi.data.map(item => item.coach.class_type).includes(value)}
-            onChange={(newValue) => {
-              handleChangeChosenSeats({ arrival_coach_class_type: newValue });
-              handleChange({
-                arrival_coach_id: undefined,
-                arrival_options: { linens: 0, wifi: 0 },
-                arrival_seats: [],
-              });
-            }}
-            value={chosenSeats.arrival_coach_class_type}
+            onChange={newValue => setForm(prev => ({
+              ...prev,
+              arrival_coach_class_type: newValue,
+              arrival_coach_id: undefined,
+              arrival_options: { linens: false, wifi: false },
+              arrival_seats: [],
+            }))}
+            value={form.arrival_coach_class_type}
           />
           <SelectionSeatsCoachDetails
             className="selection-seats__wagon-details"
-            classType={chosenSeats.arrival_coach_class_type}
+            classType={form.arrival_coach_class_type}
             coaches={arrivalApi.data}
-            onChange={(newValues) => {
-              handleChange({
-                arrival_coach_id: "coach_id" in newValues ? newValues.coach_id : order.arrival_coach_id,
-                arrival_options: "options" in newValues ? newValues.options : order.arrival_options,
-                arrival_seats: "seats" in newValues ? newValues.seats : order.arrival_seats,
-              });
-            }}
-            values={{ coach_id: order.arrival_coach_id, options: order.arrival_options, seats: order.arrival_seats }}
+            onChange={newValues => setForm(prev => ({
+              ...prev,
+              arrival_coach_id: "coach_id" in newValues ? newValues.coach_id : form.arrival_coach_id,
+              arrival_options: "options" in newValues ? newValues.options : form.arrival_options,
+              arrival_seats: "seats" in newValues ? newValues.seats : form.arrival_seats,
+            }))}
+            values={{ coach_id: form.arrival_coach_id, options: form.arrival_options, seats: form.arrival_seats }}
           />
         </div>
       )}

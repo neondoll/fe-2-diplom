@@ -18,5 +18,5 @@
 .order-confirmation-passenger__full-name { @apply mb-4.5 }
 
 .order-confirmation-passenger__gender,
-.order-confirmation-passenger__birth-date,
+.order-confirmation-passenger__birthday,
 .order-confirmation-passenger__document { @apply text-taupe-gray-3.62 }

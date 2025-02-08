@@ -1,4 +1,3 @@
-import Explication from "./routes/Explication";
 import OrderConfirmation from "./routes/OrderConfirmation/OrderConfirmation";
 import Passengers from "./routes/Passengers/Passengers";
 import Paths from "./paths";
@@ -27,7 +26,6 @@ export default function App() {
           <Route path={Paths.PAYMENT} Component={Payment} />
           <Route path={Paths.ORDER_CONFIRMATION} Component={OrderConfirmation} />
           <Route path={Paths.SUCCESSFUL_ORDER} Component={SuccessfulOrder} />
-          <Route path="/explication" Component={Explication} />
         </Routes>
       </BrowserRouter>
       {/* </ScrollArea> */}

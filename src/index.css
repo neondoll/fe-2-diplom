@@ -44,7 +44,6 @@
    */
   --radius-3: 0.1875rem; /* 3px */
   --radius-5: 0.3125rem; /* 5px */
-
   @keyframes caret-blink {
     0%, 70%, 100% { opacity: 1; }
     20%, 50% { opacity: 0; }
@@ -72,4 +71,15 @@
   ::file-selector-button { border-color: var(--color-gray-200, currentColor); }
 
   :root { @apply h-full min-h-screen font-[Roboto] text-dark-charcoal-3.19 }
+
+  :root::-webkit-scrollbar {
+    width: calc(var(--spacing) * 1.5);
+    height: calc(var(--spacing) * 1.5);
+    background-color: var(--color-raisin-black);
+  }
+
+  :root::-webkit-scrollbar-thumb {
+    background: var(--color-chrome-yellow);
+    border-radius: var(--radius-sm);
+  }
 }

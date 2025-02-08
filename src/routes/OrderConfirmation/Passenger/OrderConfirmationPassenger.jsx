@@ -3,10 +3,8 @@ import { classNameType } from "../../../types/base";
 import { cn } from "../../../lib/utils";
 import { format } from "date-fns";
 import {
-  passengerAges, passengerAgeType, passengerBirthCertificateNumberType, passengerBirthDateType, passengerDocumentTypes,
-  passengerDocumentTypeType, passengerGenders, passengerGenderType, passengerNameType, passengerPassportNumberType,
-  passengerPassportSeriesType, passengerPatronymicType, passengerSurnameType,
-} from "../../../constants/passenger";
+  personInfoDocumentTypeOptions, personInfoGenderOptions, personInfoIsAdultOptions,
+} from "../../../constants/personInfo.js";
 import "./OrderConfirmationPassenger.css";
 
 function OrderConfirmationPassenger({ className, item }) {
@@ -26,21 +24,21 @@ function OrderConfirmationPassenger({ className, item }) {
             fill="#FFA800"
           />
         </svg>
-        <p className="order-confirmation-passenger__age">{passengerAges[item.age]}</p>
+        <p className="order-confirmation-passenger__age">{personInfoIsAdultOptions.find(option => option.value === (item.is_adult ? "true" : "false")).text}</p>
       </div>
       <div className="order-confirmation-passenger__info">
-        <p className="order-confirmation-passenger__full-name">{`${item.surname} ${item.name} ${item.patronymic}`}</p>
+        <p className="order-confirmation-passenger__full-name">
+          {`${item.last_name} ${item.first_name} ${item.patronymic}`}
+        </p>
         <p className="order-confirmation-passenger__gender">
           {"Пол "}
-          <span className="lowercase">{passengerGenders[item.gender].name}</span>
+          <span className="lowercase">{personInfoGenderOptions.find(option => option.value === (item.gender ? "true" : "false")).text}</span>
         </p>
-        <p className="order-confirmation-passenger__birth-date">
-          {`Дата рождения ${format(new Date(item.birth_date), "dd.MM.yyyy")}`}
+        <p className="order-confirmation-passenger__birthday">
+          {`Дата рождения ${format(new Date(item.birthday), "dd.MM.yyyy")}`}
         </p>
         <p className="order-confirmation-passenger__document">
-          {`${passengerDocumentTypes[item.document_type]} `}
-          {item.document_type === "passport" && `${item.passport_series} ${item.passport_number}`}
-          {item.document_type === "birth_certificate" && item.birth_certificate_number}
+          {`${personInfoDocumentTypeOptions.find(option => option.value === item.document_type).text} ${item.document_data}`}
         </p>
       </div>
     </div>
@@ -50,16 +48,14 @@ function OrderConfirmationPassenger({ className, item }) {
 OrderConfirmationPassenger.propTypes = {
   className: classNameType,
   item: PropTypes.shape({
-    age: passengerAgeType,
-    surname: passengerSurnameType,
-    name: passengerNameType,
-    patronymic: passengerPatronymicType,
-    gender: passengerGenderType,
-    birth_date: passengerBirthDateType,
-    document_type: passengerDocumentTypeType,
-    passport_series: passengerPassportSeriesType,
-    passport_number: passengerPassportNumberType,
-    birth_certificate_number: passengerBirthCertificateNumberType,
+    is_adult: PropTypes.bool,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    patronymic: PropTypes.string,
+    gender: PropTypes.bool,
+    birthday: PropTypes.string,
+    document_type: PropTypes.oneOf(["birth_certificate", "passport"]),
+    document_data: PropTypes.string,
   }),
 };
 

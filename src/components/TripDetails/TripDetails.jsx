@@ -12,35 +12,14 @@ function TripDetails({ className }) {
   const order = useSelector(selectOrder);
   const [finalPrice, setFinalPrice] = useState(0);
 
+  const sumSeatPrice = (acc, item) => acc + item.seat_price;
+
   useEffect(() => {
-    let price = 0;
-
-    if (order.departure_options) {
-      Object.values(order.departure_options).forEach((value) => {
-        price += value;
-      });
-    }
-
-    if (order.departure_seats) {
-      order.departure_seats.forEach((seat) => {
-        price += seat.price;
-      });
-    }
-
-    if (order.arrival_options) {
-      Object.values(order.arrival_options).forEach((value) => {
-        price += value;
-      });
-    }
-
-    if (order.arrival_seats) {
-      order.arrival_seats.forEach((seat) => {
-        price += seat.price;
-      });
-    }
-
-    setFinalPrice(price);
-  }, [order.arrival_options, order.arrival_seats, order.departure_options, order.departure_seats]);
+    setFinalPrice(
+      order.departure.seats.reduce(sumSeatPrice, 0)
+      + order.arrival.seats.reduce(sumSeatPrice, 0),
+    );
+  }, [order.arrival.seats, order.departure.seats]);
 
   return (
     <div className={cn("trip-details", className)}>

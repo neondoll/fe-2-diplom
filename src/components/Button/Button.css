@@ -5,53 +5,52 @@
   focus-visible:outline-hidden disabled:cursor-not-allowed disabled:pointer-events-none;
 }
 
+.btn--change, .btn--choose-places, .btn--confirm, .btn--find-tickets, .btn--further,
+.btn--learn-more { @apply font-bold rounded-5 }
+
+.btn--change, .btn--choose-places, .btn--confirm, .btn--find-tickets, .btn--further {
+  @apply hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
+  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+}
+
+.btn--change, .btn--confirm, .btn--find-tickets, .btn--further {
+  @apply active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+}
+
+.btn--change, .btn--find-tickets { @apply text-dark-charcoal-3.19 }
+
+.btn--change, .btn--learn-more, .btn--send { @apply active:border-transparent }
+
 .btn--change {
-  @apply pt-[4px] pr-[60px] pb-[5px] pl-[58px] font-bold text-[#292929] rounded-5 border-[#292929]
-  hover:text-chrome-yellow hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:text-chrome-yellow focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  active:text-[#292929] active:bg-chrome-yellow active:border-transparent
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
+  @apply w-58.25 pt-1 pr-15 pb-1.25 pl-14.5 border-dark-charcoal-3.19 hover:text-chrome-yellow
+  focus-visible:text-chrome-yellow active:text-dark-charcoal-3.19 active:bg-chrome-yellow;
 }
 
-.btn--choose-places {
-  @apply w-57 h-9.75 p-1 font-bold text-white bg-chrome-yellow rounded-5 border-transparent
-  hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  active:text-chrome-yellow active:bg-transparent active:border-chrome-yellow active:shadow-none
-  disabled:bg-taupe-gray-3.79;
+.btn--choose-places, .btn--confirm, .btn--find-tickets, .btn--further {
+  @apply bg-chrome-yellow border-transparent active:text-chrome-yellow active:bg-transparent
+  active:border-chrome-yellow;
 }
 
-.btn--confirm {
-  @apply pt-[16px] pr-[74px] pb-[14px] pl-[75px] font-bold uppercase text-white
-  bg-chrome-yellow rounded-[5px] border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-chrome-yellow
-  active:bg-transparent active:border-chrome-yellow
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-taupe-gray-3.79;
+.btn--choose-places, .btn--confirm, .btn--further, .btn--learn-more { @apply text-white }
+
+.btn--choose-places, .btn--confirm { @apply disabled:bg-taupe-gray-3.79 }
+
+.btn--choose-places { @apply w-57 pt-1.25 pr-6.75 pb-1 pl-5.5 active:shadow-none }
+
+.btn--confirm, .btn--find-tickets, .btn--further, .btn--send { @apply uppercase }
+
+.btn--confirm { @apply w-80.75 pt-4 pr-18.5 pb-3.5 pl-18.75 }
+
+.btn--find-tickets { @apply w-80.75 pt-4 pr-16.75 pb-3.5 pl-16.5 }
+
+.btn--further { @apply w-55.5 pt-3.5 pr-17.25 pb-4 pl-18.25 disabled:bg-taupe-gray-3.62 }
+
+.btn--learn-more, .btn--send {
+  @apply bg-transparent border-white hover:text-raisin-black hover:bg-maximum-yellow-red
+  hover:border-transparent focus-visible:text-raisin-black focus-visible:bg-maximum-yellow-red
+  focus-visible:border-transparent active:text-raisin-black active:bg-white;
 }
 
-.btn--find-tickets {
-  @apply w-80.75 h-15 p-3.5 font-bold uppercase text-dark-charcoal-3.19 bg-chrome-yellow rounded-5
-  border-transparent hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] active:text-chrome-yellow active:bg-transparent
-  active:border-chrome-yellow active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)];
-}
+.btn--learn-more { @apply w-81.25 py-3.75 pr-19 pl-18.75 }
 
-.btn--further {
-  @apply w-55.5 h-15 p-3.5 font-bold uppercase text-white bg-chrome-yellow rounded-5 border-transparent
-  hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] focus-visible:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
-  active:text-chrome-yellow active:bg-transparent active:border-chrome-yellow
-  active:shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] disabled:bg-taupe-gray-3.62;
-}
-
-.btn--learn-more {
-  @apply w-81.25 h-15 p-3.5 font-bold text-white bg-transparent rounded-5 border-white
-  hover:text-raisin-black hover:bg-maximum-yellow-red hover:border-transparent
-  focus-visible:text-raisin-black focus-visible:bg-maximum-yellow-red focus-visible:border-transparent
-  active:text-raisin-black active:bg-white active:border-transparent;
-}
-
-.btn--send {
-  @apply w-42.25 h-15 p-3.5 font-normal uppercase text-neutral-200 bg-transparent rounded-3
-  border-white hover:text-raisin-black hover:bg-maximum-yellow-red hover:border-transparent
-  focus-visible:text-raisin-black focus-visible:bg-maximum-yellow-red focus-visible:border-transparent
-  active:text-raisin-black active:bg-white active:border-transparent;
-}
+.btn--send { @apply w-42.25 pt-4 pr-3.25 pb-3.5 pl-4 font-normal text-neutral-200 rounded-3 }

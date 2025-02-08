@@ -1,16 +1,16 @@
 import Api from "../../api";
 import LocationIcon from "../../icons/LocationIcon";
+import PropTypes from "prop-types";
 import useApi from "../../services/useApi";
 import { classNameType } from "../../types/base";
 import { cn } from "../../lib/utils";
 import { Select } from "antd";
 import { useEffect, useState } from "react";
 import "./SelectLocation.css";
-import PropTypes from "prop-types";
 
 function SelectLocation({ className, onChange, value, ...props }) {
   const [name, setName] = useState("");
-  const { data } = useApi(`${Api.CITIES}?name=${name}`, []);
+  const { data } = useApi(`${Api.ROUTES_CITIES}?name=${name}`, []);
 
   useEffect(() => {
     if (value) {

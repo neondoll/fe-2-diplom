@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { classNameType } from "../../../../../types/base";
 import { cn, formatPrice } from "../../../../../lib/utils";
 import { coachType } from "../../../../../types/coach";
-import { orderOptionsType } from "../../../../../types/order";
 import "./SelectionSeatsCoachDetailsBody.css";
 
 function SelectionSeatsCoachDetailsBody({ className, coach, onChange, values }) {
@@ -84,7 +83,7 @@ SelectionSeatsCoachDetailsBody.propTypes = {
   className: classNameType,
   coach: coachType,
   onChange: PropTypes.func,
-  values: orderOptionsType,
+  values: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
 };
 
 export default SelectionSeatsCoachDetailsBody;

@@ -10,8 +10,6 @@ function RoutesSearchFilterPrice({ className }) {
   const filter = useSelector(selectRoutesSearch);
 
   const handleChange = (data) => {
-    console.log(data);
-
     Object.entries(data).forEach(([name, value]) => {
       dispatch(changeRoutesSearchInput({ name, value }));
     });

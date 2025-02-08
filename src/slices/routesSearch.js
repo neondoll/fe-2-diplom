@@ -35,9 +35,14 @@ const routesSearchSlice = createSlice({
 
       state[name] = value;
     },
+    clearRoutesSearch: (state) => {
+      Object.entries(initialState).forEach(([name, value]) => {
+        state[name] = value;
+      });
+    },
   },
 });
 
 export const selectRoutesSearch = state => state.routesSearch;
-export const { changeRoutesSearchInput } = routesSearchSlice.actions;
+export const { changeRoutesSearchInput, clearRoutesSearch } = routesSearchSlice.actions;
 export default routesSearchSlice.reducer;

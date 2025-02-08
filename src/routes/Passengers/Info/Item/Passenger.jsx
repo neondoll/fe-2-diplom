@@ -9,23 +9,23 @@ import Select from "../../../../components/Fields/Select/Select";
 import { classNameType } from "../../../../types/base";
 import { cn } from "../../../../lib/utils";
 import {
-  passengerAges, passengerDocumentTypes, passengerGenders, passengerType,
-} from "../../../../constants/passenger";
+  personInfoDocumentTypeOptions, personInfoGenderAbbrOptions, personInfoIsAdultOptions,
+} from "../../../../constants/personInfo.js";
 import { useEffect, useState } from "react";
 import "./Passenger.css";
 
 const validators = {
-  age: values => Boolean(values.age),
   birth_certificate_number: (values) => {
     return values.document_type === "birth_certificate"
       ? (Boolean(values.birth_certificate_number) && values.birth_certificate_number.length === 12)
       : undefined;
   },
-  birth_date: values => Boolean(values.birth_date) && (new Date(values.birth_date)).getTime() <= Date.now(),
+  birthday: values => Boolean(values.birthday) && (new Date(values.birthday)).getTime() <= Date.now(),
   document_type: values => Boolean(values.document_type),
-  gender: values => Boolean(values.gender),
-  has_limited_mobility: () => true,
-  name: values => Boolean(values.name),
+  first_name: values => Boolean(values.first_name),
+  gender: values => values.gender !== undefined,
+  is_adult: values => values.is_adult !== undefined,
+  last_name: values => Boolean(values.last_name),
   passport_number: (values) => {
     return values.document_type === "passport"
       ? (Boolean(values.passport_number) && values.passport_number.length === 6)
@@ -36,23 +36,21 @@ const validators = {
       ? (Boolean(values.passport_series) && values.passport_series.length === 4)
       : undefined;
   },
-  patronymic: values => Boolean(values.patronymic) || undefined,
-  surname: values => Boolean(values.surname),
+  patronymic: values => values.patronymic ? true : undefined,
 };
 
 function Passenger({ className, number, onDelete, onSubmit, values }) {
   const [form, setForm] = useState({
-    age: null,
-    surname: "",
-    name: "",
-    patronymic: "",
-    gender: null,
-    birth_date: null,
-    has_limited_mobility: false,
-    document_type: null,
-    passport_series: null,
-    passport_number: null,
-    birth_certificate_number: null,
+    is_adult: undefined, // Взрослый/детский
+    first_name: "", // Имя
+    last_name: "", // Фамилия
+    patronymic: "", // Отчество
+    gender: undefined, // Пол (true - мужской)
+    birthday: undefined, // День рождения (в формате YYYY-MM-DD)
+    document_type: undefined, // Тип документа
+    passport_series: undefined,
+    passport_number: undefined,
+    birth_certificate_number: undefined,
   });
   const [isValid, setIsValid] = useState(undefined);
   const [validator, setValidator] = useState({});
@@ -67,17 +65,16 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
     event.preventDefault();
 
     setForm({
-      age: null,
-      surname: "",
-      name: "",
+      is_adult: undefined,
+      first_name: "",
+      last_name: "",
       patronymic: "",
-      gender: null,
-      birth_date: null,
-      has_limited_mobility: false,
-      document_type: null,
-      passport_series: null,
-      passport_number: null,
-      birth_certificate_number: null,
+      gender: undefined,
+      birthday: undefined,
+      document_type: undefined,
+      passport_series: undefined,
+      passport_number: undefined,
+      birth_certificate_number: undefined,
     });
     setIsValid(undefined);
     setValidator({});
@@ -107,8 +104,6 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
     updateForm(name, value.replace(/[^a-zA-ZА-я]/gi, ""));
   };
   const updateForm = (name, value) => {
-    console.log("updateForm", name, value);
-
     const _form = { ...form, [name]: value };
     const _validator = { ...validator, [name]: validators[name](_form) };
 
@@ -141,44 +136,44 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
         <div className="passenger__container passenger__container--personal">
           <div className="passenger__row passenger__row--1">
             <Select
-              contentClassName="passenger__select-content passenger__select-content--age"
-              items={Object.entries(passengerAges).map(([value, text]) => ({ text, value }))}
-              name="age"
-              onValueChange={newValue => updateForm("age", newValue)}
+              contentClassName="passenger__select-content passenger__select-content--is-adult"
+              items={personInfoIsAdultOptions}
+              name="is_adult"
+              onValueChange={newValue => updateForm("is_adult", newValue === "true" ? true : (newValue === "false" ? false : undefined))}
               triggerClassName={cn(
-                "passenger__select-trigger passenger__select-trigger--age",
-                validator.age === false && "invalid",
+                "passenger__select-trigger passenger__select-trigger--is-adult",
+                validator.is_adult === false && "invalid",
               )}
-              value={form.age}
+              value={form.is_adult === true ? "true" : (form.is_adult === false ? "false" : undefined)}
             />
           </div>
           <div className="passenger__row passenger__row--1">
             <div className="passenger__group">
-              <label className="passenger__label" htmlFor="surname">Фамилия</label>
+              <label className="passenger__label" htmlFor="last_name">Фамилия</label>
               <Input
                 className={cn(
-                  "passenger__input passenger__input--surname",
-                  validator.surname === false && "invalid",
+                  "passenger__input passenger__input--last-name",
+                  validator.last_name === false && "invalid",
                 )}
-                id="surname"
-                name="surname"
+                id="last_name"
+                name="last_name"
                 onChange={handleFullNameChange}
                 type="text"
-                value={form.surname}
+                value={form.last_name}
               />
             </div>
             <div className="passenger__group">
-              <label className="passenger__label" htmlFor="name">Имя</label>
+              <label className="passenger__label" htmlFor="first_name">Имя</label>
               <Input
                 className={cn(
-                  "passenger__input passenger__input--name",
-                  validator.name === false && "invalid",
+                  "passenger__input passenger__input--first-name",
+                  validator.first_name === false && "invalid",
                 )}
-                id="name"
-                name="name"
+                id="first_name"
+                name="first_name"
                 onChange={handleFullNameChange}
                 type="text"
-                value={form.name}
+                value={form.first_name}
               />
             </div>
             <div className="passenger__group">
@@ -204,38 +199,33 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
                   "passenger__radio-group passenger__radio-group--gender",
                   validator.gender === false && "invalid",
                 )}
-                items={Object.entries(passengerGenders).map(([value, item]) => ({ text: item.abbr, value }))}
+                items={personInfoGenderAbbrOptions}
                 name="gender"
-                onValueChange={newValue => updateForm("gender", newValue)}
-                value={form.gender}
+                onValueChange={newValue => updateForm("gender", newValue === "true" ? true : (newValue === "false" ? false : undefined))}
+                value={form.gender === true ? "true" : (form.gender === false ? "false" : undefined)}
               />
             </fieldset>
             <div className="passenger__group">
-              <label className="passenger__label" htmlFor="birth_date">Дата рождения</label>
+              <label className="passenger__label" htmlFor="birthday">Дата рождения</label>
               <Datepicker
                 className={cn(
-                  "passenger__datepicker passenger__datepicker--birth-date",
-                  validator.birth_date === false && "invalid",
+                  "passenger__datepicker passenger__datepicker--birthday",
+                  validator.birthday === false && "invalid",
                 )}
-                id="birth_date"
-                name="birth_date"
-                onChange={newValue => updateForm("birth_date", newValue)}
+                id="birthday"
+                name="birthday"
+                onChange={newValue => updateForm("birthday", newValue)}
                 placeholder="ДД/ММ/ГГ"
-                value={form.birth_date}
+                value={form.birthday}
               />
             </div>
           </div>
           <div className="passenger__row passenger__row--2">
             <div className="passenger__checkbox-group">
               <Checkbox
-                checked={form.has_limited_mobility}
-                className={cn(
-                  "passenger__checkbox passenger__checkbox--has-limited-mobility",
-                  validator.has_limited_mobility === false && "invalid",
-                )}
+                className="passenger__checkbox passenger__checkbox--has-limited-mobility"
                 id="has_limited_mobility"
                 name="has_limited_mobility"
-                onCheckedChange={newValue => updateForm("has_limited_mobility", newValue)}
               />
               <label className="passenger__label" htmlFor="has_limited_mobility">ограниченная подвижность</label>
             </div>
@@ -248,7 +238,7 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
               <Select
                 contentClassName="passenger__select-content passenger__select-content--document-type"
                 id="document_type"
-                items={Object.entries(passengerDocumentTypes).map(([value, text]) => ({ text, value }))}
+                items={personInfoDocumentTypeOptions}
                 name="document_type"
                 onValueChange={newValue => updateForm("document_type", newValue)}
                 triggerClassName={cn(
@@ -309,28 +299,22 @@ function Passenger({ className, number, onDelete, onSubmit, values }) {
             )}
           </div>
         </div>
-        <div
-          className={cn(
-            "passenger__footer",
-            isValid === true && "is-valid",
-            isValid === false && "is-invalid",
-          )}
-        >
+        <div className={cn("passenger__footer", isValid === true && "is-valid", isValid === false && "is-invalid")}>
           {isValid === true && (
             <p className="passenger__valid-message">Готово</p>
           )}
           {isValid === false && (
             <div className="passenger__invalid-messages">
-              {validator.age === false && (
+              {validator.is_adult === false && (
                 <p className="passenger__invalid-message">Возраст указан некорректно</p>
               )}
-              {(validator.surname === false || validator.name === false || validator.patronymic === false) && (
+              {(validator.first_name === false || validator.last_name === false || validator.patronymic === false) && (
                 <p className="passenger__invalid-message">ФИО указано некорректно</p>
               )}
               {validator.gender === false && (
                 <p className="passenger__invalid-message">Пол указан некорректно</p>
               )}
-              {validator.birth_date === false && (
+              {validator.birthday === false && (
                 <p className="passenger__invalid-message">Дата рождения указана некорректно</p>
               )}
               {validator.document_type === false && (
@@ -361,7 +345,18 @@ Passenger.propTypes = {
   number: PropTypes.number.isRequired,
   onDelete: PropTypes.func,
   onSubmit: PropTypes.func,
-  values: passengerType,
+  values: PropTypes.shape({
+    is_adult: PropTypes.bool,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    patronymic: PropTypes.string,
+    gender: PropTypes.bool,
+    birthday: PropTypes.string,
+    document_type: PropTypes.oneOf(["birth_certificate", "passport"]),
+    passport_series: PropTypes.string,
+    passport_number: PropTypes.string,
+    birth_certificate_number: PropTypes.string,
+  }),
 };
 
 export default Passenger;

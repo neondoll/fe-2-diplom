@@ -15,12 +15,12 @@ function PaymentInfo({ className }) {
   const navigate = useNavigate();
   const order = useSelector(selectOrder);
   const [form, setForm] = useState({
-    last_name: "",
-    first_name: "",
-    patronymic: "",
-    phone: "",
-    email: "",
-    payment_method: undefined,
+    first_name: "", // имя
+    last_name: "", // фамилия
+    patronymic: "", // отчество
+    phone: "", // телефон
+    email: "", // E-mail
+    payment_method: undefined, // метод оплаты (cash или online)
   });
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function PaymentInfo({ className }) {
     }
   }, [order.user]);
 
-  const btnEnable = () => form.last_name && form.first_name && form.phone && form.email && form.payment_method;
+  const btnEnable = () => form.email && form.first_name && form.last_name && form.payment_method && form.phone;
   const handleClick = (event) => {
     event.preventDefault();
 
@@ -135,9 +135,10 @@ function PaymentInfo({ className }) {
                 className="payment-info__checkbox payment-info__checkbox--payment-method"
                 id="payment_method-online"
                 name="payment_method"
-                onCheckedChange={(newValue) => {
-                  setForm(prev => ({ ...prev, payment_method: newValue ? "online" : undefined }));
-                }}
+                onCheckedChange={newValue => setForm(prev => ({
+                  ...prev,
+                  payment_method: newValue ? "online" : undefined,
+                }))}
                 value="online"
               />
               <label className="payment-info__label" htmlFor="payment_method-online">Онлайн</label>
@@ -155,9 +156,10 @@ function PaymentInfo({ className }) {
                 className="payment-info__checkbox payment-info__checkbox--payment-method"
                 id="payment_method-cash"
                 name="payment_method"
-                onCheckedChange={(newValue) => {
-                  setForm(prev => ({ ...prev, payment_method: newValue ? "cash" : undefined }));
-                }}
+                onCheckedChange={newValue => setForm(prev => ({
+                  ...prev,
+                  payment_method: newValue ? "cash" : undefined,
+                }))}
                 value="cash"
               />
               <label className="payment-info__label" htmlFor="payment_method-cash">Наличными</label>

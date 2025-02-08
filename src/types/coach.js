@@ -5,10 +5,12 @@ export const coachHaveType = PropTypes.bool;
 export const coachIdType = PropTypes.string;
 export const coachNameType = PropTypes.string;
 export const coachPriceType = PropTypes.number;
-export const coachSeatsType = PropTypes.arrayOf(PropTypes.shape({
+
+const coachSeatsType = PropTypes.arrayOf(PropTypes.shape({
   available: PropTypes.bool,
   index: PropTypes.number,
 }));
+
 export const coachType = PropTypes.shape({
   coach: PropTypes.shape({
     _id: coachIdType,

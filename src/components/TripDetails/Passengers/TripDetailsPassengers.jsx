@@ -8,49 +8,33 @@ import "./TripDetailsPassengers.css";
 
 function TripDetailsPassengers({ className }) {
   const order = useSelector(selectOrder);
+  const [numberAdults, setNumberAdults] = useState(0);
+  const [numberChildren, setNumberChildren] = useState(0);
   const [priceAdults, setPriceAdults] = useState(0);
   const [priceChildren, setPriceChildren] = useState(0);
-  const [ticketQuantityAdults, setTicketQuantityAdults] = useState(0);
-  const [ticketQuantityChildren, setTicketQuantityChildren] = useState(0);
+
+  const isAdult = item => !item.is_child;
+  const isChild = item => item.is_child;
+  const sumSeatPrice = (acc, item) => acc + item.seat_price;
 
   useEffect(() => {
-    let price = 0;
-
-    for (let index = 0; index < order.departure_ticket_quantity.adults; index++) {
-      price += order.departure_seats[index].price;
-    }
-
-    for (let index = 0; index < order.arrival_ticket_quantity.adults; index++) {
-      price += order.arrival_seats[index].price;
-    }
-
-    setPriceAdults(price);
-  }, [
-    order.arrival_seats, order.arrival_ticket_quantity.adults,
-    order.departure_seats, order.departure_ticket_quantity.adults,
-  ]);
-  useEffect(() => {
-    let price = 0;
-
-    for (let index = 0; index < order.departure_ticket_quantity.children; index++) {
-      price += order.departure_seats[order.departure_ticket_quantity.adults + index].price;
-    }
-
-    for (let index = 0; index < order.arrival_ticket_quantity.children; index++) {
-      price += order.arrival_seats[order.arrival_ticket_quantity.adults + index].price;
-    }
-
-    setPriceChildren(price);
-  }, [
-    order.arrival_seats, order.arrival_ticket_quantity.adults, order.arrival_ticket_quantity.children,
-    order.departure_seats, order.departure_ticket_quantity.adults, order.departure_ticket_quantity.children,
-  ]);
-  useEffect(() => {
-    setTicketQuantityAdults(order.departure_ticket_quantity.adults + order.arrival_ticket_quantity.adults);
-  }, [order.arrival_ticket_quantity.adults, order.departure_ticket_quantity.adults]);
-  useEffect(() => {
-    setTicketQuantityChildren(order.departure_ticket_quantity.children + order.arrival_ticket_quantity.children);
-  }, [order.arrival_ticket_quantity.children, order.departure_ticket_quantity.children]);
+    setNumberAdults(
+      order.departure.seats.filter(isAdult).length
+      + order.arrival.seats.filter(isAdult).length,
+    );
+    setNumberChildren(
+      order.departure.seats.filter(isChild).length
+      + order.arrival.seats.filter(isChild).length,
+    );
+    setPriceAdults(
+      order.departure.seats.filter(isAdult).reduce(sumSeatPrice, 0)
+      + order.arrival.seats.filter(isAdult).reduce(sumSeatPrice, 0),
+    );
+    setPriceChildren(
+      order.departure.seats.filter(isChild).reduce(sumSeatPrice, 0)
+      + order.arrival.seats.filter(isChild).reduce(sumSeatPrice, 0),
+    );
+  }, [order.arrival.seats, order.departure.seats]);
 
   return (
     <TripDetailsCollapsible
@@ -69,21 +53,15 @@ function TripDetailsPassengers({ className }) {
       )}
       title="Пассажиры"
     >
-      {ticketQuantityAdults > 0 && (
+      {numberAdults > 0 && (
         <div className="trip-details-passengers__adults">
-          <p className="trip-details-passengers__label">
-            {"Взрослые: "}
-            {ticketQuantityAdults}
-          </p>
+          <p className="trip-details-passengers__label">{`Взрослые: ${numberAdults}`}</p>
           <p className="trip-details-passengers__value">{formatPrice(priceAdults)}</p>
         </div>
       )}
-      {ticketQuantityChildren > 0 && (
+      {numberChildren > 0 && (
         <div className="trip-details-passengers__children">
-          <p className="trip-details-passengers__label">
-            {"Дети: "}
-            {ticketQuantityChildren}
-          </p>
+          <p className="trip-details-passengers__label">{`Дети: ${numberChildren}`}</p>
           <p className="trip-details-passengers__value">{formatPrice(priceChildren)}</p>
         </div>
       )}

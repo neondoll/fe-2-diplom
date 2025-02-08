@@ -21,8 +21,8 @@ export default function SelectionTrain() {
   const [sort, setSort] = useState("date");
 
   const { data, error, loading } = useGetRoutes({
-    from_city_id: routesSearch.from_city._id, // Идентификатор города, откуда планируется путешествие (обязательный)
-    to_city_id: routesSearch.to_city._id, // Идентификатор города, куда планируется путешествие (обязательный)
+    from_city_id: routesSearch.from_city?._id, // Идентификатор города, откуда планируется путешествие (обязательный)
+    to_city_id: routesSearch.to_city?._id, // Идентификатор города, куда планируется путешествие (обязательный)
     date_start: routesSearch.date_start, // Дата отбытия туда (в формате YYYY-MM-DD; например 2030-03-01)
     date_end: routesSearch.date_end, // Дата отбытия обратно (в формате YYYY-MM-DD; например 2030-03-01)
     date_start_arrival: routesSearch.date_start_arrival, // Дата прибытия туда (в формате YYYY-MM-DD; например 2030-03-01)
@@ -73,12 +73,12 @@ export default function SelectionTrain() {
   return (
     <div className={cn("selection-train-page", className)}>
       <div className="selection-train-page__control">
-        <p className="selection-train-page__found">{`найдено ${data.total_count || 0}`}</p>
+        <p className="selection-train-page__found">{`найдено ${data?.total_count || 0}`}</p>
         <SelectionTrainSort className="selection-train-page__sort" onChange={setSort} value={sort} />
         <SelectionTrainLimit className="selection-train-page__limit" onChange={setLimit} value={limit} />
       </div>
       <Trains className="selection-train-page__trains" items={data?.items ? data.items : []} loading={loading} />
-      {data.total_count > 0 && (
+      {data?.total_count > 0 && (
         <Pagination
           className="selection-train-page__pagination"
           forcePage={page}

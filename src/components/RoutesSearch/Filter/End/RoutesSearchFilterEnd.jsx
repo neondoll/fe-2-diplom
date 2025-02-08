@@ -18,8 +18,6 @@ function RoutesSearchFilterEnd({ className }) {
   };
 
   const handleChange = (data) => {
-    console.log(data);
-
     Object.entries(data).forEach(([name, value]) => {
       dispatch(changeRoutesSearchInput({ name, value }));
     });

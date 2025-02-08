@@ -9,11 +9,11 @@ import "./TripDetailsDeparture.css";
 function TripDetailsDeparture({ className }) {
   const chosenRoute = useSelector(selectChosenRoute);
 
-  if (!chosenRoute.departure_id) {
+  if (!chosenRoute.departure) {
     return null;
   }
 
-  const itd = intervalToDuration({ start: new Date(0), end: new Date(chosenRoute.departure_duration) });
+  const itd = intervalToDuration({ start: new Date(0), end: new Date(chosenRoute.departure.duration) });
   const itdDate = new Date(itd.years || 0, itd.months || 0, itd.days || 0, itd.hours || 0, itd.minutes || 0, itd.seconds || 0);
 
   return (
@@ -39,23 +39,23 @@ function TripDetailsDeparture({ className }) {
       subtitleComponent={(
         <time
           className="trip-details-departure__date"
-          dateTime={formatDate(chosenRoute.departure_from_datetime, "yyyy-MM-dd HH:mm:ss")}
+          dateTime={formatDate(chosenRoute.departure.from.datetime, "yyyy-MM-dd HH:mm:ss")}
         >
-          {formatDate(chosenRoute.departure_from_datetime, "dd.MM.yyyy")}
+          {formatDate(chosenRoute.departure.from.datetime, "dd.MM.yyyy")}
         </time>
       )}
       title="Туда"
     >
       <div className="trip-details-departure__train-number">
         <p className="trip-details-departure__label">№ Поезда</p>
-        <p className="trip-details-departure__value">{chosenRoute.departure_train_name}</p>
+        <p className="trip-details-departure__value">{chosenRoute.departure.train.name}</p>
       </div>
       <div className="trip-details-departure__train-name">
         <p className="trip-details-departure__label">Название</p>
         <p className="trip-details-departure__value">
-          {capitalizeFirstLetter(chosenRoute.departure_from_city_name)}
+          {capitalizeFirstLetter(chosenRoute.departure.from.city.name)}
           <br />
-          {capitalizeFirstLetter(chosenRoute.departure_to_city_name)}
+          {capitalizeFirstLetter(chosenRoute.departure.to.city.name)}
         </p>
       </div>
       <div className="trip-details-departure__duration">
@@ -66,38 +66,38 @@ function TripDetailsDeparture({ className }) {
       <div className="trip-details-departure__times">
         <time
           className="trip-details-departure__time-from"
-          dateTime={formatDate(chosenRoute.departure_from_datetime, "HH:mm:ss")}
+          dateTime={formatDate(chosenRoute.departure.from.datetime, "HH:mm:ss")}
         >
-          {formatDate(chosenRoute.departure_from_datetime, "HH:mm")}
+          {formatDate(chosenRoute.departure.from.datetime, "HH:mm")}
         </time>
         <time
           className="trip-details-departure__time-to"
-          dateTime={formatDate(chosenRoute.departure_to_datetime, "HH:mm:ss")}
+          dateTime={formatDate(chosenRoute.departure.to.datetime, "HH:mm:ss")}
         >
-          {formatDate(chosenRoute.departure_to_datetime, "HH:mm")}
+          {formatDate(chosenRoute.departure.to.datetime, "HH:mm")}
         </time>
       </div>
       <div className="trip-details-departure__dates">
         <time
           className="trip-details-departure__date-from"
-          dateTime={formatDate(chosenRoute.departure_from_datetime, "yyyy-MM-dd")}
+          dateTime={formatDate(chosenRoute.departure.from.datetime, "yyyy-MM-dd")}
         >
-          {formatDate(chosenRoute.departure_from_datetime, "dd.MM.yyyy")}
+          {formatDate(chosenRoute.departure.from.datetime, "dd.MM.yyyy")}
         </time>
         <time
           className="trip-details-departure__date-to"
-          dateTime={formatDate(chosenRoute.departure_to_datetime, "yyyy-MM-dd")}
+          dateTime={formatDate(chosenRoute.departure.to.datetime, "yyyy-MM-dd")}
         >
-          {formatDate(chosenRoute.departure_to_datetime, "dd.MM.yyyy")}
+          {formatDate(chosenRoute.departure.to.datetime, "dd.MM.yyyy")}
         </time>
       </div>
       <div className="trip-details-departure__cities">
-        <p className="trip-details-departure__city-from">{capitalizeFirstLetter(chosenRoute.departure_from_city_name)}</p>
-        <p className="trip-details-departure__city-to">{capitalizeFirstLetter(chosenRoute.departure_to_city_name)}</p>
+        <p className="trip-details-departure__city-from">{capitalizeFirstLetter(chosenRoute.departure.from.city.name)}</p>
+        <p className="trip-details-departure__city-to">{capitalizeFirstLetter(chosenRoute.departure.to.city.name)}</p>
       </div>
       <div className="trip-details-departure__railway-stations">
-        <p className="trip-details-departure__railway-station-from">{chosenRoute.departure_from_railway_station_name}</p>
-        <p className="trip-details-departure__railway-station-to">{chosenRoute.departure_to_railway_station_name}</p>
+        <p className="trip-details-departure__railway-station-from">{chosenRoute.departure.from.railway_station_name}</p>
+        <p className="trip-details-departure__railway-station-to">{chosenRoute.departure.to.railway_station_name}</p>
       </div>
     </TripDetailsCollapsible>
   );

@@ -1,20 +1,15 @@
 import { classNameType } from "../../../../../types/base";
 import { cn, formatPrice } from "../../../../../lib/utils";
-import { orderOptionsType, orderSeatsType } from "../../../../../types/order";
+import { coachPriceType } from "../../../../../types/coach";
 import { useEffect, useState } from "react";
 import "./SelectionSeatsCoachDetailsFooter.css";
+import PropTypes from "prop-types";
 
-function SelectionSeatsCoachDetailsFooter({ className, options, seats }) {
+function SelectionSeatsCoachDetailsFooter({ className, seats }) {
   const [finalPrice, setFinalPrice] = useState(0);
 
   useEffect(() => {
     let price = 0;
-
-    if (options) {
-      Object.values(options).forEach((value) => {
-        price += value;
-      });
-    }
 
     if (seats) {
       seats.forEach((seat) => {
@@ -23,7 +18,7 @@ function SelectionSeatsCoachDetailsFooter({ className, options, seats }) {
     }
 
     setFinalPrice(price);
-  }, [options, seats]);
+  }, [seats]);
 
   return (
     <div className={cn("selection-seats-coach-details-footer", className)}>
@@ -36,8 +31,8 @@ function SelectionSeatsCoachDetailsFooter({ className, options, seats }) {
 
 SelectionSeatsCoachDetailsFooter.propTypes = {
   className: classNameType,
-  options: orderOptionsType,
-  seats: orderSeatsType,
+  options: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
+  seats: PropTypes.arrayOf(PropTypes.shape({ index: PropTypes.number, price: coachPriceType })),
 };
 
 export default SelectionSeatsCoachDetailsFooter;

@@ -1,4 +1,5 @@
 import * as ReactCheckbox from "@radix-ui/react-checkbox";
+import PropTypes from "prop-types";
 import { classNameType } from "../../../types/base";
 import { cn } from "../../../lib/utils";
 import "./Checkbox.css";
@@ -18,6 +19,13 @@ function Checkbox({ className, ...props }) {
   );
 }
 
-Checkbox.propTypes = { className: classNameType };
+Checkbox.propTypes = {
+  checked: PropTypes.oneOf([true, false, "indeterminate"]),
+  className: classNameType,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  onCheckedChange: PropTypes.func,
+  value: PropTypes.string,
+};
 
 export default Checkbox;
