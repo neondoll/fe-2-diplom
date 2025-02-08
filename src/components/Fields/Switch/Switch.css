@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .switch {}
 
 .switch.ant-switch { @apply min-w-18 h-5 font-[inherit] text-sm text-dark-charcoal-3.19 bg-white }

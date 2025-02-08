@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .order-layout-progress-line {
   @apply [--order-layout-progress-line-clip-path:polygon(0%_0%,calc(100%-37px)_0%,100%_50%,calc(100%-37px)_100%,0%_100%)]
   [--order-layout-progress-line-right:0] relative bg-shadow-gray z-0 before:absolute before:inset-y-0

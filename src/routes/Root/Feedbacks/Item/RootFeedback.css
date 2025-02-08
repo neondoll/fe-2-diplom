@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .root-feedback { @apply flex gap-x-8.5 w-full pt-px }
 
 .root-feedback__img { @apply self-center -mt-px rounded-full }
@@ -8,7 +10,7 @@
 
 .root-feedback__text {
   @apply relative block text-lg/[calc(7/6)] italic font-light whitespace-pre-line text-taupe-gray-3.62
-  before:content-[open-quote] before:absolute before:text-4xl/none before:not-italic before:font-medium
-  before:-top-1 before:-left-4 after:content-[close-quote] after:absolute after:text-4xl/none
-  after:not-italic after:font-medium;
+  before:content-[open-quote] before:absolute before:text-4xl before:leading-none before:not-italic
+  before:font-medium before:-top-1 before:-left-4 after:content-[close-quote] after:absolute
+  after:text-4xl after:leading-none after:not-italic after:font-medium;
 }

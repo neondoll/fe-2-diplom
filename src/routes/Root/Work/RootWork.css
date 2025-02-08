@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .root-work {
   @apply bg-maximum-yellow-red bg-[url('../../../assets/root-work-image.png')] bg-center bg-no-repeat
   bg-cover;

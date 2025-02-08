@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .trip-details { @apply bg-shadow-gray divide-y divide-neutral-200 }
 
 .trip-details__title { @apply px-11 py-9 text-3xl/[calc(7/6)] font-medium uppercase text-neutral-200 }

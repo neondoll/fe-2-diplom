@@ -1,3 +1,5 @@
+@reference "../../../../index.css";
+
 .selection-seats-ticket-quantity { @apply pt-10 pb-12 }
 
 .selection-seats-ticket-quantity__title {

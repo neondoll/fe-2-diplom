@@ -1,6 +1,6 @@
 import "./Loading.css";
 
-function Loading() {
+export default function Loading() {
   return (
     <div className="loading">
       <div className="loading__container">
@@ -30,5 +30,3 @@ function Loading() {
     </div>
   );
 }
-
-export default Loading;

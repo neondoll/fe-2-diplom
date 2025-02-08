@@ -34,8 +34,12 @@ function Select({ contentClassName, items, triggerClassName, ...props }) {
 
 Select.propTypes = {
   contentClassName: classNameType,
+  id: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.shape({ text: PropTypes.string, value: PropTypes.string })).isRequired,
+  name: PropTypes.string,
+  onValueChange: PropTypes.func,
   triggerClassName: classNameType,
+  value: PropTypes.string,
 };
 
 export default Select;

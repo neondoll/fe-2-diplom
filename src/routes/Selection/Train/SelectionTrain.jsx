@@ -1,137 +1,92 @@
+import Dialog from "../../../components/Dialog/Dialog";
 import Pagination from "../../../components/Pagination/Pagination";
-import SelectionTrainControl from "./Control/SelectionTrainControl";
+import SelectionTrainLimit from "./Limit/SelectionTrainLimit";
+import SelectionTrainSort from "./Sort/SelectionTrainSort";
 import Trains from "./Trains/Trains";
+import useGetRoutes from "../../../services/useGetRoutes";
 import { cn } from "../../../lib/utils";
-import { fetchRoutes, selectRoutes } from "../../../slices/routes";
-import { selectRoutesSearchForm } from "../../../slices/routesSearchForm";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { selectRoutesSearch } from "../../../slices/routesSearch";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./SelectionTrain.css";
 
-const trains = [
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер      \n",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    departure: {
-      city_from: "Москва",
-      city_start: "Москва",
-      city_to: "Санкт-Петербург\n«Мегаполис»",
-      duration: "8 : 39",
-      first: { bottom_price: 4950, bottom_quantity: 16, top_price: 4950, top_quantity: 15 },
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:20" },
-      second: { bottom_price: 3950, bottom_quantity: 45, top_price: 3950, top_quantity: 45 },
-      to: { city: "Санкт-Петербург", railway_station: "Московский вокзал", time: "08:59" },
-      train_name: "020У",
-    },
-  },
-  {
-    arrival: {
-      duration: "8 : 32",
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:41" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:13" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Нижний Новгород",
-      city_to: "Санкт-Петербург\n«Волга»",
-      duration: "8 : 32",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      from: { city: "Москва", railway_station: "Ленинградский вокзал", time: "00:41" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:13" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-  {
-    arrival: {
-      duration: "9 : 42",
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-    },
-    departure: {
-      city_from: "Москва",
-      city_start: "Адлер",
-      city_to: "Санкт-Петербург",
-      duration: "9 : 42",
-      first: { bottom_price: 4950, bottom_quantity: 8, top_price: 4950, top_quantity: 7 },
-      fourth: { bottom_price: 1920, bottom_quantity: 44, top_price: 1920, top_quantity: 44 },
-      from: { city: "Москва", railway_station: "Курский вокзал", time: "00:10" },
-      second: { bottom_price: 3820, bottom_quantity: 5, top_price: 3820, top_quantity: 19 },
-      third: { bottom_price: 2530, bottom_quantity: 26, top_price: 2530, top_quantity: 26 },
-      to: { city: "Санкт-Петербург", railway_station: "Ладожский вокзал", time: "09:52" },
-      train_name: "116С" + "\u00A0",
-    },
-  },
-];
-
 export default function SelectionTrain() {
-  const dispatch = useDispatch();
-  const routesSearchForm = useSelector(selectRoutesSearchForm);
+  const routesSearch = useSelector(selectRoutesSearch);
   const { className, setLoading } = useOutletContext();
-  const { data, loading } = useSelector(selectRoutes);
+  const [limit, setLimit] = useState(5);
+  const [loadingPage, setLoadingPage] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [page, setPage] = useState(0);
+  const [sort, setSort] = useState("date");
+
+  const { data, error, loading } = useGetRoutes({
+    from_city_id: routesSearch.from_city?._id, // Идентификатор города, откуда планируется путешествие (обязательный)
+    to_city_id: routesSearch.to_city?._id, // Идентификатор города, куда планируется путешествие (обязательный)
+    date_start: routesSearch.date_start, // Дата отбытия туда (в формате YYYY-MM-DD; например 2030-03-01)
+    date_end: routesSearch.date_end, // Дата отбытия обратно (в формате YYYY-MM-DD; например 2030-03-01)
+    date_start_arrival: routesSearch.date_start_arrival, // Дата прибытия туда (в формате YYYY-MM-DD; например 2030-03-01)
+    date_end_arrival: routesSearch.date_end_arrival, // Дата прибытия обратно (в формате YYYY-MM-DD; например 2030-03-01)
+    have_first_class: routesSearch.have_first_class, // Люкс (true/false)
+    have_second_class: routesSearch.have_second_class, // Купе (true/false)
+    have_third_class: routesSearch.have_third_class, // Плацкарт (true/false)
+    have_fourth_class: routesSearch.have_fourth_class, // Сидячее место (true/false)
+    have_wifi: routesSearch.have_wifi, // Имеется WiFi (true/false)
+    have_air_conditioning: routesSearch.have_air_conditioning, // Имеется кондиционер (true/false)
+    have_express: routesSearch.have_express, // Экспресс (true/false)
+    price_from: routesSearch.price_from, // Цена от
+    price_to: routesSearch.price_to, // Цена до
+    start_departure_hour_from: routesSearch.start_departure_hour_from, // Час отбытия от (число)
+    start_departure_hour_to: routesSearch.start_departure_hour_to, // Час отбытия до (число)
+    start_arrival_hour_from: routesSearch.start_arrival_hour_from, // Час прибытия от (число)
+    start_arrival_hour_to: routesSearch.start_arrival_hour_to, // Час прибытия до (число)
+    end_departure_hour_from: routesSearch.end_departure_hour_from, // Час отбытия назад от (число)
+    end_departure_hour_to: routesSearch.end_departure_hour_to, // Час отбытия назад до (число)
+    end_arrival_hour_from: routesSearch.end_arrival_hour_from, // Час прибытия назад от (работает при установленном параметре date_end)
+    end_arrival_hour_to: routesSearch.end_arrival_hour_to, // Час прибытия назад до (работает при установленном параметре date_end)
+    limit, // Количество результатов на странице
+    offset: limit * page, // Количество результатов, которое необходимо пропустить в выдаче
+    sort, // Сортировка результатов (date, price, duration)
+  });
 
   useEffect(() => {
-    dispatch(fetchRoutes({
-      from_city_id: routesSearchForm.from_city?._id,
-      to_city_id: routesSearchForm.to_city?._id,
-    }));
-  }, [dispatch, routesSearchForm.from_city?._id, routesSearchForm.to_city?._id]);
+    if (error) {
+      console.error(error);
+      setOpen(true);
+    }
+  }, [error]);
   useEffect(() => {
-    console.log("setLoading in SelectionTrain", loading);
-    setLoading(loading);
-  }, [loading, setLoading]);
+    if (!loading) {
+      setLoadingPage(false);
+    }
+  }, [loading]);
+  useEffect(() => {
+    setLoading(loadingPage);
+  }, [loadingPage, setLoading]);
 
-  if (loading) {
+  if (loadingPage) {
     return null;
   }
 
+  const handlePageChange = selectedItem => setPage(selectedItem.selected);
+
   return (
     <div className={cn("selection-train-page", className)}>
-      <SelectionTrainControl className="selection-train-page__control" />
-      <Trains className="selection-train-page__trains" items={trains} />
-      {data?.total_count && (
-        <Pagination className="selection-train-page__pagination" pageCount={Math.ceil(data.total_count / 5)} />
+      <div className="selection-train-page__control">
+        <p className="selection-train-page__found">{`найдено ${data?.total_count || 0}`}</p>
+        <SelectionTrainSort className="selection-train-page__sort" onChange={setSort} value={sort} />
+        <SelectionTrainLimit className="selection-train-page__limit" onChange={setLimit} value={limit} />
+      </div>
+      <Trains className="selection-train-page__trains" items={data?.items ? data.items : []} loading={loading} />
+      {data?.total_count > 0 && (
+        <Pagination
+          className="selection-train-page__pagination"
+          forcePage={page}
+          onPageChange={handlePageChange}
+          pageCount={Math.ceil(data.total_count / limit)}
+        />
       )}
+      <Dialog description={error} onOpenChange={setOpen} open={open} title="Сообщение об ошибке" type="error" />
     </div>
   );
 }

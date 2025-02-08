@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .root-widget {
   @apply bg-maximum-yellow-red bg-[url('../../../assets/root-widget-image.png')] bg-center
   bg-no-repeat bg-cover;

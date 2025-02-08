@@ -1,4 +1,4 @@
-import App from "./App.jsx";
+import App from "./App";
 import store from "./store";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";

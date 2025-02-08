@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .trip-details-departure { @apply py-4 }
 
 .trip-details-departure > .trip-details-collapsible__header { @apply gap-x-3 pl-7 }

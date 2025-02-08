@@ -1,5 +1,7 @@
+@reference "../../../index.css";
+
 .order-confirmation-passenger {
-  @apply flex justify-start gap-x-9 px-8.5 pt-7.5 pb-10 text-lg/none font-normal;
+  @apply flex justify-start gap-x-9 px-8.5 pt-7.5 pb-10 text-lg font-normal leading-none;
 }
 
 .order-confirmation-passenger__logo { @apply flex flex-col items-center gap-y-4.5 w-21 }
@@ -16,5 +18,5 @@
 .order-confirmation-passenger__full-name { @apply mb-4.5 }
 
 .order-confirmation-passenger__gender,
-.order-confirmation-passenger__birth-date,
+.order-confirmation-passenger__birthday,
 .order-confirmation-passenger__document { @apply text-taupe-gray-3.62 }

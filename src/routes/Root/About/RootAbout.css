@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .root-about {}
 
 .root-about__container { @apply px-11 pt-36 pb-31 }

@@ -1,14 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  arrival_seats: [],
-  arrival_ticket_quantity: { adults: 2, children: 0, children_without_seat: 0 },
-  arrival_wagon_number: undefined,
-  arrival_wagon_type: undefined,
-  departure_seats: [],
-  departure_ticket_quantity: { adults: 2, children: 1, children_without_seat: 0 },
-  departure_wagon_number: "02",
-  departure_wagon_type: "first",
+  arrival: { route_direction_id: undefined, seats: [] },
+  departure: { route_direction_id: undefined, seats: [] },
+  user: { email: "", first_name: "", last_name: "", patronymic: "", payment_method: null, phone: "" },
 };
 
 const orderSlice = createSlice({
@@ -20,9 +15,14 @@ const orderSlice = createSlice({
 
       state[name] = value;
     },
+    clearOrder: (state) => {
+      Object.entries(initialState).forEach(([name, value]) => {
+        state[name] = value;
+      });
+    },
   },
 });
 
 export const selectOrder = state => state.order;
-export const { changeOrder } = orderSlice.actions;
+export const { changeOrder, clearOrder } = orderSlice.actions;
 export default orderSlice.reducer;

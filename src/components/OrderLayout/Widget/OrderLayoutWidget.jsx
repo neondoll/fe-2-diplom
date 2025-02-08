@@ -1,4 +1,4 @@
-import RoutesSearchForm from "../../RoutesSearchForm/RoutesSearchForm.jsx";
+import RoutesSearchForm from "../../RoutesSearch/Form/RoutesSearchForm";
 import { classNameType } from "../../../types/base";
 import { cn } from "../../../lib/utils";
 import "./OrderLayoutWidget.css";

@@ -34,6 +34,12 @@ function InputOTP({ className, maxLength, slotWidth = "12px", ...props }) {
   );
 }
 
-InputOTP.propTypes = { className: classNameType, maxLength: PropTypes.number.isRequired, slotWidth: PropTypes.string };
+InputOTP.propTypes = {
+  className: classNameType,
+  maxLength: PropTypes.number.isRequired,
+  onChange: PropTypes.func,
+  slotWidth: PropTypes.string,
+  value: PropTypes.string,
+};
 
 export default InputOTP;

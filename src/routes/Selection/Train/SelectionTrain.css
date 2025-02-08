@@ -1,6 +1,14 @@
+@reference "../../../index.css";
+
 .selection-train-page { @apply -mt-2.5 pb-48.5 }
 
-.selection-train-page__control {}
+.selection-train-page__control { @apply flex items-baseline gap-x-12.5 }
+
+.selection-train-page__found { @apply text-lg font-normal leading-none text-taupe-gray-3.62 }
+
+.selection-train-page__sort { @apply ml-auto }
+
+.selection-train-page__limit {}
 
 .selection-train-page__trains { @apply mt-9.5 }
 

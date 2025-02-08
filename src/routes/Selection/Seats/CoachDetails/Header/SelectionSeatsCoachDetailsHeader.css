@@ -1,0 +1,17 @@
+@reference "../../../../../index.css";
+
+.selection-seats-coach-details-header {
+  @apply flex justify-start items-baseline gap-x-1.5 py-1 pr-4.5 pl-8 bg-chrome-yellow/44;
+}
+
+.selection-seats-coach-details-header__title { @apply text-lg/[calc(7/6)] font-normal }
+
+.selection-seats-coach-details-header__list { @apply flex justify-start items-stretch gap-x-1.5 }
+
+.selection-seats-coach-details-header__item {
+  @apply text-2xl/[calc(7/6)] font-bold transition-colors cursor-pointer data-[active=true]:text-white;
+}
+
+.selection-seats-coach-details-header__description {
+  @apply ml-auto text-base/[calc(18.75/16)] font-normal;
+}

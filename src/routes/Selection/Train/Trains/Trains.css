@@ -1,4 +1,9 @@
-.trains { @apply space-y-13 }
+@reference "../../../../index.css";
+
+.trains {
+  @apply space-y-13 opacity-100 transition-opacity data-[loading=true]:opacity-0
+  data-[loading=true]:pointer-events-none data-[loading=true]:select-none;
+}
 
 .trains__item {
   @apply border border-silver shadow-[0_2px_2px_0_rgba(0,0,0,0.3)] transition-colors

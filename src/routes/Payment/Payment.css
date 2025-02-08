@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .payment-page { @apply bg-ghost-white-1.64 }
 
 .payment-page > .order-layout__container { @apply gap-x-21 }

@@ -18,6 +18,21 @@ function Slider({ className, max = 100, min = 0, ...props }) {
   );
 }
 
-Slider.propTypes = { className: classNameType, max: PropTypes.number, min: PropTypes.number };
+Slider.propTypes = {
+  className: classNameType,
+  marks: PropTypes.object,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  onChange: PropTypes.func,
+  step: PropTypes.number,
+  tooltip: PropTypes.exact({
+    autoAdjustOverflow: PropTypes.bool,
+    formatter: PropTypes.func,
+    getPopupContainer: PropTypes.func,
+    open: PropTypes.bool,
+    placement: PropTypes.string,
+  }),
+  value: PropTypes.arrayOf(PropTypes.number),
+};
 
 export default Slider;

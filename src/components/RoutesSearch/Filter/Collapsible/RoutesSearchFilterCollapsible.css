@@ -1,0 +1,19 @@
+@reference "../../../../index.css";
+
+.routes-search-filter-collapsible { @apply pt-6 pb-7.5 }
+
+.routes-search-filter-collapsible__header {
+  @apply flex justify-start items-start gap-x-3 pr-8.5 pb-0.5 pl-8 text-3xl/[calc(7/6)];
+}
+
+.routes-search-filter-collapsible__icon { @apply mt-1.5 mb-1 text-chrome-yellow }
+
+.routes-search-filter-collapsible__title { @apply mb-px font-bold text-white }
+
+.routes-search-filter-collapsible__trigger {
+  @apply size-5 mt-3 mb-1 ml-auto text-xl leading-none transition-colors data-[state=closed]:text-white
+  data-[state=closed]:hover:text-navajo-white-3.53 data-[state=open]:text-silver
+  data-[state=open]:hover:text-navajo-white-3.53;
+}
+
+.routes-search-filter-collapsible__content { @apply pt-4 pr-8.5 pl-7.5 }

@@ -1,5 +1,5 @@
 import ProgressBar from "../../../components/ProgressBar/ProgressBar";
-import RoutesSearchForm from "../../../components/RoutesSearchForm/RoutesSearchForm.jsx";
+import RoutesSearchForm from "../../../components/RoutesSearch/Form/RoutesSearchForm";
 import { classNameType } from "../../../types/base";
 import { cn } from "../../../lib/utils";
 import "./RootWidget.css";

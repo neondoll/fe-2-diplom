@@ -1,17 +1,21 @@
+@reference "../../../index.css";
+
 .footer-subscribe { @apply flex-1 mx-px px-29 py-13 }
 
 .footer-subscribe__title { @apply text-3xl/[calc(7/6)] font-medium text-white }
 
 .footer-subscribe__subtitle { @apply mt-7 text-2xl/[calc(7/6)] font-normal text-white }
 
-.footer-subscribe__form { @apply relative flex justify-center items-start gap-x-[33px] mt-4 }
+.footer-subscribe__form { @apply relative flex justify-center items-start gap-x-8 mt-4 }
 
 .footer-subscribe__input {
-  @apply h-15 px-5 text-2xl/none rounded-3 border-transparent has-[.invalid]:border-pink-600
+  @apply h-15 px-5 text-2xl leading-none rounded-3 border-transparent has-[.invalid]:border-pink-600
   placeholder:text-neutral-200;
 }
 
-.footer-subscribe__error { @apply absolute -bottom-6 left-0 invisible text-lg/none text-pink-600 }
+.footer-subscribe__error {
+  @apply absolute -bottom-6 left-0 invisible text-lg leading-none text-pink-600;
+}
 
 .footer-subscribe__input.invalid + .footer-subscribe__error { @apply visible }
 

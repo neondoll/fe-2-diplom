@@ -2,7 +2,10 @@ import Paths from "../../../paths";
 import { classNameType } from "../../../types/base";
 import { cn, formatPrice } from "../../../lib/utils";
 import { Rating } from "@smastrom/react-rating";
+import { selectSuccessfulOrderInfo } from "../../../slices/successfulOrderInfo";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import "./SuccessfulOrderCard.css";
 
 const Star = (
@@ -11,6 +14,8 @@ const Star = (
 
 function SuccessfulOrderCard({ className }) {
   const navigate = useNavigate();
+  const successfulOrderInfo = useSelector(selectSuccessfulOrderInfo);
+  const [rating, setRating] = useState(0);
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -21,10 +26,10 @@ function SuccessfulOrderCard({ className }) {
   return (
     <div className={cn("successful-order-card", className)}>
       <div className="successful-order-card__header">
-        <h2 className="successful-order-card__title">№Заказа 285АА</h2>
+        <h2 className="successful-order-card__title">{`№Заказа ${successfulOrderInfo.number}`}</h2>
         <p className="successful-order-card__price">
           <span className="successful-order-card__price-prefix">сумма</span>
-          <span className="successful-order-card__price-value">{formatPrice(7760)}</span>
+          <span className="successful-order-card__price-value">{formatPrice(successfulOrderInfo.final_price)}</span>
           <span className="successful-order-card__price-currency" />
         </p>
       </div>
@@ -95,7 +100,9 @@ function SuccessfulOrderCard({ className }) {
         </ul>
       </div>
       <div className="successful-order-card__appeal">
-        <h3 className="successful-order-card__appeal-title">Ирина Эдуардовна!</h3>
+        <h3 className="successful-order-card__appeal-title">
+          {`${successfulOrderInfo.first_name} ${successfulOrderInfo.patronymic}!`}
+        </h3>
         <div className="successful-order-card__appeal-text">
           <p>Ваш заказ успешно оформлен.</p>
           <p>В ближайшее время с вами свяжется наш оператор для подтверждения.</p>
@@ -118,10 +125,8 @@ function SuccessfulOrderCard({ className }) {
               itemShapes: Star,
               itemStrokeWidth: 2,
             }}
-            onChange={(value) => {
-              console.log(`New rating value is ${value}`);
-            }}
-            value={0}
+            onChange={setRating}
+            value={rating}
           />
         </div>
         <button className="successful-order-card__footer-btn" type="button" onClick={handleClick}>

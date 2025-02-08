@@ -1,9 +1,11 @@
+@reference "../../../index.css";
+
 .radio-group {
-  @apply flex justify-stretch items-stretch w-full h-12.5 text-3xl/none font-black text-black bg-white
-  rounded-5 border border-taupe-gray-3.62 divide-x divide-taupe-gray-3.62;
+  @apply flex justify-stretch items-stretch w-full h-12.5 text-3xl font-black leading-none text-black
+  bg-white rounded-5 border border-taupe-gray-3.62 divide-x divide-taupe-gray-3.62;
 }
 
 .radio-group__item {
-  @apply flex justify-center items-center px-4.5 transition-colors first:rounded-l-5
-  last:rounded-r-5 data-[state=checked]:bg-chrome-yellow;
+  @apply flex justify-center items-center px-4.5 transition-colors first:rounded-l-5 last:rounded-r-5
+  data-[state=checked]:bg-chrome-yellow;
 }

@@ -1,11 +1,85 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap") layer(base);
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  /*
+   * `--animate-*` - Animation utilities like `animate-spin`
+   */
+  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
+  --animate-dialog-content-show: dialog-content-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-dialog-overlay-show: dialog-overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  /*
+   * `--color-*` - Color utilities like `bg-red-500`, `text-sky-300`, and many more
+   */
+  --color-anti-flash-white: #f4f3f6; /* Anti-flash white | ΔE - 1.64 */
+  --color-cadmium-yellow: #fff500; /* Cadmium Yellow | ΔE - 0.27 */
+  --color-chrome-yellow: #ffa800;
+  --color-coquelicot: #ff3d00;
+  --color-dark-charcoal: #333333; /* ΔE - 0.00 */
+  --color-dark-charcoal-3_19: #292929; /* ΔE - 3.19 */
+  --color-ghost-white-1_64: #f7f5f9; /* ΔE - 1.64 */
+  --color-ghost-white-1_94: #f4f2f6; /* ΔE - 1.94 */
+  --color-magnolia-white: #e4e0e9;
+  --color-maximum-yellow-red: #ffca62;
+  --color-navajo-white-3_53: #fcdc9d; /* ΔE - 3.53 */
+  --color-navajo-white-5_41: #ffd98f; /* ΔE - 5.41 */
+  --color-neon-silver: #cccccc;
+  --color-platinum: #e6e6e6;
+  --color-raisin-black: #2d2b2f;
+  --color-shadow-gray: #3e3c41;
+  --color-silver: #c4c4c4;
+  --color-spanish-gray: #999999;
+  --color-taupe-gray-3_62: #928f94; /* ΔE - 3.62 */
+  --color-taupe-gray-3_79: #918f94; /* ΔE - 3.79 */
+  --color-very-light-green: #b2f6a1;
+  --color-white-0_8: #fbfbfb; /* White | ΔE - 0.80 */
+  --color-white-smoke-0_41: #f7f7f7; /* ΔE - 0.41 */
+  --color-white-smoke-0_56: #f7f6f6; /* ΔE - 0.56 */
+  --color-white-smoke-0_62: #f2f2f2; /* ΔE - 0.62 */
+  --color-white-smoke-0_81: #f9f9f9; /* ΔE - 0.81 */
+  --color-white-smoke-1_3: #f5f4f6; /* ΔE - 1.30 */
+  --color-xanthous: #fdb935;
+  /*
+   * `--radius-*` - Border radius utilities like `rounded-sm`
+   */
+  --radius-3: 0.1875rem; /* 3px */
+  --radius-5: 0.3125rem; /* 5px */
+  @keyframes caret-blink {
+    0%, 70%, 100% { opacity: 1; }
+    20%, 50% { opacity: 0; }
+  }
+  @keyframes dialog-content-show {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes dialog-overlay-show {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@utility container {
+  max-width: 1492px;
+  margin-inline: auto;
+}
 
 @layer base {
-  :root { @apply h-full min-h-screen font-['Roboto'] text-dark-charcoal-3.19 }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button { border-color: var(--color-gray-200, currentColor); }
 
-  .container { @apply max-w-[1492px] mx-auto }
+  :root { @apply h-full min-h-screen font-[Roboto] text-dark-charcoal-3.19 }
+
+  :root::-webkit-scrollbar {
+    width: calc(var(--spacing) * 1.5);
+    height: calc(var(--spacing) * 1.5);
+    background-color: var(--color-raisin-black);
+  }
+
+  :root::-webkit-scrollbar-thumb {
+    background: var(--color-chrome-yellow);
+    border-radius: var(--radius-sm);
+  }
 }

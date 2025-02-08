@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .header-nav { @apply pt-7.5 pb-8.5 bg-dark-charcoal-3.19 }
 
 .header-nav__container { @apply px-11 }
@@ -7,6 +9,6 @@
 .header-nav__item {}
 
 .header-nav__link {
-  @apply block text-3xl/none font-light text-white transition-colors duration-500
+  @apply block text-3xl font-light leading-none text-white transition-colors duration-500
   hover:text-chrome-yellow focus-visible:text-chrome-yellow;
 }

@@ -1,0 +1,12 @@
+@reference "../../../index.css";
+
+.routes-search-filter { @apply bg-shadow-gray divide-y divide-neutral-200 }
+
+.routes-search-filter__dates {}
+
+.routes-search-filter__switches {}
+
+.routes-search-filter__price {}
+
+.routes-search-filter__start,
+.routes-search-filter__end { @apply min-h-24 }

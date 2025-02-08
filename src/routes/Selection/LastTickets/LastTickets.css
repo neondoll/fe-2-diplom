@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .last-tickets {}
 
 .last-tickets__title { @apply text-3xl/[calc(7/6)] font-medium uppercase text-black }
@@ -30,7 +32,7 @@
 
 .last-ticket__footer { @apply flex justify-between items-baseline mt-7 -mr-2 }
 
-.last-ticket__options { @apply w-23 h-5 text-xl/none text-neutral-200 }
+.last-ticket__options { @apply w-23 h-5 text-xl leading-none text-neutral-200 }
 
 .last-ticket__price { @apply flex justify-end items-baseline gap-x-1.5 text-taupe-gray-3.62 }
 

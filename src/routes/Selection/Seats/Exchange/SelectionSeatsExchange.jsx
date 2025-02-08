@@ -1,8 +1,10 @@
 import Paths from "../../../../paths";
-import PropTypes from "prop-types";
 import { classNameType } from "../../../../types/base";
+import { clearChosenRoute } from "../../../../slices/chosenRoute";
 import { cn } from "../../../../lib/utils";
-import { Link } from "react-router-dom";
+import { routeDirectionVariantType } from "../../../../types/route";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./SelectionSeatsExchange.css";
 
 const icons = {
@@ -29,19 +31,28 @@ const icons = {
 };
 
 function SelectionSeatsExchange({ className, variant }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const Icon = icons[variant];
+
+  const handleClick = (event) => {
+    event.preventDefault();
+
+    dispatch(clearChosenRoute());
+    navigate(Paths.SELECTION_TRAIN);
+  };
 
   return (
     <div className={cn("selection-seats-exchange", className)} data-variant={variant}>
       <Icon className="selection-seats-exchange__icon" />
-      <Link className="selection-seats-exchange__btn" to={Paths.SELECTION_TRAIN}>Выбрать другой поезд</Link>
+      <button className="selection-seats-exchange__btn" onClick={handleClick}>Выбрать другой поезд</button>
     </div>
   );
 }
 
 SelectionSeatsExchange.propTypes = {
   className: classNameType,
-  variant: PropTypes.oneOf(["arrival", "departure"]).isRequired,
+  variant: routeDirectionVariantType.isRequired,
 };
 
 export default SelectionSeatsExchange;

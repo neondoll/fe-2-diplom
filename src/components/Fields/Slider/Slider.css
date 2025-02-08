@@ -1,3 +1,5 @@
+@reference "../../../index.css";
+
 .slider {}
 
 .slider .ant-slider-rail { @apply border border-silver }

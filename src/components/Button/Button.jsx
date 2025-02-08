@@ -9,6 +9,8 @@ function Button({ className, variant, ...props }) {
 
 Button.propTypes = {
   className: classNameType,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   variant: PropTypes.oneOf([
     "change", "choose-places", "confirm", "find-tickets", "further", "learn-more", "send",
   ]).isRequired,

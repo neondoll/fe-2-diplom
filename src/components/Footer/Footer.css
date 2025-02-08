@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .footer { @apply pb-px bg-raisin-black }
 
 .footer__container { @apply flex justify-between gap-x-12 }

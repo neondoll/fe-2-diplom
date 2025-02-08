@@ -1,13 +1,17 @@
+import chosenCoachReducer from "../slices/chosenCoach";
+import chosenRouteReducer from "../slices/chosenRoute";
 import orderReducer from "../slices/order";
-import routesReducer from "../slices/routes";
-import routesSearchFormReducer from "../slices/routesSearchForm";
+import routesSearchReducer from "../slices/routesSearch";
+import successfulOrderInfoReducer from "../slices/successfulOrderInfo";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
   reducer: {
+    chosenCoach: chosenCoachReducer,
+    chosenRoute: chosenRouteReducer,
     order: orderReducer,
-    routes: routesReducer,
-    routesSearchForm: routesSearchFormReducer,
+    routesSearch: routesSearchReducer,
+    successfulOrderInfo: successfulOrderInfoReducer,
   },
 });
 

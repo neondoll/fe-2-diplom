@@ -1,0 +1,41 @@
+@reference "../../../../index.css";
+
+.routes-search-filter-start { @apply flex items-center }
+
+.routes-search-filter-start__collapsible { @apply flex-1 }
+
+.routes-search-filter-start__departure,
+.routes-search-filter-start__arrival { @apply flex flex-col gap-y-1 }
+
+.routes-search-filter-start__departure {}
+
+.routes-search-filter-start__arrival { @apply mt-12 }
+
+.routes-search-filter-start__subtitle { @apply text-2xl/[calc(7/6)] font-normal text-neutral-200 }
+
+.routes-search-filter-start__departure > .routes-search-filter-start__subtitle { @apply text-left }
+
+.routes-search-filter-start__arrival > .routes-search-filter-start__subtitle { @apply text-right }
+
+.routes-search-filter-start__slider {}
+
+.routes-search-filter-start__slider.ant-slider { @apply mx-1 }
+
+.routes-search-filter-start__slider.ant-slider .ant-slider-handle { @apply size-4.5 after:size-4.5 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal { @apply h-4.5 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-rail { @apply h-2.5 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-track,
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-tracks { @apply h-2.5 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-step { @apply h-2.5 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-handle {
+  inset-block-start: calc(var(--spacing) * 0);
+}
+
+.routes-search-filter-start__slider.ant-slider-horizontal .ant-slider-mark { @apply top-7 }
+
+.routes-search-filter-start__slider.ant-slider-horizontal.ant-slider-with-marks { @apply mb-8 }

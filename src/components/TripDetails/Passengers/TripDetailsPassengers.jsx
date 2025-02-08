@@ -1,9 +1,41 @@
 import TripDetailsCollapsible from "../Collapsible/TripDetailsCollapsible";
 import { classNameType } from "../../../types/base";
 import { cn, formatPrice } from "../../../lib/utils";
+import { selectOrder } from "../../../slices/order";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./TripDetailsPassengers.css";
 
 function TripDetailsPassengers({ className }) {
+  const order = useSelector(selectOrder);
+  const [numberAdults, setNumberAdults] = useState(0);
+  const [numberChildren, setNumberChildren] = useState(0);
+  const [priceAdults, setPriceAdults] = useState(0);
+  const [priceChildren, setPriceChildren] = useState(0);
+
+  const isAdult = item => !item.is_child;
+  const isChild = item => item.is_child;
+  const sumSeatPrice = (acc, item) => acc + item.seat_price;
+
+  useEffect(() => {
+    setNumberAdults(
+      order.departure.seats.filter(isAdult).length
+      + order.arrival.seats.filter(isAdult).length,
+    );
+    setNumberChildren(
+      order.departure.seats.filter(isChild).length
+      + order.arrival.seats.filter(isChild).length,
+    );
+    setPriceAdults(
+      order.departure.seats.filter(isAdult).reduce(sumSeatPrice, 0)
+      + order.arrival.seats.filter(isAdult).reduce(sumSeatPrice, 0),
+    );
+    setPriceChildren(
+      order.departure.seats.filter(isChild).reduce(sumSeatPrice, 0)
+      + order.arrival.seats.filter(isChild).reduce(sumSeatPrice, 0),
+    );
+  }, [order.arrival.seats, order.departure.seats]);
+
   return (
     <TripDetailsCollapsible
       className={cn("trip-details-passengers", className)}
@@ -21,14 +53,18 @@ function TripDetailsPassengers({ className }) {
       )}
       title="Пассажиры"
     >
-      <div className="trip-details-passengers__adults">
-        <p className="trip-details-passengers__label">2 Взрослых</p>
-        <p className="trip-details-passengers__value">{formatPrice(5840)}</p>
-      </div>
-      <div className="trip-details-passengers__children">
-        <p className="trip-details-passengers__label">1 Ребенок</p>
-        <p className="trip-details-passengers__value">{formatPrice(1920)}</p>
-      </div>
+      {numberAdults > 0 && (
+        <div className="trip-details-passengers__adults">
+          <p className="trip-details-passengers__label">{`Взрослые: ${numberAdults}`}</p>
+          <p className="trip-details-passengers__value">{formatPrice(priceAdults)}</p>
+        </div>
+      )}
+      {numberChildren > 0 && (
+        <div className="trip-details-passengers__children">
+          <p className="trip-details-passengers__label">{`Дети: ${numberChildren}`}</p>
+          <p className="trip-details-passengers__value">{formatPrice(priceChildren)}</p>
+        </div>
+      )}
     </TripDetailsCollapsible>
   );
 }

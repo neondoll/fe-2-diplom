@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .select-location {}
 
 .select-location.ant-select { @apply font-[inherit] }
@@ -23,5 +25,5 @@
 .select-location.ant-select .ant-select-selection-placeholder { @apply text-neutral-200 }
 
 .select-location.ant-select .ant-select-arrow {
-  @apply inset-y-0 end-0 justify-center size-15 mt-0 text-3xl/none text-neutral-200;
+  @apply inset-y-0 end-0 justify-center size-15 mt-0 text-3xl leading-none text-neutral-200;
 }

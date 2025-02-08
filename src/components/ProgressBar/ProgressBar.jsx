@@ -14,11 +14,11 @@ function ProgressBar({ className }) {
   return (
     <div className={cn("progress-bar", className)}>
       <progress
+        aria-label="Загрузка страницы"
         className="progress-bar__progress"
         max="100"
         style={{ animationDuration: `${count / 10}ms` }}
         value="0"
-        aria-label="Загрузка страницы"
       />
     </div>
   );

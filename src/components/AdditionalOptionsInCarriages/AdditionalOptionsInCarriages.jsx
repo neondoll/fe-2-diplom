@@ -1,12 +1,14 @@
 import AdditionalOptionsInCarriagesTooltip from "./Tooltip/AdditionalOptionsInCarriagesTooltip";
 import PropTypes from "prop-types";
 import { classNameType } from "../../types/base";
-import { cn } from "../../lib/utils";
+import { cn, formatPrice } from "../../lib/utils";
+import { coachHaveType, coachPriceType } from "../../types/coach";
 import { useEffect, useState } from "react";
 import "./AdditionalOptionsInCarriages.css";
 
 const items = [
   {
+    cost: () => undefined,
     icon: props => (
       <svg
         width="1.3125em"
@@ -30,11 +32,12 @@ const items = [
         />
       </svg>
     ),
-    text: "кондиционер",
-    tooltipClassName: "!min-w-[130px]",
+    state: props => props.haveAirConditioning ? "include" : "exclude",
+    text: props => props.haveAirConditioning ? "кондиционер имеется" : "кондиционер отсутствует",
     value: "airConditioner",
   },
   {
+    cost: props => props.wifiPrice ? props.wifiPrice : undefined,
     icon: props => (
       <svg width="1.25em" height="1em" fill="none" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg" {...props}>
         <path
@@ -55,11 +58,12 @@ const items = [
         />
       </svg>
     ),
-    text: "WI-FI",
-    tooltipClassName: "!min-w-[84px]",
+    state: props => props.haveWifi ? undefined : "exclude",
+    text: props => props.haveWifi ? `WI-FI, стоимость ${formatPrice(Number(props.wifiPrice))} ₽` : "WI-FI отсутствует",
     value: "wifi",
   },
   {
+    cost: props => props.linensPrice ? props.linensPrice : undefined,
     icon: props => (
       <svg width="1.375em" height="1em" fill="none" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" {...props}>
         <path
@@ -68,11 +72,12 @@ const items = [
         />
       </svg>
     ),
-    text: "белье",
-    tooltipClassName: "!min-w-[84px]",
-    value: "linen",
+    state: props => props.isLinensIncluded ? "include" : undefined,
+    text: props => props.isLinensIncluded ? "белье включено в стоимость" : `белье, стоимость ${formatPrice(Number(props.linensPrice))} ₽`,
+    value: "linens",
   },
   {
+    cost: () => undefined,
     icon: props => (
       <svg
         width="1.25em"
@@ -92,19 +97,14 @@ const items = [
         />
       </svg>
     ),
-    text: "питание",
-    tooltipClassName: "!min-w-[84px]",
+    state: () => "exclude",
+    text: () => "питание отсутствует",
     value: "nutrition",
   },
 ];
 
-function AdditionalOptionsInCarriages({ btnClassName, className, values }) {
-  const [_values, setValues] = useState({
-    airConditioner: undefined,
-    linen: undefined,
-    nutrition: undefined,
-    wifi: undefined,
-  });
+function AdditionalOptionsInCarriages({ btnClassName, className, onChange, values, ...props }) {
+  const [_values, setValues] = useState({ linens: false, wifi: false });
 
   useEffect(() => {
     if (values) {
@@ -114,11 +114,15 @@ function AdditionalOptionsInCarriages({ btnClassName, className, values }) {
 
   const handleClick = (event) => {
     const btn = event.target.closest(".additional-options-in-carriages__btn");
+    const active = btn.dataset.active;
     const state = btn.dataset.state;
     const value = btn.dataset.value;
 
-    if (state !== "included") {
-      setValues(prev => ({ ...prev, [value]: state !== "selected" ? "selected" : undefined }));
+    if (state === undefined) {
+      const values = { ..._values, [value]: active !== "true" };
+
+      setValues(values);
+      onChange(values);
     }
   };
 
@@ -132,7 +136,9 @@ function AdditionalOptionsInCarriages({ btnClassName, className, values }) {
             <li className="additional-options-in-carriages__item" key={item.value}>
               <button
                 className={cn("additional-options-in-carriages__btn", btnClassName)}
-                data-state={_values[item.value]}
+                data-active={item.value in _values ? _values[item.value] : undefined}
+                data-cost={item.cost(props)}
+                data-state={item.state(props)}
                 data-tooltip-id={`additional-options-in-carriages-tooltip-${item.value}`}
                 data-value={item.value}
                 onClick={handleClick}
@@ -140,10 +146,9 @@ function AdditionalOptionsInCarriages({ btnClassName, className, values }) {
                 <Icon className="additional-options-in-carriages__icon" />
               </button>
               <AdditionalOptionsInCarriagesTooltip
-                className={cn("additional-options-in-carriages__tooltip", item.tooltipClassName)}
-                content={item.text}
+                className="additional-options-in-carriages__tooltip"
+                content={item.text(props)}
                 id={`additional-options-in-carriages-tooltip-${item.value}`}
-                isOpen={item.value === "airConditioner"}
               />
             </li>
           );
@@ -156,12 +161,13 @@ function AdditionalOptionsInCarriages({ btnClassName, className, values }) {
 AdditionalOptionsInCarriages.propTypes = {
   btnClassName: classNameType,
   className: classNameType,
-  values: PropTypes.shape({
-    airConditioner: PropTypes.oneOf(["included", "selected", undefined]),
-    linen: PropTypes.oneOf(["included", "selected", undefined]),
-    nutrition: PropTypes.oneOf(["included", "selected", undefined]),
-    wifi: PropTypes.oneOf(["included", "selected", undefined]),
-  }),
+  haveAirConditioning: coachHaveType.isRequired,
+  haveWifi: coachHaveType.isRequired,
+  isLinensIncluded: coachHaveType.isRequired,
+  linensPrice: coachPriceType.isRequired,
+  onChange: PropTypes.func,
+  values: PropTypes.shape({ linens: PropTypes.bool, wifi: PropTypes.bool }),
+  wifiPrice: coachPriceType.isRequired,
 };
 
 export default AdditionalOptionsInCarriages;

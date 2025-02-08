@@ -1,3 +1,5 @@
+@reference "../../index.css";
+
 .order-confirmation-page { @apply bg-ghost-white-1.64 }
 
 .order-confirmation-page__trip-details,
