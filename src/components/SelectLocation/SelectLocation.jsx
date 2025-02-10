@@ -8,23 +8,38 @@ import { Select } from "antd";
 import { useEffect, useState } from "react";
 import "./SelectLocation.css";
 
-function SelectLocation({ className, onChange, value, ...props }) {
-  const [name, setName] = useState("");
-  const { data } = useApi(`${Api.ROUTES_CITIES}?name=${name}`, []);
+const plug = [
+  { _id: "66ac8b69cb563f0052174f45", name: "москва" },
+  { _id: "66ac8b69cb563f0052174f46", name: "санкт-петербург" },
+];
 
+function SelectLocation({ className, onChange, value, ...props }) {
+  const [data, setData] = useState([]);
+  const [name, setName] = useState("");
+
+  const api = useApi(`${Api.ROUTES_CITIES}?name=${name}`, []);
+
+  useEffect(() => {
+    if (!api.loading) {
+      if (name) {
+        if (api.data.length > 0) {
+          setData(api.data);
+        }
+        else {
+          setData(plug);
+        }
+      }
+      else {
+        setData([]);
+      }
+    }
+  }, [api.data, api.loading, name]);
   useEffect(() => {
     if (value) {
       setName(value.name);
     }
   }, [value]);
 
-  const options = (data) => {
-    if (Array.isArray(data)) {
-      return data.map(item => ({ label: item.name.toUpperCase(), value: item.name }));
-    }
-
-    return [];
-  };
   const handleChange = (value) => {
     onChange(data.find(item => item.name === value));
   };
@@ -32,9 +47,17 @@ function SelectLocation({ className, onChange, value, ...props }) {
   return (
     <Select
       className={cn("select-location", className)}
+      notFoundContent={(
+        <>
+          <div className="font-bold text-center">Нет данных</div>
+          {!name && (
+            <div className="text-center">Для поиска начните вводит название города</div>
+          )}
+        </>
+      )}
       onChange={handleChange}
       onSearch={setName}
-      options={options(data)}
+      options={Array.isArray(data) ? data.map(item => ({ label: item.name.toUpperCase(), value: item.name })) : []}
       showSearch
       suffixIcon={<LocationIcon />}
       value={value?.name}

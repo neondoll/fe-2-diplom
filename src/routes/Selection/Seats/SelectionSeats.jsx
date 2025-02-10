@@ -16,6 +16,197 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./SelectionSeats.css";
 
+const plug = [
+  {
+    coach: {
+      _id: "66ac8b6ccb563f00521754c7",
+      name: "ПТН-86",
+      class_type: "first",
+      have_wifi: true,
+      have_air_conditioning: true,
+      price: 2830,
+      top_price: 3525,
+      bottom_price: 2655,
+      side_price: 0,
+      linens_price: 83,
+      wifi_price: 285,
+      is_linens_included: true,
+      available_seats: 5,
+      train: "66ac8b6fcb563f00521759fb",
+    },
+    seats: [
+      { index: 1, available: true },
+      { index: 2, available: true },
+      { index: 3, available: true },
+      { index: 4, available: true },
+      { index: 5, available: true },
+    ],
+  },
+  {
+    coach: {
+      _id: "66ac8b6ccb563f00521754c8",
+      name: "БЛИММ-74",
+      class_type: "fourth",
+      have_wifi: false,
+      have_air_conditioning: true,
+      price: 0,
+      top_price: 521,
+      bottom_price: 768,
+      side_price: 0,
+      linens_price: 0,
+      wifi_price: 73,
+      is_linens_included: false,
+      available_seats: 49,
+      train: "66ac8b6fcb563f00521759fb",
+    },
+    seats: [
+      { index: 1, available: true },
+      { index: 2, available: true },
+      { index: 3, available: true },
+      { index: 4, available: true },
+      { index: 5, available: true },
+      { index: 6, available: true },
+      { index: 7, available: true },
+      { index: 8, available: true },
+      { index: 9, available: true },
+      { index: 10, available: true },
+      { index: 11, available: true },
+      { index: 12, available: true },
+      { index: 13, available: true },
+      { index: 14, available: true },
+      { index: 15, available: true },
+      { index: 16, available: true },
+      { index: 17, available: true },
+      { index: 18, available: true },
+      { index: 19, available: true },
+      { index: 20, available: true },
+      { index: 21, available: true },
+      { index: 22, available: true },
+      { index: 23, available: true },
+      { index: 24, available: true },
+      { index: 25, available: true },
+      { index: 26, available: true },
+      { index: 27, available: true },
+      { index: 28, available: true },
+      { index: 29, available: true },
+      { index: 30, available: true },
+      { index: 31, available: true },
+      { index: 32, available: true },
+      { index: 33, available: true },
+      { index: 34, available: true },
+      { index: 35, available: true },
+      { index: 36, available: true },
+      { index: 37, available: true },
+      { index: 38, available: true },
+      { index: 39, available: true },
+      { index: 40, available: true },
+      { index: 41, available: true },
+      { index: 42, available: true },
+      { index: 43, available: true },
+      { index: 44, available: true },
+      { index: 45, available: true },
+      { index: 46, available: true },
+      { index: 47, available: true },
+      { index: 48, available: true },
+      { index: 49, available: true },
+    ],
+  },
+  {
+    coach: {
+      _id: "66ac8b6ccb563f00521754c9",
+      name: "УУУ-46",
+      class_type: "third",
+      have_wifi: false,
+      have_air_conditioning: true,
+      price: 0,
+      top_price: 2585,
+      bottom_price: 2895,
+      side_price: 3260,
+      linens_price: 113,
+      wifi_price: 261,
+      is_linens_included: false,
+      available_seats: 35,
+      train: "66ac8b6fcb563f00521759fb",
+    },
+    seats: [
+      { index: 1, available: true },
+      { index: 2, available: true },
+      { index: 3, available: true },
+      { index: 4, available: true },
+      { index: 5, available: true },
+      { index: 6, available: true },
+      { index: 7, available: true },
+      { index: 8, available: true },
+      { index: 9, available: true },
+      { index: 10, available: true },
+      { index: 11, available: true },
+      { index: 12, available: true },
+      { index: 13, available: true },
+      { index: 14, available: true },
+      { index: 15, available: true },
+      { index: 16, available: true },
+      { index: 17, available: true },
+      { index: 18, available: true },
+      { index: 19, available: true },
+      { index: 20, available: true },
+      { index: 21, available: true },
+      { index: 22, available: true },
+      { index: 23, available: true },
+      { index: 24, available: true },
+      { index: 25, available: true },
+      { index: 26, available: true },
+      { index: 27, available: true },
+      { index: 28, available: true },
+      { index: 29, available: true },
+      { index: 30, available: true },
+      { index: 31, available: true },
+      { index: 32, available: true },
+      { index: 33, available: true },
+      { index: 34, available: true },
+      { index: 35, available: true },
+    ],
+  },
+  {
+    coach: {
+      _id: "66ac8b6ccb563f00521754ca",
+      name: "ДЖЗИИЛ-72",
+      class_type: "second",
+      have_wifi: false,
+      have_air_conditioning: true,
+      price: 0,
+      top_price: 2682,
+      bottom_price: 1965,
+      side_price: 0,
+      linens_price: 197,
+      wifi_price: 103,
+      is_linens_included: true,
+      available_seats: 19,
+      train: "66ac8b6fcb563f00521759fb",
+    },
+    seats: [
+      { index: 1, available: true },
+      { index: 2, available: true },
+      { index: 3, available: true },
+      { index: 4, available: true },
+      { index: 5, available: true },
+      { index: 6, available: true },
+      { index: 7, available: true },
+      { index: 8, available: true },
+      { index: 9, available: true },
+      { index: 10, available: true },
+      { index: 11, available: true },
+      { index: 12, available: true },
+      { index: 13, available: true },
+      { index: 14, available: true },
+      { index: 15, available: true },
+      { index: 16, available: true },
+      { index: 17, available: true },
+      { index: 18, available: true },
+      { index: 19, available: true },
+    ],
+  },
+];
+
 export default function SelectionSeats() {
   const chosenCoach = useSelector(selectChosenCoach);
   const dispatch = useDispatch();
@@ -23,7 +214,9 @@ export default function SelectionSeats() {
   const order = useSelector(selectOrder);
   const routesSearch = useSelector(selectRoutesSearch);
   const { className, setLoading } = useOutletContext();
+  const [arrivalData, setArrivalData] = useState([]);
   const [arrivalOpen, setArrivalOpen] = useState(false);
+  const [departureData, setDepartureData] = useState([]);
   const [departureOpen, setDepartureOpen] = useState(false);
   const [form, setForm] = useState({
     arrival_coach_class_type: undefined,
@@ -63,6 +256,11 @@ export default function SelectionSeats() {
   const isChild = item => item.is_child;
 
   useEffect(() => {
+    if (!arrivalApi.loading) {
+      setArrivalData(arrivalApi.data);
+    }
+  }, [arrivalApi.data, arrivalApi.loading]);
+  useEffect(() => {
     if (arrivalApi.error) {
       console.error(arrivalApi.error);
 
@@ -101,6 +299,16 @@ export default function SelectionSeats() {
     });
   }, [chosenCoach.arrival, chosenCoach.departure, order.arrival.seats, order.departure.seats]);
   useEffect(() => {
+    if (!departureApi.loading) {
+      if (departureApi.data.length > 0) {
+        setDepartureData(departureApi.data);
+      }
+      else {
+        setDepartureData(plug);
+      }
+    }
+  }, [departureApi.data, departureApi.loading]);
+  useEffect(() => {
     if (departureApi.error) {
       console.error(departureApi.error);
 
@@ -122,7 +330,7 @@ export default function SelectionSeats() {
       && form.departure_ticket_quantity.babies <= form.departure_ticket_quantity.adults
       && form.departure_seats.length === (form.departure_ticket_quantity.adults + form.departure_ticket_quantity.children)
       && (
-        arrivalApi.data.length === 0 || (
+        arrivalData.length === 0 || (
           form.arrival_ticket_quantity.adults > 0
           && form.arrival_ticket_quantity.babies <= form.arrival_ticket_quantity.adults
           && form.arrival_seats.length === (form.arrival_ticket_quantity.adults + form.arrival_ticket_quantity.children)
@@ -133,8 +341,8 @@ export default function SelectionSeats() {
     event.preventDefault();
 
     dispatch(initChosenCoach({
-      arrival: arrivalApi.data.find(item => item.coach._id === form.arrival_coach_id && item.coach.class_type === form.arrival_coach_class_type)?.coach,
-      departure: departureApi.data.find(item => item.coach._id === form.departure_coach_id && item.coach.class_type === form.departure_coach_class_type)?.coach,
+      arrival: arrivalData.find(item => item.coach._id === form.arrival_coach_id && item.coach.class_type === form.arrival_coach_class_type)?.coach,
+      departure: departureData.find(item => item.coach._id === form.departure_coach_id && item.coach.class_type === form.departure_coach_class_type)?.coach,
     }));
     dispatch(changeOrder({
       name: "arrival",
@@ -171,7 +379,7 @@ export default function SelectionSeats() {
   return (
     <div className={cn("selection-seats", className)}>
       <h1 className="selection-seats__title">Выбор мест</h1>
-      {departureApi.data.length > 0 && (
+      {departureData.length > 0 && (
         <div className="selection-seats__container" data-loading={departureApi.loading}>
           <SelectionSeatsExchange className="selection-seats__exchange" variant="departure" />
           <SelectionSeatsRoute className="selection-seats__route" variant="departure" />
@@ -182,7 +390,7 @@ export default function SelectionSeats() {
           />
           <SelectionSeatsCoachClassType
             className="selection-seats__coach-class-type"
-            itemDisabled={value => !departureApi.data.map(item => item.coach.class_type).includes(value)}
+            itemDisabled={value => !departureData.map(item => item.coach.class_type).includes(value)}
             onChange={newValue => setForm(prev => ({
               ...prev,
               departure_coach_class_type: newValue,
@@ -195,7 +403,7 @@ export default function SelectionSeats() {
           <SelectionSeatsCoachDetails
             className="selection-seats__coach-details"
             classType={form.departure_coach_class_type}
-            coaches={departureApi.data}
+            coaches={departureData}
             onChange={newValues => setForm(prev => ({
               ...prev,
               departure_coach_id: "coach_id" in newValues ? newValues.coach_id : form.departure_coach_id,
@@ -210,7 +418,7 @@ export default function SelectionSeats() {
           />
         </div>
       )}
-      {arrivalApi.data.length > 0 && (
+      {arrivalData.length > 0 && (
         <div className="selection-seats__container" data-loading={arrivalApi.loading}>
           <SelectionSeatsExchange className="selection-seats__exchange" variant="arrival" />
           <SelectionSeatsRoute className="selection-seats__route" variant="arrival" />
@@ -221,7 +429,7 @@ export default function SelectionSeats() {
           />
           <SelectionSeatsCoachClassType
             className="selection-seats__wagon-type"
-            itemDisabled={value => !arrivalApi.data.map(item => item.coach.class_type).includes(value)}
+            itemDisabled={value => !arrivalData.map(item => item.coach.class_type).includes(value)}
             onChange={newValue => setForm(prev => ({
               ...prev,
               arrival_coach_class_type: newValue,
@@ -234,7 +442,7 @@ export default function SelectionSeats() {
           <SelectionSeatsCoachDetails
             className="selection-seats__wagon-details"
             classType={form.arrival_coach_class_type}
-            coaches={arrivalApi.data}
+            coaches={arrivalData}
             onChange={newValues => setForm(prev => ({
               ...prev,
               arrival_coach_id: "coach_id" in newValues ? newValues.coach_id : form.arrival_coach_id,
