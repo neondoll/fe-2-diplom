@@ -12,7 +12,7 @@ function LastTickets({ className }) {
     <div className={cn("last-tickets", className)}>
       <h2 className="last-tickets__title">последние билеты</h2>
       <div className="last-tickets__container">
-        {data.map((item, index) => (
+        {(Array.isArray(data) ? data : []).map((item, index) => (
           <div className="last-tickets__item last-ticket" key={index}>
             <div className="last-ticket__cities">
               <p className="last-ticket__city-from">{capitalizeFirstLetter(item.departure.from.city.name)}</p>

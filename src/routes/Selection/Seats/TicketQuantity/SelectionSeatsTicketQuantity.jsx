@@ -8,7 +8,7 @@ import "./SelectionSeatsTicketQuantity.css";
 const fields = [
   {
     description: v => `Можно добавить еще\n${5 - v} пассажиров`,
-    inputClassName: "ps-[120.453px]!",
+    inputStyle: { paddingInlineStart: "120.453px" },
     label: "Взрослых",
     max: 5,
     min: 0,
@@ -16,14 +16,14 @@ const fields = [
   },
   {
     description: v => `Можно добавить еще ${4 - v} детей до 10 лет. Свое место в вагоне, как у взрослых, но дешевле\nв среднем на 50-65%`,
-    inputClassName: "ps-[106.406px]!",
+    inputStyle: { paddingInlineStart: "106.406px" },
     label: "Детских",
     max: 4,
     min: 0,
     value: "children",
   },
   {
-    inputClassName: "ps-[211.484px]!",
+    inputStyle: { paddingInlineStart: "211.484px" },
     label: "Детских «без места»",
     max: 5,
     min: 0,
@@ -60,11 +60,12 @@ function SelectionSeatsTicketQuantity({ className, onChange, values }) {
                 &nbsp;
               </div>
               <Input
-                className={cn("selection-seats-ticket-quantity__input", field.inputClassName)}
+                className="selection-seats-ticket-quantity__input"
                 max={String(field.max)}
                 min={String(field.min)}
                 name={field.value}
                 onChange={handleChange}
+                style={field.inputStyle}
                 type="number"
                 value={String(form[field.value])}
               />

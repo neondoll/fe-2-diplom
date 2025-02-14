@@ -9,7 +9,7 @@
 .selection-seats-coach-details-header__list { @apply flex justify-start items-stretch gap-x-1.5 }
 
 .selection-seats-coach-details-header__item {
-  @apply text-2xl/[calc(7/6)] font-bold transition-colors cursor-pointer data-[active=true]:text-white;
+  @apply text-2xl/[calc(7/6)] font-bold transition cursor-pointer data-[active=true]:text-white hover:opacity-75;
 }
 
 .selection-seats-coach-details-header__description {
